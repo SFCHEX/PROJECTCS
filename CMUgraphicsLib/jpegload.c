@@ -2,6 +2,7 @@
 See "version.h" for version info and copyright information
 This file was last modified on 05.16.1999
 */
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdlib.h>
 #include <stdio.h>
