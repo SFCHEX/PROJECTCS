@@ -1,0 +1,2 @@
+﻿auxil.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  CIE202-project.vcxproj -> E:\ZC\C++ Project\Project Startup Code\Debug\CIE202-project.exe
