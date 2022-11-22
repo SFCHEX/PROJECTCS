@@ -89,6 +89,8 @@ operationType GUI::GetUseroperation() const
 			{
 			case ICON_RECT: return DRAW_RECT;
 			case ICON_CIRC: return DRAW_CIRC;
+			case ICON_LINE: return DRAW_LINE;
+			case ICON_TRI : return DRAW_TRI;
 			case ICON_EXIT: return EXIT;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -158,7 +160,10 @@ void GUI::CreateDrawToolBar()
 	string MenuIconImages[DRAW_ICON_COUNT];
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
+	MenuIconImages[ICON_LINE] = "images\\MenuIcons\\Menu_Line.jpg";
+	MenuIconImages[ICON_TRI]  = "images\\MenuIcons\\Menu_Tri.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
+
 
 	//TODO: Prepare images for each menu icon and add it to the list
 
@@ -245,6 +250,68 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 
 }
 
+void GUI::DrawLines(Point p1, Point p2, GfxInfo LineGfxInfo) const {
+	color DrawingClr;
+	if (LineGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = LineGfxInfo.DrawClr;
+
+	pWind ->SetPen(DrawingClr, LineGfxInfo.BorderWdth);
+
+	drawstyle style;
+	if (LineGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(LineGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	pWind->DrawLine(p1.x, p1.y, p2.x, p2.y, style);
+
+}
+
+void GUI::DrawTri(Point p1, Point p2, Point p3, GfxInfo TriGfxInfo) const {
+	color DrawingClr;
+	if (TriGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = TriGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, TriGfxInfo.BorderWdth);
+
+	drawstyle style;
+	if (TriGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(TriGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	pWind->DrawTriangle(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, style);
+}
+
+void GUI::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo) const {
+	int rad;
+	color DrawingClr;
+	if (CircGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = CircGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, CircGfxInfo.BorderWdth);
+
+	drawstyle style;
+	if (CircGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(CircGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	rad = int(sqrt(pow((P1.x - P2.x), 2) + pow((P1.y - P2.y), 2)));
+	pWind->DrawCircle(P1.x, P1.y, rad, style);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()

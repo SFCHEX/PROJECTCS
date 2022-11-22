@@ -1,6 +1,7 @@
 #pragma once
 
 #include "shape.h"
+#include "math.h"
 
 class Rect : public shape
 {
