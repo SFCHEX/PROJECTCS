@@ -1,3 +1,7 @@
 Debug/
 /.vs
 .vs/
+CIE202-project.vcxproj.filters
+*.filters
+*.user
+*.filters

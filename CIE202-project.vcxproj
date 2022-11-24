@@ -173,6 +173,7 @@
     <ClCompile Include="operations\opAddCirc.cpp" />
     <ClCompile Include="operations\opAddLine.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
+    <ClCompile Include="operations\opAddSquare.cpp" />
     <ClCompile Include="operations\opAddTri.cpp" />
     <ClCompile Include="Shapes\Circ.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
@@ -180,6 +181,7 @@
     <ClCompile Include="Shapes\Shape.cpp" />
     <ClCompile Include="Shapes\Rect.cpp" />
     <ClCompile Include="Shapes\Tri.cpp" />
+    <ClCompile Include="Shapes\Square.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -208,6 +210,7 @@
     <ClInclude Include="operations\opAddCirc.h" />
     <ClInclude Include="operations\opAddLine.h" />
     <ClInclude Include="operations\opAddRect.h" />
+    <ClInclude Include="operations\opAddSquare.h" />
     <ClInclude Include="operations\opAddTri.h" />
     <ClInclude Include="operations\operation.h" />
     <ClInclude Include="resource.h" />
@@ -217,6 +220,7 @@
     <ClInclude Include="Shapes\Shape.h" />
     <ClInclude Include="Shapes\Rect.h" />
     <ClInclude Include="Shapes\Tri.h" />
+    <ClInclude Include="Shapes\Square.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

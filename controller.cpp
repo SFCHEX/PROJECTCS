@@ -3,7 +3,7 @@
 #include "operations/opAddLine.h"
 #include "operations/opAddTri.h"
 #include "operations/opAddCirc.h"
-
+#include "operations/opAddSquare.h"
 
 //Constructor
 controller::controller()
@@ -43,9 +43,11 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_CIRC:
 			pOp = new opAddCirc(this);
 			break;
+		case DRAW_SQUARE:
+			pOp = new opAddSquare(this);
+				break;
 		case EXIT:
 			///create Exitoperation here
-			
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no operation

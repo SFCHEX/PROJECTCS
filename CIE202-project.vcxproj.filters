@@ -105,9 +105,6 @@
     <ClCompile Include="CMUgraphicsLib\windowinput.cpp">
       <Filter>GraphicsLib</Filter>
     </ClCompile>
-    <ClCompile Include="operations\opAddRect.cpp">
-      <Filter>Operations</Filter>
-    </ClCompile>
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp">
       <Filter>GraphicsLib</Filter>
     </ClCompile>
@@ -141,6 +138,9 @@
     <ClCompile Include="operations\opAddCirc.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
+    <ClCompile Include="Shapes\Square.cpp" />
+    <ClCompile Include="operations\opAddSquare.cpp" />
+    <ClCompile Include="operations\opAddRect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -202,9 +202,6 @@
     <ClInclude Include="operations\operation.h">
       <Filter>Operations</Filter>
     </ClInclude>
-    <ClInclude Include="operations\opAddRect.h">
-      <Filter>Operations</Filter>
-    </ClInclude>
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h">
       <Filter>GraphicsLib</Filter>
     </ClInclude>
@@ -242,6 +239,9 @@
     <ClInclude Include="operations\opAddCirc.h">
       <Filter>Operations</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes\Square.h" />
+    <ClInclude Include="operations\opAddSquare.h" />
+    <ClInclude Include="operations\opAddRect.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">
