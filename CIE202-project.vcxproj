@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
+    <ClCompile Include="CMUgraphicsLib\colors.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
     <ClCompile Include="CMUgraphicsLib\jpegload.c" />
     <ClCompile Include="CMUgraphicsLib\keyqueue.cpp" />
@@ -170,11 +171,13 @@
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="operations\OpAddOval.cpp" />
     <ClCompile Include="operations\opAddCirc.cpp" />
     <ClCompile Include="operations\opAddLine.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
     <ClCompile Include="operations\opAddSquare.cpp" />
     <ClCompile Include="operations\opAddTri.cpp" />
+    <ClCompile Include="Shapes\Oval.cpp" />
     <ClCompile Include="Shapes\Circ.cpp" />
     <ClCompile Include="Shapes\Graph.cpp" />
     <ClCompile Include="Shapes\Line.cpp" />
@@ -207,12 +210,14 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations\OpAddOval.h" />
     <ClInclude Include="operations\opAddCirc.h" />
     <ClInclude Include="operations\opAddLine.h" />
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="operations\opAddSquare.h" />
     <ClInclude Include="operations\opAddTri.h" />
     <ClInclude Include="operations\operation.h" />
+    <ClInclude Include="Shapes\Oval.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Shapes\Circ.h" />
     <ClInclude Include="Shapes\Graph.h" />

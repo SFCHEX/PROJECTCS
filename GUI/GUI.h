@@ -42,6 +42,7 @@ class GUI
 		ICON_LINE,
 		ICON_TRI,
 		ICON_SQUARE,
+		ICON_OVAL,
 		//TODO: Add more icons names here
 
 		ICON_EXIT,		//Exit icon
@@ -109,6 +110,7 @@ public:
 	void DrawTri(Point, Point, Point, GfxInfo) const;
 	void DrawCirc(Point, Point , GfxInfo) const;
 	void DrawSquare(Point, Point, GfxInfo) const;
+	void DrawOval(Point, Point, GfxInfo) const;
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar

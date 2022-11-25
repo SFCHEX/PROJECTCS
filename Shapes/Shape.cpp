@@ -11,6 +11,7 @@ void shape::SetSelected(bool s)
 bool shape::IsSelected() const
 {	return ShpGfxInfo.isSelected; }
 
+
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 
@@ -19,4 +20,5 @@ void shape::ChngFillClr(color Fclr)
 	ShpGfxInfo.isFilled = true;
 	ShpGfxInfo.FillClr = Fclr; 
 }
-
+//
+//Point shape::getBorders() {}

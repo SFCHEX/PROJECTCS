@@ -9,7 +9,6 @@ Circ::Circ(Point P1, Point P2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 Circ::~Circ()
 {}
 
-
 void Circ::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	

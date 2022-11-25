@@ -141,6 +141,9 @@
     <ClCompile Include="Shapes\Square.cpp" />
     <ClCompile Include="operations\opAddSquare.cpp" />
     <ClCompile Include="operations\opAddRect.cpp" />
+    <ClCompile Include="Shapes\Oval.cpp" />
+    <ClCompile Include="operations\OpAddOval.cpp" />
+    <ClCompile Include="CMUgraphicsLib\colors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -242,6 +245,8 @@
     <ClInclude Include="Shapes\Square.h" />
     <ClInclude Include="operations\opAddSquare.h" />
     <ClInclude Include="operations\opAddRect.h" />
+    <ClInclude Include="Shapes\Oval.h" />
+    <ClInclude Include="operations\OpAddOval.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

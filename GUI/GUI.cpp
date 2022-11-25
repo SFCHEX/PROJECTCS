@@ -92,6 +92,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_LINE: return DRAW_LINE;
 			case ICON_TRI : return DRAW_TRI;
 			case ICON_SQUARE: return DRAW_SQUARE;
+			case ICON_OVAL: return DRAW_OVAL;
 			case ICON_EXIT: return EXIT;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -164,6 +165,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_LINE] = "images\\MenuIcons\\Menu_Line.jpg";
 	MenuIconImages[ICON_TRI]  = "images\\MenuIcons\\Menu_Tri.jpg";
 	MenuIconImages[ICON_SQUARE] = "images\\MenuIcons\\Menu_Square.jpg";
+	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 
 
@@ -249,7 +251,7 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 		style = FRAME;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-
+	
 }
 
 void GUI::DrawLines(Point p1, Point p2, GfxInfo LineGfxInfo) const {
@@ -335,6 +337,28 @@ void GUI::DrawSquare(Point P1, Point P2, GfxInfo SquareGfxInfo) const
 		style = FRAME;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
+
+}
+void GUI::DrawOval(Point P1, Point P2, GfxInfo OvalGfxInfo) const
+{
+	color DrawingClr;
+	if (OvalGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = OvalGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, OvalGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (OvalGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(OvalGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawEllipse(P1.x, P1.y, P2.x, P2.y, style);
 
 }
 
