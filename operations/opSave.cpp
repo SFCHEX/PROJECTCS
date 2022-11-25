@@ -19,6 +19,6 @@ void opSave::Execute() {
 	string file=pUI->GetSrting();
     ofstream myfile;
     myfile.open(file+".txt");
-    pGr->Save(myfile,pUI);
+    pGr->save(myfile,pUI);
 
 }

@@ -14,7 +14,6 @@ opAddCirc::~opAddCirc()
 void opAddCirc::Execute() 
 {
 	Point P1, P2;
-	int rad;
 
 	//Get a Pointer to the Input / Output Interfaces
 	GUI* pUI = pControl->GetUI();
