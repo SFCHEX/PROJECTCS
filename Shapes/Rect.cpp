@@ -9,6 +9,9 @@ Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 Rect::~Rect()
 {}
 
+string Rect::GetShapeType() const{
+	return "RECT";
+}
 void Rect::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	

@@ -1,5 +1,7 @@
 #include "controller.h"
 #include "operations\opAddRect.h"
+#include "operations\opSave.h"
+#include "operations\opLoad.h"
 
 
 //Constructor
@@ -39,7 +41,16 @@ operation* controller::createOperation(operationType OpType)
 			///create Exitoperation here
 			
 			break;
-		
+	
+		case LOAD:
+			///create load operation
+			pOp = new opLoad(this);
+			break;	
+
+		case SAVE:
+			///create save operation 
+			pOp = new opSave(this);
+			break;
 		case STATUS:	//a click on the status bar ==> no operation
 			break;
 	}
