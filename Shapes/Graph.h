@@ -21,6 +21,6 @@ public:
 	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
 	shape* Getshape(int x, int y) const; //Search for a shape given a point inside the shape
 
-	void Save(ofstream& outfile,GUI* pUI);	//Save all shapes to a file
+	void save(ofstream& outfile,GUI* pUI);	//Save all shapes to a file
 	void load(ifstream& inputfile,GUI* pUI);	//Load all shapes from a file
 };
