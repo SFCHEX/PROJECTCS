@@ -1,5 +1,6 @@
 #include "shape.h"
 
+int shape::count =0;
 shape::shape(GfxInfo shapeGfxInfo)
 { 
 	count++;

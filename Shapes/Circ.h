@@ -8,6 +8,7 @@ private:
 	Point Center;
 	Point PointR;
 public:
+	int rad;
 	Circ(Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Circ();
 	virtual void Draw(GUI* pUI) const;

@@ -59,12 +59,12 @@ operation* controller::createOperation(operationType OpType)
 	
 		case LOAD:
 			///create load operation
-			pOp = new opLoad(this);
+			//pOp = new opLoad(this);
 			break;	
 
 		case SAVE:
 			///create save operation 
-			pOp = new opSave(this);
+			//pOp = new opSave(this);
 			break;
 		case STATUS:	//a click on the status bar ==> no operation
 			break;
