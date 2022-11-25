@@ -120,7 +120,9 @@ public:
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
 
-
+	void SwitchToPlayMode(window w);
+	void DrawPlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
+	
 	~GUI();
 };
 
