@@ -55,12 +55,14 @@ void Graph::save(ofstream& outfile, GUI* pUI) {
 	//outfile<<pUI->getCrntDrawColor()<<"\t"<<pUI->getCrntFillColor()<<"\t"<<pUI->getCrntPenWidth()<<endl;
 	//number of shapes is length of vector
 	outfile<<Graph::shapesList.size()<<endl;
-	for (auto it = Graph::shapesList.begin(); it != Graph::shapesList.end(); ++it) {
+
+	//for (auto it = Graph::shapesList.begin(); it != Graph::shapesList.end(); ++it) {
+	for (auto& it : Graph::shapesList) {
 
 		//append shapetype, tab
 		//outfile << it->GetShapeType() << "\t";
 			//append shape ID, tab
-		outfile << it->ID << "\t";
+		outfile << it.ID << "\t";
 		//loop for points
 			//append each point, tab
 
@@ -68,7 +70,7 @@ void Graph::save(ofstream& outfile, GUI* pUI) {
 		//return draw color. not sure how to return as string
 		//outfile<<it->GfxInfo.DrawClr<<"\t";
 		//return fill color if there is fill color if there isnt return no fil
-		if (it->GfxInfo.isFilled)
+		if (it.GfxInfo.isFilled)
 		{
 			//outfile<<it->GfxInfo.FillClr;
 		}
@@ -78,7 +80,7 @@ void Graph::save(ofstream& outfile, GUI* pUI) {
 		}
 		outfile<<"\t";
 
-		outfile<<it->GfxInfo.BorderWdth<<endl;
+		outfile<<it.GfxInfo.BorderWdth<<endl;
 			//add shape details to the file using the protected shape variables GfxInfo, tab
 		//new lines
 	}
