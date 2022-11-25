@@ -18,7 +18,7 @@ void opLoad::Execute() {
 	string file=pUI->GetSrting();
     ifstream myfile;
     myfile.open(file+".txt");
-    pGr->Load(myfile);
+    pGr->Load(myfile,pUI);
 }
 
 
