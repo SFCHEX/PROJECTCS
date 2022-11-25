@@ -1,2 +1,0 @@
-void SwitchToPlayMode(window w);
-  
