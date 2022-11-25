@@ -21,6 +21,7 @@ public:
 	bool IsSelected() const;	//check whether fig is selected
 
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
+	//virtual Point getBorders();
 	virtual string GetShapeType() const  = 0 ;		//get the shape type
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color

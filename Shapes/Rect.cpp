@@ -6,8 +6,11 @@ Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 	Corner2 = P2;
 }
 
-Rect::~Rect()
-{}
+Rect::~Rect(){}
+//
+//Point Rect::getBorders() {
+//	return Corner1;
+//}
 
 string Rect::GetShapeType() const{
 	return "RECT";

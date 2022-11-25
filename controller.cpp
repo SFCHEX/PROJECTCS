@@ -1,5 +1,10 @@
 #include "controller.h"
 #include "operations\opAddRect.h"
+#include "operations\opAddLine.h"
+#include "operations\opAddTri.h"
+#include "operations\opAddCirc.h"
+#include "operations\opAddSquare.h"
+#include "operations\OpAddOval.h"
 #include "operations\opSave.h"
 #include "operations\opLoad.h"
 
@@ -33,13 +38,23 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case DRAW_LINE:
-			///create AddLineoperation here
-
+			pOp = new opAddLine(this);
 			break;
 
+		case DRAW_TRI:
+			pOp = new opAddTri(this);
+			break;
+		case DRAW_CIRC:
+			pOp = new opAddCirc(this);
+			break;
+		case DRAW_SQUARE:
+			pOp = new opAddSquare(this);
+				break;
+		case DRAW_OVAL:
+			pOp = new opAddOval(this);
+			break;
 		case EXIT:
 			///create Exitoperation here
-			
 			break;
 	
 		case LOAD:
