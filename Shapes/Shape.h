@@ -7,8 +7,8 @@
 class shape
 {
 protected:
-	//to create unique ID's for each object
-	static int count;
+	
+	static int count; //to create unique ID's for each object
 	int ID;		//Each shape has an ID
 	GfxInfo ShpGfxInfo;	//shape graphis info
 	
@@ -19,10 +19,11 @@ public:
 	virtual ~shape() {}
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
-
+	int getID() const;
+	GfxInfo getGfxInfo() const;
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	//virtual Point getBorders();
-	virtual string GetShapeType() const  = 0 ;		//get the shape type
+	//virtual string GetShapeType() const  = 0 ;		//get the shape type
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
 

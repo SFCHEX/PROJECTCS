@@ -144,6 +144,8 @@
     <ClCompile Include="Shapes\Oval.cpp" />
     <ClCompile Include="operations\OpAddOval.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
+    <ClCompile Include="operations\opSave.cpp" />
+    <ClCompile Include="operations\opLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -247,6 +249,8 @@
     <ClInclude Include="operations\opAddRect.h" />
     <ClInclude Include="Shapes\Oval.h" />
     <ClInclude Include="operations\OpAddOval.h" />
+    <ClInclude Include="operations\opSave.h" />
+    <ClInclude Include="operations\opLoad.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">
