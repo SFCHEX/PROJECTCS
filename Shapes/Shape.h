@@ -7,6 +7,8 @@
 class shape
 {
 protected:
+	//to create unique ID's for each object
+	static int count;
 	int ID;		//Each shape has an ID
 	GfxInfo ShpGfxInfo;	//shape graphis info
 	

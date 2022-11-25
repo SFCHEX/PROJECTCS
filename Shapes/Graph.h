@@ -1,6 +1,7 @@
 #pragma once
 #include "Shape.h"
 #include <fstream>
+#include <string>
 #include <vector>
 using namespace std;
 

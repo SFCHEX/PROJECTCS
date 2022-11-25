@@ -6,7 +6,7 @@ public:
 	opSave(controller *pCont);
 	virtual ~opSave();
 	
-	//Add Load to the controller
+	//Add Save to the controller
 	virtual void Execute() ;
 	
 };

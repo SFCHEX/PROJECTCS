@@ -39,9 +39,9 @@ class GUI
 		//If you want to change the menu icons order, change the order here
 		ICON_RECT,		//Recangle icon in menu
 		ICON_CIRC,		//Circle icon in menu
-
+		ICON_LOAD,		//Load icon in menu
+		ICON_SAVE,		//Save icon in menu
 		//TODO: Add more icons names here
-
 		ICON_EXIT,		//Exit icon
 
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
