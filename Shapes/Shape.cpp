@@ -2,6 +2,8 @@
 
 shape::shape(GfxInfo shapeGfxInfo)
 { 
+	count++;
+	ID=count;
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
 }
  

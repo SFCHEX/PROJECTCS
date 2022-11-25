@@ -12,6 +12,9 @@ Rect::~Rect(){}
 //	return Corner1;
 //}
 
+string Rect::GetShapeType() const{
+	return "RECT";
+}
 void Rect::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	

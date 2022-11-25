@@ -88,6 +88,8 @@ operationType GUI::GetUseroperation() const
 			switch (ClickedIconOrder)
 			{
 			case ICON_RECT: return DRAW_RECT;
+			case ICON_SAVE: return SAVE;
+			case ICON_LOAD: return LOAD;
 			case ICON_CIRC: return DRAW_CIRC;
 			case ICON_LINE: return DRAW_LINE;
 			case ICON_TRI : return DRAW_TRI;
@@ -166,6 +168,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_TRI]  = "images\\MenuIcons\\Menu_Tri.jpg";
 	MenuIconImages[ICON_SQUARE] = "images\\MenuIcons\\Menu_Square.jpg";
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
+	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\Menu_Load.jpg";
+	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\Menu_Save.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 
 

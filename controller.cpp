@@ -1,10 +1,13 @@
 #include "controller.h"
 #include "operations\opAddRect.h"
-#include "operations/opAddLine.h"
-#include "operations/opAddTri.h"
-#include "operations/opAddCirc.h"
-#include "operations/opAddSquare.h"
-#include "operations/OpAddOval.h"
+#include "operations\opAddLine.h"
+#include "operations\opAddTri.h"
+#include "operations\opAddCirc.h"
+#include "operations\opAddSquare.h"
+#include "operations\OpAddOval.h"
+#include "operations\opSave.h"
+#include "operations\opLoad.h"
+
 
 //Constructor
 controller::controller()
@@ -53,7 +56,16 @@ operation* controller::createOperation(operationType OpType)
 		case EXIT:
 			///create Exitoperation here
 			break;
-		
+	
+		case LOAD:
+			///create load operation
+			pOp = new opLoad(this);
+			break;	
+
+		case SAVE:
+			///create save operation 
+			pOp = new opSave(this);
+			break;
 		case STATUS:	//a click on the status bar ==> no operation
 			break;
 	}
