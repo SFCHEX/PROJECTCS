@@ -12,7 +12,7 @@ class GUI;
 class Graph
 {
 private:
-	vector <shape*> shapesList; //a container to hold all shapes							   
+	vector <shape*> shapesList; //a container to hold all shapes	
 	shape* selectedShape;	//pointer to the currently selected shape
 public:										
 	Graph();

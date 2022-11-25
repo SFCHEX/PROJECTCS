@@ -32,13 +32,13 @@ void Graph::Draw(GUI* pUI) const
 shape* Graph::Getshape(int x, int y) const
 {
 	return nullptr;
-	//for (auto selPointer : shapesList) {
+	//for (auto& selPointer : shapesList) {
 	//	if (1) {
-	//		selPointer;
+	//		selPointer->
 	//		//If a shape is found return a pointer to it.
 	//		///Add your code here to search for a shape given a point x,y	
-	//		selPointer->getBorders();
-	//		return selPointer;
+	//		//selPointer->
+	//		//return selPointer;
 	//	}
 	//	else {
 	//		//if this point (x,y) does not belong to any shape return NULL
@@ -58,11 +58,11 @@ void Graph::save(ofstream& outfile, GUI* pUI) {
 
 	//for (auto it = Graph::shapesList.begin(); it != Graph::shapesList.end(); ++it) {
 	for (auto& it : Graph::shapesList) {
-
+		GfxInfo it_info = it->getGfxInfo();
 		//append shapetype, tab
 		//outfile << it->GetShapeType() << "\t";
 			//append shape ID, tab
-		outfile << it.ID << "\t";
+		outfile << it->getID() << "\t";
 		//loop for points
 			//append each point, tab
 
@@ -70,7 +70,7 @@ void Graph::save(ofstream& outfile, GUI* pUI) {
 		//return draw color. not sure how to return as string
 		//outfile<<it->GfxInfo.DrawClr<<"\t";
 		//return fill color if there is fill color if there isnt return no fil
-		if (it.GfxInfo.isFilled)
+		if (it_info.isFilled)
 		{
 			//outfile<<it->GfxInfo.FillClr;
 		}
@@ -80,7 +80,7 @@ void Graph::save(ofstream& outfile, GUI* pUI) {
 		}
 		outfile<<"\t";
 
-		outfile<<it.GfxInfo.BorderWdth<<endl;
+		outfile<<it_info.BorderWdth<<endl;
 			//add shape details to the file using the protected shape variables GfxInfo, tab
 		//new lines
 	}

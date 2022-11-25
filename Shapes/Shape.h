@@ -19,7 +19,8 @@ public:
 	virtual ~shape() {}
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
-
+	int getID() const;
+	GfxInfo getGfxInfo() const;
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	//virtual Point getBorders();
 	//virtual string GetShapeType() const  = 0 ;		//get the shape type
