@@ -1,6 +1,7 @@
 #include "CMUgraphics.h"
 #include <iostream>
-#include 
+#include"DrawPlayModeToolBar.h"
+
 void switchToPlayMode(window w){
     w.SetPen(WHITE,1);
     w.SetBrush(WHITE);
