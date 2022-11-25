@@ -45,7 +45,7 @@ shape* Graph::Getshape(int x, int y) const
 void Save(ofstream& outfile,GUI* pUI){
 	//here we add the draw color fill color and pen width from the pointer to the gUI
 
-	outfile<<pUI->getCrntDrawColor()<<"\t"<<pUI->getCrntFillColor()<<"\t"<<pUI->getCrntPenWidth()<<endl;
+	//outfile<<pUI->getCrntDrawColor()<<"\t"<<pUI->getCrntFillColor()<<"\t"<<pUI->getCrntPenWidth()<<endl;
 	//number of shapes is length of vector
 	outfile<<shapesList.size()<<endl;
 	for (auto it = shapesList.begin(); it != shapesList.end(); ++it) {
@@ -62,9 +62,13 @@ void Save(ofstream& outfile,GUI* pUI){
 		//outfile<<it->GfxInfo.DrawClr<<"\t";
 		//return fill color if there is fill color if there isnt return no fil
 		if (it->GfxInfo.isFilled)
+		{
 			//outfile<<it->GfxInfo.FillClr;
+		}
 		else
+		{
 			outfile<<"NO_FILL";
+		}
 		outputfile<<"\t";
 
 		outfile<<it->GfxInfo.BorderWdth<<endl;
