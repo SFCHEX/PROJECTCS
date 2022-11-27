@@ -121,7 +121,7 @@ public:
 	int getCrntPenWidth() const;		//get current pen width
 
 	void SwitchToPlayMode(window w);
-	void DrawPlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
+	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
 	
 	~GUI();
 };
