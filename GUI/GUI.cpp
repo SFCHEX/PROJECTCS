@@ -49,10 +49,10 @@ GUI::GUI()
     MenuIconsPaths[3] = "";
     MenuIconsPaths[4] = "";
 
-    DrawPlayModeToolBar(w, MenuIconsPaths, count, menuItemWidth, menuHeight)
+    CreatePlayModeToolBar(w, MenuIconsPaths, count, menuItemWidth, menuHeight)
 }
 
-void GUI::DrawPlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight){
+void GUI::CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight){
     // Draw menu item one image at a time
   for(int i=0; i<ItemCount; i++){
     testWindow.DrawImage(MenuItems[i], i*MenuItemWidth, 0, MenuItemWidth, MenuItemHeight);
