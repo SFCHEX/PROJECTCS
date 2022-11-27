@@ -6,6 +6,7 @@
 #include "..\Defs.h"
 
 #include <string>
+#include <cmath>
 using namespace std;
 
 struct Point	//To be used for shapes points
