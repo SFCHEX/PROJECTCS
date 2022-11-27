@@ -2,6 +2,9 @@
 
 Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 {
+
+
+	ShpGfxInfo.ShapeType="Rect";
 	Corner1 = P1;
 	Corner2 = P2;
 }

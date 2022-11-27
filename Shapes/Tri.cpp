@@ -2,6 +2,8 @@
 
 Tri::Tri(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
+
+	ShpGfxInfo.ShapeType="Tri";
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;

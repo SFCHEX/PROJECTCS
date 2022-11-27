@@ -2,8 +2,12 @@
 
 Circ::Circ(Point P1, Point P2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
+
+	ShpGfxInfo.ShapeType="Circ";
 	Center = P1;
 	PointR = P2;
+
+
 }
 
 Circ::~Circ()

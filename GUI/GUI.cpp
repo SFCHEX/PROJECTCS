@@ -44,7 +44,7 @@ void GUI::GetPointClicked(int& x, int& y) const
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string GUI::GetSrting() const
+string GUI::GetString() const
 {
 	string Label;
 	char Key;
