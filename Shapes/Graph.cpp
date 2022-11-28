@@ -72,6 +72,7 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 //		{
 //			outfile<<Points[i].x<<"\t"<<Points[i].y<<"\t";
 //
+//
 //		}
 		Graph::SaveColorRGB(outfile,it_info.DrawClr);
 		//if condition for if there is no fill color
