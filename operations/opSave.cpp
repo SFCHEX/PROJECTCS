@@ -16,9 +16,9 @@ opSave::~opSave(){
 void opSave::Execute() {
  	GUI* pUI = pControl->GetUI();  
 	Graph* pGr = pControl->getGraph();
-	string file=pUI->GetSrting();
+	string file=pUI->GetString();
     ofstream myfile;
     myfile.open(file+".txt");
-    pGr->save(myfile,pUI);
+    pGr->Save(myfile,pUI);
 
 }

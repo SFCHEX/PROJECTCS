@@ -15,10 +15,10 @@ opLoad::~opLoad(){
 void opLoad::Execute() {
  	GUI* pUI = pControl->GetUI();  
 	Graph* pGr = pControl->getGraph();
-	string file=pUI->GetSrting();
+	string file=pUI->GetString();
     ifstream myfile;
     myfile.open(file+".txt");
-    pGr->load(myfile,pUI);
+    pGr->Load(myfile,pUI);
 }
 
 
