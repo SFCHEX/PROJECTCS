@@ -60,8 +60,8 @@ operation* controller::createOperation(operationType OpType)
 			break;	
 
 		case SAVE:
-			///create save operation 
-			//pOp = new opSave(this);
+			
+			pOp = new opSave(this); //create save operation 
 			break;
 
 		case EXIT:
