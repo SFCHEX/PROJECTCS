@@ -16,5 +16,5 @@ void Line::Draw(GUI* pUI) const
 	pUI->DrawLine(End1, End2, ShpGfxInfo);
 }
 void Line::Save(ofstream &outfile){
-	outfile<<End1<<"\t"<<End2<<"\t";
+	outfile<<End1.x<<"\t"<<End1.y<<"\t"<<End1.x<<"\t"<<End1.y<<"\t";
 }	//Save the shape parameters to the file

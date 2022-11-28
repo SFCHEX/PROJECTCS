@@ -1,4 +1,5 @@
 #pragma once
+#include <fstream>
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
 

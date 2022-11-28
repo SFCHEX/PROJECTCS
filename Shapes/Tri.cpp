@@ -18,6 +18,7 @@ void Tri::Draw(GUI* pUI) const
 	pUI->DrawTri(Corner1, Corner2, Corner3, ShpGfxInfo);
 }
 
-void Square::Save(ofstream &outfile){
-	outfile<<Corner1<<"\t"<<Corner2<<"\t"<<Corner3<<"\t";
+void Tri::Save(ofstream &outfile){
+	outfile<<Corner1.x<<"\t"<<Corner1.y<<"\t"<<Corner2.x<<"\t"<<Corner2.y<<"\t"<<Corner3.x<<"\t"<<Corner3.y<<"\t";
+
 }	//Save the shape parameters to the file

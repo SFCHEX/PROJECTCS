@@ -16,5 +16,5 @@ void Oval::Draw(GUI* pUI) const
 	pUI->DrawOval(Corner1, Corner2, ShpGfxInfo);
 }
 void Oval::Save(ofstream &outfile){
-	outfile<<Corner1<<"\t"<<Corner2<<"\t";
+	outfile<<Corner1.x<<"\t"<<Corner1.y<<"\t"<<Corner2.x<<"\t"<<Corner2.y<<"\t";
 }	//Save the shape parameters to the file
