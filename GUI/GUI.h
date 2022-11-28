@@ -6,6 +6,7 @@
 #include "..\Defs.h"
 
 #include <string>
+#include <cmath>
 using namespace std;
 
 struct Point	//To be used for shapes points
@@ -17,6 +18,8 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 {
 	color DrawClr;	//Draw color of the shape
 	color FillClr;	//Fill color of the shape
+	string ShapeType; //shape type is shape in string will be initialized in constructor for every shape
+	int ID; // ID is unique for every shape
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
@@ -93,7 +96,7 @@ public:
 
 	// Input Functions  ---------------------------
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
-	string GetSrting() const;	 //Returns a string entered by the user
+	string GetString() const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation
 
 	// Output Functions  ---------------------------
@@ -107,7 +110,7 @@ public:
 
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
-	void DrawLines(Point, Point, GfxInfo) const;
+	void DrawLine(Point, Point, GfxInfo) const;
 	void DrawTri(Point, Point, Point, GfxInfo) const;
 	void DrawCirc(Point, Point , GfxInfo) const;
 	void DrawSquare(Point, Point, GfxInfo) const;

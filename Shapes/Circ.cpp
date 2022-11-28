@@ -2,8 +2,12 @@
 
 Circ::Circ(Point P1, Point P2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
+
+	ShpGfxInfo.ShapeType="Circ";
 	Center = P1;
 	PointR = P2;
+
+
 }
 
 Circ::~Circ()
@@ -14,3 +18,7 @@ void Circ::Draw(GUI* pUI) const
 	//Call Output::DrawRect to draw a rectangle on the screen	
 	pUI->DrawCirc(Center, PointR, ShpGfxInfo);
 }
+
+void Circ::Save(ofstream &outfile){
+	outfile<<Center<<"\t"<<PointR<<"\t";
+}	//Save the shape parameters to the file

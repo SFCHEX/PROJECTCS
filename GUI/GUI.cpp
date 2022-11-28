@@ -72,7 +72,7 @@ void GUI::GetPointClicked(int& x, int& y) const
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string GUI::GetSrting() const
+string GUI::GetString() const
 {
 	string Label;
 	char Key;
@@ -286,7 +286,7 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 	
 }
 
-void GUI::DrawLines(Point p1, Point p2, GfxInfo LineGfxInfo) const {
+void GUI::DrawLine(Point p1, Point p2, GfxInfo LineGfxInfo) const {
 	color DrawingClr;
 	if (LineGfxInfo.isSelected)	//shape is selected
 		DrawingClr = HighlightColor; //shape should be drawn highlighted
