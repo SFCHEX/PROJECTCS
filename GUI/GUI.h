@@ -110,7 +110,7 @@ public:
 
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
-	void DrawLines(Point, Point, GfxInfo) const;
+	void DrawLine(Point, Point, GfxInfo) const;
 	void DrawTri(Point, Point, Point, GfxInfo) const;
 	void DrawCirc(Point, Point , GfxInfo) const;
 	void DrawSquare(Point, Point, GfxInfo) const;

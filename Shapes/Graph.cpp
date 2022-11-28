@@ -65,15 +65,7 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 	for (auto& it : Graph::shapesList) {
 		GfxInfo it_info = it->getGfxInfo();
 		outfile<<it_info.ShapeType<<"\t"<<it_info.ID<<"\t";
-//		uncomment out when getpoints is implemented for each shape
-//		iterates through points and saves the x and y coordinates.
-//		Points=it->getPoints();
-//		for (int i=0;i<Points.size();++i )
-//		{
-//			outfile<<Points[i].x<<"\t"<<Points[i].y<<"\t";
-//
-//
-//		}
+		it->Save(outfile); //this virtual method adds special information that is exclusive to each individual shape to the file
 		Graph::SaveColorRGB(outfile,it_info.DrawClr);
 		//if condition for if there is no fill color
 		if (it_info.isFilled)
@@ -86,9 +78,7 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 		}		
 		outfile<<it_info.BorderWdth<<endl;
 	}
-
 	outfile.close();
-
 }
 //the load function will open the file and iterate line by line through the file adding shapes to the shape vector. it will create shape objects based on the file
 void Graph::Load(ifstream& inputfile, GUI* pUI) {}

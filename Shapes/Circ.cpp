@@ -18,3 +18,7 @@ void Circ::Draw(GUI* pUI) const
 	//Call Output::DrawRect to draw a rectangle on the screen	
 	pUI->DrawCirc(Center, PointR, ShpGfxInfo);
 }
+
+void Circ::Save(ofstream &outfile){
+	outfile<<Center<<"\t"<<PointR<<"\t";
+}	//Save the shape parameters to the file

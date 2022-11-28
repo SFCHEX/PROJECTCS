@@ -23,3 +23,7 @@ void Rect::Draw(GUI* pUI) const
 	//Call Output::DrawRect to draw a rectangle on the screen	
 	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
 }
+
+void Rect::Save(ofstream &outfile){
+	outfile<<Corner1<<"\t"<<Corner2<<"\t";
+}	//Save the shape parameters to the file

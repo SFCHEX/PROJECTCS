@@ -12,7 +12,7 @@ public:
 	Oval(Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Oval();
 	virtual void Draw(GUI* pUI) const;
-	//virtual void Save(ofstream& outfile);	//Save all shapes to a file
+	virtual void Save(ofstream& outfile);	//Save all shapes to a file
 	//virtual void Load(ifstream& inputfile);	//Load all shapes from a file
 
 };

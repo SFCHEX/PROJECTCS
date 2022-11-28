@@ -17,3 +17,7 @@ void Tri::Draw(GUI* pUI) const
 	//Call Output::DrawTri to draw a Triangle on the screen	
 	pUI->DrawTri(Corner1, Corner2, Corner3, ShpGfxInfo);
 }
+
+void Square::Save(ofstream &outfile){
+	outfile<<Corner1<<"\t"<<Corner2<<"\t"<<Corner3<<"\t";
+}	//Save the shape parameters to the file

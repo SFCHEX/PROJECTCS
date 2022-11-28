@@ -35,4 +35,6 @@ void Square::Draw(GUI* pUI) const {
 	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
 }
 
-
+void Square::Save(ofstream &outfile){
+	outfile<<Corner1<<"\t"<<Corner2<<"\t";
+}	//Save the shape parameters to the file
