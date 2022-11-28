@@ -20,5 +20,5 @@ void Circ::Draw(GUI* pUI) const
 }
 
 void Circ::Save(ofstream &outfile){
-	outfile<<Center<<"\t"<<PointR<<"\t";
+	outfile<<Center.x<<Center.y<<"\t"<<PointR.x<<PointR.y<<"\t";
 }	//Save the shape parameters to the file
