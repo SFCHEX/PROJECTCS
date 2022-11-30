@@ -3,6 +3,7 @@
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
 
+
 //Base class for all shapes
 class shape
 {
@@ -21,10 +22,9 @@ public:
 	GfxInfo getGfxInfo() const;
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	//virtual Point getBorders();
-	//virtual string GetShapeType() const  = 0 ;		//get the shape type
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
-
+	virtual bool isInside(int x, int y) const = 0; //checks if any given point is inside a certain shape
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape
 

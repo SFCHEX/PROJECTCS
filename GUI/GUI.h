@@ -98,7 +98,6 @@ public:
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	string GetString() const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation
-
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
@@ -122,7 +121,7 @@ public:
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
-
+	
 
 	~GUI();
 };
