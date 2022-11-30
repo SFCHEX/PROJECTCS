@@ -4,8 +4,9 @@ int shape::count =0;
 shape::shape(GfxInfo shapeGfxInfo)
 { 
 	count++;
-	ID=count;
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
+	ShpGfxInfo.ID=count;
+	//id is added into ShpGfx info for more convenient use
 }
  
 void shape::SetSelected(bool s)
@@ -13,11 +14,6 @@ void shape::SetSelected(bool s)
 
 bool shape::IsSelected() const
 {	return ShpGfxInfo.isSelected; }
-
-int shape::getID() const
-{
-	return ID;
-}
 
 GfxInfo shape::getGfxInfo() const
 {

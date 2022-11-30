@@ -12,6 +12,10 @@ public:
 	Circ(Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Circ();
 	virtual void Draw(GUI* pUI) const;
+	virtual void Save(ofstream &outfile);	//Save the shape parameters to the file
+	//virtual void Load(ifstream &infile) = 0;	//Load the shape parameters to the file
+
+
 };
 
 
