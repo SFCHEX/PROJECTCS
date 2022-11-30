@@ -1,14 +1,20 @@
 #include "Line.h"
 
-Lines::Lines(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
+Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
+
+
+	ShpGfxInfo.ShapeType="Line";
 	End1 = p1;
 	End2 = p2;
 }
 
-Lines::~Lines() {}
+Line::~Line() {}
 
-void Lines::Draw(GUI* pUI) const
+void Line::Draw(GUI* pUI) const
 {
-	pUI->DrawLines(End1, End2, ShpGfxInfo);
+	pUI->DrawLine(End1, End2, ShpGfxInfo);
 }
+void Line::Save(ofstream &outfile){
+	outfile<<End1.x<<"\t"<<End1.y<<"\t"<<End1.x<<"\t"<<End1.y<<"\t";
+}	//Save the shape parameters to the file

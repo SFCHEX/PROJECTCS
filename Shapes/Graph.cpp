@@ -21,6 +21,11 @@ void Graph::Addshape(shape* pShp)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw all shapes on the user interface
+
+void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves Rgb values to to a file
+{
+	outfile<<RGB.ucRed<<"\t"<<RGB.ucGreen<<"\t"<<RGB.ucBlue<<"\t";
+}
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
@@ -49,47 +54,34 @@ shape* Graph::Getshape(int x, int y) const
 }
 
 //the save function will iterate through the shapeslist private vector and add it to the file
-void Graph::save(ofstream& outfile, GUI* pUI) {
+void Graph::Save(ofstream& outfile, GUI* pUI) {
 	//here we add the draw color fill color and pen width from the pointer to the gUI
-
-	//outfile<<pUI->getCrntDrawColor()<<"\t"<<pUI->getCrntFillColor()<<"\t"<<pUI->getCrntPenWidth()<<endl;
+	Graph::SaveColorRGB(outfile,pUI->getCrntDrawColor());
+	//saves draw and fill color as rgb values
+	Graph::SaveColorRGB(outfile,pUI->getCrntFillColor());
+	outfile<<"\t"<<pUI->getCrntPenWidth()<<endl;
 	//number of shapes is length of vector
 	outfile<<Graph::shapesList.size()<<endl;
-
-	//for (auto it = Graph::shapesList.begin(); it != Graph::shapesList.end(); ++it) {
 	for (auto& it : Graph::shapesList) {
 		GfxInfo it_info = it->getGfxInfo();
-		//append shapetype, tab
-		//outfile << it->GetShapeType() << "\t";
-			//append shape ID, tab
-		outfile << it->getID() << "\t";
-		//loop for points
-			//append each point, tab
-
-		//another for loop for GfxInfo detail
-		//return draw color. not sure how to return as string
-		//outfile<<it->GfxInfo.DrawClr<<"\t";
-		//return fill color if there is fill color if there isnt return no fil
+		outfile<<it_info.ShapeType<<"\t"<<it_info.ID<<"\t";
+		it->Save(outfile); //this virtual method adds special information that is exclusive to each individual shape to the file
+		Graph::SaveColorRGB(outfile,it_info.DrawClr);
+		//if condition for if there is no fill color
 		if (it_info.isFilled)
 		{
-			//outfile<<it->GfxInfo.FillClr;
+			Graph::SaveColorRGB(outfile,it_info.FillClr);
 		}
 		else
 		{
 			outfile<<"NO_FILL";
-		}
-		outfile<<"\t";
-
+		}		
 		outfile<<it_info.BorderWdth<<endl;
-			//add shape details to the file using the protected shape variables GfxInfo, tab
-		//new lines
 	}
-
 	outfile.close();
-
 }
 //the load function will open the file and iterate line by line through the file adding shapes to the shape vector. it will create shape objects based on the file
-void Graph::load(ifstream& inputfile, GUI* pUI) {}
+void Graph::Load(ifstream& inputfile, GUI* pUI) {}
 //	string shapeText;
 //	while (getline(inputfile, shapeText)) {
 //		//break up string
