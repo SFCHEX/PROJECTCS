@@ -4,7 +4,7 @@ Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 {
 
 
-	ShpGfxInfo.ShapeType="Rect";
+	ShpGfxInfo.ShapeType="Rectangle";
 	Corner1 = P1;
 	Corner2 = P2;
 }
