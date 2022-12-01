@@ -23,7 +23,8 @@ void opSelect::Execute() {
 		GfxInfo SelectedGfxInfo = SelectedShape->getGfxInfo();
 		SelectedShape->SetSelected(1);
 		string msg = "Shape: " + SelectedGfxInfo.ShapeType;
-		msg += " Border Width: ";
+		msg += " | Border Width: ";
+		msg += to_string(SelectedGfxInfo.BorderWdth);
 		pUI->PrintMessage(msg);
 	}
 	else {
