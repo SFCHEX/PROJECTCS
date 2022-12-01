@@ -7,7 +7,7 @@
 #include "operations\OpAddOval.h"
 #include "operations\opSave.h"
 #include "operations\opLoad.h"
-
+#include "operations\opSelect.h"
 
 //Constructor
 controller::controller()
@@ -53,7 +53,9 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_OVAL:
 			pOp = new opAddOval(this);
 			break;
-	
+		case DRAWING_AREA:
+			pOp = new opSelect(this);
+			break;
 		case LOAD:
 			///create load operation
 			//pOp = new opLoad(this);
@@ -70,6 +72,7 @@ operation* controller::createOperation(operationType OpType)
 
 		case STATUS:	//a click on the status bar ==> no operation
 			break;
+
 	}
 
 	return pOp;
