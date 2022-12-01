@@ -20,6 +20,7 @@ public:
 	void SetSelected(bool s);	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 	GfxInfo getGfxInfo() const;
+	int getID() const;
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	//virtual Point getBorders();
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color

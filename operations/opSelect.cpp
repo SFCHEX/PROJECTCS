@@ -19,8 +19,14 @@ void opSelect::Execute() {
 	Graph* pGr = pControl->getGraph();
 	shape* SelectedShape = pGr->Getshape(x, y);
 	if (SelectedShape != nullptr) {
+		pGr->deselAll(SelectedShape->getID());
 		GfxInfo SelectedGfxInfo = SelectedShape->getGfxInfo();
 		SelectedShape->SetSelected(1);
-		pUI->PrintMessage("Current selected shape is " + SelectedGfxInfo.ShapeType);
+		string msg = "Shape: " + SelectedGfxInfo.ShapeType;
+		msg += " Border Width: ";
+		pUI->PrintMessage(msg);
+	}
+	else {
+		pUI->ClearStatusBar();
 	}
 }

@@ -43,9 +43,31 @@ shape* Graph::Getshape(int x, int y) const
 			return selPointer;
 		}
 		else {	//if this point (x,y) does not belong to any shape return NULL
-			return nullptr;
+			selPointer->SetSelected(0);
 		}
 	}
+	//if (t) {
+		//auto &shpptr = (shapesList[c]);
+		//return shpptr;
+	//}
+	//else {
+		return nullptr;
+	//}
+
+}
+
+void Graph::deselAll(int valId)
+{
+	int Shpid;
+		for (auto* pshp : shapesList) {
+			Shpid = pshp->getID();
+			if (Shpid != valId) {
+				pshp->SetSelected(0);
+			}
+			//else {
+			//	pshp->SetSelected(1);
+			//}
+		}
 }
 
 
