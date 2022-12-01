@@ -170,6 +170,8 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="controller.cpp" />
+    <ClCompile Include="operations\opAddiPoly.cpp" />
+    <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="operations\OpAddOval.cpp" />
     <ClCompile Include="operations\opAddCirc.cpp" />
@@ -213,6 +215,8 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations\opAddiPoly.h" />
+    <ClInclude Include="Shapes\iPoly.h" />
     <ClInclude Include="operations\OpAddOval.h" />
     <ClInclude Include="operations\opAddCirc.h" />
     <ClInclude Include="operations\opAddLine.h" />
