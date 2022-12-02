@@ -34,7 +34,7 @@ GUI::GUI()
 }
 
 
- void GUI::SwitchToPlayMode(window w){
+ /*void GUI::SwitchToPlayMode(window w){
     w.SetPen(WHITE,1);
     w.SetBrush(WHITE);
     w.DrawRectangle(0,0,w.GetWidth,w.GetHeight,w.GetWidth,w.GetHeight);
@@ -62,6 +62,8 @@ void GUI::CreatePlayModeToolBar(window & testWindow, string *MenuItems, int Item
   testWindow.SetPen(BLACK, 3);
   testWindow.DrawLine(0, MenuItemHeight, testWindow.GetWidth(), MenuItemHeight);  
 }
+// not finished
+*/
 
 
 //======================================================================================//
@@ -126,6 +128,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_IPOLY: return DRAW_IPOLY;
 			case ICON_RPOLY: return DRAW_RPOLY;
 			case ICON_EXIT: return EXIT;
+			case ICON_DELETE: return DELETE_SHAPE;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
