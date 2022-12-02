@@ -172,6 +172,7 @@
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="operations\opAddrPoly.cpp" />
     <ClCompile Include="operations\opAddiPoly.cpp" />
+    <ClCompile Include="operations\opExit.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="main.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="operations\opAddrPoly.h" />
     <ClInclude Include="operations\opAddiPoly.h" />
+    <ClInclude Include="operations\opExit.h" />
     <ClInclude Include="Shapes\rPoly.h" />
     <ClInclude Include="Shapes\iPoly.h" />
     <ClInclude Include="operations\OpAddOval.h" />
