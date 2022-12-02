@@ -50,7 +50,7 @@ shape* Graph::Getshape(int x, int y) const
 		//return shpptr;
 	//}
 	//else {
-		return nullptr;
+	return nullptr;
 	//}
 
 }
@@ -58,15 +58,15 @@ shape* Graph::Getshape(int x, int y) const
 void Graph::deselAll(int valId)
 {
 	int Shpid;
-		for (auto* pshp : shapesList) {
-			Shpid = pshp->getID();
-			if (Shpid != valId) {
-				pshp->SetSelected(0);
-			}
-			//else {
-			//	pshp->SetSelected(1);
-			//}
+	for (auto* pshp : shapesList) {
+		Shpid = pshp->getID();
+		if (Shpid != valId) {
+			pshp->SetSelected(0);
 		}
+		//else {
+		//	pshp->SetSelected(1);
+		//}
+	}
 }
 
 //the save function will iterate through the shapeslist private vector and add it to the file
