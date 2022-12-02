@@ -26,7 +26,8 @@ void Graph::Addshape(shape* pShp)
 void Graph::DeleteShape(){
 	 for(int i =0; i < shapesList.size(); i++){
       if(shapesList[i]->IsSelected()){
-        shapesList.erase(shapesList.begin() + i);
+        shapesList[i] = nullptr;
+		delete shapesList[i];
       }
   }
 }
