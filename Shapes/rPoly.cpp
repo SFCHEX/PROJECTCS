@@ -38,13 +38,10 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 
 rPoly::~rPoly() {}
 
-string rPoly::GetShapeType() const {
-	return "rPoly";
-}
 
 void rPoly::Save(ofstream& outfile)
 {
-	outfile << num<<","<<P1.x << "," << P1.y<< ","<< P2.x << "," << P2.y << ",";
+	outfile << num<<","<<rPoly::P1.x << "," <<rPoly::P1.y<< ","<< rPoly::P2.x << "," << rPoly::P2.y << ",";
 }
 
 void rPoly::Draw(GUI* pUI) const
