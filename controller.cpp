@@ -72,9 +72,9 @@ operation* controller::createOperation(operationType OpType)
 
 		case EXIT:
 			///create Exitoperation here
-				pUI->PrintMessage("would you like to save? [y]yes enter anything for no:");
+				pUI->PrintMessage("Would you like to save? [y]yes enter anything for no:");
 				if (pUI->GetString()=="y"){
-					pUI->PrintMessage("what would you like to save the drawing as? ");
+					pUI->PrintMessage("What would you like to save the drawing as? ");
 					ofstream myfile;
 					myfile.open(pUI->GetString()+".txt");
 					pGr->Save(myfile,pUI);
