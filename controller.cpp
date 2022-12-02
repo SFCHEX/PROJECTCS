@@ -10,6 +10,7 @@
 #include "operations\opLoad.h"
 #include "operations\opSelect.h"
 #include "operations\opAddiPoly.h"
+#include "operations\opAddrPoly.h"
 
 //Constructor
 controller::controller()
@@ -57,6 +58,9 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case DRAW_IPOLY:
 			pOp = new opAddiPoly(this);
+			break;
+		case DRAW_RPOLY:
+			pOp = new opAddrPoly(this);
 			break;
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
