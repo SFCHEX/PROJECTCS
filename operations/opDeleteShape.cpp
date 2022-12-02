@@ -8,14 +8,11 @@
 
 #include "..\GUI\GUI.h"
 
-opDeleteShape::opDeletShape(controller *pCont):operation(pCont){}
+opDeleteShape::opDeleteShape(controller *pCont):operation(pCont){}
 
 opDeleteShape::~opDeleteShape(){}
 
+Graph* pGr;
 void opDeleteShape::Excute(){
-  for(int i =0; i < shapesList.size(); i++){
-      if(shapesList[i]->IsSelected()){
-        shapesList.erase(shapesList.begin() + i);
-      }
-  }
+		pGr->DeleteShape();
 }
