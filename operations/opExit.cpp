@@ -1,10 +1,9 @@
-#include "operation.h"
 #include "opExit.h"
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
 #include "..\Shapes\Graph.h"
 #include <string>
-
+#include <fstream>
 
 
     opExit::opExit(controller *pCont):operation(pCont){
