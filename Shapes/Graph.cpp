@@ -75,7 +75,7 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 	Graph::SaveColorRGB(outfile,pUI->getCrntDrawColor());
 	//saves draw and fill color as rgb values
 	Graph::SaveColorRGB(outfile,pUI->getCrntFillColor());
-	outfile<<","<<pUI->getCrntPenWidth()<<endl;
+	outfile<<pUI->getCrntPenWidth()<<endl;
 	//number of shapes is length of vector
 	outfile<<Graph::shapesList.size()<<endl;
 	for (auto& it : Graph::shapesList) {
