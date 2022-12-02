@@ -2,12 +2,12 @@
 #include "Shape.h"
 #include <fstream>
 #include <string>
+#include <algorithm>
 #include <vector>
 using namespace std;
 
 //forward decl
 class GUI;	
-
 //A class that is responsible on everything related to shapes
 class Graph
 {

@@ -6,6 +6,7 @@
 #include <string>
 
 
+
 opLoad::opLoad(controller *pCont):operation(pCont){
 }
 
@@ -15,10 +16,12 @@ opLoad::~opLoad(){
 void opLoad::Execute() {
  	GUI* pUI = pControl->GetUI();  
 	Graph* pGr = pControl->getGraph();
+	pUI->PrintMessage("Enter the name of the file you would like to load from: ");
 	string file=pUI->GetString();
     ifstream myfile;
     myfile.open(file+".txt");
     pGr->Load(myfile,pUI);
+
 }
 
 

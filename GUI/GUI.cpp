@@ -124,6 +124,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_SQUARE: return DRAW_SQUARE;
 			case ICON_OVAL: return DRAW_OVAL;
 			case ICON_IPOLY: return DRAW_IPOLY;
+			case ICON_RPOLY: return DRAW_RPOLY;
 			case ICON_EXIT: return EXIT;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -198,6 +199,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_SQUARE] = "images\\MenuIcons\\Menu_Square.jpg";
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
 	MenuIconImages[ICON_IPOLY] = "images\\MenuIcons\\Menu_iPoly.jpg";
+	MenuIconImages[ICON_RPOLY] = "images\\MenuIcons\\Menu_rPoly.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\Menu_Load.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\Menu_Save.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
@@ -418,7 +420,28 @@ void GUI::DrawiPoly(vector<int> vx, vector<int> vy, GfxInfo iPolyGfxInfo) const 
 	int asize = size(vx);
 	pWind->DrawPolygon(ax, ay, asize, style);
 }
+void GUI::DrawrPoly(vector<int> vx, vector<int> vy, GfxInfo rPolyGfxInfo) const {
+	color DrawingClr;
+	if (rPolyGfxInfo.isSelected)	//shape is selected
+		DrawingClr = HighlightColor; //shape should be drawn highlighted
+	else
+		DrawingClr = rPolyGfxInfo.DrawClr;
 
+	pWind->SetPen(DrawingClr, rPolyGfxInfo.BorderWdth);	//Set Drawing color & width
+
+	drawstyle style;
+	if (rPolyGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(rPolyGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	int* ax = &vx[0];
+	int* ay = &vy[0];
+	int asize = size(vx);
+	pWind->DrawPolygon(ax, ay, asize, style);
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
 {

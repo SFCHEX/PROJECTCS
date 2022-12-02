@@ -1,5 +1,7 @@
 #pragma once
-#include "operation.h"
+#include "..\controller.h"
+
+
 
 class opLoad: public operation{
 public:
