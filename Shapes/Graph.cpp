@@ -23,6 +23,13 @@ void Graph::Addshape(shape* pShp)
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw all shapes on the user interface
 
+void Graph::DeleteShape(){
+	 for(int i =0; i < shapesList.size(); i++){
+      if(shapesList[i]->IsSelected()){
+        shapesList.erase(shapesList.begin() + i);
+      }
+  }
+}
 void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves Rgb values to to a file
 {
 	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";

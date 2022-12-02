@@ -1,8 +1,8 @@
 #include "opDeleteShape.h"
 
-#include "..\Graph.h"
+#include "..\Shapes\Graph.h"
 
-#inclue "..\Shape.h"
+#include "..\Shapes\Shape.h"
 
 #include "..\controller.h"
 

@@ -33,4 +33,5 @@ public:
 	void deselAll(int valId);
 	void Save(ofstream& outfile,GUI* pUI);	//Save all shapes to a file
 	void Load(ifstream& inputfile,GUI* pUI);	//Load all shapes from a file
+	void DeleteShape();
 };
