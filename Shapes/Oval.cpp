@@ -16,7 +16,7 @@ void Oval::Draw(GUI* pUI) const
 	pUI->DrawOval(Corner1, Corner2, ShpGfxInfo);
 }
 void Oval::Save(ofstream &outfile){
-	outfile<<Corner1.x<<"\t"<<Corner1.y<<"\t"<<Corner2.x<<"\t"<<Corner2.y<<"\t";
+	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<",";
 }	//Save the shape parameters to the file
 
 bool Oval::isInside(int x, int y) const {

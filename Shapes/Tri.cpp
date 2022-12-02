@@ -25,7 +25,7 @@ double Tri::Area(int x1, int y1, int x2, int y2, int x3, int y3) const {
 }
 
 void Tri::Save(ofstream &outfile){
-	outfile<<Corner1.x<<"\t"<<Corner1.y<<"\t"<<Corner2.x<<"\t"<<Corner2.y<<"\t"<<Corner3.x<<"\t"<<Corner3.y<<"\t";
+	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<","<<Corner3.x<<","<<Corner3.y<<",";
 
 }	//Save the shape parameters to the file
 
