@@ -126,25 +126,29 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 	//reversing the list again to normal so we can grab the points now that we have gfxinfo which is common for all shapes. it is easier to work this way for the points
 	reverse(parameters.begin(),parameters.end());
 	//stoi converts string to int
+	
+	shape* S;
+
+
 	if (parameters[0]=="Square" ||parameters[0]=="Oval"||parameters[0]=="Line"||parameters[0]=="Rectangle"||parameters[0]=="Circle"){
 		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
 		Point P1{stoi(parameters[2]),stoi(parameters[3])};
 		Point P2{stoi(parameters[4]),stoi(parameters[5])};
 			if (parameters[0]=="Line")
 			{
-				//Line *S=new Circ(P1, P2, shpGfxInfo);
+//				Line *S=new Line(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Rectangle")
 			{
-			//	Rect *S=new Circ(P1, P2, shpGfxInfo);
+//				Rect *S=new Rect(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Circle")
 			{
-				//Circ *S=new Circ(P1, P2, shpGfxInfo);
+//				Circ *S=new Circ(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Oval")
 			{
-				//Oval *S=new Circ(P1, P2, shpGfxInfo);
+//				Oval *S=new Oval(P1, P2, shpGfxInfo);
 			}
 	}
 
@@ -155,7 +159,7 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 		Point P2{stoi(parameters[4]),stoi(parameters[5])};
 		Point P3{stoi(parameters[6]),stoi(parameters[7])};
 
-				//Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
+//				Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
 	
 	}
 	else if (parameters[0]=="Irregular Polygon")
@@ -179,10 +183,34 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 				pVectY.push_back(stoi(parameters[i]));
 		}
 
-		//iPoly *S=new iPoly(P1, P2,P3, shpGfxInfo);
+//		iPoly *S=new iPoly(pVectX,pVectY, shpGfxInfo);
+	}
+	else if (parameters[0]=="Regular Polygon")
+	{
+		
+		vector<int> pVectX, pVectY;
+		int limit;
+		if (parameters[parameters.size()-1]=="NO_FILL"){
+			//7 is the number of NON coordinate related parameters in the case there is no fill color
+			limit=parameters.size()-7;
+		}
+		else{
+			//7 is the number of NON coordinate related parameters in the case there is a fill color
+			limit=parameters.size()-10;
+		}
+		for (int i=2;i<limit;i++){
+			//add coordinates to vector lists based on if it is odd or even
+			if(i%2==0)
+				pVectX.push_back(stoi(parameters[i]));
+			else
+				pVectY.push_back(stoi(parameters[i]));
+		}
+
+//		rPoly *S=new rPoly(pVectX,pVectY, shpGfxInfo);
 	}
 
-//	Addshape(S);
+
+	Addshape(S);
 
 
 	}
