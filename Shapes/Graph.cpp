@@ -103,12 +103,12 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 	string shapeText;
 	while (getline(inputfile, shapeText)) {
 	//create shape objects and append to shapelist
-    vector<string> parameters;
-    string parameter="";
+    vector<string> parameters; //creates a vector to contain the paramaeters for init the shape
+    string parameter=""; // each string is a parameter
     for (int i =shapeText.size()-2; i>-1;i--){
    
     	if (shapeText[i]!=','){
-        	parameter=shapeText[i]+parameter;
+        	parameter=shapeText[i]+parameter;//parameters added in reverse
 			        	
         	}
         else{
@@ -117,6 +117,7 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
             }
     }
     parameters.push_back(parameter);
+	//parameter list is added in reverse because we initialize the gfx info first, and number of points is inconsistent per each possible vector so indexing from the start to the end would be more difficult
 
     int size=parameters.size();
 
@@ -131,37 +132,55 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
         shpGfxInfo.FillClr=color(parameters[1][0],parameters[2][0],parameters[3][0]);
         shpGfxInfo.DrawClr=color(parameters[4][0],parameters[5][0],parameters[6][0]);
     }
-
-    vector<string> reverseParameters;
-//    reverse(parameters.begin(), parameters.end());
-    for (int i=size-1;i>-1;i--){
-        reverseParameters.push_back(parameters[i]);
-    }
-
-
-	if (reverseParameters[0]=="Square"){
-
-	}
-	else if (reverseParameters[0]=="Oval")
-	{
-	}
-	else if (reverseParameters[0]=="Triangle")
-	{
-	}
-	else if (reverseParameters[0]=="Line")
-	{
-	}
-	else if (reverseParameters[0]=="Rectangle")
-	{
-	}
-	else if (reverseParameters[0]=="Circle")
-	{
-
+	//reversing the list again to normal so we can grab the points now that we have gfxinfo which is common for all shapes. it is easier to work this way for the points
+	reverse(parameters.begin(),parameters.end());
+	//stoi converts string to int
+	if (parameters[0]=="Square" ||parameters[0]=="Oval"||parameters[0]=="Line"||parameters[0]=="Rectangle"||parameters[0]=="Circle"){
+		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
+		Point p1{stoi(parameters[2]),stoi(parameters[3])};
+		Point p2{stoi(parameters[4]),stoi(parameters[5])};
+			if (parameters[0]=="Line")
+			{
+			}
+			else if (parameters[0]=="Rectangle")
+			{
+			}
+			else if (parameters[0]=="Circle")
+			{
+			}
+			else if (parameters[0]=="Oval")
+			{
+			}
 	}
 
-	else if (reverseParameters[0]=="Irregular Polygon")
-
+	else if (parameters[0]=="Triangle")
 	{
+		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
+		Point p1{stoi(parameters[2]),stoi(parameters[3])};
+		Point p2{stoi(parameters[4]),stoi(parameters[5])};
+		Point p3{stoi(parameters[6]),stoi(parameters[7])};
+	
+	}
+	else if (parameters[0]=="Irregular Polygon")
+	{
+		
+		vector<int> pVectX, pVectY;
+		int limit;
+		if (parameters[parameters.size()-1]=="NO_FILL"){
+			//7 is the number of NON coordinate related parameters in the case there is no fill color
+			limit=parameters.size()-7;
+		}
+		else{
+			//7 is the number of NON coordinate related parameters in the case there is a fill color
+			limit=parameters.size()-10;
+		}
+		for (int i=2;i<limit;i++){
+			//add coordinates to vector lists based on if it is odd or even
+			if(i%2==0)
+				pVectX.push_back(stoi(parameters[i]));
+			else
+				pVectY.push_back(stoi(parameters[i]));
+		}
 
 	}
 

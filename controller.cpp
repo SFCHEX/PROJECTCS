@@ -13,8 +13,8 @@
 //Constructor
 controller::controller()
 {
-	pGraph = new Graph;
-	pGUI = new GUI;	//Create GUI object
+	pGr = new Graph;
+	pUI = new GUI;	//Create GUI object
 }
 
 //==================================================================================//
@@ -23,7 +23,7 @@ controller::controller()
 operationType controller::GetUseroperation() const
 {
 	//Ask the input to get the operation from the user.
-	return pGUI->GetUseroperation();		
+	return pUI->GetUseroperation();		
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an operation and executes it
@@ -72,6 +72,14 @@ operation* controller::createOperation(operationType OpType)
 
 		case EXIT:
 			///create Exitoperation here
+				pUI->PrintMessage("would you like to save? [y]yes enter anything for no:");
+				if (pUI->GetString()=="y"){
+					pUI->PrintMessage("would you like to save? [y]yes [n]no:");
+					ofstream myfile;
+					myfile.open(pUI->GetString()+".txt");
+					pGr->Save(myfile,pUI);
+					}
+
 			break;
 
 		case STATUS:	//a click on the status bar ==> no operation
@@ -89,17 +97,17 @@ operation* controller::createOperation(operationType OpType)
 //Draw all shapes on the user interface
 void controller::UpdateInterface() const
 {	
-	pGraph->Draw(pGUI);
+	pGr->Draw(pUI);
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the UI
 GUI *controller::GetUI() const
-{	return pGUI; }
+{	return pUI; }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the Graph
 Graph* controller::getGraph() const
 {
-	return pGraph;
+	return pGr;
 }
 
 
@@ -107,8 +115,8 @@ Graph* controller::getGraph() const
 //Destructor
 controller::~controller()
 {
-	delete pGUI;
-	delete pGraph;
+	delete pUI;
+	delete pGr;
 	
 }
 
