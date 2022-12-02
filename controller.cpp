@@ -1,6 +1,7 @@
 #include "controller.h"
 #include "operations\opAddRect.h"
 #include "operations\opAddLine.h"
+#include "operations\opExit.h"
 #include "operations\opAddTri.h"
 #include "operations\opAddCirc.h"
 #include "operations\opAddSquare.h"
@@ -72,14 +73,7 @@ operation* controller::createOperation(operationType OpType)
 
 		case EXIT:
 			///create Exitoperation here
-				pUI->PrintMessage("Would you like to save? [y]yes enter anything for no:");
-				if (pUI->GetString()=="y"){
-					pUI->PrintMessage("What would you like to save the drawing as? ");
-					ofstream myfile;
-					myfile.open(pUI->GetString()+".txt");
-					pGr->Save(myfile,pUI);
-					}
-
+			pOp = new opExit(this); //create save operation 
 			break;
 
 		case STATUS:	//a click on the status bar ==> no operation

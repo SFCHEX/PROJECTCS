@@ -137,28 +137,34 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 	//stoi converts string to int
 	if (parameters[0]=="Square" ||parameters[0]=="Oval"||parameters[0]=="Line"||parameters[0]=="Rectangle"||parameters[0]=="Circle"){
 		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
-		Point p1{stoi(parameters[2]),stoi(parameters[3])};
-		Point p2{stoi(parameters[4]),stoi(parameters[5])};
+		Point P1{stoi(parameters[2]),stoi(parameters[3])};
+		Point P2{stoi(parameters[4]),stoi(parameters[5])};
 			if (parameters[0]=="Line")
 			{
+				//Line *S=new Circ(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Rectangle")
 			{
+			//	Rect *S=new Circ(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Circle")
 			{
+				//Circ *S=new Circ(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Oval")
 			{
+				//Oval *S=new Circ(P1, P2, shpGfxInfo);
 			}
 	}
 
 	else if (parameters[0]=="Triangle")
 	{
 		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
-		Point p1{stoi(parameters[2]),stoi(parameters[3])};
-		Point p2{stoi(parameters[4]),stoi(parameters[5])};
-		Point p3{stoi(parameters[6]),stoi(parameters[7])};
+		Point P1{stoi(parameters[2]),stoi(parameters[3])};
+		Point P2{stoi(parameters[4]),stoi(parameters[5])};
+		Point P3{stoi(parameters[6]),stoi(parameters[7])};
+
+				//Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
 	
 	}
 	else if (parameters[0]=="Irregular Polygon")
@@ -182,7 +188,10 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 				pVectY.push_back(stoi(parameters[i]));
 		}
 
+		//iPoly *S=new iPoly(P1, P2,P3, shpGfxInfo);
 	}
+
+//	Addshape(S);
 
 
 	}
