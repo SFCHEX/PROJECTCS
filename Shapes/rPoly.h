@@ -1,15 +1,18 @@
 #pragma once
+#include "rPoly.h"
 #include "shape.h"
 #include "math.h"
 #include <vector>
 #include <algorithm>
-class iPoly : public shape
+class rPoly : public shape
 {
 private:
+	int num;
 	vector<int> pVectX, pVectY;
 public:
-	iPoly(vector<int>, vector<int>, GfxInfo shapeGfxInfo);
-	virtual ~iPoly();
+	rPoly(int, Point, Point, GfxInfo shapeGfxInfo);
+	virtual ~rPoly();
+	double Convert(double degree);
 	virtual void Draw(GUI* pUI) const;
 	virtual string GetShapeType() const;
 	virtual void Save(ofstream& outfile);	//Save all shapes to a file

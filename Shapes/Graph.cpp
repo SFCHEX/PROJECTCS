@@ -46,14 +46,8 @@ shape* Graph::Getshape(int x, int y) const
 			selPointer->SetSelected(0);
 		}
 	}
-	//if (t) {
-		//auto &shpptr = (shapesList[c]);
-		//return shpptr;
-	//}
-	//else {
-	return nullptr;
-	//}
 
+	return nullptr;
 }
 
 void Graph::deselAll(int valId)
@@ -64,9 +58,6 @@ void Graph::deselAll(int valId)
 		if (Shpid != valId) {
 			pshp->SetSelected(0);
 		}
-		//else {
-		//	pshp->SetSelected(1);
-		//}
 	}
 }
 
