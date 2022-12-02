@@ -12,6 +12,8 @@ double rPoly::Convert(double degree)
 
 rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
+	P1=pCenter;
+	P2=pRadius;
 	ShpGfxInfo.ShapeType = "Regular Polygon";
 	double ang = 360 / nSides;
 	double px;
@@ -36,14 +38,10 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 
 rPoly::~rPoly() {}
 
-string rPoly::GetShapeType() const {
-	return "rPoly";
-}
 
 void rPoly::Save(ofstream& outfile)
 {
-	for (int i = 0; i < pVectX.size(); i++)
-		outfile << pVectX[i] << "," << pVectY[i] << ",";
+	outfile << num<<","<<P1.x << "," <<P1.y<< ","<< P2.x << "," << P2.y << ",";
 }
 
 void rPoly::Draw(GUI* pUI) const

@@ -1,5 +1,6 @@
 #include "Graph.h"
 #include "../GUI/GUI.h"
+#include <iostream>
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -24,7 +25,7 @@ void Graph::Addshape(shape* pShp)
 
 void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves Rgb values to to a file
 {
-	outfile<<RGB.ucRed<<","<<RGB.ucGreen<<","<<RGB.ucBlue<<",";
+	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";
 }
 void Graph::Draw(GUI* pUI) const
 {
@@ -91,44 +92,46 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 void Graph::Load(ifstream& inputfile, GUI* pUI)
 {
 	shapesList.clear();
-	string shapeText;
+	string shapeText,drawToolsState,shapeCount;
+	getline(inputfile,drawToolsState);
+	getline(inputfile,shapeCount);
 	while (getline(inputfile, shapeText)) {
 	//create shape objects and append to shapelist
     vector<string> parameters; //creates a vector to contain the paramaeters for init the shape
     string parameter=""; // each string is a parameter
-    for (int i =shapeText.size()-2; i>-1;i--){
-   
-    	if (shapeText[i]!=','){
-        	parameter=shapeText[i]+parameter;//parameters added in reverse
-			        	
-        	}
-        else{
-        	parameters.push_back(parameter);
-            parameter="";
-            }
-    }
-    parameters.push_back(parameter);
-	//parameter list is added in reverse because we initialize the gfx info first, and number of points is inconsistent per each possible vector so indexing from the start to the end would be more difficult
+   for (int i =shapeText.size()-1; i>-1;i--){
+  
+   	if (shapeText[i]!=','){
+       	parameter=shapeText[i]+parameter;//parameters added in reverse
+		        	
+       	}
+       else{
+       	parameters.push_back(parameter);
+           parameter="";
+           }
+   }
+   parameters.push_back(parameter);
+//parameter list is added in reverse because we initialize the gfx info first, and number of points is inconsistent per each possible vector so indexing from the start to the end would be more difficult
 
-    int size=parameters.size();
+   int size=parameters.size();
 
     GfxInfo shpGfxInfo;
+	pUI->PrintMessage(shapeText);
     shpGfxInfo.BorderWdth=stoi(parameters[0]);
+    shpGfxInfo.isSelected=false;
     if (parameters[1]=="NO_FILL"){
         shpGfxInfo.isFilled=false;
-        shpGfxInfo.DrawClr=color(parameters[2][0],parameters[3][0],parameters[4][0]);
+        shpGfxInfo.DrawClr=color(stoi(parameters[4]),stoi(parameters[3]),stoi(parameters[2]));
     }
     else{
         shpGfxInfo.isFilled=true;
-        shpGfxInfo.FillClr=color(parameters[1][0],parameters[2][0],parameters[3][0]);
-        shpGfxInfo.DrawClr=color(parameters[4][0],parameters[5][0],parameters[6][0]);
+        shpGfxInfo.FillClr=color(stoi(parameters[3]),stoi(parameters[2]),stoi(parameters[1]));
+        shpGfxInfo.DrawClr=color(stoi(parameters[6]),stoi(parameters[5]),stoi(parameters[4]));
     }
 	//reversing the list again to normal so we can grab the points now that we have gfxinfo which is common for all shapes. it is easier to work this way for the points
 	reverse(parameters.begin(),parameters.end());
 	//stoi converts string to int
 	
-	shape* S;
-
 
 	if (parameters[0]=="Square" ||parameters[0]=="Oval"||parameters[0]=="Line"||parameters[0]=="Rectangle"||parameters[0]=="Circle"){
 		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
@@ -136,19 +139,28 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 		Point P2{stoi(parameters[4]),stoi(parameters[5])};
 			if (parameters[0]=="Line")
 			{
-//				Line *S=new Line(P1, P2, shpGfxInfo);
+				Line *S=new Line(P1, P2, shpGfxInfo);
+				Addshape(S);
 			}
 			else if (parameters[0]=="Rectangle")
 			{
-//				Rect *S=new Rect(P1, P2, shpGfxInfo);
+				Rect *S=new Rect(P1, P2, shpGfxInfo);
+				Addshape(S);
 			}
 			else if (parameters[0]=="Circle")
 			{
-//				Circ *S=new Circ(P1, P2, shpGfxInfo);
+				Circ *S=new Circ(P1, P2, shpGfxInfo);
+				Addshape(S);
 			}
 			else if (parameters[0]=="Oval")
 			{
-//				Oval *S=new Oval(P1, P2, shpGfxInfo);
+				Oval *S=new Oval(P1, P2, shpGfxInfo);
+				Addshape(S);
+			}
+			else if (parameters[0]=="Square")
+			{
+				Square *S=new Square(P1, P2, shpGfxInfo);
+				Addshape(S);
 			}
 	}
 
@@ -159,8 +171,9 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 		Point P2{stoi(parameters[4]),stoi(parameters[5])};
 		Point P3{stoi(parameters[6]),stoi(parameters[7])};
 
-//				Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
+				Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
 	
+				Addshape(S);
 	}
 	else if (parameters[0]=="Irregular Polygon")
 	{
@@ -183,34 +196,19 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 				pVectY.push_back(stoi(parameters[i]));
 		}
 
-//		iPoly *S=new iPoly(pVectX,pVectY, shpGfxInfo);
+		iPoly *S=new iPoly(pVectX,pVectY, shpGfxInfo);
+		Addshape(S);
 	}
 	else if (parameters[0]=="Regular Polygon")
 	{
+		Point P1{stoi(parameters[3]),stoi(parameters[4])};
+		Point P2{stoi(parameters[5]),stoi(parameters[6])};
 		
-		vector<int> pVectX, pVectY;
-		int limit;
-		if (parameters[parameters.size()-1]=="NO_FILL"){
-			//7 is the number of NON coordinate related parameters in the case there is no fill color
-			limit=parameters.size()-7;
-		}
-		else{
-			//7 is the number of NON coordinate related parameters in the case there is a fill color
-			limit=parameters.size()-10;
-		}
-		for (int i=2;i<limit;i++){
-			//add coordinates to vector lists based on if it is odd or even
-			if(i%2==0)
-				pVectX.push_back(stoi(parameters[i]));
-			else
-				pVectY.push_back(stoi(parameters[i]));
-		}
-
-//		rPoly *S=new rPoly(pVectX,pVectY, shpGfxInfo);
+		rPoly *S=new rPoly(stoi(parameters[2]),P1,P2, shpGfxInfo);
+		Addshape(S);
 	}
 
 
-	Addshape(S);
 
 
 	}
