@@ -36,21 +36,38 @@ void Graph::Draw(GUI* pUI) const
 
 shape* Graph::Getshape(int x, int y) const
 {
-	return nullptr;
-	//for (auto& selPointer : shapesList) {
-	//	if (1) {
-	//		selPointer->
-	//		//If a shape is found return a pointer to it.
-	//		///Add your code here to search for a shape given a point x,y	
-	//		//selPointer->
-	//		//return selPointer;
-	//	}
-	//	else {
-	//		//if this point (x,y) does not belong to any shape return NULL
-	//		selPointer->SetSelected(0);
-	//		return nullptr;
-	//	}
+	//If a shape is found return a pointer to it.
+	///Add your code here to search for a shape given a point x,y	
+	for (auto& selPointer : shapesList) {
+		if (selPointer->isInside(x, y)) {
+			return selPointer;
+		}
+		else {	//if this point (x,y) does not belong to any shape return NULL
+			selPointer->SetSelected(0);
+		}
+	}
+	//if (t) {
+		//auto &shpptr = (shapesList[c]);
+		//return shpptr;
 	//}
+	//else {
+	return nullptr;
+	//}
+
+}
+
+void Graph::deselAll(int valId)
+{
+	int Shpid;
+	for (auto* pshp : shapesList) {
+		Shpid = pshp->getID();
+		if (Shpid != valId) {
+			pshp->SetSelected(0);
+		}
+		//else {
+		//	pshp->SetSelected(1);
+		//}
+	}
 }
 
 //the save function will iterate through the shapeslist private vector and add it to the file
