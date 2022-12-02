@@ -71,7 +71,7 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case LOAD:
 			///create load operation
-			//pOp = new opLoad(this);
+			pOp = new opLoad(this);
 			break;	
 
 		case SAVE:
