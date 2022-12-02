@@ -14,7 +14,7 @@
 
     }
 	
-	//Add Save to the controller
+	//Add exit to the controller
 	void opExit::Execute(){
               	GUI* pUI = pControl->GetUI();  
 	            Graph* pGr = pControl->getGraph();   
