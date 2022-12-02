@@ -136,19 +136,19 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 		Point P2{stoi(parameters[4]),stoi(parameters[5])};
 			if (parameters[0]=="Line")
 			{
-//				Line *S=new Line(P1, P2, shpGfxInfo);
+				Line *S=new Line(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Rectangle")
 			{
-//				Rect *S=new Rect(P1, P2, shpGfxInfo);
+				Rect *S=new Rect(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Circle")
 			{
-//				Circ *S=new Circ(P1, P2, shpGfxInfo);
+				Circ *S=new Circ(P1, P2, shpGfxInfo);
 			}
 			else if (parameters[0]=="Oval")
 			{
-//				Oval *S=new Oval(P1, P2, shpGfxInfo);
+				Oval *S=new Oval(P1, P2, shpGfxInfo);
 			}
 	}
 
@@ -159,7 +159,7 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 		Point P2{stoi(parameters[4]),stoi(parameters[5])};
 		Point P3{stoi(parameters[6]),stoi(parameters[7])};
 
-//				Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
+				Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
 	
 	}
 	else if (parameters[0]=="Irregular Polygon")
@@ -183,30 +183,14 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 				pVectY.push_back(stoi(parameters[i]));
 		}
 
-//		iPoly *S=new iPoly(pVectX,pVectY, shpGfxInfo);
+		iPoly *S=new iPoly(pVectX,pVectY, shpGfxInfo);
 	}
 	else if (parameters[0]=="Regular Polygon")
 	{
+		Point P1{stoi(parameters[3]),stoi(parameters[4])};
+		Point P2{stoi(parameters[5]),stoi(parameters[6])};
 		
-		vector<int> pVectX, pVectY;
-		int limit;
-		if (parameters[parameters.size()-1]=="NO_FILL"){
-			//7 is the number of NON coordinate related parameters in the case there is no fill color
-			limit=parameters.size()-7;
-		}
-		else{
-			//7 is the number of NON coordinate related parameters in the case there is a fill color
-			limit=parameters.size()-10;
-		}
-		for (int i=2;i<limit;i++){
-			//add coordinates to vector lists based on if it is odd or even
-			if(i%2==0)
-				pVectX.push_back(stoi(parameters[i]));
-			else
-				pVectY.push_back(stoi(parameters[i]));
-		}
-
-//		rPoly *S=new rPoly(pVectX,pVectY, shpGfxInfo);
+		rPoly *S=new rPoly(stoi(parameters[2]),P1,P2, shpGfxInfo);
 	}
 
 
