@@ -12,7 +12,7 @@ opDeleteShape::opDeleteShape(controller *pCont):operation(pCont){}
 
 opDeleteShape::~opDeleteShape(){}
 
-Graph* pGr;
 void opDeleteShape::Execute(){
+		Graph* pGr = pControl->getGraph();
 		pGr->DeleteShape();
 }
