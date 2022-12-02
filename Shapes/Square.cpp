@@ -36,5 +36,9 @@ void Square::Draw(GUI* pUI) const {
 }
 
 void Square::Save(ofstream &outfile){
-	outfile<<Corner1<<"\t"<<Corner2<<"\t";
+	outfile << Corner1.x << "\t" << Corner1.y << "\t" << Corner2.x << "\t" << Corner2.y << "\t";
 }	//Save the shape parameters to the file
+
+bool Square::isInside(int x, int y) const { 
+	return((x <= max(Corner1.x, Corner2.x)) && (y <= max(Corner1.y, Corner2.y)) && (x >= min(Corner1.x, Corner2.x)) && (y >= min(Corner1.y, Corner2.y)));
+}

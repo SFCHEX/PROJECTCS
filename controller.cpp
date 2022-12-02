@@ -7,13 +7,14 @@
 #include "operations\OpAddOval.h"
 #include "operations\opSave.h"
 #include "operations\opLoad.h"
-
+#include "operations\opSelect.h"
+#include "operations\opAddiPoly.h"
 
 //Constructor
 controller::controller()
 {
-	pGraph = new Graph;
-	pGUI = new GUI;	//Create GUI object
+	pGr = new Graph;
+	pUI = new GUI;	//Create GUI object
 }
 
 //==================================================================================//
@@ -22,7 +23,7 @@ controller::controller()
 operationType controller::GetUseroperation() const
 {
 	//Ask the input to get the operation from the user.
-	return pGUI->GetUseroperation();		
+	return pUI->GetUseroperation();		
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an operation and executes it
@@ -53,15 +54,20 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_OVAL:
 			pOp = new opAddOval(this);
 			break;
-	
+		case DRAW_IPOLY:
+			pOp = new opAddiPoly(this);
+			break;
+		case DRAWING_AREA:
+			pOp = new opSelect(this);
+			break;
 		case LOAD:
 			///create load operation
 			//pOp = new opLoad(this);
 			break;	
 
 		case SAVE:
-			///create save operation 
-			//pOp = new opSave(this);
+			
+			pOp = new opSave(this); //create save operation 
 			break;
 
 		case EXIT:
@@ -70,6 +76,7 @@ operation* controller::createOperation(operationType OpType)
 
 		case STATUS:	//a click on the status bar ==> no operation
 			break;
+
 	}
 
 	return pOp;
@@ -82,17 +89,17 @@ operation* controller::createOperation(operationType OpType)
 //Draw all shapes on the user interface
 void controller::UpdateInterface() const
 {	
-	pGraph->Draw(pGUI);
+	pGr->Draw(pUI);
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the UI
 GUI *controller::GetUI() const
-{	return pGUI; }
+{	return pUI; }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the Graph
 Graph* controller::getGraph() const
 {
-	return pGraph;
+	return pGr;
 }
 
 
@@ -100,8 +107,8 @@ Graph* controller::getGraph() const
 //Destructor
 controller::~controller()
 {
-	delete pGUI;
-	delete pGraph;
+	delete pUI;
+	delete pGr;
 	
 }
 

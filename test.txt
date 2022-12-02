@@ -1,0 +1,7 @@
+ 	 	ÿ	 	ÿ	 		3
+5
+Oval	1	253	271	747	445	 	 		ÿ	NO_FILL	3
+Square2	134	172	334	372	 	 		ÿ	NO_FILL	3
+Tri	3	859	287	777	402	864	433	 	ÿ	NO_FILL	3
+Line	4	140	179	140	179	 	 		ÿ	NO_FILL	3
+Rect	5	165	231	639	565	 	 		ÿ	NO_FILL	3

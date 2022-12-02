@@ -20,6 +20,11 @@ GfxInfo shape::getGfxInfo() const
 	return ShpGfxInfo;
 }
 
+int shape::getID() const
+{
+	return ShpGfxInfo.ID;
+}
+
 
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }

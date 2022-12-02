@@ -18,3 +18,12 @@ void Oval::Draw(GUI* pUI) const
 void Oval::Save(ofstream &outfile){
 	outfile<<Corner1.x<<"\t"<<Corner1.y<<"\t"<<Corner2.x<<"\t"<<Corner2.y<<"\t";
 }	//Save the shape parameters to the file
+
+bool Oval::isInside(int x, int y) const {
+	double radX = abs((Corner1.x - Corner2.x)/2);
+	double radY = abs((Corner1.y - Corner2.y)/2);
+	double centX = abs((Corner1.x + Corner2.x)/2);
+	double centY = abs((Corner1.y + Corner2.y)/2);
+
+	return (((pow((x - centX), 2)) / (pow(radX, 2))) + ((pow((y - centY), 2)) / (pow(radY, 2)))) <= 1;
+}

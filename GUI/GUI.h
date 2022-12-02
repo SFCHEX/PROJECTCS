@@ -7,6 +7,7 @@
 
 #include <string>
 #include <cmath>
+#include <vector>
 using namespace std;
 
 struct Point	//To be used for shapes points
@@ -45,7 +46,8 @@ class GUI
 		ICON_LINE,      //icon for line
 		ICON_TRI,       //icon for triangle
 		ICON_SQUARE,    //icon for square
-		ICON_OVAL,      //icon for oval (not implemented)
+		ICON_OVAL,      //icon for oval
+		ICON_IPOLY,
 		ICON_LOAD,		//Load icon in menu
 		ICON_SAVE,		//Save icon in menu
 		//TODO: Add more icons names here
@@ -98,7 +100,6 @@ public:
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	string GetString() const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation
-
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
@@ -115,6 +116,7 @@ public:
 	void DrawCirc(Point, Point , GfxInfo) const;
 	void DrawSquare(Point, Point, GfxInfo) const;
 	void DrawOval(Point, Point, GfxInfo) const;
+	void DrawiPoly(vector<int>, vector<int>, GfxInfo) const;
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
@@ -126,6 +128,8 @@ public:
 	void SwitchToPlayMode(window w);
 	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
 	
+	
+
 	~GUI();
 };
 

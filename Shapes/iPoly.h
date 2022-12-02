@@ -1,20 +1,18 @@
 #pragma once
-
+#include "iPoly.h"
 #include "shape.h"
 #include "math.h"
-
-class Oval : public shape
+#include <vector>
+class iPoly : public shape
 {
 private:
-	Point Corner1;
-	Point Corner2;
+	vector<int> pVectX, pVectY;
 public:
-	Oval(Point, Point, GfxInfo shapeGfxInfo);
-	virtual ~Oval();
+	iPoly(vector<int>, vector<int>, GfxInfo shapeGfxInfo);
+	virtual ~iPoly();
 	virtual void Draw(GUI* pUI) const;
+	virtual string GetShapeType() const;
 	virtual void Save(ofstream& outfile);	//Save all shapes to a file
 	virtual bool isInside(int x, int y) const;
 	//virtual void Load(ifstream& inputfile);	//Load all shapes from a file
-
 };
-

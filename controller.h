@@ -10,8 +10,8 @@ class operation; //forward declaration
 class controller
 {
 
-	Graph* pGraph;	//pointe to the grapg
-	GUI* pGUI;		//Pointer to UI class
+	Graph* pGr;	//pointe to the grapg
+	GUI* pUI;		//Pointer to UI class
 	
 
 public:	
