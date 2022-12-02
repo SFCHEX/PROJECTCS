@@ -15,8 +15,7 @@ opDeleteShape::~opDeleteShape(){}
 void opDeleteShape::Excute(){
   for(int i =0; i < shapesList.size(); i++){
       if(shapesList[i]->IsSelected()){
-        shapesList[i] = nullptr;
-        delete shapesList[i];
+        shapesList.erase(shapesList.begin() + i);
       }
   }
 }
