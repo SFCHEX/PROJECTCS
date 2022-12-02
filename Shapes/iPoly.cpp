@@ -3,7 +3,7 @@
 
 iPoly::iPoly(vector<int> pVectiX, vector<int> pVectiY, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
-	ShpGfxInfo.ShapeType = "iPolyangle";
+	ShpGfxInfo.ShapeType = "Irregular Polygon";
 	pVectX = pVectiX;
 	pVectY = pVectiY;
 }
@@ -16,6 +16,8 @@ string iPoly::GetShapeType() const {
 }
 void iPoly::Save(ofstream& outfile)
 {
+	for (int i=0; i<pVectX.size();i++)
+	outfile<<pVectX[i]<<","<<pVectY[i]<<",";
 }
 bool iPoly::isInside(int x, int y) const
 {

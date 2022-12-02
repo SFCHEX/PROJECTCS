@@ -6,6 +6,7 @@
 #include <string>
 
 
+
 opLoad::opLoad(controller *pCont):operation(pCont){
 }
 
@@ -19,6 +20,7 @@ void opLoad::Execute() {
     ifstream myfile;
     myfile.open(file+".txt");
     pGr->Load(myfile,pUI);
+
 }
 
 
