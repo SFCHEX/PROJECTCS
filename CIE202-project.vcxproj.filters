@@ -149,6 +149,9 @@
     <ClCompile Include="operations\opSelect.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="operations\opAddiPoly.cpp" />
+    <ClCompile Include="Shapes\rPoly.cpp" />
+    <ClCompile Include="operations\opAddrPoly.cpp" />
+    <ClCompile Include="operations\opExit.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -257,6 +260,9 @@
     <ClInclude Include="operations\opSelect.h" />
     <ClInclude Include="Shapes\iPoly.h" />
     <ClInclude Include="operations\opAddiPoly.h" />
+    <ClInclude Include="Shapes\rPoly.h" />
+    <ClInclude Include="operations\opAddrPoly.h" />
+    <ClInclude Include="operations\opExit.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

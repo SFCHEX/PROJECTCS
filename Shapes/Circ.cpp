@@ -20,7 +20,7 @@ void Circ::Draw(GUI* pUI) const
 }
 
 void Circ::Save(ofstream &outfile){
-	outfile<<Center.x<<Center.y<<"\t"<<PointR.x<<PointR.y<<"\t";
+	outfile<<Center.x<<Center.y<<","<<PointR.x<<PointR.y<<",";
 }	//Save the shape parameters to the file
 
 bool Circ::isInside(int x, int y) const{

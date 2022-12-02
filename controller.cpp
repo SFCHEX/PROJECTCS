@@ -1,6 +1,7 @@
 #include "controller.h"
 #include "operations\opAddRect.h"
 #include "operations\opAddLine.h"
+#include "operations\opExit.h"
 #include "operations\opAddTri.h"
 #include "operations\opAddCirc.h"
 #include "operations\opAddSquare.h"
@@ -9,6 +10,7 @@
 #include "operations\opLoad.h"
 #include "operations\opSelect.h"
 #include "operations\opAddiPoly.h"
+#include "operations\opAddrPoly.h"
 
 //Constructor
 controller::controller()
@@ -57,6 +59,9 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_IPOLY:
 			pOp = new opAddiPoly(this);
 			break;
+		case DRAW_RPOLY:
+			pOp = new opAddrPoly(this);
+			break;
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
 			break;
@@ -72,6 +77,7 @@ operation* controller::createOperation(operationType OpType)
 
 		case EXIT:
 			///create Exitoperation here
+			pOp = new opExit(this); 
 			break;
 
 		case STATUS:	//a click on the status bar ==> no operation

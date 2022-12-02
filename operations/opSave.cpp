@@ -16,6 +16,7 @@ opSave::~opSave(){
 void opSave::Execute() {
  	GUI* pUI = pControl->GetUI();  
 	Graph* pGr = pControl->getGraph();
+	pUI->PrintMessage("Enter the name of the file you would like to save to: ");
 	string file=pUI->GetString();
     ofstream myfile;
     myfile.open(file+".txt");
