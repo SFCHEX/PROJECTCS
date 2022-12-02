@@ -1,6 +1,7 @@
 .vscode/
 Debug/
 /.vs
+/.vscode
 .vs/
 CIE202-project.vcxproj.filters
 *.filters
