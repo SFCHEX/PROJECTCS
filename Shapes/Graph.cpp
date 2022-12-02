@@ -74,7 +74,7 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 		}
 		else
 		{
-			outfile<<"NO_FILL";
+			outfile<<"NO_FILL"<<",";
 		}		
 		outfile<<it_info.BorderWdth<<endl;
 	}
@@ -123,27 +123,27 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
     }
 
 
-	if (parameters[0]=="Square"){
+	if (reverseParameters[0]=="Square"){
 
 	}
-	else if (parameters[0]=="Oval")
+	else if (reverseParameters[0]=="Oval")
 	{
 	}
-	else if (parameters[0]=="Triangle")
+	else if (reverseParameters[0]=="Triangle")
 	{
 	}
-	else if (parameters[0]=="Line")
+	else if (reverseParameters[0]=="Line")
 	{
 	}
-	else if (parameters[0]=="Rectangle")
+	else if (reverseParameters[0]=="Rectangle")
 	{
 	}
-	else if (parameters[0]=="Circle")
+	else if (reverseParameters[0]=="Circle")
 	{
 
 	}
 
-	else if (parameters[0]=="Irregular Polygon")
+	else if (reverseParameters[0]=="Irregular Polygon")
 
 	{
 
