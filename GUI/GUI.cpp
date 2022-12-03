@@ -103,7 +103,8 @@ operationType GUI::GetUseroperation() const
 {
 	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-
+	PrevPoint->x = x;
+	PrevPoint->y = y;
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
@@ -154,6 +155,10 @@ operationType GUI::GetUseroperation() const
 		return TO_PLAY;	//just for now. This should be updated
 	}
 
+}
+Point* GUI::GetPrevPoint() const
+{
+	return this->PrevPoint;
 }
 ////////////////////////////////////////////////////
 

@@ -93,6 +93,7 @@ class GUI
 
 	/// Add more members if needed
 
+	Point* PrevPoint = new Point();
 
 
 	window* pWind;
@@ -106,6 +107,7 @@ public:
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	string GetString() const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation
+	Point* GetPrevPoint() const;
 	// Output Functions  ---------------------------
 	window* CreateWind(int, int, int, int) const; //creates the application window
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
