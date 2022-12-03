@@ -123,7 +123,6 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
    int size=parameters.size();
 
     GfxInfo shpGfxInfo;
-	pUI->PrintMessage(shapeText);
     shpGfxInfo.BorderWdth=stoi(parameters[0]);
     shpGfxInfo.isSelected=false;
     if (parameters[1]=="NO_FILL"){
