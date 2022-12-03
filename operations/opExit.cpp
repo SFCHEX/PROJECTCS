@@ -17,7 +17,7 @@
 	void opExit::Execute(){
               	GUI* pUI = pControl->GetUI();  
 	            Graph* pGr = pControl->getGraph();   
-				pUI->PrintMessage("Would you like to save? [y]yes enter anything for no:");
+				pUI->PrintMessage("Would you like to save? [y] yes; [anything] no");
 				if (pUI->GetString()=="y"){
 					pUI->PrintMessage("What would you like to save the drawing as? ");
 					ofstream myfile;
