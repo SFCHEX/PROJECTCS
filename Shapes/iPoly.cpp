@@ -11,9 +11,6 @@ iPoly::iPoly(vector<int> pVectiX, vector<int> pVectiY, GfxInfo shapeGfxInfo) : s
 
 iPoly::~iPoly() {}
 
-string iPoly::GetShapeType() const {
-	return "iPoly";
-}
 void iPoly::Save(ofstream& outfile)
 {
 	for (int i=0; i<pVectX.size();i++)
