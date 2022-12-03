@@ -27,8 +27,6 @@ Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
 		Corner2.x = (P1.x + (P2.y - P1.y));
 	}
 
-	Corner1=P1;
-	Corner2=P2;
 }
 Square::~Square(){}
 
