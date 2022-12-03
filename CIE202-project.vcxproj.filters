@@ -152,6 +152,7 @@
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="operations\opAddrPoly.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
+    <ClCompile Include="operations\opDeleteShape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -263,6 +264,7 @@
     <ClInclude Include="Shapes\rPoly.h" />
     <ClInclude Include="operations\opAddrPoly.h" />
     <ClInclude Include="operations\opExit.h" />
+    <ClInclude Include="operations\opDeleteShape.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

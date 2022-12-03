@@ -49,6 +49,7 @@ class GUI
 		ICON_OVAL,      //icon for oval
 		ICON_IPOLY,		//icon for irregular polygon
 		ICON_RPOLY,		//icon for regular polygon
+		ICON_DELETE, 		//Delete Icon in menu
 		ICON_LOAD,		//Load icon in menu
 		ICON_SAVE,		//Save icon in menu
 		//TODO: Add more icons names here
@@ -127,6 +128,10 @@ public:
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
+
+	void SwitchToPlayMode(window w);
+	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
+	
 	
 
 	~GUI();

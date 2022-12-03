@@ -11,6 +11,7 @@
 #include "operations\opSelect.h"
 #include "operations\opAddiPoly.h"
 #include "operations\opAddrPoly.h"
+#include "operations\opDeleteShape.h"
 
 //Constructor
 controller::controller()
@@ -64,6 +65,9 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
+			break;
+		case DELETE_SHAPE:
+			pOp = new opDeleteShape(this);
 			break;
 		case LOAD:
 			///create load operation

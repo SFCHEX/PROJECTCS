@@ -34,6 +34,36 @@ GUI::GUI()
 }
 
 
+ /*void GUI::SwitchToPlayMode(window w){
+    w.SetPen(WHITE,1);
+    w.SetBrush(WHITE);
+    w.DrawRectangle(0,0,w.GetWidth,w.GetHeight,w.GetWidth,w.GetHeight);
+
+    const int count = 5;
+    const int menuHeight = 80,  menuItemWidth = 50;
+
+    string MenuIconsPaths[count];  
+    MenuIconsPaths[0] = "";
+    MenuIconsPaths[1] = "";
+    MenuIconsPaths[2] = "";
+    MenuIconsPaths[3] = "";
+    MenuIconsPaths[4] = "";
+
+    CreatePlayModeToolBar(w, MenuIconsPaths, count, menuItemWidth, menuHeight)
+}
+
+void GUI::CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight){
+    // Draw menu item one image at a time
+  for(int i=0; i<ItemCount; i++){
+    testWindow.DrawImage(MenuItems[i], i*MenuItemWidth, 0, MenuItemWidth, MenuItemHeight);
+    }
+
+  // Draw a line under the play toolbar
+  testWindow.SetPen(BLACK, 3);
+  testWindow.DrawLine(0, MenuItemHeight, testWindow.GetWidth(), MenuItemHeight);  
+}
+// not finished
+*/
 
 
 //======================================================================================//
@@ -98,6 +128,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_IPOLY: return DRAW_IPOLY;
 			case ICON_RPOLY: return DRAW_RPOLY;
 			case ICON_EXIT: return EXIT;
+			case ICON_DELETE: return DELETE_SHAPE;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -172,6 +203,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
 	MenuIconImages[ICON_IPOLY] = "images\\MenuIcons\\Menu_iPoly.jpg";
 	MenuIconImages[ICON_RPOLY] = "images\\MenuIcons\\Menu_rPoly.jpg";
+	MenuIconImages[ICON_DELETE] = "images\\MenuIcons\\Menu_Delete.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\Menu_Load.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\Menu_Save.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
