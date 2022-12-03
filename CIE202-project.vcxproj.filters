@@ -153,6 +153,9 @@
     <ClCompile Include="operations\opAddrPoly.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
     <ClCompile Include="operations\opDeleteShape.cpp" />
+    <ClCompile Include="operations\opColorPalette.cpp" />
+    <ClCompile Include="operations\opPenColor.cpp" />
+    <ClCompile Include="operations\opPenWidth.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -265,6 +268,9 @@
     <ClInclude Include="operations\opAddrPoly.h" />
     <ClInclude Include="operations\opExit.h" />
     <ClInclude Include="operations\opDeleteShape.h" />
+    <ClInclude Include="operations\opColorPalette.h" />
+    <ClInclude Include="operations\opPenColor.h" />
+    <ClInclude Include="operations\opPenWidth.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

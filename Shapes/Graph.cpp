@@ -30,6 +30,25 @@ void Graph::DeleteShape(){
 		}
 	}
 }
+
+//void Graph::ChangeFillColor(color)
+//{
+//	int count = 0;
+//
+//	
+//	/*if (count == 0)
+//	{
+//		color NewColor = pColorPaletteForFillColor->GetNewColor();
+//		for (int i = 0; i < shapesList.size(); i++)
+//		{
+//			color NewColor = pColorPaletteForFillColor->GetNewColor();
+//			GfxInfo Info = shapesList[i]->getGfxInfo();
+//			Info.FillClr = NewColor;
+//		};
+//	}*/
+//	
+//
+//}
 void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves Rgb values to to a file
 {
 	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";

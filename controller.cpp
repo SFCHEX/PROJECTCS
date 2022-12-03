@@ -12,6 +12,8 @@
 #include "operations\opAddiPoly.h"
 #include "operations\opAddrPoly.h"
 #include "operations\opDeleteShape.h"
+#include "operations\opPenColor.h"
+#include "operations\opPenWidth.h"
 
 //Constructor
 controller::controller()
@@ -65,6 +67,12 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
+			break;
+		case CHNG_DRAW_CLR:
+			pOp = new opPenColor(this);
+			break;
+		case CHNG_PEN_WIDTH:
+			pOp = new opPenWidth(this);
 			break;
 		case DELETE_SHAPE:
 			pOp = new opDeleteShape(this);

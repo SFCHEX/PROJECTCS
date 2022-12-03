@@ -127,6 +127,9 @@ operationType GUI::GetUseroperation() const
 			case ICON_OVAL: return DRAW_OVAL;
 			case ICON_IPOLY: return DRAW_IPOLY;
 			case ICON_RPOLY: return DRAW_RPOLY;
+			case ICON_PEN_COLOR: return CHNG_DRAW_CLR;
+			//case ICON_FILL_COLOR: return CHNG_FILL_CLR;
+			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
 			case ICON_EXIT: return EXIT;
 			case ICON_DELETE: return DELETE_SHAPE;
 
@@ -206,6 +209,9 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_DELETE] = "images\\MenuIcons\\Menu_Delete.jpg";
 	MenuIconImages[ICON_LOAD] = "images\\MenuIcons\\Menu_Load.jpg";
 	MenuIconImages[ICON_SAVE] = "images\\MenuIcons\\Menu_Save.jpg";
+	MenuIconImages[ICON_FILL_COLOR] = "images\\MenuIcons\\Menu_Fill_Color.jpg";
+	MenuIconImages[ICON_PEN_COLOR] = "images\\MenuIcons\\Menu_Pen_Color.jpg";
+	MenuIconImages[ICON_PEN_WIDTH] = "images\\MenuIcons\\Menu_Pen_Width.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 	
 
@@ -255,6 +261,10 @@ color GUI::getCrntDrawColor() const	//get current drwawing color
 {
 	return DrawColor;
 }
+void GUI::setCrntDrawColor(color c) 	//get current drwawing color
+{
+	DrawColor = c;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 
 color GUI::getCrntFillColor() const	//get current filling color
@@ -267,7 +277,44 @@ int GUI::getCrntPenWidth() const		//get current pen width
 {
 	return PenWidth;
 }
+void GUI::setCrntPenWidth(int newWidth) 		//set a new pen width
+{
+	PenWidth = newWidth;
+}
 
+//======================================================================================//
+//                              Color Paletee                                           //
+//======================================================================================//
+
+//void GUI::GetColorFromColorPalette()
+//{
+//	int widthForColorPalette = 700;
+//	int heightForColorPalette = 700;
+//	int startx = 200;
+//	int starty = 100;
+//
+//	pColorPaletteWindow = CreateWind(widthForColorPalette, heightForColorPalette, startx, starty);
+//	pColorPaletteWindow->ChangeTitle("Color Palette");
+//	image ColorPalette("images\\MenuIcons\\Color_Palette.jpg", JPEG);
+//	pColorPaletteWindow->DrawImage(ColorPalette, 0, 0, 700, 700);
+//
+//	//int x, y;
+//	//pColorPaletteWindow->WaitMouseClick(x, y);
+//	//color NewColor = pColorPaletteWindow->GetColor(x, y);
+//	//return NewColor;
+//}
+
+
+//color GUI::GetNewColor()
+//{
+//	//GetColorFromColorPalette();
+//	int x, y;
+//	pColorPaletteWindow->WaitMouseClick(x, y);
+//	color NewColor = pColorPaletteWindow->GetColor(x, y);
+//	return NewColor;
+//	/*delete pColorPaletteWindow;
+//	pColorPaletteWindow = nullptr;*/
+//}
 //======================================================================================//
 //								shapes Drawing Functions								//
 //======================================================================================//

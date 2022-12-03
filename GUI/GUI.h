@@ -49,9 +49,12 @@ class GUI
 		ICON_OVAL,      //icon for oval
 		ICON_IPOLY,		//icon for irregular polygon
 		ICON_RPOLY,		//icon for regular polygon
-		ICON_DELETE, 		//Delete Icon in menu
+		ICON_DELETE, 		//Delete icon in menu
 		ICON_LOAD,		//Load icon in menu
 		ICON_SAVE,		//Save icon in menu
+		ICON_FILL_COLOR, //Fill color icon in menu
+		ICON_PEN_COLOR,  //Pen color icon in menu
+		ICON_PEN_WIDTH,  //Pen width icon in menu
 		//TODO: Add more icons names here
 		ICON_EXIT,		//Exit icon
 
@@ -93,6 +96,7 @@ class GUI
 
 
 	window* pWind;
+	window* pColorPaletteWindow;
 
 public:
 
@@ -128,11 +132,21 @@ public:
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
+	void setCrntPenWidth(int newWidth); 		//set a new pen width
+
 
 	void SwitchToPlayMode(window w);
 	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
-	
-	
+	//
+	//void GetColorFromColorPalette();
+	////void CloseColorPaletteWindow();
+	//color GetNewColor();
+
+
+
+
+	void setCrntDrawColor(color c); 	//set a new drwaing color
+
 
 	~GUI();
 };
