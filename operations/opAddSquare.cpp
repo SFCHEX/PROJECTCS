@@ -23,7 +23,7 @@ void opAddSquare::Execute()
 	pUI->GetPointClicked(P1.x, P1.y);
 
 	string msg = "First corner is at (" + to_string(P1.x) + ", " + to_string(P1.y) + " )";
-	msg += " ... Click at second NON-DIAGONAL corner";
+	msg += " ... Click at second corner";
 	pUI->PrintMessage(msg);
 	//Read 2nd corner and store in point P2
 	pUI->GetPointClicked(P2.x, P2.y);
