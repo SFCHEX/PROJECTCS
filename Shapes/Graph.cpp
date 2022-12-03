@@ -180,13 +180,13 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 		
 		vector<int> pVectX, pVectY;
 		int limit;
-		if (parameters[parameters.size()-1]=="NO_FILL"){
-			//7 is the number of NON coordinate related parameters in the case there is no fill color
-			limit=parameters.size()-7;
+		if (parameters[parameters.size()-2]=="NO_FILL"){
+			//5 is the number of NON coordinate related parameters in the case there is no fill color
+			limit=parameters.size()-5;
 		}
 		else{
-			//7 is the number of NON coordinate related parameters in the case there is a fill color
-			limit=parameters.size()-10;
+			//8 is the number of NON coordinate related parameters in the case there is a fill color
+			limit=parameters.size()-7;
 		}
 		for (int i=2;i<limit;i++){
 			//add coordinates to vector lists based on if it is odd or even
