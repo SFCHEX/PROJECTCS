@@ -30,7 +30,6 @@ void opColorPalette::Execute()
 	pColorPaletteWindow = pUI->CreateWind(width, height, wx, wy);
 	pColorPaletteWindow->ChangeTitle("Color Palette");
 	image ColorPalette("images\\MenuIcons\\Color_Palette.jpg", JPEG);
-
 	pColorPaletteWindow->DrawImage(ColorPalette, 0, 0, 700, 700);
 	
 
