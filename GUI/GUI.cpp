@@ -270,6 +270,10 @@ void GUI::setCrntDrawColor(color c) 	//get current drwawing color
 {
 	DrawColor = c;
 }
+void GUI::setCrntFillColor(color c) 	//get current drwawing color
+{
+	FillColor= c;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 
 color GUI::getCrntFillColor() const	//get current filling color
