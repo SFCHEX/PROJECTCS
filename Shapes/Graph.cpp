@@ -114,21 +114,14 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 	}
 	outfile.close();
 }
-//the load function will open the file and iterate line by line through the file adding shapes to the shape vector. it will create shape objects based on the file
-void Graph::Load(ifstream& inputfile, GUI* pUI)
-{
-	shapesList.clear();
-	string shapeText,drawToolsState,shapeCount;
-	getline(inputfile,drawToolsState);
-	getline(inputfile,shapeCount);
-	while (getline(inputfile, shapeText)) {
-	//create shape objects and append to shapelist
+
+vector<string> Graph::Parameterize(string p){//returns string as parameters
     vector<string> parameters; //creates a vector to contain the paramaeters for init the shape
     string parameter=""; // each string is a parameter
-   for (int i =shapeText.size()-1; i>-1;i--){
+   	for (int i =p.size()-1; i>-1;i--){
   
-   	if (shapeText[i]!=','){
-       	parameter=shapeText[i]+parameter;//parameters added in reverse
+   	if (p[i]!=','){
+       	parameter=p[i]+parameter;//parameters added in reverse
 		        	
        	}
        else{
@@ -137,9 +130,26 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
            }
    }
    parameters.push_back(parameter);
+   return parameters;
+}
+//the load function will open the file and iterate line by line through the file adding shapes to the shape vector. it will create shape objects based on the file
+void Graph::Load(ifstream& inputfile, GUI* pUI)
+{
+	shapesList.clear();
+	string shapeText,drawToolsState,shapeCount;
+	getline(inputfile,drawToolsState);
+	
+	vector<string> drawToolsParameters=Parameterize(drawToolsState);
+	pUI->setCrntPenWidth(stoi(drawToolsParameters[0]));
+	pUI->setCrntDrawColor(color (stoi(drawToolsParameters[3]),stoi(drawToolsParameters[2]),stoi(drawToolsParameters[1])));
+//	pUI->setCrntFillColor(color (stoi(drawToolsParameters[6]),stoi(drawToolsParameters[5]),stoi(drawToolsParameters[4])));
+
+	getline(inputfile,shapeCount);
+	while (getline(inputfile, shapeText)) {
+	vector<string> parameters=Parameterize(shapeText);
 //parameter list is added in reverse because we initialize the gfx info first, and number of points is inconsistent per each possible vector so indexing from the start to the end would be more difficult
 
-   int size=parameters.size();
+   	int size=parameters.size();
 
     GfxInfo shpGfxInfo;
     shpGfxInfo.BorderWdth=stoi(parameters[0]);

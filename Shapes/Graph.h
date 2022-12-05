@@ -24,6 +24,7 @@ private:
 	vector <shape*> shapesList; //a container to hold all shapes	
 	shape* selectedShape;	//pointer to the currently selected shape
 	void SaveColorRGB(ofstream& outfile,color RGB);	//Saves Rgb values to to a file
+	vector<string> Parameterize(string p);	//Saves Rgb values to to a file
 public:										
 	Graph();
 	~Graph();
