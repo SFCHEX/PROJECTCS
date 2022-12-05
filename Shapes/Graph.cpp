@@ -90,9 +90,9 @@ void Graph::deselAll(int valId)
 //the save function will iterate through the shapeslist private vector and add it to the file
 void Graph::Save(ofstream& outfile, GUI* pUI) {
 	//here we add the draw color fill color and pen width from the pointer to the gUI
-	Graph::SaveColorRGB(outfile,pUI->getCrntDrawColor());
 	//saves draw and fill color as rgb values
 	Graph::SaveColorRGB(outfile,pUI->getCrntFillColor());
+	Graph::SaveColorRGB(outfile,pUI->getCrntDrawColor());
 	outfile<<pUI->getCrntPenWidth()<<endl;
 	//number of shapes is length of vector
 	outfile<<Graph::shapesList.size()<<endl;
