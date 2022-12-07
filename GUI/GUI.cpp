@@ -132,7 +132,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
 			case ICON_EXIT: return EXIT;
 			case ICON_DELETE: return DELETE_SHAPE;
-
+			case ICON_STICK_IMAGE: return STICK_IMAGE;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
