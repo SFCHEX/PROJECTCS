@@ -49,6 +49,7 @@ class GUI
 		ICON_OVAL,      //icon for oval
 		ICON_IPOLY,		//icon for irregular polygon
 		ICON_RPOLY,		//icon for regular polygon
+		ICON_STICK_IMAGE, //icon for stick image to shape
 		ICON_DELETE, 		//Delete icon in menu
 		ICON_LOAD,		//Load icon in menu
 		ICON_SAVE,		//Save icon in menu
