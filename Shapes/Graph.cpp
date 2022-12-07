@@ -32,7 +32,15 @@ void Graph::DeleteShape(){
 }
 
 void Graph::StickImage() {
-	
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			switch (shapesList[i].gfxinfo.shapetype) {
+				case()
+			}
+
+
+		}
+	}
 }
 
 //void Graph::ChangeFillColor(color)
