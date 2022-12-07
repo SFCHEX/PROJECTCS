@@ -5,6 +5,6 @@ class opStickImage : public operation{
 public:
   opStickImage(controller *pCont);
   virtual ~opStickImage();
-  virtual void Excute();
+  virtual void Execute();
 
 };
