@@ -35,5 +35,6 @@ public:
 	void Save(ofstream& outfile,GUI* pUI);	//Save all shapes to a file
 	void Load(ifstream& inputfile,GUI* pUI);	//Load all shapes from a file
 	void DeleteShape();
-	void ChangeFillColor(); //Changes the fill color   
+	void ChangeFillColor(); //Changes the fill color  
+	void StickImage(); //StickImage to the selected shape
 };

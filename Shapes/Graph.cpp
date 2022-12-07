@@ -32,7 +32,7 @@ void Graph::DeleteShape(){
 }
 
 void Graph::StickImage() {
-
+	
 }
 
 //void Graph::ChangeFillColor(color)
