@@ -14,6 +14,14 @@ opCopy::~opCopy(){
 }
 //Add copy to the controller
 void opCopy::Execute(){
+	GUI* pUI = pControl->GetUI();
+	Graph* pGr= pControl->getGraph();
+
+    pGr->clearClipboard();
+	pUI->PrintMessage("Click Where would you like to paste: ");
+    pGr->CopyShape();
+
+
 
 }
 
