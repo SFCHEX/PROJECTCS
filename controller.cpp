@@ -1,20 +1,5 @@
 #include "controller.h"
-#include "operations\opAddRect.h"
-#include "operations\opAddLine.h"
-#include "operations\opExit.h"
-#include "operations\opAddTri.h"
-#include "operations\opAddCirc.h"
-#include "operations\opAddSquare.h"
-#include "operations\OpAddOval.h"
-#include "operations\opSave.h"
-#include "operations\opLoad.h"
-#include "operations\opSelect.h"
-#include "operations\opAddiPoly.h"
-#include "operations\opAddrPoly.h"
-#include "operations\opDeleteShape.h"
-#include "operations\opPenColor.h"
-#include "operations\opPenWidth.h"
-
+#include "operations.h"
 //Constructor
 controller::controller()
 {
