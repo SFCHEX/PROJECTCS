@@ -45,3 +45,19 @@ bool Tri::isInside(int x, int y) const {
 	return (mainArea == tArea1 + tArea2 + tArea3);
 }
 
+ShapePoints Tri::getPoints() {
+	ShapePoints TriP;
+	TriP.P_num = 3;
+	TriP.s_Points.resize(TriP.P_num);
+
+	TriP.s_Points[0].x = this->Corner1.x;
+	TriP.s_Points[0].y = this->Corner1.y;
+
+	TriP.s_Points[1].x = this->Corner2.x;
+	TriP.s_Points[1].y = this->Corner2.y;
+
+	TriP.s_Points[2].x = this->Corner3.x;
+	TriP.s_Points[2].y = this->Corner3.y;
+
+	return TriP;
+}

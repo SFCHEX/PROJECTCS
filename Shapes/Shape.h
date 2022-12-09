@@ -5,8 +5,7 @@
 #include <vector>
 
 struct ShapePoints {
-	vector<int> P_x;
-	vector<int> P_y;
+	vector<Point> s_Points;
 	int P_num;
 };
 
@@ -33,7 +32,7 @@ public:
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
 	void ChngFillClr(color Fclr);	//changes the shape's filling color
 	virtual bool isInside(int x, int y) const = 0; //checks if any given point is inside a certain shape
-	//virtual ShapePoints getPoints() = 0; //Gets the x and y verticies for any shape
+	virtual ShapePoints getPoints() = 0; //Gets the x and y verticies for any shape
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape
 

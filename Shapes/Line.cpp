@@ -55,3 +55,17 @@ bool Line::isInside(int x, int y) const{
 		return false;
 	}
 }
+
+ShapePoints Line::getPoints() {
+	ShapePoints LineP;
+	LineP.P_num = 2;
+	LineP.s_Points.resize(LineP.P_num);
+
+	LineP.s_Points[0].x = this->End1.x;
+	LineP.s_Points[0].y = this->End1.y;
+
+	LineP.s_Points[1].x = this->End2.x;
+	LineP.s_Points[1].y = this->End2.y;
+
+	return LineP;
+}

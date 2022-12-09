@@ -36,3 +36,17 @@ bool Circ::isInside(int x, int y) const{
 		return false;
 	}
 }
+
+ShapePoints Circ::getPoints() {
+	ShapePoints CircP;
+	CircP.P_num = 2;
+	CircP.s_Points.resize(CircP.P_num);
+	
+	CircP.s_Points[0].x = this->Center.x;
+	CircP.s_Points[0].y = this->Center.y;
+
+	CircP.s_Points[1].x = this->PointR.x;
+	CircP.s_Points[1].y = this->PointR.y;
+
+	return CircP;
+}
