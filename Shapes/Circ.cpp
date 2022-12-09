@@ -13,9 +13,6 @@ shape* Circ::clone(){
 	shape* newShape=new Circ(*this);
 
 	newShape->updateID(); return newShape;
-
-
-
 }
 Circ::~Circ()
 {}
