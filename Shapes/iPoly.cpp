@@ -9,6 +9,15 @@ iPoly::iPoly(vector<int> pVectiX, vector<int> pVectiY, GfxInfo shapeGfxInfo) : s
 	pVectY = pVectiY;
 }
 
+
+shape* iPoly::clone(){
+	shape* newShape=new iPoly(*this);
+
+	newShape->updateID(); return newShape;
+
+
+
+}
 iPoly::~iPoly() {}
 
 void iPoly::Save(ofstream& outfile)

@@ -7,6 +7,7 @@ Tri::Tri(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;
+
 }
 
 Tri::~Tri()
@@ -28,6 +29,12 @@ void Tri::Save(ofstream &outfile){
 	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<","<<Corner3.x<<","<<Corner3.y<<",";
 
 }	//Save the shape parameters to the file
+
+shape* Tri::clone(){
+	shape* newShape= new Tri(*this);
+	newShape->updateID(); return newShape;
+}
+
 
 bool Tri::isInside(int x, int y) const {
 	double mainArea, tArea1, tArea2, tArea3;

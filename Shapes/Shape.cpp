@@ -12,6 +12,11 @@ shape::shape(GfxInfo shapeGfxInfo)
 void shape::SetSelected(bool s)
 {	ShpGfxInfo.isSelected = s; }
 
+void shape::updateID(){
+	ShpGfxInfo.ID=count+1;
+	count++;
+}
+
 bool shape::IsSelected() const
 {	return ShpGfxInfo.isSelected; }
 

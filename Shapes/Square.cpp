@@ -31,7 +31,15 @@ Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
 		Corner2 = P2;
 	}
 
+
 }
+
+shape* Square::clone(){
+	shape* newShape=new Square(*this);
+
+	newShape->updateID(); return newShape;
+}	
+
 Square::~Square(){}
 
 void Square::Draw(GUI* pUI) const {
