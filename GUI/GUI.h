@@ -146,7 +146,7 @@ public:
 
 
 	void setCrntDrawColor(color c); 	//set a new drwaing color
-
+	void setCrntFillColor(color c);	//get current drwawing color
 
 	~GUI();
 };

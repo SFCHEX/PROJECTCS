@@ -16,7 +16,7 @@ void Line::Draw(GUI* pUI) const
 	pUI->DrawLine(End1, End2, ShpGfxInfo);
 }
 void Line::Save(ofstream &outfile){
-	outfile<<End1.x<<","<<End1.y<<","<<End1.x<<","<<End1.y<<",";
+	outfile<<End1.x<<","<<End1.y<<","<<End2.x<<","<<End2.y<<",";
 }	//Save the shape parameters to the file
 
 bool Line::isInside(int x, int y) const{
