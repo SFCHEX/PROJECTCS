@@ -36,13 +36,19 @@ shape* Tri::clone(){
 }
 
 
-bool Tri::isInside(int x, int y) const {
-	double mainArea, tArea1, tArea2, tArea3;
-	mainArea = Area(Corner1.x,Corner1.y, Corner2.x, Corner2.y, Corner3.x, Corner3.y);
-	tArea1 = Area(x, y, Corner2.x, Corner2.y, Corner3.x, Corner3.y);
-	tArea2 = Area(Corner1.x, Corner1.y, x, y, Corner3.x, Corner3.y);
-	tArea3 = Area(Corner1.x, Corner1.y, Corner2.x, Corner2.y, x, y);
-	return (mainArea == tArea1 + tArea2 + tArea3);
+
+bool Tri::isInside(int x, int y) const
+{
+	int num = 3;
+	int i, j, c = 0;
+	int pVectX[3] = { Corner1.x, Corner2.x, Corner3.x };
+	int pVectY[3] = { Corner1.y, Corner2.y, Corner3.y };
+	for (i = 0, j = num - 1; i < num; j = i++) {
+		if (((pVectY[i] > y) != (pVectY[j] > y)) &&
+			(x < (pVectX[j] - pVectX[i]) * (y - pVectY[i]) / (pVectY[j] - pVectY[i]) + pVectX[i]))
+			c = !c;
+	}
+	return c;
 }
 
 ShapePoints Tri::getPoints() {
