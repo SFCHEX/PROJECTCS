@@ -13,11 +13,16 @@ opSelect::~opSelect() {
 }
 
 void opSelect::Execute() {
-	int x, y;
+	//int x, y;
+	//GUI* pUI = pControl->GetUI();
+	//pUI->GetPointClicked(x, y);
+	//Graph* pGr = pControl->getGraph();
+	//shape* SelectedShape = pGr->Getshape(x, y);;
+	Point* P1;
 	GUI* pUI = pControl->GetUI();
-	pUI->GetPointClicked(x, y);
+	P1 = pUI->GetPrevPoint();
 	Graph* pGr = pControl->getGraph();
-	shape* SelectedShape = pGr->Getshape(x, y);
+	shape* SelectedShape = pGr->Getshape(P1->x, P1->y);
 	if (SelectedShape != nullptr) {
 		pGr->deselAll(SelectedShape->getID());
 		GfxInfo SelectedGfxInfo = SelectedShape->getGfxInfo();
