@@ -1,6 +1,8 @@
 #include "operations\opAddRect.h"
 #include "operations\opAddLine.h"
 #include "operations\opExit.h"
+#include "operations\opCopy.h"
+#include "operations\opPaste.h"
 #include "operations\opAddTri.h"
 #include "operations\opAddCirc.h"
 #include "operations\opAddSquare.h"

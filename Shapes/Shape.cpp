@@ -12,6 +12,12 @@ shape::shape(GfxInfo shapeGfxInfo)
 void shape::SetSelected(bool s)
 {	ShpGfxInfo.isSelected = s; }
 
+void shape::Move(Point pm){
+	for(Point p : ShpGfxInfo.Points) {
+		p.x+=pm.x;
+		p.y+=pm.y;
+	}
+}
 bool shape::IsSelected() const
 {	return ShpGfxInfo.isSelected; }
 

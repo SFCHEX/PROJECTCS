@@ -8,6 +8,7 @@ class iPoly : public shape
 private:
 	vector<int> pVectX, pVectY;
 public:
+	virtual void Move(Point pm);
 	iPoly(vector<int>, vector<int>, GfxInfo shapeGfxInfo);
 	virtual ~iPoly();
 	virtual void Draw(GUI* pUI) const;

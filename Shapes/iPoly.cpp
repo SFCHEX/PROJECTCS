@@ -7,6 +7,20 @@ iPoly::iPoly(vector<int> pVectiX, vector<int> pVectiY, GfxInfo shapeGfxInfo) : s
 	ShpGfxInfo.ShapeType = "Irregular Polygon";
 	pVectX = pVectiX;
 	pVectY = pVectiY;
+	for(int i=0 ; pVectX.size()>i;i++){
+		ShpGfxInfo.Points.push_back(Point{pVectX[i],pVectY[i]});
+	}
+
+}
+
+void iPoly::Move(Point pm)
+{
+	for(int p : pVectX){
+		p+=pm.x;
+	}
+	for(int p : pVectY){
+		p+=pm.y;
+	}
 }
 
 iPoly::~iPoly() {}

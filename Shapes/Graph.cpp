@@ -24,12 +24,11 @@ void Graph::CopyShape()
 void Graph::clearClipboard()	
 {
 	clipboard.clear();
-
 }
 void Graph::PasteShape(Point p1)
 {
 	for (int i = 0; i < clipboard.size(); i++) {
-//		clipboard[i].Move(p1);
+		clipboard[i]->Move(p1);
 		shapesList.push_back(clipboard[i]);
 	}
 }

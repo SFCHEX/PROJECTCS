@@ -5,6 +5,8 @@ Oval::Oval(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	ShpGfxInfo.ShapeType="Oval";
 	Corner1 = P1;
 	Corner2 = P2;
+
+	ShpGfxInfo.Points={Corner1,Corner2};
 }
 
 Oval::~Oval()

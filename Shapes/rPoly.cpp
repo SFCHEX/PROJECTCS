@@ -34,6 +34,7 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 		pVectY.push_back(py);
 	}
 	pVectY.push_back(pVectY.front());
+	ShpGfxInfo.Points={pCenter,pRadius};
 }
 
 rPoly::~rPoly() {}

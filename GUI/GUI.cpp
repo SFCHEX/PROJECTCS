@@ -118,6 +118,8 @@ operationType GUI::GetUseroperation() const
 			switch (ClickedIconOrder)
 			{
 			case ICON_RECT: return DRAW_RECT;
+			case ICON_COPY: return COPY;
+			case ICON_PASTE: return PASTE;
 			case ICON_SAVE: return SAVE;
 			case ICON_LOAD: return LOAD;
 			case ICON_CIRC: return DRAW_CIRC;
@@ -213,6 +215,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_PEN_COLOR] = "images\\MenuIcons\\Menu_Pen_Color.jpg";
 	MenuIconImages[ICON_PEN_WIDTH] = "images\\MenuIcons\\Menu_Pen_Width.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
+	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\Menu_Copy.jpg";
+	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\Menu_Paste.jpg";
 	
 
 

@@ -172,11 +172,15 @@
     <ClCompile Include="controller.cpp" />
     <ClCompile Include="operations\opAddrPoly.cpp" />
     <ClCompile Include="operations\opAddiPoly.cpp" />
+    <ClCompile Include="operations\opCopy.cpp" />
     <ClCompile Include="operations\opDeleteShape.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
     <ClCompile Include="operations\opColorPalette.cpp" />
+    <ClCompile Include="operations\opPaste.cpp" />
     <ClCompile Include="operations\opPenColor.cpp" />
     <ClCompile Include="operations\opPenWidth.cpp" />
+    <ClCompile Include="operations\opRedo.cpp" />
+    <ClCompile Include="operations\opUndo.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="main.cpp" />
@@ -222,6 +226,9 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations.h" />
+    <ClInclude Include="operations\opCopy.h" />
+    <ClInclude Include="operations\opPaste.h" />
     <ClInclude Include="operations\opPenWidth.h" />
     <ClInclude Include="operations\opPenColor.h" />
     <ClInclude Include="operations\opColorPalette.h" />
@@ -229,6 +236,8 @@
     <ClInclude Include="operations\opAddiPoly.h" />
     <ClInclude Include="operations\opDeleteShape.h" />
     <ClInclude Include="operations\opExit.h" />
+    <ClInclude Include="operations\opRedo.h" />
+    <ClInclude Include="operations\opUndo.h" />
     <ClInclude Include="Shapes\rPoly.h" />
     <ClInclude Include="Shapes\iPoly.h" />
     <ClInclude Include="operations\OpAddOval.h" />
@@ -248,6 +257,7 @@
     <ClInclude Include="Shapes\Line.h" />
     <ClInclude Include="Shapes\Shape.h" />
     <ClInclude Include="Shapes\Rect.h" />
+    <ClInclude Include="Shapes\Shapes.h" />
     <ClInclude Include="Shapes\Tri.h" />
     <ClInclude Include="Shapes\Square.h" />
   </ItemGroup>

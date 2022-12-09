@@ -31,6 +31,7 @@ Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
 		Corner2 = P2;
 	}
 
+	ShpGfxInfo.Points={Corner1,Corner2};
 }
 Square::~Square(){}
 

@@ -7,6 +7,8 @@ Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 	ShpGfxInfo.ShapeType="Line";
 	End1 = p1;
 	End2 = p2;
+
+	ShpGfxInfo.Points={End1,End2};
 }
 
 Line::~Line() {}

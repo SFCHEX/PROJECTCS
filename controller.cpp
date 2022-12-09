@@ -38,6 +38,15 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_CIRC:
 			pOp = new opAddCirc(this);
 			break;
+		case COPY:
+			pOp = new opCopy(this);
+			break;
+		case PASTE:
+			pOp = new opPaste(this);
+			break;
+	
+
+
 		case DRAW_SQUARE:
 			pOp = new opAddSquare(this);
 				break;
