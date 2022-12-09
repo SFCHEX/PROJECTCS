@@ -9,10 +9,16 @@ Circ::Circ(Point P1, Point P2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 
 
 }
+shape* Circ::clone(){
+	shape* newShape=new Circ(*this);
 
+	newShape->updateID(); return newShape;
+
+
+
+}
 Circ::~Circ()
 {}
-
 void Circ::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	

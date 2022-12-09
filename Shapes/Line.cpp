@@ -7,8 +7,19 @@ Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 	ShpGfxInfo.ShapeType="Line";
 	End1 = p1;
 	End2 = p2;
+
+
 }
 
+
+
+shape* Line::clone(){
+	shape* newShape=new Line(*this);
+
+	newShape->updateID(); return newShape;
+
+
+}
 Line::~Line() {}
 
 void Line::Draw(GUI* pUI) const

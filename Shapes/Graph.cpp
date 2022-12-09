@@ -13,7 +13,28 @@ Graph::~Graph()
 //==================================================================================//
 //						shapes Management Functions								//
 //==================================================================================//
+void Graph::CopyShape()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			clipboard.push_back(shapesList[i]);
+		}
+	}
 
+    deselAll(-1);
+}
+void Graph::clearClipboard()	
+{
+	clipboard.clear();
+}
+void Graph::PasteShape(Point p1)
+{
+	for (int i = 0; i < clipboard.size(); i++) {
+//		clipboard[i].Move(p1);
+		shape* newShape=clipboard[i]->clone();
+		shapesList.push_back(newShape);
+	}
+}
 //Add a shape to the list of shapes
 void Graph::Addshape(shape* pShp)
 {
@@ -32,7 +53,7 @@ void Graph::DeleteShape(){
 }
 
 //void Graph::ChangeFillColor(color)
-//{
+
 //	int count = 0;
 //
 //	
