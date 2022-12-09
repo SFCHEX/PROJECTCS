@@ -35,7 +35,7 @@ void Graph::StickImage() {
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->IsSelected()) {
 			if (shapesList[i]->getGfxInfo().ShapeType == "Rectangle"){
-
+				
 			}
 			}
 			else if (shapesList[i]->getGfxInfo().ShapeType == "Circle"){
