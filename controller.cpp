@@ -75,10 +75,13 @@ operation* controller::createOperation(operationType OpType)
 			///create load operation
 			pOp = new opLoad(this);
 			break;	
-
+		
 		case SAVE:
-			
 			pOp = new opSave(this); //create save operation 
+			break;
+
+		case SELECTION_MODE:
+			pOp = new opSelect(this);
 			break;
 
 		case EXIT:

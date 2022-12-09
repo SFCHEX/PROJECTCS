@@ -5,14 +5,13 @@ GUI::GUI()
 	//Initialize user interface parameters
 	InterfaceMode = MODE_DRAW;
 
-	width = 1800;
+	width = 1380;
 	height = 900;
 	wx = 5;
 	wy = 5;
 
-
 	StatusBarHeight = 50;
-	ToolBarHeight = 50;
+	ToolBarHeight = 100;
 	MenuIconWidth = 80;
 
 	DrawColor = BLUE;	//default Drawing color
@@ -42,7 +41,7 @@ GUI::GUI()
     const int count = 5;
     const int menuHeight = 80,  menuItemWidth = 50;
 
-    string MenuIconsPaths[count];  
+    string MenuIconsPaths[count];
     MenuIconsPaths[0] = "";
     MenuIconsPaths[1] = "";
     MenuIconsPaths[2] = "";
@@ -60,7 +59,7 @@ void GUI::CreatePlayModeToolBar(window & testWindow, string *MenuItems, int Item
 
   // Draw a line under the play toolbar
   testWindow.SetPen(BLACK, 3);
-  testWindow.DrawLine(0, MenuItemHeight, testWindow.GetWidth(), MenuItemHeight);  
+  testWindow.DrawLine(0, MenuItemHeight, testWindow.GetWidth(), MenuItemHeight);
 }
 // not finished
 */
@@ -88,10 +87,10 @@ string GUI::GetString() const
 		if (Key == 13)	//ENTER key is pressed
 			return Label;
 		if (Key == 8)	//BackSpace is pressed
-			if( Label.size() > 0)	
+			if( Label.size() > 0)
 				Label.resize(Label.size() - 1);
 			else
-				Key = '\0';		
+				Key = '\0';
 		else
 			Label += Key;
 		PrintMessage(Label);
@@ -107,12 +106,20 @@ operationType GUI::GetUseroperation() const
 	PrevPoint->y = y;
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
-		//[1] If user clicks on the Toolbar
+		//[1] If user clicks on the first Toolbar
 		if (y >= 0 && y < ToolBarHeight)
 		{
 			//Check whick Menu icon was clicked
 			//==> This assumes that menu icons are lined up horizontally <==
+
 			int ClickedIconOrder = (x / MenuIconWidth);
+
+			if (y <= ToolBarHeight/2) {
+				ClickedIconOrder = ClickedIconOrder;
+			}
+			else {
+				ClickedIconOrder = ClickedIconOrder + 17;
+			}
 			//Divide x coord of the point clicked by the menu icon width (int division)
 			//if division result is 0 ==> first icon is clicked, if 1 ==> 2nd icon and so on
 
@@ -121,8 +128,6 @@ operationType GUI::GetUseroperation() const
 			case ICON_RECT: return DRAW_RECT;
 			case ICON_COPY: return COPY;
 			case ICON_PASTE: return PASTE;
-			case ICON_SAVE: return SAVE;
-			case ICON_LOAD: return LOAD;
 			case ICON_CIRC: return DRAW_CIRC;
 			case ICON_LINE: return DRAW_LINE;
 			case ICON_TRI : return DRAW_TRI;
@@ -130,15 +135,20 @@ operationType GUI::GetUseroperation() const
 			case ICON_OVAL: return DRAW_OVAL;
 			case ICON_IPOLY: return DRAW_IPOLY;
 			case ICON_RPOLY: return DRAW_RPOLY;
+			case ICON_DELETE: return DELETE_SHAPE;
+			case ICON_LOAD: return LOAD;
+			case ICON_SAVE: return SAVE;
 			case ICON_PEN_COLOR: return CHNG_DRAW_CLR;
 			//case ICON_FILL_COLOR: return CHNG_FILL_CLR;
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
 			case ICON_EXIT: return EXIT;
-			case ICON_DELETE: return DELETE_SHAPE;
+			case ICON_SELECT: return SELECTION_MODE;
+			case ICON_TEMP: return DO_NOTHING;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
+
 
 		//[2] User clicks on the drawing area
 		if (y >= ToolBarHeight && y < height - StatusBarHeight)
@@ -194,7 +204,7 @@ void GUI::ClearStatusBar() const
 	pWind->DrawRectangle(0, height - StatusBarHeight, width, height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-void GUI::CreateDrawToolBar() 
+void GUI::CreateDrawToolBar()
 {
 	InterfaceMode = MODE_DRAW;
 
@@ -202,7 +212,7 @@ void GUI::CreateDrawToolBar()
 	//Below is one possible way
 
 	//First prepare List of images for each menu icon
-	//To control the order of these images in the menu, 
+	//To control the order of these images in the menu,
 	//reoder them in UI_Info.h ==> enum DrawMenuIcon
 	string MenuIconImages[DRAW_ICON_COUNT];
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
@@ -222,13 +232,19 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\Menu_Copy.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\Menu_Paste.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
-
+	MenuIconImages[ICON_SELECT] = "images\\MenuIcons\\Menu_Select.jpg";
+	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time
 	for (int i = 0; i < DRAW_ICON_COUNT; i++)
-		pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
+		if (i < 17) {
+			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
+		}
+		else {
+			pWind->DrawImage(MenuIconImages[i], (i-17) * MenuIconWidth, ToolBarHeight / 2, MenuIconWidth, ToolBarHeight / 2);
+		}
 
 
 
@@ -239,7 +255,7 @@ void GUI::CreateDrawToolBar()
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
-void GUI::CreatePlayToolBar() 
+void GUI::CreatePlayToolBar()
 {
 	InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
@@ -351,7 +367,7 @@ void GUI::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const
 		style = FRAME;
 
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-	
+
 }
 
 void GUI::DrawLine(Point p1, Point p2, GfxInfo LineGfxInfo) const {
@@ -505,9 +521,10 @@ void GUI::DrawrPoly(vector<int> vx, vector<int> vy, GfxInfo rPolyGfxInfo) const 
 	int asize = size(vx);
 	pWind->DrawPolygon(ax, ay, asize, style);
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
 {
 	delete pWind;
+	delete PrevPoint;
 }
-
