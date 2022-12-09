@@ -17,7 +17,6 @@ struct Point	//To be used for shapes points
 
 struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 {
-	vector<Point> Points;	//vector of points
 	color DrawClr;	//Draw color of the shape
 	color FillClr;	//Fill color of the shape
 	string ShapeType; //shape type is shape in string will be initialized in constructor for every shape

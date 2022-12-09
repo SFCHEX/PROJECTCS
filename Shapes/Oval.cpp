@@ -6,9 +6,17 @@ Oval::Oval(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 	Corner1 = P1;
 	Corner2 = P2;
 
-	ShpGfxInfo.Points={Corner1,Corner2};
+
+
 }
 
+
+shape* Oval::clone(){
+	shape* newShape=new Oval(*this);
+
+	newShape->updateID(); return newShape;
+
+}	
 Oval::~Oval()
 {}
 

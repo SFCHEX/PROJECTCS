@@ -10,6 +10,11 @@ double rPoly::Convert(double degree)
 	return (degree * (2*pi / 360));
 }
 
+shape* rPoly::clone(){
+	shape* newShape=new rPoly(*this);
+
+	newShape->updateID(); return newShape;
+}	
 rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
 	P1=pCenter;
@@ -34,7 +39,6 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 		pVectY.push_back(py);
 	}
 	pVectY.push_back(pVectY.front());
-	ShpGfxInfo.Points={pCenter,pRadius};
 }
 
 rPoly::~rPoly() {}

@@ -5,8 +5,8 @@ GUI::GUI()
 	//Initialize user interface parameters
 	InterfaceMode = MODE_DRAW;
 
-	width = 1300;
-	height = 700;
+	width = 1800;
+	height = 900;
 	wx = 5;
 	wy = 5;
 
@@ -214,10 +214,9 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_FILL_COLOR] = "images\\MenuIcons\\Menu_Fill_Color.jpg";
 	MenuIconImages[ICON_PEN_COLOR] = "images\\MenuIcons\\Menu_Pen_Color.jpg";
 	MenuIconImages[ICON_PEN_WIDTH] = "images\\MenuIcons\\Menu_Pen_Width.jpg";
-	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\Menu_Copy.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\Menu_Paste.jpg";
-	
+	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 
 
 	//TODO: Prepare images for each menu icon and add it to the list

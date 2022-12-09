@@ -18,7 +18,7 @@ void opCopy::Execute(){
 	Graph* pGr= pControl->getGraph();
 
     pGr->clearClipboard();
-	pUI->PrintMessage("Click Where would you like to paste: ");
+	pUI->PrintMessage("Selected shapes have been copied");
     pGr->CopyShape();
 
 

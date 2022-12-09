@@ -20,6 +20,8 @@ void Graph::CopyShape()
 			clipboard.push_back(shapesList[i]);
 		}
 	}
+
+    deselAll(-1);
 }
 void Graph::clearClipboard()	
 {
@@ -28,8 +30,9 @@ void Graph::clearClipboard()
 void Graph::PasteShape(Point p1)
 {
 	for (int i = 0; i < clipboard.size(); i++) {
-		clipboard[i]->Move(p1);
-		shapesList.push_back(clipboard[i]);
+//		clipboard[i].Move(p1);
+		shape* newShape=clipboard[i]->clone();
+		shapesList.push_back(newShape);
 	}
 }
 //Add a shape to the list of shapes
