@@ -22,7 +22,6 @@ void opCopy::Execute(){
     pGr->CopyShape();
 
 
-
 }
 
 

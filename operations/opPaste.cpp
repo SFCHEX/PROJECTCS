@@ -22,6 +22,6 @@ void opPaste::Execute(){
 	//Read 1st ebd and store in point P1
 	pUI->GetPointClicked(p1.x, p1.y);
     pGr->PasteShape(p1);
-
+	pUI->ClearStatusBar();
 
 }
