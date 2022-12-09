@@ -7,6 +7,7 @@ Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 	ShpGfxInfo.ShapeType="Rectangle";
 	Corner1 = P1;
 	Corner2 = P2;
+
 }
 
 Rect::~Rect(){}
@@ -16,6 +17,11 @@ Rect::~Rect(){}
 //}
 
 
+shape* Rect::clone(){
+	shape* newShape=new Rect(*this);
+
+	newShape->updateID(); return newShape;
+}	
 void Rect::Draw(GUI* pUI) const
 {
 	//Call Output::DrawRect to draw a rectangle on the screen	

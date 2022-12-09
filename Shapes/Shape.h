@@ -9,18 +9,20 @@ class shape
 {
 protected:
 	
-	static int count; //to create unique ID's for each object which will be stored in gfxinfo
 	GfxInfo ShpGfxInfo;	//shape graphis info
 	
+	static int count; //to create unique ID's for each object which will be stored in gfxinfo
 	/// Add more parameters if needed.
 
 public:
     shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
-	void SetSelected(bool s);	//select/unselect the shape
+    void SetSelected(bool s);	//select/unselect the shape
+	virtual shape* clone()=0;	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 	GfxInfo getGfxInfo() const;
 	int getID() const;
+	void updateID();
 	virtual void Draw(GUI* pUI) const  = 0 ;		//Draw the shape
 	//virtual Point getBorders();
 	void ChngDrawClr(color Dclr);	//changes the shape's drawing color
