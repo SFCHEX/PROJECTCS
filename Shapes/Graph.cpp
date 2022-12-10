@@ -47,6 +47,8 @@ void Graph::Addshape(shape* pShp)
 void Graph::DeleteShape(){
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->IsSelected()) {
+			delete shapesList[i];
+			shapesList[i] = nullptr;
 			shapesList.erase(shapesList.begin() + i);
 		}
 	}
@@ -81,21 +83,32 @@ void Graph::Draw(GUI* pUI) const
 		shapePointer->Draw(pUI);
 }
 
-shape* Graph::Getshape(int x, int y) const
+shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 {
 	//If a shape is found return a pointer to it.
-	///Add your code here to search for a shape given a point x,y	
+	///Add your code here to search for a shape given a point x,y
+	bool EmptyArea = true;
 	for (auto& selPointer : shapesList) {
 		if (selPointer->isInside(x, y)) {
 			return selPointer;
+			EmptyArea = false;
 		}
-		else {	//if this point (x,y) does not belong to any shape return NULL
+		else {
+			if (SingleSelect) {
+				selPointer->SetSelected(0);
+			}
+			else{}
+		}
+	}
+	if (EmptyArea) {
+		for (auto& selPointer : shapesList) {
 			selPointer->SetSelected(0);
 		}
 	}
-
 	return nullptr;
 }
+
+
 
 void Graph::deselAll(int valId)
 {
