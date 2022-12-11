@@ -35,3 +35,17 @@ void Rect::Save(ofstream &outfile){
 bool Rect::isInside(int x, int y) const {
 	return((x <= max(Corner1.x, Corner2.x)) && (y <= max(Corner1.y, Corner2.y)) && (x >= min(Corner1.x, Corner2.x)) && (y >= min(Corner1.y, Corner2.y)));
 }
+
+ShapePoints Rect::getPoints() {
+	ShapePoints RectP;
+	RectP.P_num = 2;
+	RectP.s_Points.resize(RectP.P_num);
+
+	RectP.s_Points[0].x = this->Corner1.x;
+	RectP.s_Points[0].y = this->Corner1.y;
+
+	RectP.s_Points[1].x = this->Corner2.x;
+	RectP.s_Points[1].y = this->Corner2.y;
+
+	return RectP;
+}

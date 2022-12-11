@@ -34,11 +34,6 @@ void iPoly::Draw(GUI* pUI) const
 
 bool iPoly::isInside(int x, int y) const
 {
-	//int max_X = *max_element(pVectX.begin(), pVectX.end());
-	//int max_Y = *max_element(pVectY.begin(), pVectY.end());
-	//int min_X = *min_element(pVectX.begin(), pVectX.end());
-	//int min_Y = *min_element(pVectY.begin(), pVectY.end());
-	//return (x >= min_X && x <= max_X && y >= min_Y && y <= max_Y);
 	int num = pVectX.size();
 	int i, j, c = 0;
 	for (i = 0, j = num - 1; i < num; j = i++) {
@@ -47,4 +42,17 @@ bool iPoly::isInside(int x, int y) const
 			c = !c;
 	}
 	return c;
+}
+
+ShapePoints iPoly::getPoints() {
+	ShapePoints iPolyP;
+	iPolyP.P_num = this->pVectX.size();
+	iPolyP.s_Points.resize(iPolyP.P_num);
+
+	for (int i = 0; i < iPolyP.P_num; i++) {
+		iPolyP.s_Points[i].x = this->pVectX[i];
+		iPolyP.s_Points[i].y = this->pVectY[i];
+	}
+
+	return iPolyP;
 }

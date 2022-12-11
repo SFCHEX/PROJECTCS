@@ -20,4 +20,6 @@ public:
 	virtual void Save(ofstream& outfile);	//Save all shapes to a file
 	virtual bool isInside(int x, int y) const;
 	//virtual void Load(ifstream& inputfile);	//Load all shapes from a file
+	virtual ShapePoints getPoints();
+
 };

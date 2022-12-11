@@ -60,6 +60,11 @@ class GUI
 		//TODO: Add more icons names here
 		ICON_EXIT,		//Exit icon
 
+
+		/// ANYTHING IN THE BOTTOM HALF OF THE TOOL BAR MUST BE PLACED UNDER THIS LINE//////////////
+		/// THE ORDER IS IMPORTANT!!!!!/////////////////////////////////////////////////////////////
+		ICON_SELECT,
+		ICON_TEMP,
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
@@ -83,8 +88,6 @@ class GUI
 		StatusBarHeight,	//Status Bar Height
 		ToolBarHeight,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
 		MenuIconWidth;		//Width of each icon in toolbar menu
-
-
 	color DrawColor;		//Drawing color
 	color FillColor;		//Filling color
 	color HighlightColor;	//Highlighting color
@@ -96,7 +99,6 @@ class GUI
 	/// Add more members if needed
 
 	Point* PrevPoint = new Point();
-
 
 	window* pWind;
 	window* pColorPaletteWindow;
@@ -132,7 +134,6 @@ public:
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
-
 	color getCrntDrawColor() const;	//get current drwawing color
 	color getCrntFillColor() const;	//get current filling color
 	int getCrntPenWidth() const;		//get current pen width
@@ -154,4 +155,3 @@ public:
 
 	~GUI();
 };
-
