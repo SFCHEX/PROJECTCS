@@ -13,7 +13,41 @@ Graph::~Graph()
 //==================================================================================//
 //						shapes Management Functions								//
 //==================================================================================//
+void Graph::CopyShape()
+{
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			clipboard.push_back(shapesList[i]);
+		}
+	}
 
+    deselAll(-1);
+}
+//void Graph::CutShape()
+//{
+//	for (int i = 0; i < shapesList.size(); i++) {
+//		if (shapesList[i]->IsSelected()) {
+//			clipboard.push_back(shapesList[i]);
+//			shapesList.erase(shapesList.begin() + i);
+//	
+//		}
+//	}
+//    deselAll(-1);
+//}
+// 
+   
+void Graph::clearClipboard()	
+{
+	clipboard.clear();
+}
+void Graph::PasteShape(Point p1)
+{
+	for (int i = 0; i < clipboard.size(); i++) {
+//		clipboard[i].Move(p1);
+		shape* newShape=clipboard[i]->clone();
+		shapesList.push_back(newShape);
+	}
+}
 //Add a shape to the list of shapes
 void Graph::Addshape(shape* pShp)
 {
@@ -26,6 +60,8 @@ void Graph::Addshape(shape* pShp)
 void Graph::DeleteShape(){
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->IsSelected()) {
+			delete shapesList[i];
+			shapesList[i] = nullptr;
 			shapesList.erase(shapesList.begin() + i);
 		}
 	}
@@ -67,7 +103,7 @@ void Graph::StickImage() {
 
 
 //void Graph::ChangeFillColor(color)
-//{
+
 //	int count = 0;
 //
 //	
@@ -95,21 +131,32 @@ void Graph::Draw(GUI* pUI) const
 		shapePointer->Draw(pUI);
 }
 
-shape* Graph::Getshape(int x, int y) const
+shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 {
 	//If a shape is found return a pointer to it.
-	///Add your code here to search for a shape given a point x,y	
+	///Add your code here to search for a shape given a point x,y
+	bool EmptyArea = true;
 	for (auto& selPointer : shapesList) {
 		if (selPointer->isInside(x, y)) {
 			return selPointer;
+			EmptyArea = false;
 		}
-		else {	//if this point (x,y) does not belong to any shape return NULL
+		else {
+			if (SingleSelect) {
+				selPointer->SetSelected(0);
+			}
+			else{}
+		}
+	}
+	if (EmptyArea) {
+		for (auto& selPointer : shapesList) {
 			selPointer->SetSelected(0);
 		}
 	}
-
 	return nullptr;
 }
+
+
 
 void Graph::deselAll(int valId)
 {

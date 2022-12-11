@@ -31,7 +31,15 @@ Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
 		Corner2 = P2;
 	}
 
+
 }
+
+shape* Square::clone(){
+	shape* newShape=new Square(*this);
+
+	newShape->updateID(); return newShape;
+}	
+
 Square::~Square(){}
 
 void Square::Draw(GUI* pUI) const {
@@ -44,4 +52,18 @@ void Square::Save(ofstream &outfile){
 
 bool Square::isInside(int x, int y) const { 
 	return((x <= max(Corner1.x, Corner2.x)) && (y <= max(Corner1.y, Corner2.y)) && (x >= min(Corner1.x, Corner2.x)) && (y >= min(Corner1.y, Corner2.y)));
+}
+
+ShapePoints Square::getPoints() {
+	ShapePoints SquareP;
+	SquareP.P_num = 2;
+	SquareP.s_Points.resize(SquareP.P_num);
+
+	SquareP.s_Points[0].x = this->Corner1.x;
+	SquareP.s_Points[0].y = this->Corner1.y;
+
+	SquareP.s_Points[1].x = this->Corner2.x;
+	SquareP.s_Points[1].y = this->Corner2.y;
+
+	return SquareP;
 }

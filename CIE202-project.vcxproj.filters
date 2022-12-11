@@ -156,6 +156,10 @@
     <ClCompile Include="operations\opColorPalette.cpp" />
     <ClCompile Include="operations\opPenColor.cpp" />
     <ClCompile Include="operations\opPenWidth.cpp" />
+    <ClCompile Include="operations\opCopy.cpp" />
+    <ClCompile Include="operations\opPaste.cpp" />
+    <ClCompile Include="operations\opUndo.cpp" />
+    <ClCompile Include="operations\opRedo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -271,6 +275,12 @@
     <ClInclude Include="operations\opColorPalette.h" />
     <ClInclude Include="operations\opPenColor.h" />
     <ClInclude Include="operations\opPenWidth.h" />
+    <ClInclude Include="operations\opCopy.h" />
+    <ClInclude Include="operations\opPaste.h" />
+    <ClInclude Include="operations\opUndo.h" />
+    <ClInclude Include="operations\opRedo.h" />
+    <ClInclude Include="Shapes\Shapes.h" />
+    <ClInclude Include="operations.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

@@ -10,6 +10,11 @@ double rPoly::Convert(double degree)
 	return (degree * (2*pi / 360));
 }
 
+shape* rPoly::clone(){
+	shape* newShape=new rPoly(*this);
+
+	newShape->updateID(); return newShape;
+}	
 rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
 	P1=pCenter;
@@ -52,11 +57,7 @@ void rPoly::Draw(GUI* pUI) const
 
 bool rPoly::isInside(int x, int y) const
 {
-	//int max_X = *max_element(pVectX.begin(), pVectX.end());
-	//int max_Y = *max_element(pVectY.begin(), pVectY.end());
-	//int min_X = *min_element(pVectX.begin(), pVectX.end());
-	//int min_Y = *min_element(pVectY.begin(), pVectY.end());
-	//return (x >= min_X && x <= max_X && y >= min_Y && y <= max_Y);
+
 	int i, j, c = 0;
 	for (i = 0, j = num - 1; i < num; j = i++) {
 		if (((pVectY[i] > y) != (pVectY[j] > y)) &&
@@ -64,4 +65,17 @@ bool rPoly::isInside(int x, int y) const
 			c = !c;
 	}
 	return c;
+}
+
+ShapePoints rPoly::getPoints() {
+	ShapePoints rPolyP;
+	rPolyP.P_num = this->pVectX.size();
+	rPolyP.s_Points.resize(rPolyP.P_num);
+
+	for (int i = 0; i < rPolyP.P_num; i++) {
+		rPolyP.s_Points[i].x = this->pVectX[i];
+		rPolyP.s_Points[i].y = this->pVectY[i];
+	}
+
+	return rPolyP;
 }

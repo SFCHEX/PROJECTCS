@@ -1,20 +1,5 @@
 #include "controller.h"
-#include "operations\opAddRect.h"
-#include "operations\opAddLine.h"
-#include "operations\opExit.h"
-#include "operations\opAddTri.h"
-#include "operations\opAddCirc.h"
-#include "operations\opAddSquare.h"
-#include "operations\OpAddOval.h"
-#include "operations\opSave.h"
-#include "operations\opLoad.h"
-#include "operations\opSelect.h"
-#include "operations\opAddiPoly.h"
-#include "operations\opAddrPoly.h"
-#include "operations\opDeleteShape.h"
-#include "operations\opPenColor.h"
-#include "operations\opPenWidth.h"
-
+#include "operations.h"
 //Constructor
 controller::controller()
 {
@@ -53,6 +38,15 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_CIRC:
 			pOp = new opAddCirc(this);
 			break;
+		case COPY:
+			pOp = new opCopy(this);
+			break;
+		case PASTE:
+			pOp = new opPaste(this);
+			break;
+	
+
+
 		case DRAW_SQUARE:
 			pOp = new opAddSquare(this);
 				break;
@@ -81,10 +75,13 @@ operation* controller::createOperation(operationType OpType)
 			///create load operation
 			pOp = new opLoad(this);
 			break;	
-
+		
 		case SAVE:
-			
 			pOp = new opSave(this); //create save operation 
+			break;
+
+		case SELECTION_MODE:
+			pOp = new opSelect(this);
 			break;
 
 		case EXIT:

@@ -12,10 +12,11 @@ public:
 	Circ(Point, Point, GfxInfo shapeGfxInfo);
 	virtual ~Circ();
 	virtual void Draw(GUI* pUI) const;
+	virtual shape* clone();	//select/unselect the shape
 	virtual void Save(ofstream &outfile);	//Save the shape parameters to the file
 	virtual bool isInside(int x, int y) const;
 	//virtual void Load(ifstream &infile) = 0;	//Load the shape parameters to the file
-
+	virtual ShapePoints getPoints(); //first element is center, second is radius
 
 };
 

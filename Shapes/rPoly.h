@@ -16,7 +16,10 @@ public:
 	virtual ~rPoly();
 	double Convert(double degree);
 	virtual void Draw(GUI* pUI) const;
+	virtual shape* clone();	//select/unselect the shape
 	virtual void Save(ofstream& outfile);	//Save all shapes to a file
 	virtual bool isInside(int x, int y) const;
 	//virtual void Load(ifstream& inputfile);	//Load all shapes from a file
+	virtual ShapePoints getPoints();
+
 };

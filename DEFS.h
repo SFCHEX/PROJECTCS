@@ -25,15 +25,18 @@ enum operationType //The operations supported (you can add more if needed)
 	BRNG_FRNT,		//Bring a shape to the front of all shapes
 	SAVE,			//Save the whole graph to a file
 	LOAD,			//Load a graph from a file
+	COPY,			//Load a graph from a file
+	PASTE,			//Load a graph from a file
 	EXIT,			//Exit the application
 	STICK_IMAGE,	//Stick an image to a selected shape
+	SELECTION_MODE,
 	DRAWING_AREA,	//A click on the drawing area
 	STATUS,			//A click on the status bar
 	EMPTY,			//A click on empty place in the toolbar
-
 	TO_DRAW,		//Switch interface to Draw mode
-	TO_PLAY			//Switch interface to Play mode
-
+	TO_PLAY,		//Switch interface to Play mode
+	DO_NOTHING
+	
 	///TODO: Add more operation types (if needed)
 };
 

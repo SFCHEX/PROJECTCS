@@ -7,8 +7,19 @@ Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 	ShpGfxInfo.ShapeType="Line";
 	End1 = p1;
 	End2 = p2;
+
+
 }
 
+
+
+shape* Line::clone(){
+	shape* newShape=new Line(*this);
+
+	newShape->updateID(); return newShape;
+
+
+}
 Line::~Line() {}
 
 void Line::Draw(GUI* pUI) const
@@ -43,4 +54,18 @@ bool Line::isInside(int x, int y) const{
 	else {
 		return false;
 	}
+}
+
+ShapePoints Line::getPoints() {
+	ShapePoints LineP;
+	LineP.P_num = 2;
+	LineP.s_Points.resize(LineP.P_num);
+
+	LineP.s_Points[0].x = this->End1.x;
+	LineP.s_Points[0].y = this->End1.y;
+
+	LineP.s_Points[1].x = this->End2.x;
+	LineP.s_Points[1].y = this->End2.y;
+
+	return LineP;
 }
