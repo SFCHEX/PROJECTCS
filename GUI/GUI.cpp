@@ -118,7 +118,7 @@ operationType GUI::GetUseroperation() const
 				ClickedIconOrder = ClickedIconOrder;
 			}
 			else {
-				ClickedIconOrder = ClickedIconOrder + 17;
+				ClickedIconOrder = ClickedIconOrder + 17;//17 is the number of icons on the first toolbar
 			}
 			//Divide x coord of the point clicked by the menu icon width (int division)
 			//if division result is 0 ==> first icon is clicked, if 1 ==> 2nd icon and so on
@@ -142,7 +142,6 @@ operationType GUI::GetUseroperation() const
 			//case ICON_FILL_COLOR: return CHNG_FILL_CLR;
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
 			case ICON_EXIT: return EXIT;
-			case ICON_DELETE: return DELETE_SHAPE;
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
 			case ICON_SELECT: return SELECTION_MODE;
 			case ICON_TEMP: return DO_NOTHING;
