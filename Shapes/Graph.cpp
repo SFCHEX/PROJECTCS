@@ -44,14 +44,27 @@ void Graph::Addshape(shape* pShp)
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw all shapes on the user interface
 
-void Graph::DeleteShape(){
+int Graph::nSelected() { //returns num of selected elements
+	int num = 0;
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->IsSelected()) {
-			delete shapesList[i];
-			shapesList[i] = nullptr;
-			shapesList.erase(shapesList.begin() + i);
+			num++;
 		}
 	}
+	return num;
+}
+
+void Graph::DeleteShape(int n){
+	do {
+		for (int i = 0; i < shapesList.size(); i++) {
+			if (shapesList[i]->IsSelected()) {
+				delete shapesList[i];
+				shapesList[i] = nullptr;
+				shapesList.erase(shapesList.begin() + i);
+			}
+		}
+		n--;
+	} while (n > 0) ;
 }
 
 //void Graph::ChangeFillColor(color)
