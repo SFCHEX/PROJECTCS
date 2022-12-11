@@ -3,9 +3,8 @@
 int shape::count =0;
 shape::shape(GfxInfo shapeGfxInfo)
 { 
-	count++;
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
-	ShpGfxInfo.ID=count;
+	updateID();
 	//id is added into ShpGfx info for more convenient use
 }
  
@@ -13,7 +12,7 @@ void shape::SetSelected(bool s)
 {	ShpGfxInfo.isSelected = s; }
 
 void shape::updateID(){
-	ShpGfxInfo.ID=count+1;
+	ShpGfxInfo.ID=count;
 	count++;
 }
 
