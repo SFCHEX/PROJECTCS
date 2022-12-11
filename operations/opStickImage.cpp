@@ -13,6 +13,6 @@ opStickImage::opStickImage(controller * pCont):operation(pCont){}
 opStickImage::~opStickImage(){}
 
 void opStickImage::Execute(){
-  Graph* pGr = pControl->getpUI();
+  Graph* pGr = pControl->getGraph();
   pGr->StickImage();
 }
