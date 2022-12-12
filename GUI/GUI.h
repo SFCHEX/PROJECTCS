@@ -95,6 +95,7 @@ class GUI
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
 	int PenWidth;			//width of the pen that draws shapes
+	bool GeneralIsFilled;
 
 	/// Add more members if needed
 
@@ -102,6 +103,8 @@ class GUI
 
 	window* pWind;
 	window* pColorPaletteWindow;
+	static clicktype c;
+
 
 public:
 
@@ -134,24 +137,30 @@ public:
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
+
 	color getCrntDrawColor() const;	//get current drwawing color
+	void setCrntDrawColor(color c); 	//set a new drwaing color
+
 	color getCrntFillColor() const;	//get current filling color
+	void setCrntFillColor(color c);     // set a new filling color
+
 	int getCrntPenWidth() const;		//get current pen width
 	void setCrntPenWidth(int newWidth); 		//set a new pen width
 
 
 	void SwitchToPlayMode(window w);
 	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
-	//
-	//void GetColorFromColorPalette();
-	////void CloseColorPaletteWindow();
-	//color GetNewColor();
+	
+
+	// Changes the color to a new one, obtained by clicking on a color from the color palette
+	void GetColorFromColorPalette(color&); 
 
 
 
+	bool getFillStatus();
+	void setFillStatus();
 
-	void setCrntDrawColor(color c); 	//set a new drwaing color
-	void setCrntFillColor(color c);	//get current drwawing color
+	
 
 	~GUI();
 };

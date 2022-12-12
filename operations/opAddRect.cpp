@@ -38,7 +38,7 @@ void opAddRect::Execute()
 	RectGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	RectGfxInfo.isFilled = false;	//default is not filled
+	RectGfxInfo.isFilled = pUI->getFillStatus();	//default is not filled
 	RectGfxInfo.isSelected = false;	//defualt is not selected
 
 
