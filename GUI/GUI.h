@@ -147,9 +147,9 @@ public:
 	////void CloseColorPaletteWindow();
 	//color GetNewColor();
 
-
-
-
+	const button LeftButton = LEFT_BUTTON;
+	
+	const buttonstate getClickState(int& x, int& y);
 	void setCrntDrawColor(color c); 	//set a new drwaing color
 	void setCrntFillColor(color c);	//get current drwawing color
 

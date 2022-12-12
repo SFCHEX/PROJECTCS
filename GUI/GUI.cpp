@@ -101,9 +101,13 @@ string GUI::GetString() const
 operationType GUI::GetUseroperation() const
 {
 	int x, y;
-	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	//pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	pWind->WaitMouseClick(x, y);
 	PrevPoint->x = x;
 	PrevPoint->y = y;
+
+
+
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the first Toolbar
@@ -207,7 +211,7 @@ void GUI::ClearStatusBar() const
 void GUI::CreateDrawToolBar()
 {
 	InterfaceMode = MODE_DRAW;
-
+	
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
 
@@ -522,9 +526,14 @@ void GUI::DrawrPoly(vector<int> vx, vector<int> vy, GfxInfo rPolyGfxInfo) const 
 	pWind->DrawPolygon(ax, ay, asize, style);
 }
 
+buttonstate const GUI::getClickState(int& x, int& y)  {
+	return pWind->GetButtonState(LeftButton, x, y);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
 {
 	delete pWind;
 	delete PrevPoint;
 }
+

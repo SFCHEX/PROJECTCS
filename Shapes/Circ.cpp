@@ -50,3 +50,11 @@ ShapePoints Circ::getPoints() {
 
 	return CircP;
 }
+
+void Circ::MoveShape(Point MoveBy) {
+	this->Center.x = this->Center.x + MoveBy.x;
+	this->Center.y = this->Center.y + MoveBy.y;
+
+	this->PointR.x = this->PointR.x + MoveBy.x;
+	this->PointR.y = this->PointR.y + MoveBy.y;
+}

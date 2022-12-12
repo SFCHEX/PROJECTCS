@@ -18,6 +18,6 @@ public:
 	double Area(int, int, int, int, int, int) const; // to calculate the area for triangles (subfunction of the isInside function)
 //	virtual void Load(ifstream& inputfile);	//Load all shapes from a file
 	virtual ShapePoints getPoints(); //first elem is p1 sec is p2 third is p3
-
+	virtual void MoveShape(Point pMove) override;
 };
 

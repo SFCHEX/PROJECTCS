@@ -31,6 +31,7 @@ public:
 	void DeleteShape(int);
 	void CopyShape();
 	void clearClipboard();
-	void PasteShape(Point p1);
-	void ChangeFillColor(); //Changes the fill color   
+	void PasteShape(Point &p1);
+	void ChangeFillColor(); //Changes the fill color
+	shape* getSelShape();
 };

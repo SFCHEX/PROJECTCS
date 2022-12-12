@@ -79,3 +79,10 @@ ShapePoints rPoly::getPoints() {
 
 	return rPolyP;
 }
+
+void rPoly::MoveShape(Point MoveBy) {
+	for (int i = 0; i < this->pVectX.size(); i++) {
+		this->pVectX[i] = this->pVectX[i] + MoveBy.x;
+		this->pVectY[i] = this->pVectY[i] + MoveBy.y;
+	}
+}

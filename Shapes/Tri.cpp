@@ -67,3 +67,14 @@ ShapePoints Tri::getPoints() {
 
 	return TriP;
 }
+
+void Tri::MoveShape(Point MoveBy) {
+	this->Corner1.x = this->Corner1.x + MoveBy.x;
+	this->Corner1.y = this->Corner1.y + MoveBy.y;
+
+	this->Corner2.x = this->Corner2.x + MoveBy.x;
+	this->Corner2.y = this->Corner2.y + MoveBy.y;
+
+	this->Corner3.x = this->Corner3.x + MoveBy.x;
+	this->Corner3.y = this->Corner3.y + MoveBy.y;
+}
