@@ -74,7 +74,6 @@ string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg"};
 
 void Graph::StickImageGR(GUI* pUI){
 	for(int i=0; i < shapesList.size(); i++){
-
 		string imagefile = ImagesToStick[i];
 		shapesList[i]->StickImageSh(pUI, imagefile);
 		

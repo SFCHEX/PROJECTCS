@@ -12,6 +12,7 @@ using namespace std;
 
 struct Point	//To be used for shapes points
 {
+
 	int x, y;
 };
 

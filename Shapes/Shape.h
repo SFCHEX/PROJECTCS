@@ -35,9 +35,9 @@ public:
 	virtual ShapePoints getPoints() = 0; //Gets the x and y verticies for any shape
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape
-	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
 	///Decide the parameters that you should pass to each function	
 
+	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
 
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
