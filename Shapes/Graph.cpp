@@ -69,7 +69,7 @@ void Graph::DeleteShape(){
 	}
 }
 
-string ImagesToStick[] ={"images\\ImagesToStick\\Menu_Rect.jpg"};
+string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg"};
 
 
 void Graph::StickImageGR(GUI* pUI){
