@@ -29,6 +29,7 @@ int shape::getID() const
 	return ShpGfxInfo.ID;
 }
 
+void shape::StickImageSh(GUI* pUI, string imagfile){}
 
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }

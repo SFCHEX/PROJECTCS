@@ -71,6 +71,9 @@ operation* controller::createOperation(operationType OpType)
 		case DELETE_SHAPE:
 			pOp = new opDeleteShape(this);
 			break;
+		case STICK_IMAGE:
+			pOp = new opStickImage(this);
+			break;
 		case LOAD:
 			///create load operation
 			pOp = new opLoad(this);

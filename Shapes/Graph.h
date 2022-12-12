@@ -30,7 +30,7 @@ public:
 	void Load(ifstream& inputfile,GUI* pUI);	//Load all shapes from a file
 	void DeleteShape();
 //	void ChangeFillColor(); //Changes the fill color  
-	void StickImage(); //StickImage to the selected shape
+	void StickImageGR(GUI* pUI); //StickImage to the selected shape
 	void CopyShape();
 	void clearClipboard();
 	void PasteShape(Point p1);

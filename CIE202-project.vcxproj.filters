@@ -160,6 +160,7 @@
     <ClCompile Include="operations\opPaste.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
     <ClCompile Include="operations\opRedo.cpp" />
+    <ClCompile Include="operations\opStickImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -281,6 +282,7 @@
     <ClInclude Include="operations\opRedo.h" />
     <ClInclude Include="Shapes\Shapes.h" />
     <ClInclude Include="operations.h" />
+    <ClInclude Include="operations\opStickImage.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">

@@ -148,8 +148,7 @@ public:
 	////void CloseColorPaletteWindow();
 	//color GetNewColor();
 
-
-
+	void StickImageGUI(string imagefile, double x, double y, double width, double length);
 
 	void setCrntDrawColor(color c); 	//set a new drwaing color
 	void setCrntFillColor(color c);	//get current drwawing color

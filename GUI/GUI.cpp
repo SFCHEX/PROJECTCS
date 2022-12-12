@@ -346,6 +346,10 @@ void GUI::setCrntPenWidth(int newWidth) 		//set a new pen width
 //	/*delete pColorPaletteWindow;
 //	pColorPaletteWindow = nullptr;*/
 //}
+
+void GUI::StickImageGUI(string imagefile, double x, double y, double width, double length){
+	pWind->DrawImage(imagefile,x,y,width,length);
+}
 //======================================================================================//
 //								shapes Drawing Functions								//
 //======================================================================================//
@@ -524,6 +528,8 @@ void GUI::DrawrPoly(vector<int> vx, vector<int> vy, GfxInfo rPolyGfxInfo) const 
 	int asize = size(vx);
 	pWind->DrawPolygon(ax, ay, asize, style);
 }
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()

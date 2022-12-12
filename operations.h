@@ -13,6 +13,7 @@
 #include "operations\opAddiPoly.h"
 #include "operations\opAddrPoly.h"
 #include "operations\opDeleteShape.h"
+#include "operations\opStickImage.h"
 #include "operations\opPenColor.h"
 #include "operations\opPenWidth.h"
 
