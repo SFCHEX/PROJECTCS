@@ -83,7 +83,14 @@ operation* controller::createOperation(operationType OpType)
 		case SELECTION_MODE:
 			pOp = new opSelect(this);
 			break;
-
+		case UNDO:
+			pOp = new opUndo(this);
+			break;
+	
+		case REDO:
+			pOp = new opRedo(this);
+			break;
+	
 		case EXIT:
 			///create Exitoperation here
 			pOp = new opExit(this); 

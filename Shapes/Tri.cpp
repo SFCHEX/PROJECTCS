@@ -3,7 +3,6 @@
 Tri::Tri(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
 
-	ShpGfxInfo.ShapeType="Triangle";
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;
@@ -26,7 +25,10 @@ double Tri::Area(int x1, int y1, int x2, int y2, int x3, int y3) const {
 }
 
 void Tri::Save(ofstream &outfile){
+
+	outfile<<"Triangle"<<","<<ShpGfxInfo.ID<<",";
 	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<","<<Corner3.x<<","<<Corner3.y<<",";
+	shape::Save(outfile);
 
 }	//Save the shape parameters to the file
 

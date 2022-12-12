@@ -4,7 +4,6 @@ Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 {
 
 
-	ShpGfxInfo.ShapeType="Rectangle";
 	Corner1 = P1;
 	Corner2 = P2;
 
@@ -29,7 +28,10 @@ void Rect::Draw(GUI* pUI) const
 }
 
 void Rect::Save(ofstream &outfile){
+
+	outfile<<"Rect"<<","<<ShpGfxInfo.ID<<",";
 	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<",";
+	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
 bool Rect::isInside(int x, int y) const {

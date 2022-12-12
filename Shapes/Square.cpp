@@ -3,7 +3,6 @@
 
 Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
 
-	ShpGfxInfo.ShapeType="Square";
 	//the if statements determine which corner we started at however shape is always
 	//drawn bottom to top and left to right
 	if ((abs(P2.x - P1.x) > abs(P2.y - P1.y)) && ((P2.x - P1.x)) > 0) {
@@ -47,7 +46,10 @@ void Square::Draw(GUI* pUI) const {
 }
 
 void Square::Save(ofstream &outfile){
+
+	outfile<<"Square"<<","<<ShpGfxInfo.ID<<",";
 	outfile << Corner1.x << "," << Corner1.y << "," << Corner2.x << "," << Corner2.y << ",";
+	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
 bool Square::isInside(int x, int y) const { 

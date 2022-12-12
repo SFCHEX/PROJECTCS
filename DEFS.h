@@ -27,6 +27,8 @@ enum operationType //The operations supported (you can add more if needed)
 	LOAD,			//Load a graph from a file
 	COPY,			//Load a graph from a file
 	PASTE,			//Load a graph from a file
+	UNDO,			//Save the whole graph to a file
+	REDO,			//Save the whole graph to a file
 	EXIT,			//Exit the application
 	SELECTION_MODE,
 	DRAWING_AREA,	//A click on the drawing area

@@ -85,10 +85,7 @@ void Graph::DeleteShape(){
 //	
 //
 //}
-void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves Rgb values to to a file
-{
-	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";
-}
+
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
@@ -138,26 +135,16 @@ void Graph::deselAll(int valId)
 void Graph::Save(ofstream& outfile, GUI* pUI) {
 	//here we add the draw color fill color and pen width from the pointer to the gUI
 	//saves draw and fill color as rgb values
-	Graph::SaveColorRGB(outfile,pUI->getCrntFillColor());
-	Graph::SaveColorRGB(outfile,pUI->getCrntDrawColor());
+	color CFC=pUI->getCrntFillColor();
+	color CDC=pUI->getCrntDrawColor();
+	outfile<<(int)CFC.ucRed<<","<<(int)CFC.ucGreen<<","<<(int)CFC.ucBlue<<",";
+	outfile<<(int)CDC.ucRed<<","<<(int)CDC.ucGreen<<","<<(int)CDC.ucBlue<<",";
 	outfile<<pUI->getCrntPenWidth()<<endl;
 	//number of shapes is length of vector
 	outfile<<Graph::shapesList.size()<<endl;
+
 	for (auto& it : Graph::shapesList) {
-		GfxInfo it_info = it->getGfxInfo();
-		outfile<<it_info.ShapeType<<","<<it_info.ID<<",";
 		it->Save(outfile); //this virtual method adds special information that is exclusive to each individual shape to the file
-		Graph::SaveColorRGB(outfile,it_info.DrawClr);
-		//if condition for if there is no fill color
-		if (it_info.isFilled)
-		{
-			Graph::SaveColorRGB(outfile,it_info.FillClr);
-		}
-		else
-		{
-			outfile<<"NO_FILL"<<",";
-		}		
-		outfile<<it_info.BorderWdth<<endl;
 	}
 	outfile.close();
 }
@@ -243,6 +230,7 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 			{
 				Square *S=new Square(P1, P2, shpGfxInfo);
 				Addshape(S);
+			
 			}
 	}
 

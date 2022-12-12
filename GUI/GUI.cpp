@@ -144,6 +144,8 @@ operationType GUI::GetUseroperation() const
 			case ICON_EXIT: return EXIT;
 			case ICON_SELECT: return SELECTION_MODE;
 			case ICON_TEMP: return DO_NOTHING;
+			case ICON_UNDO: return UNDO;
+			case ICON_REDO: return REDO;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -231,6 +233,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_PEN_WIDTH] = "images\\MenuIcons\\Menu_Pen_Width.jpg";
 	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\Menu_Copy.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\Menu_Paste.jpg";
+	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\Menu_Undo.jpg";
+	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\Menu_Redo.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 	MenuIconImages[ICON_SELECT] = "images\\MenuIcons\\Menu_Select.jpg";
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";

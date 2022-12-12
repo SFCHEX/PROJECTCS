@@ -4,7 +4,6 @@
 using namespace std;
 iPoly::iPoly(vector<int> pVectiX, vector<int> pVectiY, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
-	ShpGfxInfo.ShapeType = "Irregular Polygon";
 	pVectX = pVectiX;
 	pVectY = pVectiY;
 }
@@ -22,8 +21,12 @@ iPoly::~iPoly() {}
 
 void iPoly::Save(ofstream& outfile)
 {
+
+
+	outfile<<"iPoly"<<","<<ShpGfxInfo.ID<<",";
 	for (int i=0; i<pVectX.size();i++)
 	outfile<<pVectX[i]<<","<<pVectY[i]<<",";
+	shape::Save(outfile);
 }
 
 void iPoly::Draw(GUI* pUI) const

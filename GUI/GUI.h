@@ -19,7 +19,6 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 {
 	color DrawClr;	//Draw color of the shape
 	color FillClr;	//Fill color of the shape
-	string ShapeType; //shape type is shape in string will be initialized in constructor for every shape
 	int ID; // ID is unique for every shape
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
@@ -57,13 +56,15 @@ class GUI
 		ICON_PEN_WIDTH,  //Pen width icon in menu
 		ICON_COPY,  //COPY icon in menu
 		ICON_PASTE,  //PASTE width icon in menu
+		ICON_SELECT,
+		ICON_UNDO,  //PASTE width icon in menu
+		ICON_REDO,  //PASTE width icon in menu
 		//TODO: Add more icons names here
 		ICON_EXIT,		//Exit icon
 
 
 		/// ANYTHING IN THE BOTTOM HALF OF THE TOOL BAR MUST BE PLACED UNDER THIS LINE//////////////
 		/// THE ORDER IS IMPORTANT!!!!!/////////////////////////////////////////////////////////////
-		ICON_SELECT,
 		ICON_TEMP,
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
