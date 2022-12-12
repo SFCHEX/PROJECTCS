@@ -19,6 +19,7 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 {
 	P1=pCenter;
 	P2=pRadius;
+	ShpGfxInfo.ShapeType = "Regular Polygon";
 	double ang = 360 / nSides;
 	double px;
 	double py;

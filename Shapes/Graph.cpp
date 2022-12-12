@@ -43,7 +43,6 @@ void Graph::clearClipboard()
 void Graph::PasteShape(Point p1)
 {
 	for (int i = 0; i < clipboard.size(); i++) {
-//		clipboard[i].Move(p1);
 		shape* newShape=clipboard[i]->clone();
 		shapesList.push_back(newShape);
 	}
@@ -140,7 +139,7 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 	outfile<<(int)CFC.ucRed<<","<<(int)CFC.ucGreen<<","<<(int)CFC.ucBlue<<",";
 	outfile<<(int)CDC.ucRed<<","<<(int)CDC.ucGreen<<","<<(int)CDC.ucBlue<<",";
 	outfile<<pUI->getCrntPenWidth()<<endl;
-	//number of shapes is length of vector
+
 	outfile<<Graph::shapesList.size()<<endl;
 
 	for (auto& it : Graph::shapesList) {
