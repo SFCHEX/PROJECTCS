@@ -1,6 +1,8 @@
 #include "Graph.h"
 #include "../GUI/GUI.h"
 #include <iostream>
+
+
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -67,39 +69,6 @@ void Graph::DeleteShape(){
 	}
 }
 
-void Graph::StickImage() {
-	for (int i = 0; i < shapesList.size(); i++) {
-		if (shapesList[i]->IsSelected()) {
-			if (shapesList[i]->getGfxInfo().ShapeType == "Rectangle"){
-				
-			}
-			}
-			else if (shapesList[i]->getGfxInfo().ShapeType == "Circle"){
-
-			}
-			else if (shapesList[i]->getGfxInfo().ShapeType == "Oval"){
-
-			}
-			else if (shapesList[i]->getGfxInfo().ShapeType == "Line"){
-
-			}
-			else if (shapesList[i]->getGfxInfo().ShapeType == "Triangle"){
-
-			}
-			else if (shapesList[i]->getGfxInfo().ShapeType == "Irregular Polygon"){
-
-			}
-			else if (shapesList[i]->getGfxInfo().ShapeType == "Regular Polygon"){
-
-			}
-			else if (shapesList[i]->getGfxInfo().ShapeType == "Square"){
-
-			}
-			else if (shapesList[i]->getGfxInfo().ShapeType == "Square"){
-
-			}
-		}
-	}
 
 
 //void Graph::ChangeFillColor(color)
