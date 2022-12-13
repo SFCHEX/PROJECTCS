@@ -41,7 +41,7 @@ void Rect::StickImageSh(GUI* pUI, string imagefile){
 	double y = min(Corner1.y, Corner2.y); //the y coordinate of the image 
 	double wid = abs(Corner2.x - Corner1.x); //the width of the image
 	double len = abs(Corner2.y - Corner1.y); //the length of the image
-	pUI->StickImageGUI(imagefile, x,y, wid, len);
+	pUI->StickImageGUI(imagefile, x, y, wid, len);
 	
 }
 ShapePoints Rect::getPoints() {
