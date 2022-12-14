@@ -140,8 +140,6 @@ public:
 	void setCrntPenWidth(int newWidth); 		//set a new pen width
 
 
-	void SwitchToPlayMode(window w);
-	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
 	//
 	//void GetColorFromColorPalette();
 	////void CloseColorPaletteWindow();
