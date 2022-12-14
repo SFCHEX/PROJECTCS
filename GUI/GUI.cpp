@@ -33,36 +33,6 @@ GUI::GUI()
 }
 
 
- /*void GUI::SwitchToPlayMode(window w){
-    w.SetPen(WHITE,1);
-    w.SetBrush(WHITE);
-    w.DrawRectangle(0,0,w.GetWidth,w.GetHeight,w.GetWidth,w.GetHeight);
-
-    const int count = 5;
-    const int menuHeight = 80,  menuItemWidth = 50;
-
-    string MenuIconsPaths[count];
-    MenuIconsPaths[0] = "";
-    MenuIconsPaths[1] = "";
-    MenuIconsPaths[2] = "";
-    MenuIconsPaths[3] = "";
-    MenuIconsPaths[4] = "";
-
-    CreatePlayModeToolBar(w, MenuIconsPaths, count, menuItemWidth, menuHeight)
-}
-
-void GUI::CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight){
-    // Draw menu item one image at a time
-  for(int i=0; i<ItemCount; i++){
-    testWindow.DrawImage(MenuItems[i], i*MenuItemWidth, 0, MenuItemWidth, MenuItemHeight);
-    }
-
-  // Draw a line under the play toolbar
-  testWindow.SetPen(BLACK, 3);
-  testWindow.DrawLine(0, MenuItemHeight, testWindow.GetWidth(), MenuItemHeight);
-}
-// not finished
-*/
 
 
 //======================================================================================//
