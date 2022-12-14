@@ -69,14 +69,21 @@ void Graph::DeleteShape(){
 	}
 }
 
-string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg"};
+string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg",
+						"images\\ImagesToStick\\green_1.jpg",
+						"images\\ImagesToStick\\green_1.jpg",
+						"images\\ImagesToStick\\green_1.jpg",
+						"images\\ImagesToStick\\green_1.jpg",
+						"images\\ImagesToStick\\green_1.jpg"
+};
 
 
 void Graph::StickImageGR(GUI* pUI){
 	for(int i=0; i < shapesList.size(); i++){
-		string imagefile = ImagesToStick[i];
-		shapesList[i]->StickImageSh(pUI, imagefile);
-		
+		if(!(shapesList[i]->hasImage())){
+			string imagefile = ImagesToStick[i];
+			shapesList[i]->StickImageSh(pUI, imagefile);
+		}
 	}
 }
 //void Graph::ChangeFillColor(color)

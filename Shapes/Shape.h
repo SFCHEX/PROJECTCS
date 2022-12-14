@@ -18,7 +18,8 @@ protected:
 	static int count; //to create unique ID's for each object which will be stored in gfxinfo
 	/// Add more parameters if needed.
 
-
+private:
+	bool image = false;
 public:
     shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
@@ -36,9 +37,9 @@ public:
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape
 	///Decide the parameters that you should pass to each function	
-
+	virtual void setHasImage();
 	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
-
+	virtual void shape::setHasImage();
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape

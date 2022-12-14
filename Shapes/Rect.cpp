@@ -36,6 +36,7 @@ bool Rect::isInside(int x, int y) const {
 	return((x <= max(Corner1.x, Corner2.x)) && (y <= max(Corner1.y, Corner2.y)) && (x >= min(Corner1.x, Corner2.x)) && (y >= min(Corner1.y, Corner2.y)));
 }
 
+
 void Rect::StickImageSh(GUI* pUI, string imagefile){
 	double x = min(Corner1.x, Corner2.x); //the x coordinate of the image
 	double y = min(Corner1.y, Corner2.y); //the y coordinate of the image 
