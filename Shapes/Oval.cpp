@@ -38,6 +38,16 @@ bool Oval::isInside(int x, int y) const {
 	return (((pow((x - centX), 2)) / (pow(radX, 2))) + ((pow((y - centY), 2)) / (pow(radY, 2)))) <= 1;
 }
 
+void Oval::StickImageSh(GUI* pUI, string imagefile) {
+	if (hasImage()){
+		double x = min(Corner1.x, Corner2.x); //the x coordinate of the image
+		double y = Corner1.y; //the y coordinate of the image //NEEDS UPDATE
+		double wid = abs(Corner2.x - Corner1.x); //the width of the image
+		double len = abs(Corner2.y - Corner1.y)/2; //the length of the image
+		pUI->StickImageGUI(imagefile, x, y, wid, len);
+		setHasImage();
+	}
+}
 ShapePoints Oval::getPoints() {
 	ShapePoints OvalP;
 	OvalP.P_num = 2;

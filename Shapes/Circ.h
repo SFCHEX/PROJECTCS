@@ -17,7 +17,7 @@ public:
 	virtual bool isInside(int x, int y) const;
 	//virtual void Load(ifstream &infile) = 0;	//Load the shape parameters to the file
 	virtual ShapePoints getPoints(); //first element is center, second is radius
-
+	virtual void StickImageSh(GUI* pUI, string imagefile);
 };
 
 

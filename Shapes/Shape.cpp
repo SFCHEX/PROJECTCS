@@ -3,6 +3,7 @@
 int shape::count =0;
 shape::shape(GfxInfo shapeGfxInfo)
 { 
+	imageOn = false;
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
 	updateID();
 	//id is added into ShpGfx info for more convenient use
@@ -29,17 +30,17 @@ int shape::getID() const
 	return ShpGfxInfo.ID;
 }
 
-bool shape::hasImage(){
-	return image;
-}
 
-void shape::setHasImage(){
-	image = true;
-}
 void shape::StickImageSh(GUI* pUI, string imagfile){
-	
 }
 
+bool shape::hasImage() {
+	return imageOn;
+}
+
+void shape::setHasImage() {
+	imageOn = true;
+}
 void shape::ChngDrawClr(color Dclr)
 {	ShpGfxInfo.DrawClr = Dclr; }
 

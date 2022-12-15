@@ -70,22 +70,37 @@ void Graph::DeleteShape(){
 }
 
 string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg",
-						"images\\ImagesToStick\\green_1.jpg",
-						"images\\ImagesToStick\\green_1.jpg",
-						"images\\ImagesToStick\\green_1.jpg",
-						"images\\ImagesToStick\\green_1.jpg",
-						"images\\ImagesToStick\\green_1.jpg"
+						"images\\ImagesToStick\\green_2.jpg",
+						"images\\ImagesToStick\\green_3.jpg",
+						"images\\ImagesToStick\\green_4.jpg",
+						"images\\ImagesToStick\\green_5.jpg",
+						"images\\ImagesToStick\\green_6.jpg",
+						"images\\ImagesToStick\\green_7.jpg",
+						"images\\ImagesToStick\\blue_1.jpg",
+						"images\\ImagesToStick\\blue_2.jpg",
+						"images\\ImagesToStick\\blue_3.jpg",
+						"images\\ImagesToStick\\blue_4.jpg",
+						"images\\ImagesToStick\\blue_5.jpg",
+						"images\\ImagesToStick\\blue_6.jpg",
+						"images\\ImagesToStick\\blue_7.jpg",
+						"images\\ImagesToStick\\yellow_1.jpg",
+						"images\\ImagesToStick\\yellow_2.jpg",
+						"images\\ImagesToStick\\yellow_3.jpg",
+						"images\\ImagesToStick\\yellow_4.jpg",
+						"images\\ImagesToStick\\yellow_5.jpg",
+						"images\\ImagesToStick\\yellow_6.jpg",
+						"images\\ImagesToStick\\yellow_7.jpg",
+						"images\\ImagesToStick\\red_1.jpg",
+						"images\\ImagesToStick\\red_2.jpg",
+						"images\\ImagesToStick\\red_3.jpg",
+						"images\\ImagesToStick\\red_4.jpg",
+						"images\\ImagesToStick\\red_5.jpg",
+						"images\\ImagesToStick\\red_6.jpg",
+						"images\\ImagesToStick\\red_7.jpg"
 };
 
 
-void Graph::StickImageGR(GUI* pUI){
-	for(int i=0; i < shapesList.size(); i++){
-		if(!(shapesList[i]->hasImage())){
-			string imagefile = ImagesToStick[i];
-			shapesList[i]->StickImageSh(pUI, imagefile);
-		}
-	}
-}
+
 //void Graph::ChangeFillColor(color)
 
 //	int count = 0;
@@ -108,11 +123,30 @@ void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves Rgb values to to a
 {
 	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";
 }
+
+void Graph::StickImageGR(GUI* pUI) const {
+	for (int i = 0; i < shapesList.size(); i++) {
+		string imagefile = ImagesToStick[i];
+		if (shapesList[i]->hasImage()) {
+			shapesList[i]->StickImageSh(pUI, imagefile);
+			shapesList[i]->setHasImage();
+		}
+	}
+}
+
+void Graph::SetImagesToShapes() {
+	for (int i = 0; i < shapesList.size(); i++) {
+		shapesList[i]->setHasImage();
+	}
+}
+
+//
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
-	for (auto shapePointer : shapesList)
-		shapePointer->Draw(pUI);
+	for (int i = 0; i < shapesList.size(); i++)
+		shapesList[i]->Draw(pUI);
+	StickImageGR(pUI);
 }
 
 shape* Graph::Getshape(int x, int y, bool SingleSelect) const

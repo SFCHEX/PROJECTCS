@@ -40,6 +40,7 @@ shape* Square::clone(){
 	newShape->updateID(); return newShape;
 }	
 
+
 Square::~Square(){}
 
 void Square::Draw(GUI* pUI) const {
@@ -54,6 +55,16 @@ bool Square::isInside(int x, int y) const {
 	return((x <= max(Corner1.x, Corner2.x)) && (y <= max(Corner1.y, Corner2.y)) && (x >= min(Corner1.x, Corner2.x)) && (y >= min(Corner1.y, Corner2.y)));
 }
 
+void Square::StickImageSh(GUI* pUI, string imagefile) {
+	if (hasImage()) {
+		double x = min(Corner1.x, Corner2.x); //the x coordinate of the image
+		double y = min(Corner1.y, Corner2.y); //the y coordinate of the image 
+		double wid = abs(Corner2.x - Corner1.x); //the width of the image
+		double len = abs(Corner2.y - Corner1.y); //the length of the image
+		pUI->StickImageGUI(imagefile, x, y, wid, len);
+		setHasImage();
+	}
+}
 ShapePoints Square::getPoints() {
 	ShapePoints SquareP;
 	SquareP.P_num = 2;

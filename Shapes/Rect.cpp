@@ -38,12 +38,14 @@ bool Rect::isInside(int x, int y) const {
 
 
 void Rect::StickImageSh(GUI* pUI, string imagefile){
-	double x = min(Corner1.x, Corner2.x); //the x coordinate of the image
-	double y = min(Corner1.y, Corner2.y); //the y coordinate of the image 
-	double wid = abs(Corner2.x - Corner1.x); //the width of the image
-	double len = abs(Corner2.y - Corner1.y); //the length of the image
-	pUI->StickImageGUI(imagefile, x, y, wid, len);
-	
+	if (hasImage()) {
+		double x = min(Corner1.x, Corner2.x); //the x coordinate of the image
+		double y = min(Corner1.y, Corner2.y); //the y coordinate of the image 
+		double wid = abs(Corner2.x - Corner1.x); //the width of the image
+		double len = abs(Corner2.y - Corner1.y); //the length of the image
+		pUI->StickImageGUI(imagefile, x, y, wid, len);
+		setHasImage();
+	}
 }
 ShapePoints Rect::getPoints() {
 	ShapePoints RectP;

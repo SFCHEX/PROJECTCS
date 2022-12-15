@@ -17,8 +17,9 @@ private:
 	vector <shape*> clipboard;
 	void SaveColorRGB(ofstream& outfile,color RGB);	//Saves Rgb values to to a file
 	vector<string> Parameterize(string p);	//makes a line parameters
-
-public:										
+	bool drawnImages = false;//
+public:		
+	
 	Graph();
 	~Graph();
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
@@ -30,9 +31,10 @@ public:
 	void Load(ifstream& inputfile,GUI* pUI);	//Load all shapes from a file
 	void DeleteShape();
 //	void ChangeFillColor(); //Changes the fill color  
-	void StickImageGR(GUI* pUI); //StickImage to the selected shape
+	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
 	void CopyShape();
 	void clearClipboard();
 	void PasteShape(Point p1);
-	void ChangeFillColor(); //Changes the fill color   
+	void ChangeFillColor(); //Changes the fill color 
+	void SetImagesToShapes();//
 };
