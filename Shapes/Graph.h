@@ -34,5 +34,5 @@ public:
 	void clearClipboard();
 	void PasteShape(Point p1);
 
-	shape* getSeclectedShape(); //Changes the pen color   
+	shape* getSelectedShape(); //Changes the pen color   
 };

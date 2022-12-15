@@ -14,7 +14,7 @@ void opPenWidth::Execute()
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	shape* shape = pGr->getSeclectedShape();
+	shape* shape = pGr->getSelectedShape();
 	if (shape != nullptr)
 	{
 		pUI->PrintMessage("Enter a new width: ");

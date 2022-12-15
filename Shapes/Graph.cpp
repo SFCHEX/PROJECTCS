@@ -79,7 +79,7 @@ void Graph::DeleteShape(int n){
 	} while (n > 0) ;
 }
 
-shape* Graph::getSeclectedShape()
+shape* Graph::getSelectedShape()
 {
 	shape* newShape = nullptr;
 		for (int i = 0; i < shapesList.size(); i++)
@@ -154,13 +154,14 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 	//saves draw and fill color as rgb values
 	color CFC=pUI->getCrntFillColor();
 	color CDC=pUI->getCrntDrawColor();
+
 	outfile<<(int)CFC.ucRed<<","<<(int)CFC.ucGreen<<","<<(int)CFC.ucBlue<<",";
 	outfile<<(int)CDC.ucRed<<","<<(int)CDC.ucGreen<<","<<(int)CDC.ucBlue<<",";
 	outfile<<pUI->getCrntPenWidth()<<endl;
 
-	outfile<<Graph::shapesList.size()<<endl;
+	outfile<<shapesList.size()<<endl;
 
-	for (auto& it : Graph::shapesList) {
+	for (auto& it : shapesList) {
 		it->Save(outfile); //this virtual method adds special information that is exclusive to each individual shape to the file
 	}
 	outfile.close();
