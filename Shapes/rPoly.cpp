@@ -66,6 +66,16 @@ bool rPoly::isInside(int x, int y) const
 	}
 	return c;
 }
+void rPoly::StickImageSh(GUI* pUI, string imagefile) {
+	if (hasImage()) {
+		double x = min(P2.x, P1.x)- (abs(P2.x - P1.x)/2); //the x coordinate of the image
+		double y = min(P1.y, P2.y)-(abs(P2.x - P1.x)/2); //the y coordinate of the image 
+		double wid = abs(P2.x - P1.x); //the width of the image
+		double len = abs(P2.x - P1.x); //the length of the image //same as width because it is a square image
+		pUI->StickImageGUI(imagefile, x, y, wid, len);
+		setHasImage();
+	}
+}
 
 ShapePoints rPoly::getPoints() {
 	ShapePoints rPolyP;
