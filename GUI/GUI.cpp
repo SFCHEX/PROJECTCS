@@ -131,10 +131,37 @@ operationType GUI::GetUseroperation() const
 	}
 	else	//GUI is in PLAY mode
 	{
-		///TODO:
-		//perform checks similar to Draw mode checks above
-		//and return the correspoding operation
-		return TO_PLAY;	//just for now. This should be updated
+		//[1] If user clicks on the first Toolbar
+		if (y >= 0 && y < ToolBarHeight)
+		{
+			//Check whick Menu icon was clicked
+			//==> This assumes that menu icons are lined up horizontally <==
+
+			int ClickedIconOrder = (x / MenuIconWidth);
+
+			//Divide x coord of the point clicked by the menu icon width (int division)
+			//if division result is 0 ==> first icon is clicked, if 1 ==> 2nd icon and so on
+
+			switch (ClickedIconOrder)
+			{
+			case ICON_ROTATE: return ROTATE;
+			case ICON_TEMP: return DO_NOTHING;
+
+			default: return EMPTY;	//A click on empty place in desgin toolbar
+			}
+		}
+
+
+		//[2] User clicks on the drawing area
+		if (y >= ToolBarHeight && y < height - StatusBarHeight)
+		{
+			return DRAWING_AREA; //MAYBE CHANGED TO PLAYING_AREA IF NEEDED
+		}
+
+		//[3] User clicks on the status bar
+		return STATUS;
+		
+		//return TO_PLAY;	//just for now. This should be updated
 	}
 
 }
@@ -228,7 +255,15 @@ void GUI::CreateDrawToolBar()
 void GUI::CreatePlayToolBar()
 {
 	InterfaceMode = MODE_PLAY;
-	///TODO: write code to create Play mode menu
+	string PlayMenuIconImages[PLAY_ICON_COUNT];
+	PlayMenuIconImages[ROTATE]="images\\PlayMenuIcons\\PlayMenu_Rotata.jpg";
+
+	for (int i = 0; i < PLAY_ICON_COUNT; i++)
+		pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -313,6 +348,17 @@ void GUI::setCrntPenWidth(int newWidth) 		//set a new pen width
 //	/*delete pColorPaletteWindow;
 //	pColorPaletteWindow = nullptr;*/
 //}
+
+//======================================================================================//
+//								SWITCH FUNCTION								//
+//======================================================================================//
+void GUI::switchToPlay(){
+	//save all shapes and images
+	//clear the window
+	//call CreatePlayToolBar() 
+
+}
+
 //======================================================================================//
 //								shapes Drawing Functions								//
 //======================================================================================//

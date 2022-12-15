@@ -57,6 +57,7 @@ class GUI
 		ICON_PEN_WIDTH,  //Pen width icon in menu
 		ICON_COPY,  //COPY icon in menu
 		ICON_PASTE,  //PASTE width icon in menu
+		ICON_SWITCH, //switch to play mode
 		//TODO: Add more icons names here
 		ICON_EXIT,		//Exit icon
 
@@ -71,11 +72,7 @@ class GUI
 
 	enum PlayMenuIcon //The icons of the Play menu (you should add more icons)
 	{
-		//Note: Icons are ordered here as they appear in menu
-		//If you want to change the menu icons order, change the order here
-
-		//TODO: Add more icons names here
-
+		ICON_ROTATE,
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
@@ -145,7 +142,7 @@ public:
 	////void CloseColorPaletteWindow();
 	//color GetNewColor();
 
-
+	void setInterfaceToPlay();
 
 
 	void setCrntDrawColor(color c); 	//set a new drwaing color
