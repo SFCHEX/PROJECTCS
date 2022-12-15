@@ -51,11 +51,11 @@ int shape::getID() const
 }
 
 bool shape::hasImage(){
-	return image;
+	return Image;
 }
 
 void shape::setHasImage(){
-	image = true;
+	Image = true;
 }
 void shape::StickImageSh(GUI* pUI, string imagfile){
 	

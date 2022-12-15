@@ -21,7 +21,7 @@ protected:
 	/// Add more parameters if needed.
 
 private:
-	bool image = false;
+	bool Image = false;
 public:
     shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
@@ -41,8 +41,8 @@ public:
 	///It should be overridden by each inherited shape
 	///Decide the parameters that you should pass to each function	
 	virtual void setHasImage();
+	bool hasImage();
 	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
-	virtual void shape::setHasImage();
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape
