@@ -41,7 +41,7 @@ bool Oval::isInside(int x, int y) const {
 void Oval::StickImageSh(GUI* pUI, string imagefile) {
 	if (hasImage()){
 		double x = min(Corner1.x, Corner2.x); //the x coordinate of the image
-		double y = Corner1.y; //the y coordinate of the image //NEEDS UPDATE
+		double y = abs((Corner1.y + Corner2.y) / 2) - abs((Corner1.y - Corner2.y) / 4); //the y coordinate of the image //NEEDS UPDATE
 		double wid = abs(Corner2.x - Corner1.x); //the width of the image
 		double len = abs(Corner2.y - Corner1.y)/2; //the length of the image
 		pUI->StickImageGUI(imagefile, x, y, wid, len);
