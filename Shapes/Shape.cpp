@@ -24,6 +24,27 @@ GfxInfo shape::getGfxInfo() const
 	return ShpGfxInfo;
 }
 
+void shape::SaveColorRGB(ofstream &outfile,color RGB){
+
+	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";
+}
+
+void shape::Save(ofstream &outfile)
+{
+
+		GfxInfo it_info = ShpGfxInfo;
+		SaveColorRGB(outfile,it_info.DrawClr);
+		//if condition for if there is no fill color
+		if (it_info.isFilled)
+		{
+			SaveColorRGB(outfile,it_info.FillClr);
+		}
+		else
+		{
+			outfile<<"NO_FILL"<<",";
+		}		
+		outfile<<it_info.BorderWdth<<endl;
+}
 int shape::getID() const
 {
 	return ShpGfxInfo.ID;
@@ -47,6 +68,11 @@ void shape::ChngFillClr(color Fclr)
 {	
 	ShpGfxInfo.isFilled = true;
 	ShpGfxInfo.FillClr = Fclr; 
+}
+
+void shape::ChngPenWidth(int c)
+{
+	ShpGfxInfo.BorderWdth = c;
 }
 
 // 

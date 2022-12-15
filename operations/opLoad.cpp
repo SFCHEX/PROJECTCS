@@ -19,8 +19,9 @@ void opLoad::Execute() {
 	pUI->PrintMessage("Enter the name of the file you would like to load from: ");
 	string file=pUI->GetString();
     ifstream myfile;
+
     myfile.open(file+".txt");
-    pGr->Load(myfile,pUI);
+	if (myfile.good()){pGr->Load(myfile,pUI);}
 
 }
 

@@ -54,7 +54,7 @@ void opAddrPoly::Execute()
 	rPolyGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	rPolyGfxInfo.isFilled = false;	//default is not filled
+	rPolyGfxInfo.isFilled = pUI->getFillStatus();	//default is not filled
 	rPolyGfxInfo.isSelected = false;	//defualt is not selected
 
 

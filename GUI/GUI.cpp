@@ -21,6 +21,7 @@ GUI::GUI()
 	HighlightColor = MAGENTA;	//This color should NOT be used to draw shapes. use if for highlight only
 	StatusBarColor = LIGHTSEAGREEN;
 	PenWidth = 3;	//default width of the shapes frames
+	GeneralIsFilled = false;
 
 
 	//Create the output window
@@ -30,6 +31,7 @@ GUI::GUI()
 
 	CreateDrawToolBar();
 	CreateStatusBar();
+
 }
 
 
@@ -139,13 +141,15 @@ operationType GUI::GetUseroperation() const
 			case ICON_DELETE: return DELETE_SHAPE;
 			case ICON_LOAD: return LOAD;
 			case ICON_SAVE: return SAVE;
+			case ICON_FILL_COLOR: return CHNG_FILL_CLR;
 			case ICON_PEN_COLOR: return CHNG_DRAW_CLR;
-			//case ICON_FILL_COLOR: return CHNG_FILL_CLR;
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
 			case ICON_EXIT: return EXIT;
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
 			case ICON_SELECT: return SELECTION_MODE;
 			case ICON_TEMP: return DO_NOTHING;
+			case ICON_UNDO: return UNDO;
+			case ICON_REDO: return REDO;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -234,6 +238,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_PEN_WIDTH] = "images\\MenuIcons\\Menu_Pen_Width.jpg";
 	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\Menu_Copy.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\Menu_Paste.jpg";
+	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\Menu_Undo.jpg";
+	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\Menu_Redo.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 	MenuIconImages[ICON_SELECT] = "images\\MenuIcons\\Menu_Select.jpg";
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
@@ -288,19 +294,20 @@ color GUI::getCrntDrawColor() const	//get current drwawing color
 {
 	return DrawColor;
 }
-void GUI::setCrntDrawColor(color c) 	//get current drwawing color
+void GUI::setCrntDrawColor(color c) 	//set a new drwawing color
 {
 	DrawColor = c;
 }
-void GUI::setCrntFillColor(color c) 	//get current drwawing color
-{
-	FillColor= c;
-}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 color GUI::getCrntFillColor() const	//get current filling color
 {
 	return FillColor;
+}
+void GUI::setCrntFillColor(color c) 	//set a new filling color
+{
+	FillColor = c;
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -313,28 +320,43 @@ void GUI::setCrntPenWidth(int newWidth) 		//set a new pen width
 	PenWidth = newWidth;
 }
 
+
+//======================================================================================//
+//                         General fill color setter and getter                         //
+//======================================================================================//
+
+bool GUI::getFillStatus()
+{
+	return GeneralIsFilled;
+}
+
+void GUI::setFillStatus()
+{
+	GeneralIsFilled = true;
+}
 //======================================================================================//
 //                              Color Paletee                                           //
 //======================================================================================//
 
-//void GUI::GetColorFromColorPalette()
-//{
-//	int widthForColorPalette = 700;
-//	int heightForColorPalette = 700;
-//	int startx = 200;
-//	int starty = 100;
-//
-//	pColorPaletteWindow = CreateWind(widthForColorPalette, heightForColorPalette, startx, starty);
-//	pColorPaletteWindow->ChangeTitle("Color Palette");
-//	image ColorPalette("images\\MenuIcons\\Color_Palette.jpg", JPEG);
-//	pColorPaletteWindow->DrawImage(ColorPalette, 0, 0, 700, 700);
-//
-//	//int x, y;
-//	//pColorPaletteWindow->WaitMouseClick(x, y);
-//	//color NewColor = pColorPaletteWindow->GetColor(x, y);
-//	//return NewColor;
-//}
+void GUI::GetColorFromColorPalette(color& c)
+{
+	int widthForColorPalette = 700;
+	int heightForColorPalette = 700;
+	int startx = 200;
+	int starty = 100;
+	int x, y;
 
+	pColorPaletteWindow = CreateWind(widthForColorPalette, heightForColorPalette, startx, starty);
+	pColorPaletteWindow->ChangeTitle("Color Palette");
+	image ColorPalette("images\\MenuIcons\\Color_Palette.jpg", JPEG);
+	pColorPaletteWindow->DrawImage(ColorPalette, 0, 0, 700, 700);
+
+	pColorPaletteWindow->WaitMouseClick(x, y);
+	c = pColorPaletteWindow->GetColor(x, y);	
+	delete pColorPaletteWindow;
+	pColorPaletteWindow = nullptr;
+
+}
 
 //color GUI::GetNewColor()
 //{

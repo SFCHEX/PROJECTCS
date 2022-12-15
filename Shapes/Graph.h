@@ -31,8 +31,11 @@ public:
 	void DeleteShape();
 //	void ChangeFillColor(); //Changes the fill color  
 	void StickImageGR(GUI* pUI); //StickImage to the selected shape
+	int nSelected();
+	void DeleteShape(int);
 	void CopyShape();
 	void clearClipboard();
 	void PasteShape(Point p1);
-	void ChangeFillColor(); //Changes the fill color   
+
+	shape* getSelectedShape(); //Changes the pen color   
 };
