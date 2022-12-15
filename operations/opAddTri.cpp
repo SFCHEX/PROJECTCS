@@ -47,7 +47,7 @@ void opAddTri::Execute()
 	TriGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	TriGfxInfo.isFilled = false;	//default is not filled
+	TriGfxInfo.isFilled = pUI->getFillStatus();	//default is not filled
 	TriGfxInfo.isSelected = false;	//defualt is not selected
 
 

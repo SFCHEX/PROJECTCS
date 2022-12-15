@@ -4,7 +4,6 @@ Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
 
 
-	ShpGfxInfo.ShapeType="Line";
 	End1 = p1;
 	End2 = p2;
 
@@ -27,7 +26,10 @@ void Line::Draw(GUI* pUI) const
 	pUI->DrawLine(End1, End2, ShpGfxInfo);
 }
 void Line::Save(ofstream &outfile){
+
+	outfile<<"Line"<<","<<ShpGfxInfo.ID<<",";
 	outfile<<End1.x<<","<<End1.y<<","<<End2.x<<","<<End2.y<<",";
+	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
 bool Line::isInside(int x, int y) const{
