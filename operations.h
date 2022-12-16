@@ -16,4 +16,6 @@
 #include "operations\opStickImage.h"
 #include "operations\opPenColor.h"
 #include "operations\opPenWidth.h"
+#include "operations\opUndo.h"
+#include "operations\opRedo.h"
 

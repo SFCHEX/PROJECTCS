@@ -22,11 +22,15 @@ Oval::~Oval()
 
 void Oval::Draw(GUI* pUI) const
 {
+
 	//Call Output::DrawOval to draw a Ovalangle on the screen	
 	pUI->DrawOval(Corner1, Corner2, ShpGfxInfo);
 }
 void Oval::Save(ofstream &outfile){
+
+	outfile<<"Oval"<<","<<ShpGfxInfo.ID<<",";
 	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<",";
+	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
 bool Oval::isInside(int x, int y) const {

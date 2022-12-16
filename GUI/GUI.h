@@ -59,13 +59,15 @@ class GUI
 		ICON_PEN_WIDTH,  //Pen width icon in menu
 		ICON_COPY,  //COPY icon in menu
 		ICON_PASTE,  //PASTE width icon in menu
+		ICON_SELECT,
+		ICON_UNDO,  //PASTE width icon in menu
+		ICON_REDO,  //PASTE width icon in menu
 		//TODO: Add more icons names here
 		ICON_EXIT,		//Exit icon
 
 
 		/// ANYTHING IN THE BOTTOM HALF OF THE TOOL BAR MUST BE PLACED UNDER THIS LINE//////////////
 		/// THE ORDER IS IMPORTANT!!!!!/////////////////////////////////////////////////////////////
-		ICON_SELECT,
 		ICON_TEMP,
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
@@ -97,6 +99,7 @@ class GUI
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
 	int PenWidth;			//width of the pen that draws shapes
+	bool GeneralIsFilled;
 
 	/// Add more members if needed
 
@@ -104,6 +107,8 @@ class GUI
 
 	window* pWind;
 	window* pColorPaletteWindow;
+	static clicktype c;
+
 
 public:
 
@@ -136,23 +141,31 @@ public:
 	///Make similar functions for drawing all other shapes.
 
 	void PrintMessage(string msg) const;	//Print a message on Status bar
+
 	color getCrntDrawColor() const;	//get current drwawing color
+	void setCrntDrawColor(color c); 	//set a new drwaing color
+
 	color getCrntFillColor() const;	//get current filling color
+	void setCrntFillColor(color c);     // set a new filling color
+
 	int getCrntPenWidth() const;		//get current pen width
 	void setCrntPenWidth(int newWidth); 		//set a new pen width
 
 
 	void SwitchToPlayMode(window w);
 	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
-	//
-	//void GetColorFromColorPalette();
-	////void CloseColorPaletteWindow();
-	//color GetNewColor();
+	
+
+	// Changes the color to a new one, obtained by clicking on a color from the color palette
+	void GetColorFromColorPalette(color&); 
 
 	void StickImageGUI(string imagefile, double x, double y, double width, double length);
 
-	void setCrntDrawColor(color c); 	//set a new drwaing color
-	void setCrntFillColor(color c);	//get current drwawing color
+
+	bool getFillStatus();
+	void setFillStatus();
+
+	
 
 	~GUI();
 };

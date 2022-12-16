@@ -13,7 +13,7 @@ Graph::~Graph()
 }
 
 //==================================================================================//
-//						shapes Management Functions								//
+//						shapes Management Functions			       					//
 //==================================================================================//
 void Graph::CopyShape()
 {
@@ -45,7 +45,6 @@ void Graph::clearClipboard()
 void Graph::PasteShape(Point p1)
 {
 	for (int i = 0; i < clipboard.size(); i++) {
-//		clipboard[i].Move(p1);
 		shape* newShape=clipboard[i]->clone();
 		shapesList.push_back(newShape);
 	}
@@ -59,14 +58,14 @@ void Graph::Addshape(shape* pShp)
 ////////////////////////////////////////////////////////////////////////////////////
 //Draw all shapes on the user interface
 
-void Graph::DeleteShape(){
+int Graph::nSelected() { //returns num of selected elements
+	int num = 0;
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->IsSelected()) {
-			delete shapesList[i];
-			shapesList[i] = nullptr;
-			shapesList.erase(shapesList.begin() + i);
+			num++;
 		}
 	}
+	return num;
 }
 
 string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg",
@@ -102,24 +101,40 @@ string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg",
 
 
 //void Graph::ChangeFillColor(color)
+void Graph::DeleteShape(int n){
+	do {
+		for (int i = 0; i < shapesList.size(); i++) {
+			if (shapesList[i]->IsSelected()) {
+				delete shapesList[i];
+				shapesList[i] = nullptr;
+				shapesList.erase(shapesList.begin() + i);
+			}
+		}
+		n--;
+	} while (n > 0) ;
+}
 
-//	int count = 0;
-//
-//	
-//	/*if (count == 0)
-//	{
-//		color NewColor = pColorPaletteForFillColor->GetNewColor();
-//		for (int i = 0; i < shapesList.size(); i++)
-//		{
-//			color NewColor = pColorPaletteForFillColor->GetNewColor();
-//			GfxInfo Info = shapesList[i]->getGfxInfo();
-//			Info.FillClr = NewColor;
-//		};
-//	}*/
-//	
-//
-//}
-void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves Rgb values to to a file
+shape* Graph::getSelectedShape()
+{
+	shape* newShape = nullptr;
+		for (int i = 0; i < shapesList.size(); i++)
+		{
+			if (shapesList[i]->IsSelected())
+			{
+				newShape = shapesList[i];
+				break;
+			}
+			
+		}
+		if (newShape != nullptr)
+		{
+			return newShape;
+		}
+		delete newShape;
+		newShape = nullptr;
+	}
+	
+void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves RGB values to to a file
 {
 	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";
 }
@@ -191,26 +206,17 @@ void Graph::deselAll(int valId)
 void Graph::Save(ofstream& outfile, GUI* pUI) {
 	//here we add the draw color fill color and pen width from the pointer to the gUI
 	//saves draw and fill color as rgb values
-	Graph::SaveColorRGB(outfile,pUI->getCrntFillColor());
-	Graph::SaveColorRGB(outfile,pUI->getCrntDrawColor());
+	color CFC=pUI->getCrntFillColor();
+	color CDC=pUI->getCrntDrawColor();
+
+	outfile<<(int)CFC.ucRed<<","<<(int)CFC.ucGreen<<","<<(int)CFC.ucBlue<<",";
+	outfile<<(int)CDC.ucRed<<","<<(int)CDC.ucGreen<<","<<(int)CDC.ucBlue<<",";
 	outfile<<pUI->getCrntPenWidth()<<endl;
-	//number of shapes is length of vector
-	outfile<<Graph::shapesList.size()<<endl;
-	for (auto& it : Graph::shapesList) {
-		GfxInfo it_info = it->getGfxInfo();
-		outfile<<it_info.ShapeType<<","<<it_info.ID<<",";
+
+	outfile<<shapesList.size()<<endl;
+
+	for (auto& it : shapesList) {
 		it->Save(outfile); //this virtual method adds special information that is exclusive to each individual shape to the file
-		Graph::SaveColorRGB(outfile,it_info.DrawClr);
-		//if condition for if there is no fill color
-		if (it_info.isFilled)
-		{
-			Graph::SaveColorRGB(outfile,it_info.FillClr);
-		}
-		else
-		{
-			outfile<<"NO_FILL"<<",";
-		}		
-		outfile<<it_info.BorderWdth<<endl;
 	}
 	outfile.close();
 }
@@ -296,6 +302,7 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 			{
 				Square *S=new Square(P1, P2, shpGfxInfo);
 				Addshape(S);
+			
 			}
 	}
 

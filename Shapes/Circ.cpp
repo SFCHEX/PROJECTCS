@@ -23,7 +23,10 @@ void Circ::Draw(GUI* pUI) const
 }
 
 void Circ::Save(ofstream &outfile){
+
+	outfile<<"Circle"<<","<<ShpGfxInfo.ID<<",";
 	outfile<<Center.x<<","<<Center.y<<","<<PointR.x<<","<<PointR.y<<",";
+	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
 bool Circ::isInside(int x, int y) const{

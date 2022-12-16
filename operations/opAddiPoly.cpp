@@ -64,7 +64,7 @@ void opAddiPoly::Execute()
 	iPolyGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	iPolyGfxInfo.isFilled = false;	//default is not filled
+	iPolyGfxInfo.isFilled = pUI->getFillStatus();	//default is not filled
 	iPolyGfxInfo.isSelected = false;	//defualt is not selected
 
 

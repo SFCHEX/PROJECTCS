@@ -46,7 +46,11 @@ rPoly::~rPoly() {}
 
 void rPoly::Save(ofstream& outfile)
 {
+
+
+	outfile<<"rPoly"<<","<<ShpGfxInfo.ID<<",";
 	outfile << num<<","<<P1.x << "," <<P1.y<< ","<< P2.x << "," << P2.y << ",";
+	shape::Save(outfile);
 }
 
 void rPoly::Draw(GUI* pUI) const

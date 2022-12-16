@@ -29,7 +29,10 @@ void Rect::Draw(GUI* pUI) const
 }
 
 void Rect::Save(ofstream &outfile){
+
+	outfile<<"Rect"<<","<<ShpGfxInfo.ID<<",";
 	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<",";
+	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
 bool Rect::isInside(int x, int y) const {
