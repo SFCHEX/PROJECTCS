@@ -1,5 +1,6 @@
 #include "controller.h"
 #include "operations.h"
+#include"operations/opFillColor.h"
 //Constructor
 controller::controller()
 {
@@ -28,6 +29,11 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opAddRect(this);
 			break;
 
+		case STICK_IMAGE:
+			pOp = new opStickImage(this);
+			break;
+
+
 		case DRAW_LINE:
 			pOp = new opAddLine(this);
 			break;
@@ -44,9 +50,6 @@ operation* controller::createOperation(operationType OpType)
 		case PASTE:
 			pOp = new opPaste(this);
 			break;
-	
-
-
 		case DRAW_SQUARE:
 			pOp = new opAddSquare(this);
 				break;
@@ -61,6 +64,9 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case DRAWING_AREA:
 			pOp = new opSelect(this);
+			break;
+		case CHNG_FILL_CLR:
+			pOp = new opFillColor(this);
 			break;
 		case CHNG_DRAW_CLR:
 			pOp = new opPenColor(this);
@@ -86,6 +92,14 @@ operation* controller::createOperation(operationType OpType)
 		case TO_PLAY:
 			pOp = new opSwitchToPlay(this);
 			break;
+		case UNDO:
+			pOp = new opUndo(this);
+			break;
+	
+		case REDO:
+			pOp = new opRedo(this);
+			break;
+	
 		case EXIT:
 			///create Exitoperation here
 			pOp = new opExit(this); 

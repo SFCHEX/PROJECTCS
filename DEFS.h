@@ -13,11 +13,11 @@ enum operationType //The operations supported (you can add more if needed)
 	DRAW_OVAL,		//Draw Oval
 	DRAW_IPOLY,		//Draws Irregular Polygon
 	DRAW_RPOLY,		//Draws regular Polygon
-	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_FILL_CLR,	//Change the filling color
+	CHNG_DRAW_CLR,	//Change the drawing color
 	CHNG_PEN_WIDTH, //Change the pen width
 	CHNG_BK_CLR,	//Change background color
-	DELETE_SHAPE,			//Delete a shape(s)
+	DELETE_SHAPE,	//Delete a shape(s)
 	MOVE,			//Move a shape(s)
 	RESIZE,			//Resize a shape(s)
 	ROTATE,			//Rotate a shape(s)
@@ -27,6 +27,8 @@ enum operationType //The operations supported (you can add more if needed)
 	LOAD,			//Load a graph from a file
 	COPY,			//Load a graph from a file
 	PASTE,			//Load a graph from a file
+	UNDO,			//Save the whole graph to a file
+	REDO,			//Save the whole graph to a file
 	EXIT,			//Exit the application
 	SELECTION_MODE,
 	DRAWING_AREA,	//A click on the drawing area
@@ -34,6 +36,8 @@ enum operationType //The operations supported (you can add more if needed)
 	EMPTY,			//A click on empty place in the toolbar
 	TO_DRAW,		//Switch interface to Draw mode
 	TO_PLAY,		//Switch interface to Play mod
+	TO_PLAY,		//Switch interface to Play mode
+	STICK_IMAGE,
 	DO_NOTHING
 	
 	///TODO: Add more operation types (if needed)

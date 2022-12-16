@@ -22,8 +22,12 @@ iPoly::~iPoly() {}
 
 void iPoly::Save(ofstream& outfile)
 {
+
+
+	outfile<<"iPoly"<<","<<ShpGfxInfo.ID<<",";
 	for (int i=0; i<pVectX.size();i++)
 	outfile<<pVectX[i]<<","<<pVectY[i]<<",";
+	shape::Save(outfile);
 }
 
 void iPoly::Draw(GUI* pUI) const

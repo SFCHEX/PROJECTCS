@@ -13,6 +13,10 @@ opDeleteShape::opDeleteShape(controller *pCont):operation(pCont){}
 opDeleteShape::~opDeleteShape(){}
 
 void opDeleteShape::Execute(){
-		Graph* pGr = pControl->getGraph();
-		pGr->DeleteShape();
+	Graph* pGr = pControl->getGraph();
+
+	int nSel = pGr->nSelected();
+		pGr->DeleteShape(nSel);
+		GUI* pUI = pControl->GetUI();
+		pUI->ClearStatusBar();
 }

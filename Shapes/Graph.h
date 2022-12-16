@@ -28,9 +28,12 @@ public:
 	void deselAll(int valId);
 	void Save(ofstream& outfile,GUI* pUI);	//Save all shapes to a file
 	void Load(ifstream& inputfile,GUI* pUI);	//Load all shapes from a file
-	void DeleteShape();
+	int nSelected();
+	void DeleteShape(int);
 	void CopyShape();
 	void clearClipboard();
 	void PasteShape(Point p1);
-	void ChangeFillColor(); //Changes the fill color   
+	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
+	shape* getSelectedShape(); //Changes the pen color  
+	void SetImagesToShapes();
 };

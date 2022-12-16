@@ -46,7 +46,11 @@ rPoly::~rPoly() {}
 
 void rPoly::Save(ofstream& outfile)
 {
+
+
+	outfile<<"rPoly"<<","<<ShpGfxInfo.ID<<",";
 	outfile << num<<","<<P1.x << "," <<P1.y<< ","<< P2.x << "," << P2.y << ",";
+	shape::Save(outfile);
 }
 
 void rPoly::Draw(GUI* pUI) const
@@ -78,4 +82,15 @@ ShapePoints rPoly::getPoints() {
 	}
 
 	return rPolyP;
+}
+
+void rPoly::StickImageSh(GUI* pUI, string imagefile) {
+	if (hasImage()) {
+		double x = min(P2.x, P1.x)- (abs(P2.x - P1.x)/2); //the x coordinate of the image
+		double y = min(P1.y, P2.y)-(abs(P2.x - P1.x)/2); //the y coordinate of the image 
+		double wid = abs(P2.x - P1.x); //the width of the image
+		double len = abs(P2.x - P1.x); //the length of the image //same as width because it is a square image
+		pUI->StickImageGUI(imagefile, x, y, wid, len);
+		setHasImage();
+	}
 }

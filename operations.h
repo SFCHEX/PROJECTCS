@@ -16,4 +16,7 @@
 #include "operations\opPenColor.h"
 #include "operations\opPenWidth.h"
 #include "operations\opSwitchToPlay.h"
+#include "operations\opUndo.h"
+#include "operations\opRedo.h"
+#include "operations\opStickImage.h"
 
