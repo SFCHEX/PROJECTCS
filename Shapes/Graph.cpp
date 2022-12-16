@@ -109,21 +109,6 @@ string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg",
 						"images\\ImagesToStick\\red_7.jpg"
 };
 
-void Graph::StickImageGR(GUI* pUI) const {
-	for (int i = 0; i < shapesList.size(); i++) {
-		string imagefile = ImagesToStick[i];
-		if (shapesList[i]->hasImage()) {
-			shapesList[i]->StickImageSh(pUI, imagefile);
-			shapesList[i]->setHasImage();
-		}
-	}
-}
-
-void Graph::SetImagesToShapes() {
-	for (int i = 0; i < shapesList.size(); i++) {
-		shapesList[i]->setHasImage();
-	}
-}
 
 shape* Graph::getSelectedShape()
 {
@@ -149,6 +134,23 @@ void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves RGB values to to a
 {
 	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";
 }
+
+void Graph::StickImageGR(GUI* pUI) const {
+	for (int i = 0; i < shapesList.size(); i++) {
+		string imagefile = ImagesToStick[i];
+		if (shapesList[i]->hasImage()) {
+			shapesList[i]->StickImageSh(pUI, imagefile);
+			shapesList[i]->setHasImage();
+		}
+	}
+}
+
+void Graph::SetImagesToShapes() {
+	for (int i = 0; i < shapesList.size(); i++) {
+		shapesList[i]->setHasImage();
+	}
+}
+
 void Graph::Draw(GUI* pUI) const
 {
 	pUI->ClearDrawArea();
