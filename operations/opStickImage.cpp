@@ -14,6 +14,7 @@ opStickImage::~opStickImage(){}
 
 void opStickImage::Execute(){
   Graph* pGr = pControl->getGraph();
-  //GUI* pUI = pControl->GetUI();
+  GUI* pUI = pControl->GetUI();
   pGr->SetImagesToShapes();
+  pUI->PrintMessage("click");
 }
