@@ -148,7 +148,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_TEMP: return DO_NOTHING;
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
-
+			case ICON_STICK_IMAGE: return STICK_IMAGE;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -533,6 +533,11 @@ void GUI::DrawrPoly(vector<int> vx, vector<int> vy, GfxInfo rPolyGfxInfo) const 
 	int asize = size(vx);
 	pWind->DrawPolygon(ax, ay, asize, style);
 }
+
+void GUI::StickImageGUI(string imagefile, double x, double y, double width, double length){
+	pWind->DrawImage(imagefile,x,y,width,length);
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()

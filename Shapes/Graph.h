@@ -33,6 +33,7 @@ public:
 	void CopyShape();
 	void clearClipboard();
 	void PasteShape(Point p1);
-
-	shape* getSelectedShape(); //Changes the pen color   
+	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
+	shape* getSelectedShape(); //Changes the pen color  
+	void SetImagesToShapes();
 };

@@ -49,6 +49,7 @@ class GUI
 		ICON_OVAL,      //icon for oval
 		ICON_IPOLY,		//icon for irregular polygon
 		ICON_RPOLY,		//icon for regular polygon
+		ICON_STICK_IMAGE, 
 		ICON_DELETE, 		//Delete icon in menu
 		ICON_LOAD,		//Load icon in menu
 		ICON_SAVE,		//Save icon in menu
@@ -158,7 +159,8 @@ public:
 	void GetColorFromColorPalette(color&); 
 
 
-
+	void StickImageGUI(string imagefile, double x, double y, double width, double length);
+	
 	bool getFillStatus();
 	void setFillStatus();
 

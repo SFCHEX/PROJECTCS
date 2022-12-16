@@ -21,6 +21,5 @@ void opSave::Execute() {
     ofstream myfile;
     myfile.open(file+".txt");
     pGr->Save(myfile,pUI);
-	pGr->isSaved=true;
 
 }

@@ -65,5 +65,15 @@ void shape::ChngPenWidth(int c)
 	ShpGfxInfo.BorderWdth = c;
 }
 
+void shape::StickImageSh(GUI* pUI, string imagfile){
+}
+
+bool shape::hasImage() {
+	return imageOn;
+}
+
+void shape::setHasImage() {
+	imageOn = true;
+}
 // 
 //Point shape::getBorders() {}

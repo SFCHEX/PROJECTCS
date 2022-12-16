@@ -20,6 +20,8 @@ protected:
     void SaveColorRGB(ofstream &outfile,color RGB);
 	/// Add more parameters if needed.
 
+private:
+	bool imageOn;
 
 public:
     shape(GfxInfo shapeGfxInfo);
@@ -41,7 +43,9 @@ public:
 
 	///Decide the parameters that you should pass to each function	
 
-
+	virtual bool hasImage();
+	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
+	virtual void setHasImage();
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape
