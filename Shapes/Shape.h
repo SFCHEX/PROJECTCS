@@ -21,7 +21,7 @@ protected:
 	/// Add more parameters if needed.
 
 private:
-	bool imageOn = false;
+	bool imageOn;
 
 public:
     shape(GfxInfo shapeGfxInfo);
