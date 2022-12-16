@@ -58,6 +58,7 @@ class GUI
 		ICON_PEN_WIDTH,  //Pen width icon in menu
 		ICON_COPY,  //COPY icon in menu
 		ICON_PASTE,  //PASTE width icon in menu
+		ICON_SWITCH, //switch to play mode
 		ICON_SELECT,
 		ICON_UNDO,  //PASTE width icon in menu
 		ICON_REDO,  //PASTE width icon in menu
@@ -74,11 +75,7 @@ class GUI
 
 	enum PlayMenuIcon //The icons of the Play menu (you should add more icons)
 	{
-		//Note: Icons are ordered here as they appear in menu
-		//If you want to change the menu icons order, change the order here
-
-		//TODO: Add more icons names here
-
+		ICON_ROTATE,
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
@@ -151,6 +148,10 @@ public:
 	void setCrntPenWidth(int newWidth); 		//set a new pen width
 
 
+	//
+	//void GetColorFromColorPalette();
+	////void CloseColorPaletteWindow();
+	//color GetNewColor();
 	void SwitchToPlayMode(window w);
 	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
 	
@@ -158,6 +159,7 @@ public:
 	// Changes the color to a new one, obtained by clicking on a color from the color palette
 	void GetColorFromColorPalette(color&); 
 
+	void switchToPlay();
 
 	void StickImageGUI(string imagefile, double x, double y, double width, double length);
 	

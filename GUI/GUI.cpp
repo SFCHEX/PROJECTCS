@@ -1,5 +1,6 @@
 #include "GUI.h"
 
+
 GUI::GUI()
 {
 	//Initialize user interface parameters
@@ -35,36 +36,6 @@ GUI::GUI()
 }
 
 
- /*void GUI::SwitchToPlayMode(window w){
-    w.SetPen(WHITE,1);
-    w.SetBrush(WHITE);
-    w.DrawRectangle(0,0,w.GetWidth,w.GetHeight,w.GetWidth,w.GetHeight);
-
-    const int count = 5;
-    const int menuHeight = 80,  menuItemWidth = 50;
-
-    string MenuIconsPaths[count];
-    MenuIconsPaths[0] = "";
-    MenuIconsPaths[1] = "";
-    MenuIconsPaths[2] = "";
-    MenuIconsPaths[3] = "";
-    MenuIconsPaths[4] = "";
-
-    CreatePlayModeToolBar(w, MenuIconsPaths, count, menuItemWidth, menuHeight)
-}
-
-void GUI::CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight){
-    // Draw menu item one image at a time
-  for(int i=0; i<ItemCount; i++){
-    testWindow.DrawImage(MenuItems[i], i*MenuItemWidth, 0, MenuItemWidth, MenuItemHeight);
-    }
-
-  // Draw a line under the play toolbar
-  testWindow.SetPen(BLACK, 3);
-  testWindow.DrawLine(0, MenuItemHeight, testWindow.GetWidth(), MenuItemHeight);
-}
-// not finished
-*/
 
 
 //======================================================================================//
@@ -140,6 +111,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_DELETE: return DELETE_SHAPE;
 			case ICON_LOAD: return LOAD;
 			case ICON_SAVE: return SAVE;
+			case ICON_SWITCH: return TO_PLAY;
 			case ICON_FILL_COLOR: return CHNG_FILL_CLR;
 			case ICON_PEN_COLOR: return CHNG_DRAW_CLR;
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
@@ -165,10 +137,37 @@ operationType GUI::GetUseroperation() const
 	}
 	else	//GUI is in PLAY mode
 	{
-		///TODO:
-		//perform checks similar to Draw mode checks above
-		//and return the correspoding operation
-		return TO_PLAY;	//just for now. This should be updated
+		//[1] If user clicks on the first Toolbar
+		if (y >= 0 && y < ToolBarHeight)
+		{
+			//Check whick Menu icon was clicked
+			//==> This assumes that menu icons are lined up horizontally <==
+
+			int ClickedIconOrder = (x / MenuIconWidth);
+
+			//Divide x coord of the point clicked by the menu icon width (int division)
+			//if division result is 0 ==> first icon is clicked, if 1 ==> 2nd icon and so on
+
+			switch (ClickedIconOrder)
+			{
+			case ICON_ROTATE: return ROTATE;
+			case ICON_TEMP: return DO_NOTHING;
+
+			default: return EMPTY;	//A click on empty place in desgin toolbar
+			}
+		}
+
+
+		//[2] User clicks on the drawing area
+		if (y >= ToolBarHeight && y < height - StatusBarHeight)
+		{
+			return DRAWING_AREA; //MAYBE CHANGED TO PLAYING_AREA IF NEEDED
+		}
+
+		//[3] User clicks on the status bar
+		return STATUS;
+		
+		//return TO_PLAY;	//just for now. This should be updated
 	}
 
 }
@@ -241,6 +240,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 	MenuIconImages[ICON_SELECT] = "images\\MenuIcons\\Menu_Select.jpg";
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
+	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
 
@@ -265,7 +265,15 @@ void GUI::CreateDrawToolBar()
 void GUI::CreatePlayToolBar()
 {
 	InterfaceMode = MODE_PLAY;
-	///TODO: write code to create Play mode menu
+	string PlayMenuIconImages[1];//string PlayMenuIconImages[PLAY_ICON_COUNT];//
+	PlayMenuIconImages[0]="images\\PlayMenuIcons\\PlayMenu_Rotate.jpg";//PlayMenuIconImages[ROTATE]="images\\PlayMenuIcons\\PlayMenu_Rotate.jpg"
+
+	for (int i = 0; i < PLAY_ICON_COUNT; i++)
+		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 3);
+	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -353,6 +361,38 @@ void GUI::GetColorFromColorPalette(color& c)
 	c = pColorPaletteWindow->GetColor(x, y);	
 	delete pColorPaletteWindow;
 	pColorPaletteWindow = nullptr;
+
+}
+
+//color GUI::GetNewColor()
+//{
+//	//GetColorFromColorPalette();
+//	int x, y;
+//	pColorPaletteWindow->WaitMouseClick(x, y);
+//	color NewColor = pColorPaletteWindow->GetColor(x, y);
+//	return NewColor;
+//	/*delete pColorPaletteWindow;
+//	pColorPaletteWindow = nullptr;*/
+//}
+
+//======================================================================================//
+//								SWITCH FUNCTION								//
+//======================================================================================//
+void GUI::switchToPlay()
+{
+	
+	////pGr->Save(); //saves all shapes (SAIF SHOULD DO THIS LINE)
+	//saves the shapes
+	ClearStatusBar();
+	////clear status bar
+	pWind->SetPen(BkGrndColor, 1);
+	pWind->SetBrush(BkGrndColor);
+	pWind->DrawRectangle(0, 0, width, height);
+	////clear the window
+	CreatePlayToolBar();
+	
+
+	
 
 }
 

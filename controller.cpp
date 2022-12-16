@@ -89,6 +89,9 @@ operation* controller::createOperation(operationType OpType)
 		case SELECTION_MODE:
 			pOp = new opSelect(this);
 			break;
+		case TO_PLAY:
+			pOp = new opSwitchToPlay(this);
+			break;
 		case UNDO:
 			pOp = new opUndo(this);
 			break;
