@@ -15,4 +15,5 @@
 #include "operations\opDeleteShape.h"
 #include "operations\opPenColor.h"
 #include "operations\opPenWidth.h"
+#include "operations\opSwitchToPlay.h"
 
