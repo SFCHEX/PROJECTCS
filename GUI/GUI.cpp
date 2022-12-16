@@ -108,6 +108,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_DELETE: return DELETE_SHAPE;
 			case ICON_LOAD: return LOAD;
 			case ICON_SAVE: return SAVE;
+			case ICON_SWITCH: return TO_PLAY;
 			case ICON_PEN_COLOR: return CHNG_DRAW_CLR;
 			//case ICON_FILL_COLOR: return CHNG_FILL_CLR;
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
@@ -231,6 +232,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
 	MenuIconImages[ICON_SELECT] = "images\\MenuIcons\\Menu_Select.jpg";
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
+	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
 
 	//TODO: Prepare images for each menu icon and add it to the list
 
