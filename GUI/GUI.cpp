@@ -1,5 +1,6 @@
 #include "GUI.h"
 
+
 GUI::GUI()
 {
 	//Initialize user interface parameters
@@ -257,8 +258,8 @@ void GUI::CreateDrawToolBar()
 void GUI::CreatePlayToolBar()
 {
 	InterfaceMode = MODE_PLAY;
-	string PlayMenuIconImages[PLAY_ICON_COUNT];
-	PlayMenuIconImages[ROTATE]="images\\PlayMenuIcons\\PlayMenu_Rotata.jpg";
+	string PlayMenuIconImages[1];//string PlayMenuIconImages[PLAY_ICON_COUNT];//
+	PlayMenuIconImages[0]="images\\PlayMenuIcons\\PlayMenu_Rotate.jpg";//PlayMenuIconImages[ROTATE]="images\\PlayMenuIcons\\PlayMenu_Rotate.jpg"
 
 	for (int i = 0; i < PLAY_ICON_COUNT; i++)
 		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
@@ -357,13 +358,18 @@ void GUI::setCrntPenWidth(int newWidth) 		//set a new pen width
 void GUI::switchToPlay()
 {
 	
-	//pGr->Save(); 
-	ClearDrawArea();
-	//clear the window
+	////pGr->Save(); //saves all shapes (SAIF SHOULD DO THIS LINE)
+	//saves the shapes
 	ClearStatusBar();
-	//clear status bar
+	////clear status bar
+	pWind->SetPen(BkGrndColor, 1);
+	pWind->SetBrush(BkGrndColor);
+	pWind->DrawRectangle(0, 0, width, height);
+	////clear the window
 	CreatePlayToolBar();
-	//create play tool bar
+	
+
+	
 
 }
 
