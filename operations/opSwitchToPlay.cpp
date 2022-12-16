@@ -14,5 +14,5 @@ opSwitchToPlay::~opSwitchToPlay(){}
 
 void opSwitchToPlay::Execute(){
 		GUI* pUI = pControl->GetUI();
-		pGr->DeleteShape();
+		pUI->DeleteShape();
 }
