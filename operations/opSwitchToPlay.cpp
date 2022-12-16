@@ -13,6 +13,7 @@ opSwitchToPlay::opSwitchToPlay(controller *pCont):operation(pCont){}
 opSwitchToPlay::~opSwitchToPlay(){}
 
 void opSwitchToPlay::Execute(){
-		GUI* pUI = pControl->GetUI();
-		pUI->DeleteShape();
+		Graph* pGr = pControl->getGraph();
+		GUI* pUI = pControl->getUI();
+		pUI->switchToPlay(pGr);
 }
