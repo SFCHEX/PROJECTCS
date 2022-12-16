@@ -352,10 +352,15 @@ void GUI::setCrntPenWidth(int newWidth) 		//set a new pen width
 //======================================================================================//
 //								SWITCH FUNCTION								//
 //======================================================================================//
-void GUI::switchToPlay(){
+void GUI::switchToPlay(Graph* pGr){
+	pGr->save();
 	//save all shapes and images
+	ClearDrawArea();
 	//clear the window
-	//call CreatePlayToolBar() 
+	ClearStatusBar();
+	//clear status bar
+	CreatePlayToolBar();
+	//create play tool bar
 
 }
 
