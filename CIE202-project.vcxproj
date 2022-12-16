@@ -179,6 +179,7 @@
     <ClCompile Include="operations\opPenColor.cpp" />
     <ClCompile Include="operations\opPenWidth.cpp" />
     <ClCompile Include="operations\opRedo.cpp" />
+    <ClCompile Include="operations\opStickImage.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
     <ClCompile Include="operations\opFillColor.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="operations\opDeleteShape.h" />
     <ClInclude Include="operations\opExit.h" />
     <ClInclude Include="operations\opRedo.h" />
+    <ClInclude Include="operations\opStickImage.h" />
     <ClInclude Include="operations\opUndo.h" />
     <ClInclude Include="Shapes\rPoly.h" />
     <ClInclude Include="Shapes\iPoly.h" />
