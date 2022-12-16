@@ -84,7 +84,7 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opSelect(this);
 			break;
 		case TO_PLAY:
-			pOp = new opSwitchToPlay();
+			pOp = new opSwitchToPlay(this);
 		case EXIT:
 			///create Exitoperation here
 			pOp = new opExit(this); 

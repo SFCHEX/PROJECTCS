@@ -33,8 +33,7 @@ enum operationType //The operations supported (you can add more if needed)
 	STATUS,			//A click on the status bar
 	EMPTY,			//A click on empty place in the toolbar
 	TO_DRAW,		//Switch interface to Draw mode
-	TO_PLAY,		//Switch interface to Play mode
-	ROTATE,			//Rotate a shape by 90 degrees
+	TO_PLAY,		//Switch interface to Play mod
 	DO_NOTHING
 	
 	///TODO: Add more operation types (if needed)

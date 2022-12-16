@@ -14,6 +14,6 @@ opSwitchToPlay::~opSwitchToPlay(){}
 
 void opSwitchToPlay::Execute(){
 		Graph* pGr = pControl->getGraph();
-		GUI* pUI = pControl->getUI();
-		pUI->switchToPlay(pGr);
+		GUI* pUI = pControl->GetUI();
+		pUI->switchToPlay();
 }

@@ -259,7 +259,7 @@ void GUI::CreatePlayToolBar()
 	PlayMenuIconImages[ROTATE]="images\\PlayMenuIcons\\PlayMenu_Rotata.jpg";
 
 	for (int i = 0; i < PLAY_ICON_COUNT; i++)
-		pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
+		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
@@ -352,9 +352,10 @@ void GUI::setCrntPenWidth(int newWidth) 		//set a new pen width
 //======================================================================================//
 //								SWITCH FUNCTION								//
 //======================================================================================//
-void GUI::switchToPlay(Graph* pGr){
-	pGr->save();
-	//save all shapes and images
+void GUI::switchToPlay()
+{
+	
+	//pGr->Save(); 
 	ClearDrawArea();
 	//clear the window
 	ClearStatusBar();

@@ -142,7 +142,8 @@ public:
 	////void CloseColorPaletteWindow();
 	//color GetNewColor();
 
-	void setInterfaceToPlay();
+	void switchToPlay();
+
 
 
 	void setCrntDrawColor(color c); 	//set a new drwaing color

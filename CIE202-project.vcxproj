@@ -180,6 +180,7 @@
     <ClCompile Include="operations\opPenColor.cpp" />
     <ClCompile Include="operations\opPenWidth.cpp" />
     <ClCompile Include="operations\opRedo.cpp" />
+    <ClCompile Include="operations\opSwitchToPlay.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="operations\opDeleteShape.h" />
     <ClInclude Include="operations\opExit.h" />
     <ClInclude Include="operations\opRedo.h" />
+    <ClInclude Include="operations\opSwitchToPlay.h" />
     <ClInclude Include="operations\opUndo.h" />
     <ClInclude Include="Shapes\rPoly.h" />
     <ClInclude Include="Shapes\iPoly.h" />
