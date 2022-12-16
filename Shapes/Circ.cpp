@@ -53,3 +53,15 @@ ShapePoints Circ::getPoints() {
 
 	return CircP;
 }
+
+void Circ::StickImageSh(GUI* pUI, string imagefile) {
+	if (hasImage()) {
+		double r = sqrt((Center.x - PointR.x) * (Center.x - PointR.x) + (Center.y - PointR.y) * (Center.y - PointR.y));
+		double x = Center.x - (sqrt(2) / 2) * r; //the x coordinate of the image
+		double y = Center.y - (sqrt(2) / 2) * r; //the y coordinate of the image 
+		double wid = sqrt(2) *r; //the width of the image
+		double len = sqrt(2) *r; //the length of the image
+		pUI->StickImageGUI(imagefile, x, y, wid, len);
+	}
+}
+ 

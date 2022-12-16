@@ -53,7 +53,16 @@ bool Tri::isInside(int x, int y) const
 	}
 	return c;
 }
-
+void Tri::StickImageSh(GUI* pUI, string imagefile) {
+	double centroidx = (Corner1.x + Corner2.x + Corner3.x) / 3;
+	double centroidy = (Corner1.y + Corner2.y + Corner3.y) / 3;
+	double x = centroidx - 40;
+	double y = centroidy - 40;
+	double len = 100;
+	double wid = 100;
+	pUI->StickImageGUI(imagefile, x, y, wid, len);
+	setHasImage();
+}
 ShapePoints Tri::getPoints() {
 	ShapePoints TriP;
 	TriP.P_num = 3;

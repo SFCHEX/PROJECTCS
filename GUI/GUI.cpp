@@ -148,7 +148,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_TEMP: return DO_NOTHING;
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
-
+			case ICON_STICK_IMAGE: return STICK_IMAGE;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -234,6 +234,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_PEN_COLOR] = "images\\MenuIcons\\Menu_Pen_Color.jpg";
 	MenuIconImages[ICON_PEN_WIDTH] = "images\\MenuIcons\\Menu_Pen_Width.jpg";
 	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\Menu_Copy.jpg";
+	MenuIconImages[ICON_STICK_IMAGE] = "images\\MenuIcons\\Menu_Stick.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\Menu_Paste.jpg";
 	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\Menu_Undo.jpg";
 	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\Menu_Redo.jpg";
@@ -533,6 +534,11 @@ void GUI::DrawrPoly(vector<int> vx, vector<int> vy, GfxInfo rPolyGfxInfo) const 
 	int asize = size(vx);
 	pWind->DrawPolygon(ax, ay, asize, style);
 }
+
+void GUI::StickImageGUI(string imagefile, double x, double y, double width, double length){
+	pWind->DrawImage(imagefile,x,y,width,length);
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
