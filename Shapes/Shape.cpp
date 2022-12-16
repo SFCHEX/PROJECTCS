@@ -3,6 +3,7 @@
 int shape::count =0;
 shape::shape(GfxInfo shapeGfxInfo)
 { 
+	imageOn = false;
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
 	updateID();
 	//id is added into ShpGfx info for more convenient use
