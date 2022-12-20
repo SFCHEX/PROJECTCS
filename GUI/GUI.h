@@ -108,6 +108,7 @@ public:
 	GUI();
 
 	// Input Functions  ---------------------------
+	Point* PrevPrevPoint = new Point();
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	string GetString() const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation

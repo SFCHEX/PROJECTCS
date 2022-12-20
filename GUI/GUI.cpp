@@ -27,7 +27,7 @@ GUI::GUI()
 	pWind = CreateWind(width, height, wx, wy);
 	//Change the title
 	pWind->ChangeTitle("- - - - - - - - - - PAINT ^ ^ PLAY - - - - - - - - - -");
-
+	PrevPoint->x = 0; PrevPoint->y = 0;
 	CreateDrawToolBar();
 	CreateStatusBar();
 }
@@ -100,11 +100,12 @@ string GUI::GetString() const
 //This function reads the position where the user clicks to determine the desired operation
 operationType GUI::GetUseroperation() const
 {
+	PrevPrevPoint->x = PrevPoint->x ; PrevPrevPoint->y = PrevPoint->y;
+
 	int x, y;
 	//pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 	pWind->WaitMouseClick(x, y);
-	PrevPoint->x = x;
-	PrevPoint->y = y;
+
 
 
 
