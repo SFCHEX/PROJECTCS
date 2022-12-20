@@ -29,7 +29,7 @@ GUI::GUI()
 	pWind = CreateWind(width, height, wx, wy);
 	//Change the title
 	pWind->ChangeTitle("- - - - - - - - - - PAINT ^ ^ PLAY - - - - - - - - - -");
-
+	PrevPoint->x = 0; PrevPoint->y = 0;
 	CreateDrawToolBar();
 	CreateStatusBar();
 
@@ -73,10 +73,15 @@ string GUI::GetString() const
 //This function reads the position where the user clicks to determine the desired operation
 operationType GUI::GetUseroperation() const
 {
+	PrevPrevPoint->x = PrevPoint->x ; PrevPrevPoint->y = PrevPoint->y;
+
 	int x, y;
-	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-	PrevPoint->x = x;
-	PrevPoint->y = y;
+	//pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	pWind->WaitMouseClick(x, y);
+
+
+
+
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the first Toolbar
@@ -210,7 +215,7 @@ void GUI::ClearStatusBar() const
 void GUI::CreateDrawToolBar()
 {
 	InterfaceMode = MODE_DRAW;
-
+	
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
 
@@ -580,9 +585,14 @@ void GUI::StickImageGUI(string imagefile, double x, double y, double width, doub
 }
 
 
+buttonstate const GUI::getClickState(int& x, int& y)  {
+	return pWind->GetButtonState(LeftButton, x, y);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
 {
 	delete pWind;
 	delete PrevPoint;
 }
+

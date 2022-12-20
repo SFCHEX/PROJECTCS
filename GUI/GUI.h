@@ -111,6 +111,7 @@ public:
 	GUI();
 
 	// Input Functions  ---------------------------
+	Point* PrevPrevPoint = new Point();
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	string GetString() const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation
@@ -155,7 +156,8 @@ public:
 	void SwitchToPlayMode(window w);
 	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
 	
-
+	const button LeftButton = LEFT_BUTTON;
+	
 	// Changes the color to a new one, obtained by clicking on a color from the color palette
 	void GetColorFromColorPalette(color&); 
 
@@ -165,8 +167,7 @@ public:
 	
 	bool getFillStatus();
 	void setFillStatus();
-
-	
+	const buttonstate getClickState(int& x, int& y);	
 
 	~GUI();
 };

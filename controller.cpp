@@ -50,6 +50,12 @@ operation* controller::createOperation(operationType OpType)
 		case PASTE:
 			pOp = new opPaste(this);
 			break;
+		
+		case DO_NOTHING:
+			pOp = new opDrag(this);
+				break;
+
+
 		case DRAW_SQUARE:
 			pOp = new opAddSquare(this);
 				break;

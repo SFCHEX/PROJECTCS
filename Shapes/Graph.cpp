@@ -40,11 +40,13 @@ void Graph::clearClipboard()
 {
 	clipboard.clear();
 }
-void Graph::PasteShape(Point p1)
+void Graph::PasteShape(Point& p1)
 {
 	for (int i = 0; i < clipboard.size(); i++) {
 		shape* newShape=clipboard[i]->clone();
+		newShape->MoveShape(p1);
 		shapesList.push_back(newShape);
+
 	}
 }
 //Add a shape to the list of shapes
@@ -350,4 +352,13 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 
 	}
 	inputfile.close(); 
+}
+
+shape* Graph::getSelShape() {
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			return shapesList[i];
+		}
+	}
+	return nullptr;
 }

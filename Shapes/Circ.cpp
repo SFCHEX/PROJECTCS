@@ -54,6 +54,14 @@ ShapePoints Circ::getPoints() {
 	return CircP;
 }
 
+void Circ::MoveShape(Point MoveBy) {
+	this->Center.x = this->Center.x + MoveBy.x;
+	this->Center.y = this->Center.y + MoveBy.y;
+
+	this->PointR.x = this->PointR.x + MoveBy.x;
+	this->PointR.y = this->PointR.y + MoveBy.y;
+}
+
 void Circ::StickImageSh(GUI* pUI, string imagefile) {
 	if (hasImage()) {
 		double r = sqrt((Center.x - PointR.x) * (Center.x - PointR.x) + (Center.y - PointR.y) * (Center.y - PointR.y));
