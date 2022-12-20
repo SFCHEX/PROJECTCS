@@ -23,6 +23,19 @@ void Graph::CopyShape()
 
     deselAll(-1);
 }
+//void Graph::CutShape()
+//{
+//	for (int i = 0; i < shapesList.size(); i++) {
+//		if (shapesList[i]->IsSelected()) {
+//			clipboard.push_back(shapesList[i]);
+//			shapesList.erase(shapesList.begin() + i);
+//	
+//		}
+//	}
+//    deselAll(-1);
+//}
+// 
+   
 void Graph::clearClipboard()	
 {
 	clipboard.clear();
