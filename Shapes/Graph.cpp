@@ -40,7 +40,7 @@ void Graph::clearClipboard()
 {
 	clipboard.clear();
 }
-void Graph::PasteShape(Point& p1)
+void Graph::PasteShape(Point p1)
 {
 	for (int i = 0; i < clipboard.size(); i++) {
 		shape* newShape=clipboard[i]->clone();
@@ -130,6 +130,7 @@ shape* Graph::getSelectedShape()
 		}
 		delete newShape;
 		newShape = nullptr;
+		return nullptr;
 	}
 	
 void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves RGB values to to a file

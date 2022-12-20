@@ -29,7 +29,6 @@ GUI::GUI()
 	pWind = CreateWind(width, height, wx, wy);
 	//Change the title
 	pWind->ChangeTitle("- - - - - - - - - - PAINT ^ ^ PLAY - - - - - - - - - -");
-	PrevPoint->x = 0; PrevPoint->y = 0;
 	CreateDrawToolBar();
 	CreateStatusBar();
 
@@ -76,9 +75,11 @@ operationType GUI::GetUseroperation() const
 	PrevPrevPoint->x = PrevPoint->x ; PrevPrevPoint->y = PrevPoint->y;
 
 	int x, y;
+
 	//pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 	pWind->WaitMouseClick(x, y);
-
+	PrevPoint->x = x;
+	PrevPoint->y = y;
 
 
 
@@ -87,6 +88,7 @@ operationType GUI::GetUseroperation() const
 		//[1] If user clicks on the first Toolbar
 		if (y >= 0 && y < ToolBarHeight)
 		{
+
 			//Check whick Menu icon was clicked
 			//==> This assumes that menu icons are lined up horizontally <==
 
