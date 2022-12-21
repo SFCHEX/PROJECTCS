@@ -355,11 +355,20 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 	inputfile.close(); 
 }
 
-shape* Graph::getSelShape() {
+vector<shape*> Graph::getSelShape() {
+	vector<shape*> selected;
+	bool select_exists = 0;
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->IsSelected()) {
-			return shapesList[i];
+			selected.push_back(shapesList[i]);
+			select_exists = 1;
 		}
 	}
-	return nullptr;
+	if (!select_exists){
+		selected.push_back(nullptr);
+		return selected;
+	}
+	else {
+		return selected;
+	}
 }

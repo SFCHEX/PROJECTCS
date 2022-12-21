@@ -228,7 +228,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
 	MenuIconImages[ICON_LINE] = "images\\MenuIcons\\Menu_Line.jpg";
-	MenuIconImages[ICON_TRI]  = "images\\MenuIcons\\Menu_Tri.jpg";
+	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\Menu_Tri.jpg";
 	MenuIconImages[ICON_SQUARE] = "images\\MenuIcons\\Menu_Square.jpg";
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
 	MenuIconImages[ICON_IPOLY] = "images\\MenuIcons\\Menu_iPoly.jpg";
@@ -248,11 +248,11 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_SELECT] = "images\\MenuIcons\\Menu_Select.jpg";
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
 	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
-
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time
 	for (int i = 0; i < DRAW_ICON_COUNT; i++)
+
 		if (i < 17) {
 			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
 		}

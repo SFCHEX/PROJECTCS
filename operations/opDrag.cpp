@@ -4,55 +4,67 @@
 #include "..\GUI\GUI.h"
 #include "..\Shapes\Graph.h"
 #include <string>
-
+#include "\ZC\C++ Project\Project Startup Code\PROJECTCS\CMUgraphicsLib\auxil.h"
 
 
 opDrag::opDrag(controller* pCont) :operation(pCont) {
 }
 
 opDrag::~opDrag() {
+	GUI* pUI = pControl->GetUI();
+	pUI->CreateDrawToolBar();
+	pUI->ClearStatusBar();
 }
 
 void opDrag::Execute() {
-	GUI* pUI = pControl->GetUI();
-	Graph* pGr = pControl->getGraph();
-	shape* SelectedShape;
-	int ix, iy;
-	int pre_ix, pre_iy;
-	int count = 0;
-	while (pUI->getClickState(ix, iy) == BUTTON_DOWN){}
-	//shape* selshape = pGr->getSelShape();
-	//Point point1;
-	//int i = 0;
-	//Point* p1 = pUI->PrevPrevPoint;
-	//bool a = false;
-	//int ix = 0; int iy = 0;
-
-	//if (selshape != nullptr) {
-	//	while (pUI->getClickState(ix, iy) == BUTTON_DOWN)
-	//	{
-	//		buttonstate lButton = pUI->getClickState(ix, iy);
-	//		//if (lButton == BUTTON_DOWN) {
-	//			selshape->ChngDrawClr(GREEN);
-	//			selshape->SetSelected(false);
-	//			point1.x = ix - p1->x; point1.y = iy-p1->y;
-
-	//			selshape->MoveShape(point1);
-	//			Sleep(50);
-	//			pGr->Draw(pUI);
-
-	//			a = true;
-	//		
-	//		if (!selshape->isInside(ix, iy) && lButton != BUTTON_DOWN && a == true ) {
-	//			break;
-	//		}
-	//		//else
-	//		//	break;
-	//			//pUI->PrintMessage(to_string(i));
-
-	//		//pUI->GetPointClicked(a, b);
-	//		//if (lButton != BUTTON_DOWN)
-	//		//	break;
-	//	}
-	//}
+	{
+		GUI* pUI = pControl->GetUI();
+		Graph* pGr = pControl->getGraph();
+		vector<shape*> selshape = pGr->getSelShape();
+		Point point1;
+		int tx = 0; int ty = 0;
+		int ix = 0; int iy = 0;
+		int nix = 0; int niy = 0;
+		bool brk = 0; bool strt = 0;
+		if (selshape[0] != nullptr) {
+			pUI->PrintMessage("Start moving your shape(s) or click toolbar to quit without moving");
+			for (int i = 0; i < 10; i) {
+				if (pUI->getClickState(ix, iy) == BUTTON_DOWN) {
+					while (brk == 0)
+					{
+						buttonstate lButton = pUI->getClickState(ix, iy);
+						if (strt == 0) {
+							tx = ix; ty = iy;
+							strt = 1;
+						}
+						if (iy < 100 && strt == 0) { //toolbar hight
+							brk = 1;
+							pUI->ClearStatusBar();
+						}
+						else {
+							nix = ix; niy = iy;
+							point1.x = ix - tx; point1.y = iy - ty;
+							tx = nix; ty = niy;
+							for (int i = 0; i < selshape.size(); i++) {
+								selshape[i]->MoveShape(point1);
+								Sleep(2);
+								pGr->Draw(pUI);
+							}
+							if (lButton == BUTTON_UP) {
+								brk = 1;
+							}
+						}
+					}
+				}
+				else {
+					if (brk == 1) {
+						break;
+					}
+				}
+			}
+		}
+		else {
+			pUI->PrintMessage("Please select one or more shapes first");
+		}
+	}
 }

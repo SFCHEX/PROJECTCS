@@ -15,7 +15,6 @@ opSelect::~opSelect() {
 }
 
 void opSelect::Execute() {
-
 	Point* P1;
 	GUI* pUI = pControl->GetUI();
 	P1 = pUI->GetPrevPoint();
