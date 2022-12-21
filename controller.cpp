@@ -51,7 +51,7 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opPaste(this);
 			break;
 		
-		case DO_NOTHING:
+		case DRAG_MODE:
 			pOp = new opDrag(this);
 				break;
 
@@ -112,6 +112,8 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case STATUS:	//a click on the status bar ==> no operation
+			break;
+		case DO_NOTHING:
 			break;
 
 	}

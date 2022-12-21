@@ -20,4 +20,3 @@
 #include "operations\opUndo.h"
 #include "operations\opRedo.h"
 #include "operations\opStickImage.h"
-
