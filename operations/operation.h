@@ -1,7 +1,7 @@
 #pragma once
 #include "..\DEFS.h"
 #include "..\GUI\GUI.h"
-
+#include <stack>
 class controller; //forward class declaration
 
 //Base class for all possible operations

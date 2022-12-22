@@ -11,7 +11,7 @@ opAddCirc::~opAddCirc()
 {} 
 void opAddCirc::Undo() {
 	Graph* pGr = pControl->getGraph();
-	pGr->DeleteShape();
+	pGr->popShape();
 }
 void opAddCirc::Redo() {
 	Graph* pGr = pControl->getGraph();

@@ -10,6 +10,15 @@ opAddrPoly::opAddrPoly(controller* pCont) :operation(pCont)
 opAddrPoly::~opAddrPoly()
 {}
 
+void opAddrPoly::Undo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddrPoly::Redo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
+
 //Execute the operation
 void opAddrPoly::Execute()
 {

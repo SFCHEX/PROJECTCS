@@ -12,6 +12,10 @@ opLoad::opLoad(controller *pCont):operation(pCont)
 
 opLoad::~opLoad(){
 }
+void opLoad::Undo() {
+}
+void opLoad::Redo() {
+}
 
 void opLoad::Execute() {
  	GUI* pUI = pControl->GetUI();  

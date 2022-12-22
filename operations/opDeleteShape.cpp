@@ -12,6 +12,17 @@ opDeleteShape::opDeleteShape(controller *pCont):operation(pCont)
 { UndoStack.push(this);	}
 opDeleteShape::~opDeleteShape(){}
 
+
+void opDeleteShape::Undo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opDeleteShape::Redo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
+
+
 void opDeleteShape::Execute(){
 	Graph* pGr = pControl->getGraph();
 

@@ -9,6 +9,15 @@ opAddRect::opAddRect(controller * pCont):operation(pCont)
 { UndoStack.push(this);	}
 opAddRect::~opAddRect()
 {} 
+void opAddRect::Undo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddRect::Redo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
+
 
 //Execute the operation
 void opAddRect::Execute() 

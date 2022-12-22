@@ -28,6 +28,7 @@ public:
 	shape* Getshape(int x, int y, bool) const; //Search for a shape given a point inside the shape
 	void deselAll(int valId);
 	void unDelete();
+	void popShape();
 	void Save(ofstream& outfile,GUI* pUI);	//Save all shapes to a file
 	void Load(ifstream& inputfile,GUI* pUI);	//Load all shapes from a file
 	int nSelected();

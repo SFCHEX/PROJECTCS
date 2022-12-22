@@ -9,6 +9,14 @@ opAddSquare::opAddSquare(controller* pCont) :operation(pCont)
 { UndoStack.push(this);	}
 opAddSquare::~opAddSquare()
 {}
+void opAddSquare::Undo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddSquare::Redo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
 
 //Execute the operation
 void opAddSquare::Execute()

@@ -12,11 +12,13 @@ opAddiPoly::~opAddiPoly()
 {}
 void opAddiPoly::Undo() {
 	Graph* pGr = pControl->getGraph();
-	pGr->unDelete();
+	pGr->popShape();
 }
 void opAddiPoly::Redo() {
-
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
 }
+
 //Execute the operation
 void opAddiPoly::Execute()
 {

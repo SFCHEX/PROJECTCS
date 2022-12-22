@@ -11,11 +11,13 @@ opAddLine::~opAddLine()
 {}
 void opAddLine::Undo() {
 	Graph* pGr = pControl->getGraph();
-	pGr->unDelete();
+	pGr->popShape();
 }
 void opAddLine::Redo() {
-
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
 }
+
 void opAddLine::Execute() {
 	Point p1, p2;
 	

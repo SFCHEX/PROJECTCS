@@ -11,6 +11,10 @@ opPaste::opPaste(controller * pCont):operation(pCont)
 opPaste::~opPaste(){
 
 }
+void opPaste::Undo() {
+}
+void opPaste::Redo() {
+}
 //Add copy to the controller
 void opPaste::Execute(){
 	Point p1;
