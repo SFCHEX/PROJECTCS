@@ -4,7 +4,6 @@
 #include "..\GUI\GUI.h"
 #include "..\Shapes\Graph.h"
 #include <string>
-#include "\ZC\C++ Project\Project Startup Code\PROJECTCS\CMUgraphicsLib\auxil.h"
 
 
 opDrag::opDrag(controller* pCont) :operation(pCont) {
