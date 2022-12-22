@@ -44,7 +44,9 @@ void Graph::PasteShape(Point p1)
 {
 	for (int i = 0; i < clipboard.size(); i++) {
 		shape* newShape=clipboard[i]->clone();
+		newShape->MoveShape(p1);
 		shapesList.push_back(newShape);
+
 	}
 }
 //Add a shape to the list of shapes
@@ -128,6 +130,7 @@ shape* Graph::getSelectedShape()
 		}
 		delete newShape;
 		newShape = nullptr;
+		return nullptr;
 	}
 	
 void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves RGB values to to a file
@@ -153,6 +156,7 @@ void Graph::SetImagesToShapes() {
 
 void Graph::Draw(GUI* pUI) const
 {
+	
 	pUI->ClearDrawArea();
 	for (int i = 0; i < shapesList.size(); i++)
 		shapesList[i]->Draw(pUI);
@@ -350,4 +354,22 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 
 	}
 	inputfile.close(); 
+}
+
+vector<shape*> Graph::getSelShape() {
+	vector<shape*> selected;
+	bool select_exists = 0;
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			selected.push_back(shapesList[i]);
+			select_exists = 1;
+		}
+	}
+	if (!select_exists){
+		selected.push_back(nullptr);
+		return selected;
+	}
+	else {
+		return selected;
+	}
 }

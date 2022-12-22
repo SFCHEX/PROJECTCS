@@ -50,6 +50,12 @@ operation* controller::createOperation(operationType OpType)
 		case PASTE:
 			pOp = new opPaste(this);
 			break;
+		
+		case DRAG_MODE:
+			pOp = new opDrag(this);
+				break;
+
+
 		case DRAW_SQUARE:
 			pOp = new opAddSquare(this);
 				break;
@@ -85,10 +91,6 @@ operation* controller::createOperation(operationType OpType)
 		case SAVE:
 			pOp = new opSave(this); //create save operation 
 			break;
-
-		case SELECTION_MODE:
-			pOp = new opSelect(this);
-			break;
 		case TO_PLAY:
 			pOp = new opSwitchToPlay(this);
 			break;
@@ -106,6 +108,8 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case STATUS:	//a click on the status bar ==> no operation
+			break;
+		case DO_NOTHING:
 			break;
 
 	}

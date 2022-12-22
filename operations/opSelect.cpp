@@ -6,9 +6,15 @@
 #include "..\Shapes\Shape.h"
 
 
-bool opSelect::SingleSelect = 1;
 opSelect::opSelect(controller* pCont) :operation(pCont)
 {
+	if(GetKeyState(VK_CONTROL) & 0x8000) //checks if ctrl is held down
+	{
+		MultiSelect = false;
+	}
+	else {
+		MultiSelect = true;
+	}
 }
 
 opSelect::~opSelect() {
@@ -22,9 +28,9 @@ void opSelect::Execute() {
 	Graph* pGr = pControl->getGraph();
 	if (P1->y > 100){//checks if user selected a shape or pressed the selection mode button
 		//if y bigger 100 then user is out of the bounds of taskbar so user selected a shape 
-		shape* SelectedShape = pGr->Getshape(P1->x, P1->y, SingleSelect);
+		shape* SelectedShape = pGr->Getshape(P1->x, P1->y, MultiSelect);
 		if (SelectedShape != nullptr) {
-			if (SingleSelect) {
+			if (MultiSelect) {
 				pGr->deselAll(SelectedShape->getID());
 			}
 			GfxInfo SelectedGfxInfo = SelectedShape->getGfxInfo();
@@ -40,8 +46,8 @@ void opSelect::Execute() {
 	}
 	else {//else user us trying to swap the selection mode
 		pGr->deselAll(-1);
-		SingleSelect = !SingleSelect;
-		if (!SingleSelect){
+		MultiSelect = !MultiSelect;
+		if (!MultiSelect){
 			pUI->PrintMessage("Selection Mode: Multi-Select");
 		}
 		else {
