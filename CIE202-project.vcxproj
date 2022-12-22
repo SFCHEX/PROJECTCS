@@ -183,6 +183,7 @@
     <ClCompile Include="operations\opStickImage.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
     <ClCompile Include="operations\opFillColor.cpp" />
+    <ClCompile Include="operations\operation.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="main.cpp" />
