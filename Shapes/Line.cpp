@@ -71,3 +71,11 @@ ShapePoints Line::getPoints() {
 
 	return LineP;
 }
+
+void Line::MoveShape(Point MoveBy) {
+	this->End1.x = this->End1.x + MoveBy.x;
+	this->End1.y = this->End1.y + MoveBy.y;
+
+	this->End2.x = this->End2.x + MoveBy.x;
+	this->End2.y = this->End2.y + MoveBy.y;
+}

@@ -81,3 +81,11 @@ ShapePoints Square::getPoints() {
 
 	return SquareP;
 }
+
+void Square::MoveShape(Point MoveBy) {
+	this->Corner1.x = this->Corner1.x + MoveBy.x;
+	this->Corner1.y = this->Corner1.y + MoveBy.y;
+
+	this->Corner2.x = this->Corner2.x + MoveBy.x;
+	this->Corner2.y = this->Corner2.y + MoveBy.y;
+}
