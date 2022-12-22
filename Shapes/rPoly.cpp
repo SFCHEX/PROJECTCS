@@ -84,6 +84,13 @@ ShapePoints rPoly::getPoints() {
 	return rPolyP;
 }
 
+void rPoly::MoveShape(Point MoveBy) {
+	for (int i = 0; i < this->pVectX.size(); i++) {
+		this->pVectX[i] = this->pVectX[i] + MoveBy.x;
+		this->pVectY[i] = this->pVectY[i] + MoveBy.y;
+	}
+}
+
 void rPoly::StickImageSh(GUI* pUI, string imagefile) {
 	if (hasImage()) {
 		double x = min(P2.x, P1.x)- (abs(P2.x - P1.x)/2); //the x coordinate of the image

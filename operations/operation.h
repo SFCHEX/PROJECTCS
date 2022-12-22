@@ -9,8 +9,8 @@ class operation
 {
 protected:
 	controller* pControl;	//operations needs control to do their job
-	static stack<operation*> UndoStack;
 	static stack<operation*> RedoStack;
+	static stack<operation*> UndoStack;
 public:
 
 	operation(controller* pCont) { pControl = pCont; }	//constructor
@@ -26,4 +26,3 @@ public:
 	virtual void Redo() {}
 
 };
-
