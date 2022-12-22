@@ -59,7 +59,6 @@ class GUI
 		ICON_COPY,  //COPY icon in menu
 		ICON_PASTE,  //PASTE width icon in menu
 		ICON_SWITCH, //switch to play mode
-		ICON_SELECT,
 		ICON_DRAG,
 		ICON_UNDO,  //PASTE width icon in menu
 		ICON_REDO,  //PASTE width icon in menu
@@ -105,7 +104,6 @@ class GUI
 	window* pWind;
 	window* pColorPaletteWindow;
 	static clicktype c;
-
 
 public:
 
@@ -170,6 +168,5 @@ public:
 	bool getFillStatus();
 	void setFillStatus();
 	const buttonstate getClickState(int& x, int& y);	
-
 	~GUI();
 };

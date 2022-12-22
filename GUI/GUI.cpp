@@ -1,6 +1,7 @@
 #include "GUI.h"
-
-
+#include <Windows.h>
+#include <time.h>
+#include <iostream>
 GUI::GUI()
 {
 	//Initialize user interface parameters
@@ -42,8 +43,14 @@ GUI::GUI()
 //======================================================================================//
 void GUI::GetPointClicked(int& x, int& y) const
 {
-	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+	pWind->WaitMouseClick(x, y);	
+
+
 }
+
+
+	//Wait for mouse click
+
 
 string GUI::GetString() const
 {
@@ -77,10 +84,9 @@ operationType GUI::GetUseroperation() const
 	int x, y;
 
 	//pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
-	pWind->WaitMouseClick(x, y);
+	GetPointClicked(x, y);
 	PrevPoint->x = x;
 	PrevPoint->y = y;
-
 
 
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
@@ -123,7 +129,6 @@ operationType GUI::GetUseroperation() const
 			case ICON_PEN_COLOR: return CHNG_DRAW_CLR;
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
 			case ICON_EXIT: return EXIT;
-			case ICON_SELECT: return SELECTION_MODE;
 			case ICON_DRAG: return DRAG_MODE;
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
@@ -246,7 +251,6 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\Menu_Undo.jpg";
 	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\Menu_Redo.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
-	MenuIconImages[ICON_SELECT] = "images\\MenuIcons\\Menu_Select.jpg";
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
 	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
 	MenuIconImages[ICON_DRAG] = "images\\MenuIcons\\Menu_Drag.jpg";
@@ -592,6 +596,8 @@ void GUI::StickImageGUI(string imagefile, double x, double y, double width, doub
 buttonstate const GUI::getClickState(int& x, int& y)  {
 	return pWind->GetButtonState(LeftButton, x, y);
 }
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()

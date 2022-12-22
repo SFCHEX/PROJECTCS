@@ -91,10 +91,6 @@ operation* controller::createOperation(operationType OpType)
 		case SAVE:
 			pOp = new opSave(this); //create save operation 
 			break;
-
-		case SELECTION_MODE:
-			pOp = new opSelect(this);
-			break;
 		case TO_PLAY:
 			pOp = new opSwitchToPlay(this);
 			break;

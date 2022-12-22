@@ -156,6 +156,7 @@ void Graph::SetImagesToShapes() {
 
 void Graph::Draw(GUI* pUI) const
 {
+	
 	pUI->ClearDrawArea();
 	for (int i = 0; i < shapesList.size(); i++)
 		shapesList[i]->Draw(pUI);
