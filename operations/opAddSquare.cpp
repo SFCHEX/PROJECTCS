@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddSquare::opAddSquare(controller* pCont) :operation(pCont)
-{}
+{ UndoStack.push(this);	}
 opAddSquare::~opAddSquare()
 {}
 

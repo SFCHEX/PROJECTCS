@@ -66,12 +66,16 @@ int Graph::nSelected() { //returns num of selected elements
 	return num;
 }
 
+void Graph::unDelete(){
+	shapesList.push_back(deletedShapesList.top());
+	deletedShapesList.pop();
+}
+
 void Graph::DeleteShape(int n){
 	do {
 		for (int i = 0; i < shapesList.size(); i++) {
 			if (shapesList[i]->IsSelected()) {
-				delete shapesList[i];
-				shapesList[i] = nullptr;
+				deletedShapesList.push(shapesList[i]);
 				shapesList.erase(shapesList.begin() + i);
 			}
 		}

@@ -6,10 +6,16 @@
 #include "..\GUI\GUI.h"
 
 opAddLine::opAddLine(controller* pCont) : operation(pCont)
-{}
+{ UndoStack.push(this);	}
 opAddLine::~opAddLine()
 {}
+void opAddLine::Undo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
+void opAddLine::Redo() {
 
+}
 void opAddLine::Execute() {
 	Point p1, p2;
 	

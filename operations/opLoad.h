@@ -10,5 +10,8 @@ public:
 	
 	//Add Load to the controller
 	virtual void Execute() ;
-	
+	virtual void Undo() ;
+	virtual void Redo() ;
+
+
 };

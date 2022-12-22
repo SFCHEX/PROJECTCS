@@ -10,5 +10,4 @@ public:
 	virtual ~opRedo();
 	//Add copy to the controller
 	virtual void Execute() ;
-	
 };

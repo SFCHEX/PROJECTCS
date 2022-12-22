@@ -1,11 +1,12 @@
 #include "controller.h"
 #include "operations.h"
-#include"operations/opFillColor.h"
 //Constructor
 controller::controller()
 {
 	pGr = new Graph;
 	pUI = new GUI;	//Create GUI object
+	stack<operation*> UndoStack;
+	stack<operation*> RedoStack;
 }
 
 //==================================================================================//

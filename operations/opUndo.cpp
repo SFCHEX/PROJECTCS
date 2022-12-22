@@ -14,5 +14,10 @@ opUndo::~opUndo(){
 }
 //Add copy to the controller
 void opUndo::Execute(){
+    UndoStack.top()->Undo();
+    RedoStack.push(UndoStack.top());
+    UndoStack.pop();
+
+
 
 }

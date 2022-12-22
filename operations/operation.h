@@ -4,13 +4,13 @@
 
 class controller; //forward class declaration
 
-
 //Base class for all possible operations
 class operation
 {
 protected:
 	controller *pControl;	//operations needs control to do their job
-
+	static stack<operation*> UndoStack;
+	static stack<operation*> RedoStack;
 public:
 
 	operation(controller *pCont) { pControl = pCont; }	//constructor
@@ -20,10 +20,10 @@ public:
 	virtual void Execute() =0;
 
 	//To undo this operation (code depends on operation type)
-	//virtual void Undo()=0;
+	virtual void Undo(){}
 
 	//To redo this operation (code depends on operation type)
-	//virtual void Redo()=0;
+	virtual void Redo(){}
 
 };
 

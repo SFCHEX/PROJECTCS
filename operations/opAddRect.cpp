@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddRect::opAddRect(controller * pCont):operation(pCont)
-{}
+{ UndoStack.push(this);	}
 opAddRect::~opAddRect()
 {} 
 

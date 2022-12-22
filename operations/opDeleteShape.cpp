@@ -8,8 +8,8 @@
 
 #include "..\GUI\GUI.h"
 
-opDeleteShape::opDeleteShape(controller *pCont):operation(pCont){}
-
+opDeleteShape::opDeleteShape(controller *pCont):operation(pCont)
+{ UndoStack.push(this);	}
 opDeleteShape::~opDeleteShape(){}
 
 void opDeleteShape::Execute(){

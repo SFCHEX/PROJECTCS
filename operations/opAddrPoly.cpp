@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddrPoly::opAddrPoly(controller* pCont) :operation(pCont)
-{}
+{ UndoStack.push(this);	}
 opAddrPoly::~opAddrPoly()
 {}
 

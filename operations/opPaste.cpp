@@ -6,9 +6,8 @@
 
 
 //Add Rectangle operation class
-opPaste::opPaste(controller * pCont):operation(pCont){
-
-}
+opPaste::opPaste(controller * pCont):operation(pCont)
+{ UndoStack.push(this);	}
 opPaste::~opPaste(){
 
 }
