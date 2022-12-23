@@ -1,6 +1,8 @@
 #pragma once
 #include "operation.h"
-
+#include "opFillColor.h"
+#include "..\controller.h"
+#include "..\GUI\GUI.h"
 
 class opFillColor : public operation
 {

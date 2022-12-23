@@ -3,7 +3,7 @@
 #include "..\GUI\GUI.h"
 
 opFillColor::opFillColor(controller* pCount) :operation(pCount)
-{}
+{UndoStack.push(this);}
 
 void opFillColor::Undo(){
 	if(noPrevColor)
