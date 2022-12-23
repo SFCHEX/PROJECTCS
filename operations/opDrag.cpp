@@ -14,9 +14,31 @@ opDrag::~opDrag() {
 	pUI->CreateDrawToolBar();
 	pUI->ClearStatusBar();
 }
+void opDrag::Undo(){
+	if (count=0){
+		for (int i = 0; i < selShapes.size(); i++) {
+			Point movePointSub;
+			movePointSub.x=-movePoint.x;
+			movePointSub.y=-movePoint.y;
+			selShapes[i]->MoveShape(movePointSub);
+	
+		}	
 
+	}	
+	count=1;
+
+}
+void opDrag::Redo(){
+	if (count=1){
+		for (int i = 0; i < selShapes.size(); i++) {
+			selShapes[i]->MoveShape(movePoint);
+		}	
+
+	}	
+	count=0;
+}
 void opDrag::Execute() {
-	{
+	{	
 		GUI* pUI = pControl->GetUI();
 		Graph* pGr = pControl->getGraph();
 		vector<shape*> selshape = pGr->getSelShape();
@@ -26,6 +48,7 @@ void opDrag::Execute() {
 		int nix = 0; int niy = 0;
 		bool brk = 0; bool strt = 0;
 		if (selshape[0] != nullptr) {
+			selShapes=selshape;
 			pUI->PrintMessage("Start moving your shape(s) or click toolbar to quit without moving");
 			for (int i = 0; i < 10; i) {
 				if (pUI->getClickState(ix, iy) == BUTTON_DOWN) {
@@ -65,5 +88,6 @@ void opDrag::Execute() {
 		else {
 			pUI->PrintMessage("Please select one or more shapes first");
 		}
+	movePoint=point1;	
 	}
 }

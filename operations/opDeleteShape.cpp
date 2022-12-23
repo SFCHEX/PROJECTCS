@@ -15,11 +15,11 @@ opDeleteShape::~opDeleteShape(){}
 
 void opDeleteShape::Undo() {
 	Graph* pGr = pControl->getGraph();
-	pGr->popShape();
+	pGr->unDelete();
 }
 void opDeleteShape::Redo() {
 	Graph* pGr = pControl->getGraph();
-	pGr->unDelete();
+	pGr->popShape();
 }
 
 
