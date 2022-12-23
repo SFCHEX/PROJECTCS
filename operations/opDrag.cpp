@@ -11,8 +11,7 @@ opDrag::opDrag(controller* pCont) :operation(pCont) {
 
 opDrag::~opDrag() {
 	GUI* pUI = pControl->GetUI();
-	pUI->CreateDrawToolBar();
-	pUI->ClearStatusBar();
+
 }
 void opDrag::Undo(){
 		for (int i = 0; i < selShapes.size(); i++) {
@@ -66,6 +65,7 @@ void opDrag::Execute()
 								pGr->Draw(pUI);
 							}
 							if (lButton == BUTTON_UP) {
+								pUI->CreateDrawToolBar();
 								brk = 1;
 							}
 						}
@@ -74,6 +74,7 @@ void opDrag::Execute()
 				else {
 					if (brk == 1) {
 						break;
+						pUI->ClearStatusBar();
 					}
 				}
 			}
