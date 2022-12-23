@@ -15,27 +15,20 @@ opDrag::~opDrag() {
 	pUI->ClearStatusBar();
 }
 void opDrag::Undo(){
-	if (count=0){
 		for (int i = 0; i < selShapes.size(); i++) {
 			Point movePointSub;
 			movePointSub.x=-movePoint.x;
 			movePointSub.y=-movePoint.y;
 			selShapes[i]->MoveShape(movePointSub);
 	
-		}	
-
 	}	
-	count=1;
 
 }
 void opDrag::Redo(){
-	if (count=1){
 		for (int i = 0; i < selShapes.size(); i++) {
 			selShapes[i]->MoveShape(movePoint);
 		}	
 
-	}	
-	count=0;
 }
 void opDrag::Execute() 
 	{	
