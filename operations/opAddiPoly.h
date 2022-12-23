@@ -11,6 +11,9 @@ public:
 
 	//Add iPoly to the controller
 	virtual void Execute();
+	virtual void Undo() ;
+	virtual void Redo() ;
+
 
 };
 

@@ -1,6 +1,5 @@
 #include "controller.h"
 #include "operations.h"
-#include"operations/opFillColor.h"
 //Constructor
 controller::controller()
 {
@@ -50,12 +49,6 @@ operation* controller::createOperation(operationType OpType)
 		case PASTE:
 			pOp = new opPaste(this);
 			break;
-		
-		case DRAG_MODE:
-			pOp = new opDrag(this);
-				break;
-
-
 		case DRAW_SQUARE:
 			pOp = new opAddSquare(this);
 				break;
@@ -91,6 +84,10 @@ operation* controller::createOperation(operationType OpType)
 		case SAVE:
 			pOp = new opSave(this); //create save operation 
 			break;
+
+		case DRAG_MODE:
+			pOp = new opDrag(this);
+			break;
 		case TO_PLAY:
 			pOp = new opSwitchToPlay(this);
 			break;
@@ -108,8 +105,6 @@ operation* controller::createOperation(operationType OpType)
 			break;
 
 		case STATUS:	//a click on the status bar ==> no operation
-			break;
-		case DO_NOTHING:
 			break;
 
 	}
@@ -167,8 +162,6 @@ void controller::Run()
 		if (pOpr)
 		{
 			pOpr->Execute();//Execute
-			delete pOpr;	//operation is not needed any more ==> delete it
-			pOpr = nullptr;
 		}
 
 		//Update the interface

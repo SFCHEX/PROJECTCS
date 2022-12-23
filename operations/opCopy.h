@@ -10,7 +10,7 @@ public:
 	virtual ~opCopy();
 	//Add copy to the controller
 	virtual void Execute() ;
-	
+
 };
 
 

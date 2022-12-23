@@ -8,6 +8,7 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <stack>
 using namespace std;
 
 struct Point	//To be used for shapes points

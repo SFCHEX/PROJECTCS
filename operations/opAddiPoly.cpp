@@ -7,9 +7,17 @@
 #include "..\GUI\GUI.h"
 
 opAddiPoly::opAddiPoly(controller* pCont) :operation(pCont)
-{}
+{ UndoStack.push(this);	}
 opAddiPoly::~opAddiPoly()
 {}
+void opAddiPoly::Undo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddiPoly::Redo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
 
 //Execute the operation
 void opAddiPoly::Execute()

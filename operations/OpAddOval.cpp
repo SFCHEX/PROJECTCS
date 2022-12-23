@@ -6,9 +6,17 @@
 #include "..\GUI\GUI.h"
 
 opAddOval::opAddOval(controller* pCont) :operation(pCont)
-{}
+{ UndoStack.push(this);	}
 opAddOval::~opAddOval()
 {}
+void opAddOval::Undo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddOval::Redo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
 
 //Execute the operation
 void opAddOval::Execute()

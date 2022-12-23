@@ -6,20 +6,36 @@
 #include <string>
 
 
-opDrag::opDrag(controller* pCont) :operation(pCont) {
+opDrag::opDrag(controller* pCont) :operation(pCont) 
+{ //UndoStack.push(this);	
 }
 
 opDrag::~opDrag() {
 	GUI* pUI = pControl->GetUI();
-	pUI->CreateDrawToolBar();
-	pUI->ClearStatusBar();
-}
 
-void opDrag::Execute() {
-	{
+}
+void opDrag::Undo(){
+		Point movePointSub;
+		movePointSub.x=-movePoint.x;
+		movePointSub.y=-movePoint.y;
+		for (int i = 0; i < selShapes.size(); i++)
+		selShapes[i]->MoveShape(movePointSub);
+	
+
+}
+void opDrag::Redo(){
+		for (int i = 0; i < selShapes.size(); i++) {
+			selShapes[i]->MoveShape(movePoint);
+		}	
+
+}
+void opDrag::Execute() 
+	{	
+{
 		GUI* pUI = pControl->GetUI();
 		Graph* pGr = pControl->getGraph();
 		vector<shape*> selshape = pGr->getSelShape();
+		selShapes=selshape;
 		Point point1;
 		int tx = 0; int ty = 0;
 		int ix = 0; int iy = 0;
@@ -50,6 +66,7 @@ void opDrag::Execute() {
 								pGr->Draw(pUI);
 							}
 							if (lButton == BUTTON_UP) {
+								pUI->CreateDrawToolBar();
 								brk = 1;
 							}
 						}
@@ -58,6 +75,7 @@ void opDrag::Execute() {
 				else {
 					if (brk == 1) {
 						break;
+						pUI->ClearStatusBar();
 					}
 				}
 			}
@@ -65,5 +83,7 @@ void opDrag::Execute() {
 		else {
 			pUI->PrintMessage("Please select one or more shapes first");
 		}
+
+	movePoint=point1;
 	}
 }

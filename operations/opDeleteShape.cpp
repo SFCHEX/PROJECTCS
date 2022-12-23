@@ -8,14 +8,30 @@
 
 #include "..\GUI\GUI.h"
 
-opDeleteShape::opDeleteShape(controller *pCont):operation(pCont){}
-
+opDeleteShape::opDeleteShape(controller *pCont):operation(pCont)
+{ UndoStack.push(this);	}
 opDeleteShape::~opDeleteShape(){}
+
+
+void opDeleteShape::Undo() {
+	Graph* pGr = pControl->getGraph();
+
+	GUI* pUI = pControl->GetUI();
+	for (int i=0; i<nSel;i++)
+	pGr->unDelete();
+}
+void opDeleteShape::Redo() {
+	Graph* pGr = pControl->getGraph();
+	for (int i=0; i<nSel;i++)
+	pGr->popShape();
+
+}
+
 
 void opDeleteShape::Execute(){
 	Graph* pGr = pControl->getGraph();
 
-	int nSel = pGr->nSelected();
+		nSel = pGr->nSelected();
 		pGr->DeleteShape(nSel);
 		GUI* pUI = pControl->GetUI();
 		pUI->ClearStatusBar();

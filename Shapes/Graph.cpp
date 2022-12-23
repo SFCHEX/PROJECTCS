@@ -13,6 +13,10 @@ Graph::~Graph()
 //==================================================================================//
 //						shapes Management Functions			       					//
 //==================================================================================//
+
+int Graph::clipboardSize(){
+	return clipboard.size();
+}
 void Graph::CopyShape()
 {
 	for (int i = 0; i < shapesList.size(); i++) {
@@ -67,13 +71,24 @@ int Graph::nSelected() { //returns num of selected elements
 	}
 	return num;
 }
+void Graph::popShape(){
+	if (!shapesList.empty()){
+	deletedShapesList.push(shapesList.back());
+	shapesList.pop_back();
+	}
+}
+
+
+void Graph::unDelete(){
+	shapesList.push_back(deletedShapesList.top());
+	deletedShapesList.pop();
+}
 
 void Graph::DeleteShape(int n){
 	do {
 		for (int i = 0; i < shapesList.size(); i++) {
 			if (shapesList[i]->IsSelected()) {
-				delete shapesList[i];
-				shapesList[i] = nullptr;
+				deletedShapesList.push(shapesList[i]);
 				shapesList.erase(shapesList.begin() + i);
 			}
 		}

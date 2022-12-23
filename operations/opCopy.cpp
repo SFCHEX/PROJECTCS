@@ -6,9 +6,8 @@
 
 
 //Add Rectangle operation class
-opCopy::opCopy(controller * pCont):operation(pCont){
-
-}
+opCopy::opCopy(controller * pCont):operation(pCont)
+{ }
 opCopy::~opCopy(){
 
 }

@@ -6,9 +6,17 @@
 #include "..\GUI\GUI.h"
 
 opAddTri::opAddTri(controller* pCont) :operation(pCont)
-{}
+{ UndoStack.push(this);	}
 opAddTri::~opAddTri()
 {}
+void opAddTri::Undo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddTri::Redo() {
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
 
 //Execute the operation
 void opAddTri::Execute()
