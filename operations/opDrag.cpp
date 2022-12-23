@@ -6,7 +6,8 @@
 #include <string>
 
 
-opDrag::opDrag(controller* pCont) :operation(pCont) {
+opDrag::opDrag(controller* pCont) :operation(pCont) 
+{ //UndoStack.push(this);	
 }
 
 opDrag::~opDrag() {
@@ -14,13 +15,12 @@ opDrag::~opDrag() {
 
 }
 void opDrag::Undo(){
-		for (int i = 0; i < selShapes.size(); i++) {
-			Point movePointSub;
-			movePointSub.x=-movePoint.x;
-			movePointSub.y=-movePoint.y;
-			selShapes[i]->MoveShape(movePointSub);
+		Point movePointSub;
+		movePointSub.x=-movePoint.x;
+		movePointSub.y=-movePoint.y;
+		for (int i = 0; i < selShapes.size(); i++)
+		selShapes[i]->MoveShape(movePointSub);
 	
-	}	
 
 }
 void opDrag::Redo(){
@@ -35,6 +35,7 @@ void opDrag::Execute()
 		GUI* pUI = pControl->GetUI();
 		Graph* pGr = pControl->getGraph();
 		vector<shape*> selshape = pGr->getSelShape();
+		selShapes=selshape;
 		Point point1;
 		int tx = 0; int ty = 0;
 		int ix = 0; int iy = 0;
@@ -82,5 +83,7 @@ void opDrag::Execute()
 		else {
 			pUI->PrintMessage("Please select one or more shapes first");
 		}
+
+	movePoint=point1;
 	}
 }

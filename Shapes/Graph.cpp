@@ -13,6 +13,10 @@ Graph::~Graph()
 //==================================================================================//
 //						shapes Management Functions			       					//
 //==================================================================================//
+
+int Graph::clipboardSize(){
+	return clipboard.size();
+}
 void Graph::CopyShape()
 {
 	for (int i = 0; i < shapesList.size(); i++) {

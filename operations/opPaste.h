@@ -5,6 +5,7 @@
 //Add Rectangle operation class
 class opPaste: public operation
 {
+	int pastedShapesNumber;
 public:
 	opPaste(controller *pCont);
 	virtual ~opPaste();

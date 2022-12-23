@@ -8,13 +8,9 @@
 
 
 opLoad::opLoad(controller *pCont):operation(pCont)
-{ UndoStack.push(this);	}
+{ }
 
 opLoad::~opLoad(){
-}
-void opLoad::Undo() {
-}
-void opLoad::Redo() {
 }
 
 void opLoad::Execute() {

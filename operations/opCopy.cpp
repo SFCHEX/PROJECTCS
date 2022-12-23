@@ -7,8 +7,7 @@
 
 //Add Rectangle operation class
 opCopy::opCopy(controller * pCont):operation(pCont)
-
-{ UndoStack.push(this);	}
+{ }
 opCopy::~opCopy(){
 
 }

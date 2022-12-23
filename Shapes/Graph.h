@@ -23,6 +23,7 @@ public:
 	Graph();
 	~Graph();
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
+	int clipboardSize();
 	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
 	void CutShape();
 	shape* Getshape(int x, int y, bool) const; //Search for a shape given a point inside the shape
