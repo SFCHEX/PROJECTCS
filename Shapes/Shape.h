@@ -27,6 +27,7 @@ public:
     shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
     void SetSelected(bool s);	//select/unselect the shape
+	void noFillColor();
 	virtual shape* clone()=0;	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 	GfxInfo getGfxInfo() const;

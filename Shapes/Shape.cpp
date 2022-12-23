@@ -60,6 +60,10 @@ void shape::ChngFillClr(color Fclr)
 	ShpGfxInfo.isFilled = true;
 	ShpGfxInfo.FillClr = Fclr; 
 }
+void shape::noFillColor(){
+
+	ShpGfxInfo.isFilled = false;
+}
 
 void shape::ChngPenWidth(int c)
 {

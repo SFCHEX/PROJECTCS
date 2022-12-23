@@ -3,23 +3,42 @@
 #include "..\GUI\GUI.h"
 
 opFillColor::opFillColor(controller* pCount) :operation(pCount)
-{}
+{UndoStack.push(this);}
+
+void opFillColor::Undo(){
+	if(noPrevColor)
+	selShape->noFillColor();
+	else
+	selShape->ChngFillClr(previousColor);
+}
+
+void opFillColor::Redo(){
+	selShape->ChngFillClr(newColor);
+}
+
+
 
 void opFillColor::Execute()
 {
-	color newColor;
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	shape* shape = pGr->getSelectedShape();
-	if (shape != nullptr)
+	selShape = pGr->getSelectedShape();
+
+	if (selShape != nullptr)
 	{
+		if (selShape->getGfxInfo().isFilled){
+			previousColor=selShape->getGfxInfo().FillClr;
+			noPrevColor=false;
+		}
+
+
 		pUI->GetColorFromColorPalette(newColor);
-		shape->ChngFillClr(newColor);
+		selShape->ChngFillClr(newColor);
 	}
 	else
 	{
-		string msg = "Select a shape first. If you want to change the general fill color, enter yes: ";
+		string msg = "Select a selShape first. If you want to change the general fill color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();
 		if (response == "yes")
