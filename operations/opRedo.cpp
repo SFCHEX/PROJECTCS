@@ -14,7 +14,9 @@ opRedo::~opRedo(){
 }
 //Add copy to the controller
 void opRedo::Execute(){
+    if (!RedoStack.empty()){
     RedoStack.top()->Redo();
     UndoStack.push(RedoStack.top());
     RedoStack.pop();
+    }
 }

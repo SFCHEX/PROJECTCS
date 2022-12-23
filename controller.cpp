@@ -162,8 +162,6 @@ void controller::Run()
 		if (pOpr)
 		{
 			pOpr->Execute();//Execute
-			delete pOpr;	//operation is not needed any more ==> delete it
-			pOpr = nullptr;
 		}
 
 		//Update the interface

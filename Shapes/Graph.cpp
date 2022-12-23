@@ -68,8 +68,10 @@ int Graph::nSelected() { //returns num of selected elements
 	return num;
 }
 void Graph::popShape(){
-	deletedShapesList.push(*shapesList.end());
-	shapesList.erase(shapesList.end());
+	if (!shapesList.empty()){
+	deletedShapesList.push(shapesList.back());
+	shapesList.pop_back();
+	}
 }
 
 

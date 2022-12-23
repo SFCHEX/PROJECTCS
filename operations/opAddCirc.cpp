@@ -18,7 +18,6 @@ void opAddCirc::Redo() {
 	pGr->unDelete();
 }
 
-
 //Execute the operation
 void opAddCirc::Execute() 
 {
