@@ -49,7 +49,6 @@ void opDrag::Execute()
 		int nix = 0; int niy = 0;
 		bool brk = 0; bool strt = 0;
 		if (selshape[0] != nullptr) {
-			selShapes=selshape;
 			pUI->PrintMessage("Start moving your shape(s) or click toolbar to quit without moving");
 			for (int i = 0; i < 10; i) {
 				if (pUI->getClickState(ix, iy) == BUTTON_DOWN) {
@@ -89,7 +88,5 @@ void opDrag::Execute()
 		else {
 			pUI->PrintMessage("Please select one or more shapes first");
 		}
-
-	movePoint=point1;
 	}
 }

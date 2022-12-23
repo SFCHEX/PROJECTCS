@@ -1,7 +1,16 @@
 #pragma once
 #include "operation.h"
+#include "..\Shapes\Graph.h"
+
+#include "..\Shapes\Shape.h"
+
+#include "..\controller.h"
+
+#include "..\GUI\GUI.h"
+
 
 class opDeleteShape : public operation{
+int nSel;
 public:
   opDeleteShape(controller *pCont);
   virtual ~opDeleteShape();
