@@ -37,8 +37,9 @@ void opDrag::Redo(){
 	}	
 	count=0;
 }
-void opDrag::Execute() {
+void opDrag::Execute() 
 	{	
+{
 		GUI* pUI = pControl->GetUI();
 		Graph* pGr = pControl->getGraph();
 		vector<shape*> selshape = pGr->getSelShape();
@@ -88,6 +89,7 @@ void opDrag::Execute() {
 		else {
 			pUI->PrintMessage("Please select one or more shapes first");
 		}
-	movePoint=point1;	
+
+	movePoint=point1;
 	}
 }
