@@ -46,11 +46,14 @@ void Graph::clearClipboard()
 }
 void Graph::PasteShape(Point p1)
 {
+	if (!clipboard.empty()){
+	Point referencePoint=clipboard[0]->getPoints().s_Points[0];
 	for (int i = 0; i < clipboard.size(); i++) {
 		shape* newShape=clipboard[i]->clone();
-		newShape->MoveShape(p1);
+		newShape->MoveShape(Point {(-referencePoint.x+p1.x),(-referencePoint.y+p1.y)} );
 		shapesList.push_back(newShape);
 
+	}
 	}
 }
 //Add a shape to the list of shapes
