@@ -7,7 +7,7 @@
 
 
 opDrag::opDrag(controller* pCont) :operation(pCont) 
-{ //UndoStack.push(this);	
+{ UndoStack.push(this);	
 }
 
 opDrag::~opDrag() {
@@ -15,33 +15,36 @@ opDrag::~opDrag() {
 
 }
 void opDrag::Undo(){
-		Point movePointSub;
-		movePointSub.x=-movePoint.x;
-		movePointSub.y=-movePoint.y;
-		for (int i = 0; i < selShapes.size(); i++)
-		selShapes[i]->MoveShape(movePointSub);
+		if (selshape[0]!=nullptr){
+		for (int i = 0; i < selshape.size(); i++)
+		selshape[i]->MoveShape(Point{previousPoints[i].x-finalPoints[i].x,previousPoints[i].y-finalPoints[i].y});
+		}
 	
 
 }
 void opDrag::Redo(){
-		for (int i = 0; i < selShapes.size(); i++) {
-			selShapes[i]->MoveShape(movePoint);
-		}	
-
+		if (selshape[0]!=nullptr){
+		for (int i = 0; i < selshape.size(); i++) {
+			selshape[i]->MoveShape(Point{-previousPoints[i].x+finalPoints[i].x,-previousPoints[i].y+finalPoints[i].y});
+			}	
+		}
 }
 void opDrag::Execute() 
 	{	
 {
 		GUI* pUI = pControl->GetUI();
 		Graph* pGr = pControl->getGraph();
-		vector<shape*> selshape = pGr->getSelShape();
-		selShapes=selshape;
+		selshape = pGr->getSelShape();
 		Point point1;
 		int tx = 0; int ty = 0;
 		int ix = 0; int iy = 0;
 		int nix = 0; int niy = 0;
 		bool brk = 0; bool strt = 0;
 		if (selshape[0] != nullptr) {
+
+			for (int i=0; i<selshape.size();i++)
+			previousPoints.push_back(selshape[i]->getPoints().s_Points[0]);
+
 			pUI->PrintMessage("Start moving your shape(s) or click toolbar to quit without moving");
 			for (int i = 0; i < 10; i) {
 				if (pUI->getClickState(ix, iy) == BUTTON_DOWN) {
@@ -70,7 +73,9 @@ void opDrag::Execute()
 								brk = 1;
 							}
 						}
+
 					}
+
 				}
 				else {
 					if (brk == 1) {
@@ -79,11 +84,16 @@ void opDrag::Execute()
 					}
 				}
 			}
+		for (int i=0; i<selshape.size();i++)
+		finalPoints.push_back(selshape[i]->getPoints().s_Points[0]);
 		}
+
 		else {
+			UndoStack.pop();
 			pUI->PrintMessage("Please select one or more shapes first");
 		}
 
-	movePoint=point1;
 	}
+
+
 }
