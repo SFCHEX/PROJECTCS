@@ -6,8 +6,8 @@
 //Add Rectangle operation class
 class opDrag : public operation
 {
-Point movePoint;
-vector<shape*> selShapes;
+vector<Point> previousPoints, finalPoints;
+vector<shape*> selshape;
 int count=0;
 public:
 	opDrag(controller* pCont);

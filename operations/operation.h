@@ -13,7 +13,8 @@ protected:
 	static stack<operation*> UndoStack;
 public:
 
-	operation(controller* pCont) { pControl = pCont; }	//constructor
+	operation(controller* pCont) { 
+		pControl = pCont; }	//constructor
 	virtual ~operation() {}
 
 	//Execute operation (code depends on operation type)
