@@ -9,10 +9,12 @@ opPenWidth::~opPenWidth()
 {}
 
 void opPenWidth::Undo(){
+		if (selShape!=nullptr)
 		selShape->ChngPenWidth(previousWidth);
 }
 
 void opPenWidth::Redo(){
+		if (selShape!=nullptr)
 		selShape->ChngPenWidth(newWidth);
 }
 

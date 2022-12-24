@@ -6,10 +6,12 @@ opPenColor::opPenColor(controller* pCount) :operation(pCount)
 {UndoStack.push(this);}
 
 void opPenColor::Undo(){
+	if (selShape!=nullptr)
 	selShape->ChngDrawClr(previousColor);
 }
 
 void opPenColor::Redo(){
+	if (selShape!=nullptr)
 	selShape->ChngDrawClr(newColor);
 }
 
