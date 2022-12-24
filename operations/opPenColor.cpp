@@ -30,6 +30,8 @@ void opPenColor::Execute()
 	}
 	else
 	{
+		delete UndoStack.top();
+		UndoStack.pop();
 		string msg = "Select a selShape first. If you want to change the general pen color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();
