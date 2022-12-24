@@ -6,13 +6,16 @@ opFillColor::opFillColor(controller* pCount) :operation(pCount)
 {UndoStack.push(this);}
 
 void opFillColor::Undo(){
+	if (selShape!=nullptr){
 	if(noPrevColor)
 	selShape->noFillColor();
 	else
 	selShape->ChngFillClr(previousColor);
+	}
 }
 
 void opFillColor::Redo(){
+	if (selShape!=nullptr)
 	selShape->ChngFillClr(newColor);
 }
 
@@ -38,6 +41,8 @@ void opFillColor::Execute()
 	}
 	else
 	{
+		delete UndoStack.top();
+		UndoStack.pop();
 		string msg = "Select a selShape first. If you want to change the general fill color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();

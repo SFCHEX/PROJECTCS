@@ -9,10 +9,12 @@ opPenWidth::~opPenWidth()
 {}
 
 void opPenWidth::Undo(){
+		if (selShape!=nullptr)
 		selShape->ChngPenWidth(previousWidth);
 }
 
 void opPenWidth::Redo(){
+		if (selShape!=nullptr)
 		selShape->ChngPenWidth(newWidth);
 }
 
@@ -35,6 +37,8 @@ void opPenWidth::Execute()
 	}
 	else
 	{
+		delete UndoStack.top();
+		UndoStack.pop();
 		string msg = "Select a selShape first. If you want to change the general pen width, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();

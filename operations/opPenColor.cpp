@@ -6,10 +6,12 @@ opPenColor::opPenColor(controller* pCount) :operation(pCount)
 {UndoStack.push(this);}
 
 void opPenColor::Undo(){
+	if (selShape!=nullptr)
 	selShape->ChngDrawClr(previousColor);
 }
 
 void opPenColor::Redo(){
+	if (selShape!=nullptr)
 	selShape->ChngDrawClr(newColor);
 }
 
@@ -28,6 +30,8 @@ void opPenColor::Execute()
 	}
 	else
 	{
+		delete UndoStack.top();
+		UndoStack.pop();
 		string msg = "Select a selShape first. If you want to change the general pen color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();
