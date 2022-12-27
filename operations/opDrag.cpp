@@ -7,8 +7,7 @@
 
 
 opDrag::opDrag(controller* pCont) :operation(pCont) 
-{ UndoStack.push(this);	
-}
+{ UndoStack.push_front(this);	}
 
 opDrag::~opDrag() {
 	GUI* pUI = pControl->GetUI();
@@ -89,7 +88,7 @@ void opDrag::Execute()
 		}
 
 		else {
-			UndoStack.pop();
+			UndoStack.pop_front();
 			pUI->PrintMessage("Please select one or more shapes first");
 		}
 

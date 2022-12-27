@@ -9,8 +9,12 @@
 #include "..\GUI\GUI.h"
 
 opDeleteShape::opDeleteShape(controller *pCont):operation(pCont)
-{ UndoStack.push(this);	}
-opDeleteShape::~opDeleteShape(){}
+{ UndoStack.push_front(this);	}
+
+opDeleteShape::~opDeleteShape(){
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(nSel);
+}
 
 
 void opDeleteShape::Undo() {

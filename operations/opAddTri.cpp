@@ -6,9 +6,13 @@
 #include "..\GUI\GUI.h"
 
 opAddTri::opAddTri(controller* pCont) :operation(pCont)
-{ UndoStack.push(this);	}
+{ UndoStack.push_front(this);	}
 opAddTri::~opAddTri()
-{}
+{
+
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(1);
+}
 void opAddTri::Undo() {
 	Graph* pGr = pControl->getGraph();
 	pGr->popShape();

@@ -7,10 +7,11 @@
 #include "..\controller.h"
 
 #include "..\GUI\GUI.h"
-
+#include <vector>
 
 class opDeleteShape : public operation{
 int nSel;
+vector<shape*> deletedShapes;
 public:
   opDeleteShape(controller *pCont);
   virtual ~opDeleteShape();

@@ -3,7 +3,7 @@
 #include "..\GUI\GUI.h"
 
 opPenWidth::opPenWidth(controller* pCont) :operation(pCont)
-{UndoStack.push(this);}
+{UndoStack.push_front(this);}
 
 opPenWidth::~opPenWidth()
 {}
@@ -37,8 +37,9 @@ void opPenWidth::Execute()
 	}
 	else
 	{
-		delete UndoStack.top();
-		UndoStack.pop();
+		delete UndoStack.front();
+		UndoStack.front()=nullptr;
+		UndoStack.pop_front();
 		string msg = "Select a selShape first. If you want to change the general pen width, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();

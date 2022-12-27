@@ -6,10 +6,13 @@
 #include "..\GUI\GUI.h"
 
 opAddrPoly::opAddrPoly(controller* pCont) :operation(pCont)
-{ UndoStack.push(this);	}
+{ UndoStack.push_front(this);	}
 opAddrPoly::~opAddrPoly()
-{}
+{
 
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(1);
+}
 void opAddrPoly::Undo() {
 	Graph* pGr = pControl->getGraph();
 	pGr->popShape();

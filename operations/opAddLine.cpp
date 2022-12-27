@@ -6,9 +6,13 @@
 #include "..\GUI\GUI.h"
 
 opAddLine::opAddLine(controller* pCont) : operation(pCont)
-{ UndoStack.push(this);	}
+{ UndoStack.push_front(this);	}
 opAddLine::~opAddLine()
-{}
+{
+
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(1);
+}
 void opAddLine::Undo() {
 	Graph* pGr = pControl->getGraph();
 	pGr->popShape();

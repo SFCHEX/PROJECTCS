@@ -7,9 +7,10 @@
 
 //Add Rectangle operation class
 opPaste::opPaste(controller * pCont):operation(pCont)
-{UndoStack.push(this);}
+{UndoStack.push_front(this);}
 opPaste::~opPaste(){
-
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(pastedShapesNumber);
 }
 
 void opPaste::Undo() {
