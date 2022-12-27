@@ -83,7 +83,6 @@ void Graph::popShape(){
 
 void Graph::deletedShapeCleanUp(int number){
 	for(int i=0;number>i;i++){
-
 		delete deletedShapesList.back();
 		deletedShapesList.back()=nullptr;
 		deletedShapesList.pop_back();

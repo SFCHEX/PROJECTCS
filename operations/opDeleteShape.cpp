@@ -1,5 +1,4 @@
 #include "opDeleteShape.h"
-
 #include "..\Shapes\Graph.h"
 
 #include "..\Shapes\Shape.h"
@@ -12,12 +11,15 @@ opDeleteShape::opDeleteShape(controller *pCont):operation(pCont)
 { UndoStack.push_front(this);	}
 
 opDeleteShape::~opDeleteShape(){
+	if(!isUndone){
 	Graph* pGr = pControl->getGraph();
 	pGr->deletedShapeCleanUp(nSel);
+	}
 }
 
 
 void opDeleteShape::Undo() {
+	isUndone=1;
 	Graph* pGr = pControl->getGraph();
 
 	GUI* pUI = pControl->GetUI();
@@ -25,6 +27,7 @@ void opDeleteShape::Undo() {
 	pGr->unDelete();
 }
 void opDeleteShape::Redo() {
+	isUndone=0;
 	Graph* pGr = pControl->getGraph();
 	for (int i=0; i<nSel;i++)
 	pGr->popShape();

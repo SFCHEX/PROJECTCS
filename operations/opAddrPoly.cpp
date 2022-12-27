@@ -9,15 +9,18 @@ opAddrPoly::opAddrPoly(controller* pCont) :operation(pCont)
 { UndoStack.push_front(this);	}
 opAddrPoly::~opAddrPoly()
 {
-
+if(isUndone){
 	Graph* pGr = pControl->getGraph();
 	pGr->deletedShapeCleanUp(1);
 }
+}
 void opAddrPoly::Undo() {
+	isUndone=1;	
 	Graph* pGr = pControl->getGraph();
 	pGr->popShape();
 }
 void opAddrPoly::Redo() {
+	isUndone=0;	
 	Graph* pGr = pControl->getGraph();
 	pGr->unDelete();
 }
