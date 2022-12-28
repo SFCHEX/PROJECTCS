@@ -1,5 +1,5 @@
 #include "operation.h"
-
+#include <iostream>
 deque<operation*> operation::UndoStack;
 deque<operation*> operation::RedoStack;
 operation::operation(controller* pCont){
@@ -13,7 +13,7 @@ operation::operation(controller* pCont){
 }
 
 void operation::cleanRedo(){
-	for(int i =0; i>RedoStack.size();i++){
+	for(int i =0; i<RedoStack.size();i++){
 		delete RedoStack.back();
 		RedoStack.back()=nullptr;
 		RedoStack.pop_back();
