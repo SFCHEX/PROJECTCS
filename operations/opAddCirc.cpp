@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddCirc::opAddCirc(controller * pCont):operation(pCont)
-{ UndoStack.push_front(this);	}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddCirc::~opAddCirc()
 {
 

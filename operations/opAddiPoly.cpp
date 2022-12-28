@@ -7,7 +7,7 @@
 #include "..\GUI\GUI.h"
 
 opAddiPoly::opAddiPoly(controller* pCont) :operation(pCont)
-{ UndoStack.push_front(this);	}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddiPoly::~opAddiPoly()
 {
 	if (isUndone){

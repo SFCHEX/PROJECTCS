@@ -3,7 +3,7 @@
 #include "..\GUI\GUI.h"
 
 opPenColor::opPenColor(controller* pCount) :operation(pCount)
-{UndoStack.push_front(this);}
+{ UndoStack.push_front(this);cleanRedo();	}
 
 void opPenColor::Undo(){
 	if (selShape!=nullptr)

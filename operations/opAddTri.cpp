@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddTri::opAddTri(controller* pCont) :operation(pCont)
-{ UndoStack.push_front(this);	}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddTri::~opAddTri()
 {
 if(isUndone){

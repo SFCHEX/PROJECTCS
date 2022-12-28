@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddLine::opAddLine(controller* pCont) : operation(pCont)
-{ UndoStack.push_front(this);	}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddLine::~opAddLine()
 {
 	if(isUndone){

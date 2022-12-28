@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddrPoly::opAddrPoly(controller* pCont) :operation(pCont)
-{ UndoStack.push_front(this);	}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddrPoly::~opAddrPoly()
 {
 if(isUndone){

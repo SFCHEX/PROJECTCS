@@ -11,7 +11,9 @@ protected:
 	controller* pControl;	//operations needs control to do their job
 	static deque<operation*> RedoStack;
 	static deque<operation*> UndoStack;
+	static void cleanRedo();
 	bool isUndone=0;
+
 public:
 
 	operation(controller* pCont);
