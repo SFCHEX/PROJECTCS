@@ -6,14 +6,24 @@
 #include "..\GUI\GUI.h"
 
 opAddCirc::opAddCirc(controller * pCont):operation(pCont)
-{ UndoStack.push(this);	}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddCirc::~opAddCirc()
-{} 
+{
+
+	GUI* pUI= pControl->GetUI();
+	pUI->PrintMessage("destructor is called");
+	if (isUndone){
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(1);
+	}
+}
 void opAddCirc::Undo() {
+	isUndone=1;
 	Graph* pGr = pControl->getGraph();
 	pGr->popShape();
 }
 void opAddCirc::Redo() {
+	isUndone=0;
 	Graph* pGr = pControl->getGraph();
 	pGr->unDelete();
 }

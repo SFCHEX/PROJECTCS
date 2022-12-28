@@ -6,14 +6,21 @@
 #include "..\GUI\GUI.h"
 
 opAddSquare::opAddSquare(controller* pCont) :operation(pCont)
-{ UndoStack.push(this);	}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddSquare::~opAddSquare()
-{}
+{
+if(isUndone){
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(1);
+}
+}
 void opAddSquare::Undo() {
+isUndone=1;	
 	Graph* pGr = pControl->getGraph();
 	pGr->popShape();
 }
 void opAddSquare::Redo() {
+isUndone=0;	
 	Graph* pGr = pControl->getGraph();
 	pGr->unDelete();
 }

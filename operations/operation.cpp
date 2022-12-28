@@ -1,4 +1,21 @@
 #include "operation.h"
+#include <iostream>
+deque<operation*> operation::UndoStack;
+deque<operation*> operation::RedoStack;
+operation::operation(controller* pCont){
+		pControl = pCont;
+		if (UndoStack.size()>=5)	{
+		delete UndoStack.back();
+		UndoStack.back()=nullptr;
+		UndoStack.pop_back();
+		}
 
-stack<operation*> operation::UndoStack;
-stack<operation*> operation::RedoStack;
+}
+
+void operation::cleanRedo(){
+	for(int i =0; i<RedoStack.size();i++){
+		delete RedoStack.back();
+		RedoStack.back()=nullptr;
+		RedoStack.pop_back();
+	}
+}

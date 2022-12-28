@@ -3,7 +3,7 @@
 #include "..\GUI\GUI.h"
 
 opFillColor::opFillColor(controller* pCount) :operation(pCount)
-{UndoStack.push(this);}
+{ UndoStack.push_front(this);cleanRedo();	}
 
 void opFillColor::Undo(){
 	if (selShape!=nullptr){
@@ -41,8 +41,9 @@ void opFillColor::Execute()
 	}
 	else
 	{
-		delete UndoStack.top();
-		UndoStack.pop();
+		delete UndoStack.front();
+		UndoStack.front()=nullptr;
+		UndoStack.pop_front();
 		string msg = "Select a selShape first. If you want to change the general fill color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();

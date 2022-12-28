@@ -18,9 +18,9 @@ void opUndo::Execute(){
 	pUI->PrintMessage("undo has been pressed");
 
     if (!UndoStack.empty()){
-    UndoStack.top()->Undo();
-    RedoStack.push(UndoStack.top());
-    UndoStack.pop();
+    UndoStack.front()->Undo();
+    RedoStack.push_front(UndoStack.front());
+    UndoStack.pop_front();
     }
 
 

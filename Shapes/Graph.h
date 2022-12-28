@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <deque>
 using namespace std;
 
 //forward decl
@@ -13,7 +14,7 @@ class Graph
 {
 private:
 	vector <shape*> shapesList; //a container to hold all shapes	
-	stack <shape*> deletedShapesList; //a container to hold all shapes	
+	deque<shape*> deletedShapesList; //a container to hold all shapes	
 	shape* selectedShape;	//pointer to the currently selected shape
 	vector <shape*> clipboard;
 	void SaveColorRGB(ofstream& outfile,color RGB);	//Saves Rgb values to to a file
@@ -31,6 +32,7 @@ public:
 	void unDelete();
 	void popShape();
 	void Save(ofstream& outfile,GUI* pUI);	//Save all shapes to a file
+	void deletedShapeCleanUp(int number);
 	void Load(ifstream& inputfile,GUI* pUI);	//Load all shapes from a file
 	int nSelected();
 	void DeleteShape(int);

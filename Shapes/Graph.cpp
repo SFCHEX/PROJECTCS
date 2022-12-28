@@ -76,22 +76,28 @@ int Graph::nSelected() { //returns num of selected elements
 }
 void Graph::popShape(){
 	if (!shapesList.empty()){
-	deletedShapesList.push(shapesList.back());
+	deletedShapesList.push_front(shapesList.back());
 	shapesList.pop_back();
 	}
 }
 
-
+void Graph::deletedShapeCleanUp(int number){
+	for(int i=0;number>i;i++){
+		delete deletedShapesList.back();
+		deletedShapesList.back()=nullptr;
+		deletedShapesList.pop_back();
+	}
+}
 void Graph::unDelete(){
-	shapesList.push_back(deletedShapesList.top());
-	deletedShapesList.pop();
+	shapesList.push_back(deletedShapesList.front());
+	deletedShapesList.pop_front();
 }
 
 void Graph::DeleteShape(int n){
 	do {
 		for (int i = 0; i < shapesList.size(); i++) {
 			if (shapesList[i]->IsSelected()) {
-				deletedShapesList.push(shapesList[i]);
+				deletedShapesList.push_front(shapesList[i]);
 				shapesList.erase(shapesList.begin() + i);
 			}
 		}
