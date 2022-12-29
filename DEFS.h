@@ -38,7 +38,6 @@ enum operationType //The operations supported (you can add more if needed)
 	TO_DRAW,		//Switch interface to Draw mode
 	TO_PLAY,		//Switch interface to Play mod
 	STICK_IMAGE,
-	RESIZE,
 	DO_NOTHING
 	
 	///TODO: Add more operation types (if needed)

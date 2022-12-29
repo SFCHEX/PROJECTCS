@@ -32,7 +32,6 @@ operation* controller::createOperation(operationType OpType)
 			pOp = new opStickImage(this);
 			break;
 
-
 		case DRAW_LINE:
 			pOp = new opAddLine(this);
 			break;
