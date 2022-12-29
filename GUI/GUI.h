@@ -61,6 +61,7 @@ class GUI
 		ICON_PASTE,  //PASTE width icon in menu
 		ICON_SWITCH, //switch to play mode
 		ICON_DRAG,
+		ICON_RESIZE,
 		ICON_UNDO,  //PASTE width icon in menu
 		ICON_REDO,  //PASTE width icon in menu
 		//TODO: Add more icons names here

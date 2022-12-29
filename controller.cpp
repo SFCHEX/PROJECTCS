@@ -79,12 +79,16 @@ operation* controller::createOperation(operationType OpType)
 		case LOAD:
 			///create load operation
 			pOp = new opLoad(this);
-			break;	
-		
+			break;
+
 		case SAVE:
 			pOp = new opSave(this); //create save operation 
 			break;
 
+		case RESIZE:
+			pOp = new opResize(this);
+			break;	
+		
 		case DRAG_MODE:
 			pOp = new opDrag(this);
 			break;
