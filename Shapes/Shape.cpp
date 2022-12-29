@@ -9,6 +9,11 @@ shape::shape(GfxInfo shapeGfxInfo)
 	//id is added into ShpGfx info for more convenient use
 }
  
+
+
+void shape::Load(ifstream &Infile){	//Load the shape parameters to the file
+}
+
 void shape::SetSelected(bool s)
 {	ShpGfxInfo.isSelected = s; }
 

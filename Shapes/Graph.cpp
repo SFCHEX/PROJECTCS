@@ -264,122 +264,69 @@ vector<string> Graph::Parameterize(string p){//returns string as parameters
 //the load function will open the file and iterate line by line through the file adding shapes to the shape vector. it will create shape objects based on the file
 void Graph::Load(ifstream& inputfile, GUI* pUI)
 {
-	shapesList.clear();
+	for (int i=0;i<shapesList.size();i++){
+		delete shapesList[i];
+		shapesList[i]=nullptr;
+	}
+    shapesList.clear();
 	string shapeText,drawToolsState,shapeCount;
 	getline(inputfile,drawToolsState);
-	
 	vector<string> drawToolsParameters=Parameterize(drawToolsState);
 	pUI->setCrntPenWidth(stoi(drawToolsParameters[0]));
 	pUI->setCrntDrawColor(color (stoi(drawToolsParameters[3]),stoi(drawToolsParameters[2]),stoi(drawToolsParameters[1])));
-//	pUI->setCrntFillColor(color (stoi(drawToolsParameters[6]),stoi(drawToolsParameters[5]),stoi(drawToolsParameters[4])));
-
+	pUI->setCrntFillColor(color (stoi(drawToolsParameters[6]),stoi(drawToolsParameters[5]),stoi(drawToolsParameters[4])));
 	getline(inputfile,shapeCount);
+
+	string shapeText;
 	while (getline(inputfile, shapeText)) {
-	vector<string> parameters=Parameterize(shapeText);
-//parameter list is added in reverse because we initialize the gfx info first, and number of points is inconsistent per each possible vector so indexing from the start to the end would be more difficult
-
-   	int size=parameters.size();
-
-    GfxInfo shpGfxInfo;
-    shpGfxInfo.BorderWdth=stoi(parameters[0]);
-    shpGfxInfo.isSelected=false;
-    if (parameters[1]=="NO_FILL"){
-        shpGfxInfo.isFilled=false;
-        shpGfxInfo.DrawClr=color(stoi(parameters[4]),stoi(parameters[3]),stoi(parameters[2]));
-    }
-    else{
-        shpGfxInfo.isFilled=true;
-        shpGfxInfo.FillClr=color(stoi(parameters[3]),stoi(parameters[2]),stoi(parameters[1]));
-        shpGfxInfo.DrawClr=color(stoi(parameters[6]),stoi(parameters[5]),stoi(parameters[4]));
-    }
-	//reversing the list again to normal so we can grab the points now that we have gfxinfo which is common for all shapes. it is easier to work this way for the points
-	reverse(parameters.begin(),parameters.end());
-	//stoi converts string to int
-	
-
-	if (parameters[0]=="Square" ||parameters[0]=="Oval"||parameters[0]=="Line"||parameters[0]=="Rectangle"||parameters[0]=="Circle"){
-		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
-		Point P1{stoi(parameters[2]),stoi(parameters[3])};
-		Point P2{stoi(parameters[4]),stoi(parameters[5])};
-			if (parameters[0]=="Line")
-			{
-				Line *S=new Line(P1, P2, shpGfxInfo);
-				Addshape(S);
-			}
-			else if (parameters[0]=="Rectangle")
-			{
-				Rect *S=new Rect(P1, P2, shpGfxInfo);
-				Addshape(S);
-			}
-			else if (parameters[0]=="Circle")
-			{
-				Circ *S=new Circ(P1, P2, shpGfxInfo);
-				Addshape(S);
-			}
-			else if (parameters[0]=="Oval")
-			{
-				Oval *S=new Oval(P1, P2, shpGfxInfo);
-				Addshape(S);
-			}
-			else if (parameters[0]=="Square")
-			{
-				Square *S=new Square(P1, P2, shpGfxInfo);
-				Addshape(S);
-			
-			}
-	}
-
-	else if (parameters[0]=="Triangle")
-	{
-		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
-		Point P1{stoi(parameters[2]),stoi(parameters[3])};
-		Point P2{stoi(parameters[4]),stoi(parameters[5])};
-		Point P3{stoi(parameters[6]),stoi(parameters[7])};
-
-				Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
-	
-				Addshape(S);
-	}
-	else if (parameters[0]=="Irregular Polygon")
-	{
-		
-		vector<int> pVectX, pVectY;
-		int limit;
-		if (parameters[parameters.size()-2]=="NO_FILL"){
-			//5 is the number of NON coordinate related parameters in the case there is no fill color
-			limit=parameters.size()-5;
+		string shapeType;
+		inputfile>>shapeType;
+		if (shapeType=="Line")
+		{
+			Line *S=new Line(shapeText);
+			Addshape(S);
 		}
-		else{
-			//8 is the number of NON coordinate related parameters in the case there is a fill color
-			limit=parameters.size()-7;
+		else if (shapeType=="Rectangle")
+		{
+			Rect *S=new Rect(shapeText);
+			Addshape(S);
 		}
-		for (int i=2;i<limit;i++){
-			//add coordinates to vector lists based on if it is odd or even
-			if(i%2==0)
-				pVectX.push_back(stoi(parameters[i]));
-			else
-				pVectY.push_back(stoi(parameters[i]));
+		else if (shapeType=="Circle")
+		{
+			Circ *S=new Circ(shapeText);
+			Addshape(S);
+		}
+		else if (shapeType=="Oval")
+		{
+			Oval *S=new Oval(shapeText);
+			Addshape(S);
+		}
+		else if (shapeType=="Square")
+		{
+			Square *S=new Square(shapeText);
+			Addshape(S);
+
+		}
+		else if (shapeType=="Triangle")
+		{
+			Tri *S=new Tri(shapeText);
+			Addshape(S);
+		}
+		else if (shapeType=="Irregular Polygon")
+		{
+			iPoly *S=new iPoly(shapeText);
+			Addshape(S);
+		}
+		else if (shapeType=="Regular Polygon")
+		{
+			rPoly *S=new rPoly(shapeText);
+			Addshape(S);
 		}
 
-		iPoly *S=new iPoly(pVectX,pVectY, shpGfxInfo);
-		Addshape(S);
-	}
-	else if (parameters[0]=="Regular Polygon")
-	{
-		Point P1{stoi(parameters[3]),stoi(parameters[4])};
-		Point P2{stoi(parameters[5]),stoi(parameters[6])};
-		
-		rPoly *S=new rPoly(stoi(parameters[2]),P1,P2, shpGfxInfo);
-		Addshape(S);
-	}
 
-
-
-
-	}
 	inputfile.close(); 
+	}
 }
-
 vector<shape*> Graph::getSelShape() {
 	vector<shape*> selected;
 	bool select_exists = 0;

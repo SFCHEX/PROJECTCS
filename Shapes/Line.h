@@ -7,6 +7,7 @@ private:
 	Point End2;
 public:
 	Line(Point, Point, GfxInfo shapeGfxInfo);
+	Line(string shapeText);
 	virtual ~Line();
 
 	virtual void Draw(GUI* pUI) const;

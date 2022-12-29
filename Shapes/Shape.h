@@ -3,6 +3,7 @@
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
 #include <vector>
+#include <algorithm>
 
 struct ShapePoints {
 	vector<Point> s_Points;
@@ -53,7 +54,7 @@ public:
 	//virtual void Move() = 0;		//Move the shape
 
 	virtual void Save(ofstream &outfile);	//Save the shape parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the shape parameters to the file
+	virtual void Load(vector<string> parameters);	//Load the shape parameters to the file
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all shape info on the status bar
 };
