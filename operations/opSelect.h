@@ -1,8 +1,9 @@
 #pragma once
 #include "operation.h"
+#include <Windows.h>
 class opSelect : public operation {
 private:
-	static bool SingleSelect;
+	bool MultiSelect;
 
 public:
 	opSelect(controller* pCont);
@@ -10,5 +11,6 @@ public:
 
 	//Add Save to the controller
 	virtual void Execute();
+
 
 };

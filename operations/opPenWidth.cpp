@@ -3,10 +3,21 @@
 #include "..\GUI\GUI.h"
 
 opPenWidth::opPenWidth(controller* pCont) :operation(pCont)
-{}
+{ UndoStack.push_front(this);cleanRedo();	}
 
 opPenWidth::~opPenWidth()
 {}
+
+void opPenWidth::Undo(){
+		if (selShape!=nullptr)
+		selShape->ChngPenWidth(previousWidth);
+}
+
+void opPenWidth::Redo(){
+		if (selShape!=nullptr)
+		selShape->ChngPenWidth(newWidth);
+}
+
 
 void opPenWidth::Execute()
 
@@ -14,18 +25,22 @@ void opPenWidth::Execute()
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	shape* shape = pGr->getSelectedShape();
-	if (shape != nullptr)
+	selShape = pGr->getSelectedShape();
+	if (selShape != nullptr)
 	{
+		previousWidth=selShape->getGfxInfo().BorderWdth;
 		pUI->PrintMessage("Enter a new width: ");
-		int newWidth = stoi(pUI->GetString());
-		shape->ChngPenWidth(newWidth);
+		newWidth = stoi(pUI->GetString());
+		selShape->ChngPenWidth(newWidth);
 		pUI->ClearStatusBar();
 
 	}
 	else
 	{
-		string msg = "Select a shape first. If you want to change the general pen width, enter yes: ";
+		delete UndoStack.front();
+		UndoStack.front()=nullptr;
+		UndoStack.pop_front();
+		string msg = "Select a selShape first. If you want to change the general pen width, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();
 		if (response == "yes")

@@ -27,6 +27,7 @@ public:
     shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
     void SetSelected(bool s);	//select/unselect the shape
+	void noFillColor();
 	virtual shape* clone()=0;	//select/unselect the shape
 	bool IsSelected() const;	//check whether fig is selected
 	GfxInfo getGfxInfo() const;
@@ -38,6 +39,7 @@ public:
 	void ChngPenWidth(int);
 	virtual bool isInside(int x, int y) const = 0; //checks if any given point is inside a certain shape
 	virtual ShapePoints getPoints() = 0; //Gets the x and y verticies for any shape
+	virtual void MoveShape(Point pMove) = 0;
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape
 

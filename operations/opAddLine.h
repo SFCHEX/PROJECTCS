@@ -8,5 +8,8 @@ public:
 	virtual ~opAddLine();
 
 	virtual void Execute();
+	virtual void Undo() ;
+	virtual void Redo() ;
+
 
 };

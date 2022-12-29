@@ -8,6 +8,7 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <stack>
 using namespace std;
 
 struct Point	//To be used for shapes points
@@ -59,7 +60,7 @@ class GUI
 		ICON_COPY,  //COPY icon in menu
 		ICON_PASTE,  //PASTE width icon in menu
 		ICON_SWITCH, //switch to play mode
-		ICON_SELECT,
+		ICON_DRAG,
 		ICON_UNDO,  //PASTE width icon in menu
 		ICON_REDO,  //PASTE width icon in menu
 		//TODO: Add more icons names here
@@ -105,12 +106,13 @@ class GUI
 	window* pColorPaletteWindow;
 	static clicktype c;
 
-
 public:
+
 
 	GUI();
 
 	// Input Functions  ---------------------------
+	Point* PrevPrevPoint = new Point();
 	void GetPointClicked(int& x, int& y) const;//Get coordinate where user clicks
 	string GetString() const;	 //Returns a string entered by the user
 	operationType GetUseroperation() const; //Read the user click and map to an operation
@@ -155,7 +157,8 @@ public:
 	void SwitchToPlayMode(window w);
 	void CreatePlayModeToolBar(window & testWindow, string *MenuItems, int ItemCount, int MenuItemWidth, int MenuItemHeight);
 	
-
+	const button LeftButton = LEFT_BUTTON;
+	
 	// Changes the color to a new one, obtained by clicking on a color from the color palette
 	void GetColorFromColorPalette(color&); 
 
@@ -165,8 +168,6 @@ public:
 	
 	bool getFillStatus();
 	void setFillStatus();
-
-	
-
+	const buttonstate getClickState(int& x, int& y);	
 	~GUI();
 };

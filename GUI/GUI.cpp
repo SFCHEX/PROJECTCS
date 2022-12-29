@@ -1,6 +1,7 @@
 #include "GUI.h"
-
-
+#include <Windows.h>
+#include <time.h>
+#include <iostream>
 GUI::GUI()
 {
 	//Initialize user interface parameters
@@ -29,7 +30,6 @@ GUI::GUI()
 	pWind = CreateWind(width, height, wx, wy);
 	//Change the title
 	pWind->ChangeTitle("- - - - - - - - - - PAINT ^ ^ PLAY - - - - - - - - - -");
-
 	CreateDrawToolBar();
 	CreateStatusBar();
 
@@ -43,8 +43,14 @@ GUI::GUI()
 //======================================================================================//
 void GUI::GetPointClicked(int& x, int& y) const
 {
-	pWind->WaitMouseClick(x, y);	//Wait for mouse click
+	pWind->WaitMouseClick(x, y);	
+
+
 }
+
+
+	//Wait for mouse click
+
 
 string GUI::GetString() const
 {
@@ -73,15 +79,22 @@ string GUI::GetString() const
 //This function reads the position where the user clicks to determine the desired operation
 operationType GUI::GetUseroperation() const
 {
+	PrevPrevPoint->x = PrevPoint->x ; PrevPrevPoint->y = PrevPoint->y;
+
 	int x, y;
-	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+
+	//pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
+	GetPointClicked(x, y);
 	PrevPoint->x = x;
 	PrevPoint->y = y;
+
+
 	if (InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the first Toolbar
 		if (y >= 0 && y < ToolBarHeight)
 		{
+
 			//Check whick Menu icon was clicked
 			//==> This assumes that menu icons are lined up horizontally <==
 
@@ -116,11 +129,11 @@ operationType GUI::GetUseroperation() const
 			case ICON_PEN_COLOR: return CHNG_DRAW_CLR;
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
 			case ICON_EXIT: return EXIT;
-			case ICON_SELECT: return SELECTION_MODE;
-			case ICON_TEMP: return DO_NOTHING;
+			case ICON_DRAG: return DRAG_MODE;
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
+			case ICON_TEMP: return DO_NOTHING;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -210,7 +223,7 @@ void GUI::ClearStatusBar() const
 void GUI::CreateDrawToolBar()
 {
 	InterfaceMode = MODE_DRAW;
-
+	
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
 
@@ -221,7 +234,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_RECT] = "images\\MenuIcons\\Menu_Rect.jpg";
 	MenuIconImages[ICON_CIRC] = "images\\MenuIcons\\Menu_Circ.jpg";
 	MenuIconImages[ICON_LINE] = "images\\MenuIcons\\Menu_Line.jpg";
-	MenuIconImages[ICON_TRI]  = "images\\MenuIcons\\Menu_Tri.jpg";
+	MenuIconImages[ICON_TRI] = "images\\MenuIcons\\Menu_Tri.jpg";
 	MenuIconImages[ICON_SQUARE] = "images\\MenuIcons\\Menu_Square.jpg";
 	MenuIconImages[ICON_OVAL] = "images\\MenuIcons\\Menu_Oval.jpg";
 	MenuIconImages[ICON_IPOLY] = "images\\MenuIcons\\Menu_iPoly.jpg";
@@ -238,14 +251,14 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\Menu_Undo.jpg";
 	MenuIconImages[ICON_REDO] = "images\\MenuIcons\\Menu_Redo.jpg";
 	MenuIconImages[ICON_EXIT] = "images\\MenuIcons\\Menu_Exit.jpg";
-	MenuIconImages[ICON_SELECT] = "images\\MenuIcons\\Menu_Select.jpg";
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
 	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
-
+	MenuIconImages[ICON_DRAG] = "images\\MenuIcons\\Menu_Drag.jpg";
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time
 	for (int i = 0; i < DRAW_ICON_COUNT; i++)
+
 		if (i < 17) {
 			pWind->DrawImage(MenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
 		}
@@ -580,9 +593,16 @@ void GUI::StickImageGUI(string imagefile, double x, double y, double width, doub
 }
 
 
+buttonstate const GUI::getClickState(int& x, int& y)  {
+	return pWind->GetButtonState(LeftButton, x, y);
+}
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 GUI::~GUI()
 {
 	delete pWind;
 	delete PrevPoint;
 }
+

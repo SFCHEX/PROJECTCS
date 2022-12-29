@@ -3,23 +3,37 @@
 #include "..\GUI\GUI.h"
 
 opPenColor::opPenColor(controller* pCount) :operation(pCount)
-{}
+{ UndoStack.push_front(this);cleanRedo();	}
+
+void opPenColor::Undo(){
+	if (selShape!=nullptr)
+	selShape->ChngDrawClr(previousColor);
+}
+
+void opPenColor::Redo(){
+	if (selShape!=nullptr)
+	selShape->ChngDrawClr(newColor);
+}
 
 void opPenColor::Execute()
 {
-	color newColor;
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	shape* shape = pGr->getSelectedShape();
-	if (shape != nullptr)
+	selShape = pGr->getSelectedShape(); 
+
+	if (selShape != nullptr)
 	{
+		previousColor=selShape->getGfxInfo().DrawClr;
 		pUI->GetColorFromColorPalette(newColor);
-		shape->ChngDrawClr(newColor);
+		selShape->ChngDrawClr(newColor);
 	}
 	else
 	{
-		string msg = "Select a shape first. If you want to change the general pen color, enter yes: ";
+		delete UndoStack.front();
+		UndoStack.front()=nullptr;
+		UndoStack.pop_front();
+		string msg = "Select a selShape first. If you want to change the general pen color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();
 		if (response == "yes")

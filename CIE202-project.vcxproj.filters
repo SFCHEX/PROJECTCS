@@ -162,6 +162,7 @@
     <ClCompile Include="operations\opSwitchToPlay.cpp" />
     <ClCompile Include="operations\opFillColor.cpp" />
     <ClCompile Include="operations\opStickImage.cpp" />
+    <ClCompile Include="operations\operation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />

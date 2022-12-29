@@ -7,8 +7,8 @@
 
 
 
-opLoad::opLoad(controller *pCont):operation(pCont){
-}
+opLoad::opLoad(controller *pCont):operation(pCont)
+{ }
 
 opLoad::~opLoad(){
 }

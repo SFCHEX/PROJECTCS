@@ -6,9 +6,24 @@
 #include "..\GUI\GUI.h"
 
 opAddrPoly::opAddrPoly(controller* pCont) :operation(pCont)
-{}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddrPoly::~opAddrPoly()
-{}
+{
+if(isUndone){
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(1);
+}
+}
+void opAddrPoly::Undo() {
+	isUndone=1;	
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddrPoly::Redo() {
+	isUndone=0;	
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
 
 //Execute the operation
 void opAddrPoly::Execute()

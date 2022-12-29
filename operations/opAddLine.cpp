@@ -6,9 +6,24 @@
 #include "..\GUI\GUI.h"
 
 opAddLine::opAddLine(controller* pCont) : operation(pCont)
-{}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddLine::~opAddLine()
-{}
+{
+	if(isUndone){
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(1);
+	}
+}
+void opAddLine::Undo() {
+	isUndone=1;
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddLine::Redo() {
+	isUndone=0;
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
 
 void opAddLine::Execute() {
 	Point p1, p2;

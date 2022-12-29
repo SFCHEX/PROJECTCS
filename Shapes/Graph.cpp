@@ -13,6 +13,10 @@ Graph::~Graph()
 //==================================================================================//
 //						shapes Management Functions			       					//
 //==================================================================================//
+
+int Graph::clipboardSize(){
+	return clipboard.size();
+}
 void Graph::CopyShape()
 {
 	for (int i = 0; i < shapesList.size(); i++) {
@@ -42,9 +46,14 @@ void Graph::clearClipboard()
 }
 void Graph::PasteShape(Point p1)
 {
+	if (!clipboard.empty()){
+	Point referencePoint=clipboard[0]->getPoints().s_Points[0];
 	for (int i = 0; i < clipboard.size(); i++) {
 		shape* newShape=clipboard[i]->clone();
+		newShape->MoveShape(Point {(-referencePoint.x+p1.x),(-referencePoint.y+p1.y)} );
 		shapesList.push_back(newShape);
+
+	}
 	}
 }
 //Add a shape to the list of shapes
@@ -65,13 +74,30 @@ int Graph::nSelected() { //returns num of selected elements
 	}
 	return num;
 }
+void Graph::popShape(){
+	if (!shapesList.empty()){
+	deletedShapesList.push_front(shapesList.back());
+	shapesList.pop_back();
+	}
+}
+
+void Graph::deletedShapeCleanUp(int number){
+	for(int i=0;number>i;i++){
+		delete deletedShapesList.back();
+		deletedShapesList.back()=nullptr;
+		deletedShapesList.pop_back();
+	}
+}
+void Graph::unDelete(){
+	shapesList.push_back(deletedShapesList.front());
+	deletedShapesList.pop_front();
+}
 
 void Graph::DeleteShape(int n){
 	do {
 		for (int i = 0; i < shapesList.size(); i++) {
 			if (shapesList[i]->IsSelected()) {
-				delete shapesList[i];
-				shapesList[i] = nullptr;
+				deletedShapesList.push_front(shapesList[i]);
 				shapesList.erase(shapesList.begin() + i);
 			}
 		}
@@ -128,6 +154,7 @@ shape* Graph::getSelectedShape()
 		}
 		delete newShape;
 		newShape = nullptr;
+		return nullptr;
 	}
 	
 void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves RGB values to to a file
@@ -153,6 +180,7 @@ void Graph::SetImagesToShapes() {
 
 void Graph::Draw(GUI* pUI) const
 {
+	
 	pUI->ClearDrawArea();
 	for (int i = 0; i < shapesList.size(); i++)
 		shapesList[i]->Draw(pUI);
@@ -350,4 +378,22 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 
 	}
 	inputfile.close(); 
+}
+
+vector<shape*> Graph::getSelShape() {
+	vector<shape*> selected;
+	bool select_exists = 0;
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			selected.push_back(shapesList[i]);
+			select_exists = 1;
+		}
+	}
+	if (!select_exists){
+		selected.push_back(nullptr);
+		return selected;
+	}
+	else {
+		return selected;
+	}
 }

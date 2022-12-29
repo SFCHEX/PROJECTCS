@@ -7,9 +7,24 @@
 #include "..\GUI\GUI.h"
 
 opAddiPoly::opAddiPoly(controller* pCont) :operation(pCont)
-{}
+{ UndoStack.push_front(this);cleanRedo();	}
 opAddiPoly::~opAddiPoly()
-{}
+{
+	if (isUndone){
+	Graph* pGr = pControl->getGraph();
+	pGr->deletedShapeCleanUp(1);
+	}
+}
+void opAddiPoly::Undo() {
+	isUndone=1;
+	Graph* pGr = pControl->getGraph();
+	pGr->popShape();
+}
+void opAddiPoly::Redo() {
+	isUndone=0;
+	Graph* pGr = pControl->getGraph();
+	pGr->unDelete();
+}
 
 //Execute the operation
 void opAddiPoly::Execute()
