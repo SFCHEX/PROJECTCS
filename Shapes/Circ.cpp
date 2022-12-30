@@ -79,8 +79,8 @@ void Circ::resizeSH(double num){
 		PointR.y = PointR.y + num * abs(PointR.y-Center.y);
 	}
 	else{
-		PointR.x = PointR.x - num * abs(PointR.x-Center.x);
-		PointR.y = PointR.y - num * abs(PointR.y-Center.y);
+		PointR.x = PointR.x - (1/num) * abs(PointR.x-Center.x);
+		PointR.y = PointR.y - (1 / num) * abs(PointR.y-Center.y);
 	}
 	
 	//Center.x = num * Center.x;

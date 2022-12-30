@@ -16,7 +16,7 @@ void opResize::Execute(){
 	Graph* pGr = pControl->getGraph();
 	GUI* pUI = pControl->GetUI();
 	pUI->PrintMessage("Resizing the selected shape(s), type your choice (1)by 2, (2)by 4, (3)by 1/2, (4)by 1/4");
-	double num = 0;
+	double num;
 	bool toggle;
 	string userinput;
 	toggle = true;
@@ -41,10 +41,10 @@ void opResize::Execute(){
 	else if(userinput == "2"){
 		num = 4;
 	}
-	else if(userinput =="3") {
+	else if(userinput == "3") {
 		num = 0.5;
 	}
-	else if(userinput =="4") {
+	else if(userinput == "4") {
 		num = 0.25;
 	}
 	pUI->ClearStatusBar();
