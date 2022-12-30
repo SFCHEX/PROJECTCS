@@ -1,8 +1,6 @@
 #include "opFillColor.h"
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
-#include <vector>
-
 opFillColor::opFillColor(controller* pCount) :operation(pCount)
 {UndoStack.push_front(this);cleanRedo();}
 

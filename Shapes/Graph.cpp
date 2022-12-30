@@ -136,26 +136,6 @@ string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg",
 };
 
 
-shape* Graph::getSelectedShape()
-{
-	shape* newShape = nullptr;
-		for (int i = 0; i < shapesList.size(); i++)
-		{
-			if (shapesList[i]->IsSelected())
-			{
-				newShape = shapesList[i];
-				break;
-			}
-			
-		}
-		if (newShape != nullptr)
-		{
-			return newShape;
-		}
-		delete newShape;
-		newShape = nullptr;
-		return nullptr;
-	}
 	
 void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves RGB values to to a file
 {
@@ -185,6 +165,13 @@ void Graph::Draw(GUI* pUI) const
 	for (int i = 0; i < shapesList.size(); i++)
 		shapesList[i]->Draw(pUI);
 	StickImageGR(pUI);
+}
+
+void Graph::ScrambleShapes() {
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		shapesList[i]->scramble();
+	}
 }
 
 shape* Graph::Getshape(int x, int y, bool SingleSelect) const

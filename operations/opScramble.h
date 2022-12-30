@@ -6,7 +6,7 @@
 
 
 
-class opScramble : public opScramble
+class opScramble : public operation
 {
 	
 public:

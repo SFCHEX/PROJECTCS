@@ -12,7 +12,7 @@ GUI::GUI()
 	wx = 5;
 	wy = 5;
 
-	StatusBarHeight = 50;
+	StatusBarHeight = 180;
 	ToolBarHeight = 100;
 	MenuIconWidth = 80;
 
@@ -133,6 +133,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
+			case ICON_SCRAMBLE: return SCRAMBLE;
 			case ICON_TEMP: return DO_NOTHING;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -254,6 +255,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
 	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
 	MenuIconImages[ICON_DRAG] = "images\\MenuIcons\\Menu_Drag.jpg";
+	MenuIconImages[ICON_SCRAMBLE] = "images\\MenuIcons\\Menu_Scramble.jpg";
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time

@@ -69,6 +69,7 @@ class GUI
 
 		/// ANYTHING IN THE BOTTOM HALF OF THE TOOL BAR MUST BE PLACED UNDER THIS LINE//////////////
 		/// THE ORDER IS IMPORTANT!!!!!/////////////////////////////////////////////////////////////
+		ICON_SCRAMBLE, //Scrambles shapes
 		ICON_TEMP,
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 

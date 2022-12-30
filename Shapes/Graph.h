@@ -38,9 +38,9 @@ public:
 	void DeleteShape(int);
 	void CopyShape();
 	void clearClipboard();
-	vector<shape*> getSelShape();
+	vector<shape*> getSelShape(); 
 	void PasteShape(Point p1);
 	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
-	shape* getSelectedShape(); //Changes the pen color  
 	void SetImagesToShapes();
+	void ScrambleShapes();
 };

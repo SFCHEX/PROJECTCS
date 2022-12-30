@@ -80,5 +80,9 @@ bool shape::hasImage() {
 void shape::setHasImage() {
 	imageOn = true;
 }
+
+void shape::scramble()
+{
+}
 // 
 //Point shape::getBorders() {}
