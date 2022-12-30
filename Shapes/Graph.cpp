@@ -212,6 +212,13 @@ shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 	return nullptr;
 }
 
+void Grpah::resizeGR(int num){
+	for(int i=0; i<shapesList.size(); i++){
+		if(shapesList[i].IsSelected()){
+			shapesList[i]->resizeSH(num);
+		}
+	}
+}
 
 
 void Graph::deselAll(int valId)
