@@ -4,22 +4,25 @@
 #include <vector>
 
 opFillColor::opFillColor(controller* pCount) :operation(pCount)
-{ //UndoStack.push_front(this);cleanRedo();	
+{UndoStack.push_front(this);cleanRedo();}
+
+void opFillColor::Undo(){
+	if (selectedShapes.size()){
+	for (int i=0;i<selectedShapes.size();i++){
+		if(noPrevColors[i])
+			selectedShapes[i]->noFillColor();
+		else
+			selectedShapes[i]->ChngFillClr(previousColors[i]);
+		}
+	}
 }
 
-//void opFillColor::Undo(){
-//	if (selShape!=nullptr){
-//	if(noPrevColor)
-//	selShape->noFillColor();
-//	else
-//	selShape->ChngFillClr(previousColor);
-//	}
-//}
-
-//void opFillColor::Redo(){
-//	if (selShape!=nullptr)
-//	selShape->ChngFillClr(newColor);
-//}
+void opFillColor::Redo(){
+	if (selectedShapes.size()){
+	for (int i=0;i<selectedShapes.size();i++)
+		selectedShapes[i]->ChngFillClr(newColor);
+	}
+}
 
 
 
@@ -27,10 +30,21 @@ void opFillColor::Execute()
 {
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
-	vector<shape*> selectedShapes = pGr->getSelShape();
-		
+	selectedShapes = pGr->getSelShape();
+
+
 	if (selectedShapes.size())
 	{
+		for (int i=0;i<selectedShapes.size();i++){
+			if(selectedShapes[i]->getGfxInfo().isFilled){
+			previousColors.push_back(selectedShapes[i]->getGfxInfo().FillClr);
+			noPrevColors.push_back(false);	
+			}
+			else
+			{
+				noPrevColors.push_back(true);	
+			}
+		}	
 		pUI->GetColorFromColorPalette(newColor);
 		for (int i = 0; i < selectedShapes.size(); i++)
 		{
@@ -52,9 +66,9 @@ void opFillColor::Execute()
 	}*/
 	else
 	{
-		//delete UndoStack.front();
-		//UndoStack.front()=nullptr;
-		//UndoStack.pop_front();
+		delete UndoStack.front();
+		UndoStack.front()=nullptr;
+		UndoStack.pop_front();
 		string msg = "Select a selShape first. If you want to change the general fill color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();

@@ -7,18 +7,18 @@
 class opFillColor : public operation
 {
 private:
-bool noPrevColor;
+vector<bool>noPrevColors;
 color newColor;
 
-color previousColor;
+vector<color> previousColors;
 
-shape* selShape=nullptr;
+vector<shape*> selectedShapes;
 public:
 	opFillColor(controller* pCont);
 	void Execute();
 	~opFillColor();
-//	virtual void Undo();
-	//virtual void Redo();
+	virtual void Undo();
+	virtual void Redo();
 
 
 };
