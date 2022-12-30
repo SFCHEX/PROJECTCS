@@ -1,15 +1,14 @@
 #pragma once
 #include "operation.h"
-#include "opPenWidth.h"
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
 
 
 class opPenWidth : public operation
 {
-	int previousWidth;
+	vector<int> previousWidths;
 	int newWidth;
-	shape* selShape=nullptr;
+	vector<shape*> selectedShapes;
 public:
 	opPenWidth(controller* pCont);
 	virtual ~opPenWidth();

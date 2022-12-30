@@ -1,18 +1,17 @@
 #pragma once
 #include "operation.h"
-#include "opFillColor.h"
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
 
 class opFillColor : public operation
 {
 private:
-bool noPrevColor;
+vector<bool>noPrevColors;
 color newColor;
 
-color previousColor;
+vector<color> previousColors;
 
-shape* selShape=nullptr;
+vector<shape*> selectedShapes;
 public:
 	opFillColor(controller* pCont);
 	void Execute();

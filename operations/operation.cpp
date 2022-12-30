@@ -4,7 +4,7 @@ deque<operation*> operation::UndoStack;
 deque<operation*> operation::RedoStack;
 operation::operation(controller* pCont){
 		pControl = pCont;
-		if (UndoStack.size()>=5)	{
+		if (UndoStack.size()>=8)	{
 		delete UndoStack.back();
 		UndoStack.back()=nullptr;
 		UndoStack.pop_back();

@@ -1,22 +1,27 @@
 #include "opFillColor.h"
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
+#include <vector>
 
 opFillColor::opFillColor(controller* pCount) :operation(pCount)
-{ UndoStack.push_front(this);cleanRedo();	}
+{UndoStack.push_front(this);cleanRedo();}
 
 void opFillColor::Undo(){
-	if (selShape!=nullptr){
-	if(noPrevColor)
-	selShape->noFillColor();
-	else
-	selShape->ChngFillClr(previousColor);
+	if (selectedShapes.size()){
+	for (int i=0;i<selectedShapes.size();i++){
+		if(noPrevColors[i])
+			selectedShapes[i]->noFillColor();
+		else
+			selectedShapes[i]->ChngFillClr(previousColors[i]);
+		}
 	}
 }
 
 void opFillColor::Redo(){
-	if (selShape!=nullptr)
-	selShape->ChngFillClr(newColor);
+	if (selectedShapes.size()){
+	for (int i=0;i<selectedShapes.size();i++)
+		selectedShapes[i]->ChngFillClr(newColor);
+	}
 }
 
 
@@ -25,20 +30,28 @@ void opFillColor::Execute()
 {
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
+	selectedShapes = pGr->getSelShape();
 
-	selShape = pGr->getSelectedShape();
 
-	if (selShape != nullptr)
+	if (selectedShapes.size())
 	{
-		if (selShape->getGfxInfo().isFilled){
-			previousColor=selShape->getGfxInfo().FillClr;
-			noPrevColor=false;
-		}
-
-
+		for (int i=0;i<selectedShapes.size();i++){
+			if(selectedShapes[i]->getGfxInfo().isFilled){
+			previousColors.push_back(selectedShapes[i]->getGfxInfo().FillClr);
+			noPrevColors.push_back(false);	
+			}
+			else
+			{
+				noPrevColors.push_back(true);	
+			}
+		}	
 		pUI->GetColorFromColorPalette(newColor);
-		selShape->ChngFillClr(newColor);
+		for (int i = 0; i < selectedShapes.size(); i++)
+		{
+			selectedShapes[i]->ChngFillClr(newColor);
+		}
 	}
+
 	else
 	{
 		delete UndoStack.front();
