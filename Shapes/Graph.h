@@ -43,5 +43,5 @@ public:
 	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
 	shape* getSelectedShape(); //Changes the pen color  
 	void SetImagesToShapes();
-	void resizeGR(int);
+	void resizeGR(int num);
 };

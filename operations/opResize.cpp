@@ -33,5 +33,5 @@ void opResize::Execute(){
 	num = stoi(userinput);
 	pUI->ClearStatusBar();
 
-	pGR->resizeGR(num);
+	pGr->resizeGR(num);
 }
