@@ -3,20 +3,21 @@
 #include "..\GUI\GUI.h"
 
 opPenWidth::opPenWidth(controller* pCont) :operation(pCont)
-{ UndoStack.push_front(this);cleanRedo();	}
+{ //UndoStack.push_front(this);cleanRedo();
+}
 
 opPenWidth::~opPenWidth()
 {}
 
-void opPenWidth::Undo(){
-		if (selShape!=nullptr)
-		selShape->ChngPenWidth(previousWidth);
-}
+//void opPenWidth::Undo(){
+//		if (selShape!=nullptr)
+//		selShape->ChngPenWidth(previousWidth);
+//}
 
-void opPenWidth::Redo(){
-		if (selShape!=nullptr)
-		selShape->ChngPenWidth(newWidth);
-}
+//void opPenWidth::Redo(){
+//		if (selShape!=nullptr)
+//		selShape->ChngPenWidth(newWidth);
+//}
 
 
 void opPenWidth::Execute()
@@ -25,8 +26,21 @@ void opPenWidth::Execute()
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	selShape = pGr->getSelectedShape();
-	if (selShape != nullptr)
+	vector<shape*> selectedShapes = pGr->getSelShape();
+
+	if (selectedShapes.size())
+	{
+		pUI->PrintMessage("Enter a new width: ");
+		newWidth = stoi(pUI->GetString());
+
+		for (int i = 0; i < selectedShapes.size(); i++)
+		{
+			selectedShapes[i]->ChngPenWidth(newWidth);
+		}
+		pUI->ClearStatusBar();
+	}
+
+	/*if (selShape != nullptr)
 	{
 		previousWidth=selShape->getGfxInfo().BorderWdth;
 		pUI->PrintMessage("Enter a new width: ");
@@ -34,7 +48,8 @@ void opPenWidth::Execute()
 		selShape->ChngPenWidth(newWidth);
 		pUI->ClearStatusBar();
 
-	}
+	}*/
+
 	else
 	{
 		delete UndoStack.front();
