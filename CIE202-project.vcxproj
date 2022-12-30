@@ -197,6 +197,7 @@
     <ClCompile Include="operations\opUndo.cpp" />
     <ClCompile Include="operations\opFillColor.cpp" />
     <ClCompile Include="operations\operation.cpp" />
+    <ClCompile Include="operations\opScramble.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="main.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations\opScramble.h" />
     <ClInclude Include="operations\opDrag.h" />
     <ClInclude Include="operations.h" />
     <ClInclude Include="operations\opFillColor.h" />
