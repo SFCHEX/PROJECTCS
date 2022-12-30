@@ -16,7 +16,7 @@ void opResize::Execute(){
 	Graph* pGr = pControl->getGraph();
 	GUI* pUI = pControl->GetUI();
 	pUI->PrintMessage("Resizing the selected shape(s)");
-	int num;
+	double num;
 	bool toggle;
 	string userinput;
 	toggle = true;

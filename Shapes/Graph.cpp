@@ -212,7 +212,7 @@ shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 	return nullptr;
 }
 
-void Graph::resizeGR(int num){
+void Graph::resizeGR(double num){
 	for(int i=0; i< shapesList.size(); i++){
 		if(shapesList[i]->IsSelected()){
 			shapesList[i]->resizeSH(num);

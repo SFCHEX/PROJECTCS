@@ -83,6 +83,6 @@ void shape::setHasImage() {
 // 
 //Point shape::getBorders() {}
 
-void shape::resizeSH(int num){
-	
+void shape::resizeSH(double num){
+
 }
