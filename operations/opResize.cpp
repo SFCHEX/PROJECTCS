@@ -36,7 +36,7 @@ void opResize::Execute(){
 		}
 	} while (toggle);
 	if (userinput == "1"){
-		num = 1;
+		num = 2;
 	}
 	else if(userinput == "2"){
 		num = 4;

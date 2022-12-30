@@ -71,3 +71,23 @@ void Rect::MoveShape(Point MoveBy) {
 	this->Corner2.x = this->Corner2.x + MoveBy.x;
 	this->Corner2.y = this->Corner2.y + MoveBy.y;
 }
+void Rect::resizeSH(double num){
+	Point Center;
+	double width = abs(Corner1.x - Corner2.x);
+	double length = abs(Corner1.y - Corner2.y);
+	Center.x = min(Corner1.x,Corner2.x)+ (width/2);
+	Center.y = min(Corner1.y,Corner2.y)+ (length/2);
+	
+	if(num>=1){
+		max(Corner1.x, Corner2.x) = max(Corner1.x, Corner2.x) + (width / num) * (num - 1);
+		max(Corner1.y, Corner2.y) = max(Corner1.y, Corner2.y) + (length / num) * (num - 1);
+		min(Corner1.x, Corner2.x) = min(Corner1.x, Corner2.x) - (width / num) * (num - 1);
+		min(Corner1.y, Corner2.y) = min(Corner1.y, Corner2.y) - (length / num) * (num - 1);
+	}
+	else if(num<1){
+		max(Corner1.x,Corner2.x) = max(Corner1.x,Corner2.x) - (width - width * num) / 2;
+		max(Corner1.y,Corner2.y) = max(Corner1.y,Corner2.y) - (length - length * num) / 2;
+		min(Corner1.x, Corner2.x) = min(Corner1.x, Corner2.x) + (width - width * num) / 2;
+		min(Corner1.y,Corner2.y) = min(Corner1.y,Corner2.y) + (length - length * num) / 2;
+	}
+}
