@@ -13,5 +13,8 @@ opResize::opResize(controller * pCont):operation(pCont){}
 opResize::~opResize(){}
 
 void opResize::Execute(){
+	Graph* pGr = pControl->getGraph();
+	GUI* pUI = pControl->GetUI();
+	pGr->resizeShape();
   
 }

@@ -192,6 +192,7 @@
     <ClCompile Include="operations\opPenColor.cpp" />
     <ClCompile Include="operations\opPenWidth.cpp" />
     <ClCompile Include="operations\opRedo.cpp" />
+    <ClCompile Include="operations\opResize.cpp" />
     <ClCompile Include="operations\opSwitchToPlay.cpp" />
     <ClCompile Include="operations\opStickImage.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
@@ -254,6 +255,7 @@
     <ClInclude Include="operations\opDeleteShape.h" />
     <ClInclude Include="operations\opExit.h" />
     <ClInclude Include="operations\opRedo.h" />
+    <ClInclude Include="operations\opResize.h" />
     <ClInclude Include="operations\opSwitchToPlay.h" />
     <ClInclude Include="operations\opStickImage.h" />
     <ClInclude Include="operations\opUndo.h" />
