@@ -94,8 +94,15 @@ void Square::resizeSH(int num){
 	Point Center;
 	Center.x = min(Corner1.x,Corner2.x)+ ((Corner1.x-Corner2.x)/2);
 	Center.y = min(Corner1.y,Corner2.y)+ ((Corner1.y-Corner2.y)/2);
-	max(Corner1.x,Corner2.x) = max(Corner1.x,Corner2.x) + num*abs(Corner1.x-Center.x);
-	max(Corner1.y,Corner2.y) = max(Corner1.y,Corner2.y) + num*abs(Corner1.y-Center.y);
+	if(num>1){
+		max(Corner1.x,Corner2.x) = max(Corner1.x,Corner2.x) + num*abs(Corner1.x-Center.x);
+		max(Corner1.y,Corner2.y) = max(Corner1.y,Corner2.y) + num*abs(Corner1.y-Center.y);
+	}
+	else if(num<1){
+		max(Corner1.x,Corner2.x) = max(Corner1.x,Corner2.x) - num*abs(Corner1.x-Center.x);
+		max(Corner1.y,Corner2.y) = max(Corner1.y,Corner2.y) - num*abs(Corner1.y-Center.y);
+	}
+	
 	/*Corner1.x = Corner1.x + (num/2) * abs(Corner1.x-Center.x);
 	Corner1.y = Corner1.y + (num/2) * abs(Corner1.y-Center.y);
 	Corner2.x = Corner2.x + (num/2) * abs(Corner2.x-Center.x);
