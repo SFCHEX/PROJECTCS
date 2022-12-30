@@ -30,7 +30,8 @@ void opResize::Execute(){
 			}
 		}
 	} while (toggle);
-
 	num = stoi(userinput);
-  
+	pUI->ClearStatusBar();
+
+	pGR->resizeShape(num);
 }
