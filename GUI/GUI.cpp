@@ -133,6 +133,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
+			case ICON_RESIZE: return RESIZE;
 			case ICON_TEMP: return DO_NOTHING;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
