@@ -15,7 +15,7 @@ opResize::~opResize(){}
 void opResize::Execute(){
 	Graph* pGr = pControl->getGraph();
 	GUI* pUI = pControl->GetUI();
-	pUI->ClearDrawArea();
+	pUI->PrintMessage("Resizing the selected shape(s)");
 	//pGr->resizeShape();
   
 }
