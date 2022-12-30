@@ -1,5 +1,10 @@
 ﻿  controller.cpp
+  opPenColor.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenColor.cpp(29,21): warning C4018: '<': signed/unsigned mismatch
   opPenWidth.cpp
 F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenWidth.cpp(36,21): warning C4018: '<': signed/unsigned mismatch
+  opFillColor.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opFillColor.cpp(35,21): warning C4018: '<': signed/unsigned mismatch
+  opScramble.cpp
   Generating Code...
   CIE202-project.vcxproj -> F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Release\CIE202-project.exe

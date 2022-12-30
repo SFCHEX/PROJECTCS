@@ -1,6 +1,5 @@
 #pragma once
 #include "operation.h"
-#include "opPenWidth.h"
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
 
