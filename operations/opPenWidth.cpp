@@ -3,21 +3,25 @@
 #include "..\GUI\GUI.h"
 
 opPenWidth::opPenWidth(controller* pCont) :operation(pCont)
-{ //UndoStack.push_front(this);cleanRedo();
-}
+{ UndoStack.push_front(this);cleanRedo();}
 
 opPenWidth::~opPenWidth()
 {}
 
-//void opPenWidth::Undo(){
-//		if (selShape!=nullptr)
-//		selShape->ChngPenWidth(previousWidth);
-//}
+void opPenWidth::Undo(){
+	if (selectedShapes.size()){
+		for (int i=0;i<selectedShapes.size();i++){
+			selectedShapes[i]->ChngPenWidth(previousWidths[i]);
+		}
+	}
+}
 
-//void opPenWidth::Redo(){
-//		if (selShape!=nullptr)
-//		selShape->ChngPenWidth(newWidth);
-//}
+void opPenWidth::Redo(){
+	if (selectedShapes.size()){
+		for (int i=0;i<selectedShapes.size();i++)
+			selectedShapes[i]->ChngPenWidth(newWidth);
+		}
+}
 
 
 void opPenWidth::Execute()
@@ -26,10 +30,17 @@ void opPenWidth::Execute()
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	vector<shape*> selectedShapes = pGr->getSelShape();
+	selectedShapes = pGr->getSelShape();
 
 	if (selectedShapes.size())
 	{
+		for (int i=0;i<selectedShapes.size();i++){
+			previousWidths.push_back(selectedShapes[i]->getGfxInfo().BorderWdth);
+
+		}	
+	
+
+
 		pUI->PrintMessage("Enter a new width: ");
 		newWidth = stoi(pUI->GetString());
 
@@ -39,16 +50,6 @@ void opPenWidth::Execute()
 		}
 		pUI->ClearStatusBar();
 	}
-
-	/*if (selShape != nullptr)
-	{
-		previousWidth=selShape->getGfxInfo().BorderWdth;
-		pUI->PrintMessage("Enter a new width: ");
-		newWidth = stoi(pUI->GetString());
-		selShape->ChngPenWidth(newWidth);
-		pUI->ClearStatusBar();
-
-	}*/
 
 	else
 	{

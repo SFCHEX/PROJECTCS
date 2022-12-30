@@ -6,15 +6,15 @@
 
 class opPenWidth : public operation
 {
-	int previousWidth;
+	vector<int> previousWidths;
 	int newWidth;
-	shape* selShape=nullptr;
+	vector<shape*> selectedShapes;
 public:
 	opPenWidth(controller* pCont);
 	virtual ~opPenWidth();
 
 	virtual void Execute();
-//	virtual void Undo();
-	//virtual void Redo();
+	virtual void Undo();
+	virtual void Redo();
 
 };

@@ -3,28 +3,35 @@
 #include "..\GUI\GUI.h"
 
 opPenColor::opPenColor(controller* pCount) :operation(pCount)
-{ //UndoStack.push_front(this);cleanRedo();
+{ UndoStack.push_front(this);cleanRedo();}
+
+void opPenColor::Undo(){
+	if (selectedShapes.size()){
+		for (int i=0;i<selectedShapes.size();i++){
+			selectedShapes[i]->ChngDrawClr(previousColors[i]);
+		}
+	}
 }
 
-//void opPenColor::Undo(){
-//	if (selShape!=nullptr)
-//	selShape->ChngDrawClr(previousColor);
-//}
-
-//void opPenColor::Redo(){
-//	if (selShape!=nullptr)
-//	selShape->ChngDrawClr(newColor);
-//}
-
+void opPenColor::Redo(){
+	if (selectedShapes.size()){
+		for (int i=0;i<selectedShapes.size();i++)
+			selectedShapes[i]->ChngDrawClr(newColor);
+		}
+}
 void opPenColor::Execute()
 {
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	vector<shape*> selectedShapes = pGr->getSelShape();
+	selectedShapes = pGr->getSelShape();
 
 	if (selectedShapes.size())
 	{
+		for (int i=0;i<selectedShapes.size();i++){
+			previousColors.push_back(selectedShapes[i]->getGfxInfo().DrawClr);
+		}	
+	
 		pUI->GetColorFromColorPalette(newColor);
 		for (int i = 0; i < selectedShapes.size(); i++)
 		{
@@ -32,17 +39,12 @@ void opPenColor::Execute()
 		}
 	}
 
-	//if (selShape != nullptr)
-	//{
-	//	previousColor=selShape->getGfxInfo().DrawClr;
-	//	pUI->GetColorFromColorPalette(newColor);
-	//	selShape->ChngDrawClr(newColor);
-	//}
+
 	else
 	{
-		//delete UndoStack.front();
-		//UndoStack.front()=nullptr;
-		//UndoStack.pop_front();
+		delete UndoStack.front();
+		UndoStack.front()=nullptr;
+		UndoStack.pop_front();
 		string msg = "Select a selShape first. If you want to change the general pen color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();

@@ -7,15 +7,16 @@
 
 class opPenColor : public operation
 {
+vector<bool>noPrevColors;
 color newColor;
 
-color previousColor;
+vector<color> previousColors;
 
-shape* selShape=nullptr;
+vector<shape*> selectedShapes;
 public:
 	opPenColor(controller* pCont);
 	void Execute();
 	~opPenColor();
-	//virtual void Undo();
-	//virtual void Redo();
+	virtual void Undo();
+	virtual void Redo();
 };

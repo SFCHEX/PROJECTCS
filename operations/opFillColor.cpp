@@ -52,18 +52,6 @@ void opFillColor::Execute()
 		}
 	}
 
-		
-	/*if (selShape != nullptr)
-	{
-		if (selShape->getGfxInfo().isFilled){
-			previousColor=selShape->getGfxInfo().FillClr;
-			noPrevColor=false;
-		}
-
-
-		pUI->GetColorFromColorPalette(newColor);
-		selShape->ChngFillClr(newColor);
-	}*/
 	else
 	{
 		delete UndoStack.front();
