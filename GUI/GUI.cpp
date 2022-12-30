@@ -12,7 +12,7 @@ GUI::GUI()
 	wx = 5;
 	wy = 5;
 
-	StatusBarHeight = 120;
+	StatusBarHeight = 130;
 	ToolBarHeight = 100;
 	MenuIconWidth = 80;
 
