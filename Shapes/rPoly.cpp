@@ -101,3 +101,10 @@ void rPoly::StickImageSh(GUI* pUI, string imagefile) {
 		setHasImage();
 	}
 }
+
+void rPoly::resizeSH(double numb) {
+	for (int i = 0; i < num+1; i++) {
+		pVectX[i] = (numb * pVectX[i]) - (numb * P1.x) + P1.x;
+		pVectY[i] = (numb * pVectY[i]) - (numb * P1.y) + P1.y;
+	}
+}

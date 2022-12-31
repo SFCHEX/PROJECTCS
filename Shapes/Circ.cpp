@@ -73,16 +73,15 @@ void Circ::StickImageSh(GUI* pUI, string imagefile) {
 	}
 }
  
-void Circ::resizeSH(double num){
-	if(num>=1){
-		PointR.x = PointR.x + num * abs(PointR.x-Center.x);
-		PointR.y = PointR.y + num * abs(PointR.y-Center.y);
+
+void Circ::resizeSH(double num) {
+	if (num >= 1) {
+		PointR.x = Center.x + num * abs(PointR.x - Center.x);
+		PointR.y = Center.y + num * abs(PointR.y - Center.y);
 	}
-	else{
-		PointR.x = PointR.x - (1/num) * abs(PointR.x-Center.x);
-		PointR.y = PointR.y - (1 / num) * abs(PointR.y-Center.y);
+	else {
+		PointR.x = abs(PointR.x - Center.x) * (num)+Center.x;
+		PointR.y = abs(PointR.y - Center.y) * (num)+Center.y;
 	}
-	
-	//Center.x = num * Center.x;
-	//Center.y = num * Center.y;
+
 }

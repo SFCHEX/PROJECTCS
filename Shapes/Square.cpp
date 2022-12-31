@@ -90,7 +90,7 @@ void Square::MoveShape(Point MoveBy) {
 	this->Corner2.y = this->Corner2.y + MoveBy.y;
 }
 
-void Square::resizeSH(double num){
+void Square::resizeSH(double n){
 	Point Center;
 	double width = abs(Corner1.x - Corner2.x);
 	double length = abs(Corner1.y - Corner2.y);
@@ -98,22 +98,11 @@ void Square::resizeSH(double num){
 	Center.y = min(Corner1.y,Corner2.y)+ length/2;
 	
 	
+	Corner1.x = (n * Corner1.x) - (n * Center.x) + Center.x;
+	Corner1.y = (n * Corner1.y) - (n * Center.y) + Center.y;
+	Corner2.x = (n * Corner2.x) - (n * Center.x) + Center.x;;
+	Corner2.y = (n * Corner2.y) - (n * Center.y) + Center.y;;
 	
-	if(num>=1){
-		max(Corner1.x, Corner2.x) = max(Corner1.x, Corner2.x) + (width / num) * (num - 1);
-		max(Corner1.y, Corner2.y) = max(Corner1.y, Corner2.y) + (length / num) * (num - 1);
-		min(Corner1.x, Corner2.x) = min(Corner1.x, Corner2.x) - (width / num) * (num - 1);
-		min(Corner1.y, Corner2.y) = min(Corner1.y, Corner2.y) - (length / num) * (num - 1);
-	}
-	else if(num<1){
-		max(Corner1.x,Corner2.x) = max(Corner1.x,Corner2.x) - (width - width * num) / 2;
-		max(Corner1.y,Corner2.y) = max(Corner1.y,Corner2.y) - (length - length * num) / 2;
-		min(Corner1.x, Corner2.x) = min(Corner1.x, Corner2.x) + (width - width * num) / 2;
-		min(Corner1.y,Corner2.y) = min(Corner1.y,Corner2.y) + (length - length * num) / 2;
-	}
+
 	
-	/*Corner1.x = Corner1.x + (num/2) * abs(Corner1.x-Center.x);
-	Corner1.y = Corner1.y + (num/2) * abs(Corner1.y-Center.y);
-	Corner2.x = Corner2.x + (num/2) * abs(Corner2.x-Center.x);
-	Corner2.y = Corner2.y + (num/2) * abs(Corner2.y-Center.y);*/
 }
