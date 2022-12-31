@@ -397,3 +397,9 @@ vector<shape*> Graph::getSelShape() {
 		return selected;
 	}
 }
+
+void Graph::rotateGR(){
+	for(int i=0; i<shapesList.size(); i++){
+		if(shapesList[i]->IsSelected()) shapesList[i]->rotateSH();
+	}
+}

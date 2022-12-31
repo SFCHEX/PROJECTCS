@@ -130,6 +130,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_PEN_WIDTH: return CHNG_PEN_WIDTH;
 			case ICON_EXIT: return EXIT;
 			case ICON_DRAG: return DRAG_MODE;
+			case ICON_ROTATE: return ROTATE;
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
@@ -254,6 +255,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
 	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
 	MenuIconImages[ICON_DRAG] = "images\\MenuIcons\\Menu_Drag.jpg";
+	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\Menu_Rotate.jpg";
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time

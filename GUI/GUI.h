@@ -54,6 +54,7 @@ class GUI
 		ICON_DELETE, 		//Delete icon in menu
 		ICON_LOAD,		//Load icon in menu
 		ICON_SAVE,		//Save icon in menu
+		ICON_ROTATE,
 		ICON_FILL_COLOR, //Fill color icon in menu
 		ICON_PEN_COLOR,  //Pen color icon in menu
 		ICON_PEN_WIDTH,  //Pen width icon in menu

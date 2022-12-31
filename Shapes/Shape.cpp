@@ -82,3 +82,7 @@ void shape::setHasImage() {
 }
 // 
 //Point shape::getBorders() {}
+
+void shape::rotateSH(){
+	
+}
