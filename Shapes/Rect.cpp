@@ -89,5 +89,6 @@ void Rect::scramble()
 		}
 
 	}
-	srand(time(0));
+	x = 0;
+	y = 0;
 }

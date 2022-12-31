@@ -84,6 +84,8 @@ void Circ::scramble()
 
 			Center.x += x;
 			Center.y += y;
+			PointR.x += x;
+			PointR.y += y;
 		
 	}
 	else
