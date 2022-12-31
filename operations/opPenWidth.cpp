@@ -32,7 +32,7 @@ void opPenWidth::Execute()
 
 	selectedShapes = pGr->getSelShape();
 
-	if (selectedShapes.size())
+	if (selectedShapes[0] != nullptr)
 	{
 		for (int i=0;i<selectedShapes.size();i++){
 			previousWidths.push_back(selectedShapes[i]->getGfxInfo().BorderWdth);

@@ -31,7 +31,7 @@ void opFillColor::Execute()
 	selectedShapes = pGr->getSelShape();
 
 
-	if (selectedShapes.size())
+	if (selectedShapes[0] != nullptr)
 	{
 		for (int i=0;i<selectedShapes.size();i++){
 			if(selectedShapes[i]->getGfxInfo().isFilled){
@@ -55,7 +55,7 @@ void opFillColor::Execute()
 		delete UndoStack.front();
 		UndoStack.front()=nullptr;
 		UndoStack.pop_front();
-		string msg = "Select a selShape first. If you want to change the general fill color, enter yes: ";
+		string msg = "Select a shape first. If you want to change the general fill color, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();
 		if (response == "yes")

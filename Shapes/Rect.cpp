@@ -89,13 +89,5 @@ void Rect::scramble()
 		}
 
 	}
-	else
-	{
-		Corner1.x -= x;
-		Corner1.y -= y;
-		Corner2.x -= x;
-		Corner2.y -= y;
-	}
-	x = 0;
-	y = 0;
+	srand(time(0));
 }
