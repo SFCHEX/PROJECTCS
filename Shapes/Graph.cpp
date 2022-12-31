@@ -1,6 +1,9 @@
 #include "Graph.h"
 #include "../GUI/GUI.h"
 #include <iostream>
+#include <cstdlib>
+#include <vector>
+
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -155,22 +158,37 @@ void Graph::StickImageGR(GUI* pUI) const {
 void Graph::SetImagesToShapes() {
 	for (int i = 0; i < shapesList.size(); i++) {
 		shapesList[i]->setHasImage();
+
 	}
 }
 
 void Graph::Draw(GUI* pUI) const
-{
-	
+{	
 	pUI->ClearDrawArea();
 	for (int i = 0; i < shapesList.size(); i++)
 		shapesList[i]->Draw(pUI);
 	StickImageGR(pUI);
 }
-
-void Graph::ScrambleShapes() {
+void Graph::ScrambleShapes(GUI* pUI) {
+	srand(time(0));
 	for (int i = 0; i < shapesList.size(); i++)
 	{
-		shapesList[i]->scramble();
+		shapesList[i]->scramble(pUI);
+	}
+}
+
+
+void Graph::SendToBack()
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i]->IsSelected() && shapesList[i] != shapesList[0])
+		{	
+			shape* selectedShape = shapesList[i];
+			shapesList.erase(shapesList.begin() + i);
+			shapesList.insert(shapesList.begin(), selectedShape);
+			break;
+		}
 	}
 }
 
@@ -384,3 +402,4 @@ vector<shape*> Graph::getSelShape() {
 		return selected;
 	}
 }
+

@@ -39,7 +39,8 @@ enum operationType //The operations supported (you can add more if needed)
 	TO_PLAY,		//Switch interface to Play mod
 	STICK_IMAGE,
 	SCRAMBLE,
-	DO_NOTHING
+	SEND_TO_BACK,
+	DO_NOTHING,
 	
 	///TODO: Add more operation types (if needed)
 };

@@ -13,8 +13,8 @@ void opScramble::Execute()
 {
 	Graph* pGr = pControl->getGraph();
 	GUI* pUI = pControl->GetUI();
-	pGr->ScrambleShapes();
-	pUI->PrintMessage("Function invoked");
+	pGr->ScrambleShapes(pUI);
+	//pUI->PrintMessage("Function invoked");
 }
 
 opScramble::~opScramble()

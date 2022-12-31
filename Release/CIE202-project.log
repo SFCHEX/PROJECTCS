@@ -1,3 +1,13 @@
-﻿  Rect.cpp
-F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Rect.cpp(77,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  Graph.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(25,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(54,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(73,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(101,21): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(149,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(159,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(168,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(173,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(183,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(391,20): warning C4018: '<': signed/unsigned mismatch
   CIE202-project.vcxproj -> F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Release\CIE202-project.exe

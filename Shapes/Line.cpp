@@ -79,3 +79,16 @@ void Line::MoveShape(Point MoveBy) {
 	this->End2.x = this->End2.x + MoveBy.x;
 	this->End2.y = this->End2.y + MoveBy.y;
 }
+
+void Line::scramble(GUI* pUI)
+{	 
+	int diff_x = abs(End1.x - End2.x);
+	int diff_y = abs(End1.y - End2.y);	
+	End1.x = rand() % 1300 + 1;
+	End1.y = 50 + rand() % 500;
+	End2.x = End1.x + diff_x;
+	End2.y = End1.y + diff_y;
+
+	string msg = "(" + to_string(End1.x) + ", " + to_string(End1.y) + " ) ( " + to_string(End2.x) + ", " + to_string(End2.y) + ")";
+	pUI->PrintMessage(msg);
+}

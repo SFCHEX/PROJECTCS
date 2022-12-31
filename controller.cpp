@@ -98,13 +98,16 @@ operation* controller::createOperation(operationType OpType)
 		case REDO:
 			pOp = new opRedo(this);
 			break;
-	
+		
 		case EXIT:
 			///create Exitoperation here
 			pOp = new opExit(this); 
 			break;
 		case SCRAMBLE:
 			pOp = new opScramble(this);
+			break;
+		case SEND_TO_BACK:
+			pOp = new opSendToBack(this);
 			break;
 		case STATUS:	//a click on the status bar ==> no operation
 			break;

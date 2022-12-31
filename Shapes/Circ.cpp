@@ -73,25 +73,25 @@ void Circ::StickImageSh(GUI* pUI, string imagefile) {
 	}
 }
  
-void Circ::scramble()
-{
-	srand(time(0));
-	int x = rand() % 1301;
-	int y = rand() % 500;
-
-	if (Center.x + x < 1300 && Center.y + y > 100 && Center.y + y < 650)
-	{
-
-			Center.x += x;
-			Center.y += y;
-			PointR.x += x;
-			PointR.y += y;
-		
-	}
-	else
-	{
-		Center.x -= x;
-		Center.y -= y;
-	}
-
-}
+//void Circ::scramble()
+//{
+//	srand(time(0));
+//	int x = rand() % 1301;
+//	int y = rand() % 500;
+//
+//	if (Center.x + x < 1300 && Center.y + y > 100 && Center.y + y < 650)
+//	{
+//
+//			Center.x += x;
+//			Center.y += y;
+//			PointR.x += x;
+//			PointR.y += y;
+//		
+//	}
+//	else
+//	{
+//		Center.x -= x;
+//		Center.y -= y;
+//	}
+//
+//}

@@ -81,7 +81,7 @@ void shape::setHasImage() {
 	imageOn = true;
 }
 
-void shape::scramble()
+void shape::scramble(GUI* pUI)
 {
 }
 // 

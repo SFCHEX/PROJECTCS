@@ -16,7 +16,7 @@ public:
 	virtual ShapePoints getPoints(); //first elem is p1 sec is p2
 	virtual void MoveShape(Point pMove) override;
 	virtual void StickImageSh(GUI* pUI, string imagefile);
-	virtual void scramble();
+	//virtual void scramble() override;
 };
 
 

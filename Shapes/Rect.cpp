@@ -72,23 +72,23 @@ void Rect::MoveShape(Point MoveBy) {
 	this->Corner2.y = this->Corner2.y + MoveBy.y;
 }
 
-void Rect::scramble()
-{
-	srand(time(0));
-	int x = rand() % 1300 + 1;
-	int y = rand() % 500 + 1;
-
-	if (Corner1.x + x < 1380 && Corner2.x + x < 1380 && Corner1.x + x > 100 && Corner2.x + x > 100)
-	{
-		if (Corner1.y + y < 600 && Corner2.y + y < 600 && Corner1.y + y > 100 && Corner2.y + y > 100)
-		{
-			Corner1.x += x;
-			Corner1.y += y;
-			Corner2.x += x;
-			Corner2.y += y;
-		}
-
-	}
-	x = 0;
-	y = 0;
-}
+//void Rect::scramble()
+//{
+//	srand(time(0));
+//	int x = rand() % 1300 + 1;
+//	int y = rand() % 500 + 1;
+//
+//	if (Corner1.x + x < 1380 && Corner1.x + x > 100 )
+//	{
+//		if (Corner1.y + y < 600 && Corner1.y + y > 100)
+//		{
+//			Corner1.x += x;
+//			Corner1.y += y;
+//			Corner2.x += x;
+//			Corner2.y += y;
+//		}
+//
+//	}
+//	x = 0;
+//	y = 0;
+//}

@@ -64,12 +64,14 @@ class GUI
 		ICON_UNDO,  //PASTE width icon in menu
 		ICON_REDO,  //PASTE width icon in menu
 		//TODO: Add more icons names here
+		ICON_SCRAMBLE,
+		ICON_SEND_TO_BACK,
 		ICON_EXIT,		//Exit icon
 
 
 		/// ANYTHING IN THE BOTTOM HALF OF THE TOOL BAR MUST BE PLACED UNDER THIS LINE//////////////
 		/// THE ORDER IS IMPORTANT!!!!!/////////////////////////////////////////////////////////////
-		ICON_SCRAMBLE, //Scrambles shapes
+		 //Scrambles shapes
 		ICON_TEMP,
 		DRAW_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
@@ -102,10 +104,8 @@ class GUI
 	/// Add more members if needed
 
 	Point* PrevPoint = new Point();
-
 	window* pWind;
 	window* pColorPaletteWindow;
-	static clicktype c;
 
 public:
 
