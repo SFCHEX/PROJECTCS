@@ -164,7 +164,7 @@ operationType GUI::GetUseroperation() const
 
 			switch (ClickedIconOrder)
 			{
-			case ICON_ROTATE: return ROTATE;
+			//case ICON_ROTATE: return ROTATE;
 			case ICON_TEMP: return DO_NOTHING;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -283,11 +283,11 @@ void GUI::CreatePlayToolBar()
 	string PlayMenuIconImages[1];//string PlayMenuIconImages[PLAY_ICON_COUNT];//
 	PlayMenuIconImages[0]="images\\PlayMenuIcons\\PlayMenu_Rotate.jpg";//PlayMenuIconImages[ROTATE]="images\\PlayMenuIcons\\PlayMenu_Rotate.jpg"
 
-	for (int i = 0; i < PLAY_ICON_COUNT; i++)
-		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
-	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
-	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
+	//for (int i = 0; i < PLAY_ICON_COUNT; i++)
+	//	pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
+	////Draw a line under the toolbar
+	//pWind->SetPen(RED, 3);
+	//pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////

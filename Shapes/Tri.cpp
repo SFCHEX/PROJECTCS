@@ -99,9 +99,9 @@ void Tri::rotateSH(){
 	Center.y = min(Corner1.y,Corner2.y)+ length/2;
 	
 	
-	Corner1.x = -Corner1.y + Center + Center.y;
-	Corner1.y = Corner1.x - -Center.x + Center.y;
-	Corner2.x = -Corner2.y + Center + Center.y;
-	Corner2.y = Corner2.x - -Center.x + Center.y;
+	Corner1.x = (-1) * Corner1.y + Center.x + Center.y;
+	Corner1.y = Corner1.x + (-1) * Center.x + Center.y;
+	Corner2.x = (-1) * Corner2.y + Center.x + Center.y;
+	Corner2.y = Corner2.x + (-1) * Center.x + Center.y;
 	
 }
