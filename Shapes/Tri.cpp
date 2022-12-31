@@ -90,3 +90,18 @@ void Tri::MoveShape(Point MoveBy) {
 	this->Corner3.x = this->Corner3.x + MoveBy.x;
 	this->Corner3.y = this->Corner3.y + MoveBy.y;
 }
+
+void Tri::rotateSH(){
+	Point Center;
+	double width = abs(Corner1.x - Corner2.x);
+	double length = abs(Corner1.y - Corner2.y);
+	Center.x = min(Corner1.x,Corner2.x)+ width/2;
+	Center.y = min(Corner1.y,Corner2.y)+ length/2;
+	
+	
+	Corner1.x = -Corner1.y + Center + Center.y;
+	Corner1.y = Corner1.x - -Center.x + Center.y;
+	Corner2.x = -Corner2.y + Center + Center.y;
+	Corner2.y = Corner2.x - -Center.x + Center.y;
+	
+}
