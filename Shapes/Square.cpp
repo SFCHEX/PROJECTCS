@@ -89,3 +89,7 @@ void Square::MoveShape(Point MoveBy) {
 	this->Corner2.x = this->Corner2.x + MoveBy.x;
 	this->Corner2.y = this->Corner2.y + MoveBy.y;
 }
+
+void Square::rotateSH(){
+	
+}

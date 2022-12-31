@@ -92,16 +92,21 @@ void Tri::MoveShape(Point MoveBy) {
 }
 
 void Tri::rotateSH(){
-	Point Center;
-	double width = abs(Corner1.x - Corner2.x);
-	double length = abs(Corner1.y - Corner2.y);
-	Center.x = min(Corner1.x,Corner2.x)+ width/2;
-	Center.y = min(Corner1.y,Corner2.y)+ length/2;
-	
-	
-	Corner1.x = (-1) * Corner1.y + Center.x + Center.y;
-	Corner1.y = Corner1.x + (-1) * Center.x + Center.y;
-	Corner2.x = (-1) * Corner2.y + Center.x + Center.y;
-	Corner2.y = Corner2.x + (-1) * Center.x + Center.y;
-	
+	Point Centeriod;
+	Centeriod.x = (Corner1.x + Corner2.x + Corner3.x) / 3;
+	Centeriod.y = (Corner1.y + Corner2.y + Corner3.y) / 3;
+	double t1x = Corner1.x;
+	double t1y = Corner1.y;
+	double t2x = Corner2.x;
+	double t2y = Corner2.y;
+	double t3x = Corner3.x;
+	double t3y = Corner3.y;
+
+
+	Corner1.x = -t1y +Centeriod.x + Centeriod.y;
+	Corner1.y = t1x - Centeriod.x + Centeriod.y;
+	Corner2.x = -t2y + Centeriod.x + Centeriod.y;
+	Corner2.y = t2x - Centeriod.x + Centeriod.y;
+	Corner3.x = -t3y + Centeriod.x + Centeriod.y;
+	Corner3.y = t3x - Centeriod.x + Centeriod.y;
 }

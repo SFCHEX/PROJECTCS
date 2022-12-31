@@ -98,6 +98,10 @@ operation* controller::createOperation(operationType OpType)
 		case REDO:
 			pOp = new opRedo(this);
 			break;
+		
+		case ROTATE:
+			pOp = new opRotate(this);
+			break;
 	
 		case EXIT:
 			///create Exitoperation here

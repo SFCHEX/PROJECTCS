@@ -12,8 +12,10 @@ opRotate::opRotate(controller * pCont):operation(pCont){}
 
 opRotate::~opRotate(){}
 
-void opRotate::opRotate(){
+void opRotate::Execute() {
   Graph* pGr = pControl->getGraph();
   GUI* pUI = pControl->GetUI();
   pGr->rotateGR();
+  pUI->PrintMessage("Selected Shape Rotated");
+
 }

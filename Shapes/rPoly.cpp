@@ -101,3 +101,11 @@ void rPoly::StickImageSh(GUI* pUI, string imagefile) {
 		setHasImage();
 	}
 }
+	
+void rPoly::rotateSH() {
+	for (int i = 0; i < num + 1; i++) {
+		double tx = pVectX[i]; double ty = pVectY[i];
+		pVectX[i] = -ty + (P1.x) + P1.y;
+		pVectY[i] = tx - (P1.x) + P1.y;
+	}
+}

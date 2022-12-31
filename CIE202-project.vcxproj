@@ -192,6 +192,7 @@
     <ClCompile Include="operations\opPenColor.cpp" />
     <ClCompile Include="operations\opPenWidth.cpp" />
     <ClCompile Include="operations\opRedo.cpp" />
+    <ClCompile Include="operations\opRotate.cpp" />
     <ClCompile Include="operations\opSwitchToPlay.cpp" />
     <ClCompile Include="operations\opStickImage.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
@@ -243,6 +244,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations\opRotate.h" />
     <ClInclude Include="operations\opScramble.h" />
     <ClInclude Include="operations\opDrag.h" />
     <ClInclude Include="operations.h" />
