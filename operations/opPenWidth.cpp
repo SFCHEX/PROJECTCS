@@ -3,7 +3,7 @@
 #include "..\GUI\GUI.h"
 
 opPenWidth::opPenWidth(controller* pCont) :operation(pCont)
-{ UndoStack.push_front(this);cleanRedo();}
+{ UndoStack.push_front(this);cleanRedo();hasUndo=1;}
 
 opPenWidth::~opPenWidth()
 {}

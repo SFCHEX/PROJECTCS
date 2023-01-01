@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddRect::opAddRect(controller * pCont):operation(pCont)
-{ UndoStack.push_front(this);cleanRedo();	}
+{ UndoStack.push_front(this);cleanRedo();hasUndo=1;	}
 opAddRect::~opAddRect()
 {
 	if (isUndone){

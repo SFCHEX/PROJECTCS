@@ -2,7 +2,7 @@
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
 opFillColor::opFillColor(controller* pCount) :operation(pCount)
-{UndoStack.push_front(this);cleanRedo();}
+{UndoStack.push_front(this);cleanRedo();hasUndo=1;}
 
 void opFillColor::Undo(){
 	if (selectedShapes.size()){

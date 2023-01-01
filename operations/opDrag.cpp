@@ -7,7 +7,7 @@
 
 
 opDrag::opDrag(controller* pCont) :operation(pCont) 
-{ UndoStack.push_front(this);cleanRedo();	}
+{ UndoStack.push_front(this);cleanRedo();hasUndo=1;	}
 
 opDrag::~opDrag() {
 	GUI* pUI = pControl->GetUI();

@@ -7,7 +7,7 @@
 
 //Add Rectangle operation class
 opPaste::opPaste(controller * pCont):operation(pCont)
-{ UndoStack.push_front(this);cleanRedo();}
+{ UndoStack.push_front(this);cleanRedo();hasUndo=1;}
 opPaste::~opPaste(){
 	if(isUndone){
 	Graph* pGr = pControl->getGraph();
