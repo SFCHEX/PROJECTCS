@@ -45,6 +45,9 @@ operation* controller::createOperation(operationType OpType)
 		case COPY:
 			pOp = new opCopy(this);
 			break;
+		case CUT:
+			pOp = new opCut(this);
+			break;
 		case PASTE:
 			pOp = new opPaste(this);
 			break;

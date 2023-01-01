@@ -26,6 +26,7 @@ enum operationType //The operations supported (you can add more if needed)
 	SAVE,			//Save the whole graph to a file
 	LOAD,			//Load a graph from a file
 	COPY,			//Load a graph from a file
+	CUT,
 	PASTE,			//Load a graph from a file
 	UNDO,			//Save the whole graph to a file
 	REDO,			//Save the whole graph to a file
