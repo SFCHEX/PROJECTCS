@@ -82,6 +82,7 @@ void Oval::resizeSH(double num) {
 }
 
 
+
 void Oval::rotateSH() {
 	Point Center;
 	Center.x = min(Corner1.x, Corner2.x) + abs(Corner1.x - Corner2.x)/2;
