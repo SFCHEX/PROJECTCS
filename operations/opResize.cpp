@@ -9,7 +9,7 @@
 #include "..\GUI\GUI.h"
 #include <iostream>
 opResize::opResize(controller * pCont):operation(pCont)
-{ UndoStack.push_front(this);cleanRedo();}
+{ UndoStack.push_front(this);cleanRedo();hasUndo=1;}
 
 opResize::~opResize(){}
 

@@ -13,9 +13,9 @@ protected:
 	static deque<operation*> UndoStack;
 	static void cleanRedo();
 	bool isUndone=0;
-
+	bool hasUndo=0;
 public:
-
+	bool getHasUndo() const;
 	operation(controller* pCont);
 	virtual ~operation() {}
 

@@ -6,7 +6,7 @@
 #include "..\GUI\GUI.h"
 
 opAddOval::opAddOval(controller* pCont) :operation(pCont)
-{ UndoStack.push_front(this);cleanRedo();	}
+{ UndoStack.push_front(this);cleanRedo();hasUndo=1;	}
 opAddOval::~opAddOval()
 {
 	if(isUndone){

@@ -19,3 +19,5 @@ void operation::cleanRedo(){
 		RedoStack.pop_back();
 	}
 }
+
+bool operation::getHasUndo() const{return hasUndo;}

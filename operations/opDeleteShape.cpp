@@ -8,7 +8,7 @@
 #include "..\GUI\GUI.h"
 
 opDeleteShape::opDeleteShape(controller *pCont):operation(pCont)
-{ UndoStack.push_front(this);cleanRedo();	}
+{ UndoStack.push_front(this);cleanRedo();hasUndo=1;	}
 
 opDeleteShape::~opDeleteShape(){
 	if(!isUndone){
