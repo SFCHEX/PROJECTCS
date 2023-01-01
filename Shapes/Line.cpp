@@ -82,6 +82,13 @@ void Line::MoveShape(Point MoveBy) {
 
 
 void Line::resizeSH(double n) {
+	Point Center;
+	double width = abs(End1.x - End2.x);
+	double length = abs(End1.y - End2.y);
+	Center.x = min(End1.x, End2.x) + width / 2;
+	Center.y = min(End1.y, End2.y) + length / 2;
+
+
 	End1.x = (n * End1.x) - (n * Center.x) + Center.x;
 	End1.y = (n * End1.y) - (n * Center.y) + Center.y;
 	End2.x = (n * End2.x) - (n * Center.x) + Center.x;
