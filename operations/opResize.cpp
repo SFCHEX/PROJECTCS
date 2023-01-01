@@ -8,15 +8,27 @@
 
 #include "..\GUI\GUI.h"
 
-opResize::opResize(controller * pCont):operation(pCont){}
+opResize::opResize(controller * pCont):operation(pCont)
+{ UndoStack.push_front(this);cleanRedo();}
 
 opResize::~opResize(){}
+
+void opResize::Undo(){
+	for(int i=0; selectedShapes.size()>i;i++)
+		selectedShapes[i]->resizeSH(previousScaleFactors[i]);
+	
+}
+void opResize::Redo(){
+	for(int i=0; selectedShapes.size()>i;i++)
+		selectedShapes[i]->resizeSH(num);
+}
 
 void opResize::Execute(){
 	Graph* pGr = pControl->getGraph();
 	GUI* pUI = pControl->GetUI();
+
 	pUI->PrintMessage("Resizing the selected shape(s), type your choice (1)by 2, (2)by 4, (3)by 1/2, (4)by 1/4");
-	double num;
+	num;
 	bool toggle;
 	string userinput;
 	toggle = true;
@@ -48,6 +60,8 @@ void opResize::Execute(){
 		num = 0.25;
 	}
 	pUI->ClearStatusBar();
-
+	selectedShapes=pGr->getSelShape();
+	for(int i=0; selectedShapes.size()>i;i++)
+		previousScaleFactors.push_back(selectedShapes[i]->getGfxInfo().scaleFactor);
 	pGr->resizeGR(num);
 }
