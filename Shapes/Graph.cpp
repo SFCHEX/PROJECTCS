@@ -273,7 +273,13 @@ vector<string> Graph::Parameterize(string p){//returns string as parameters
 //the load function will open the file and iterate line by line through the file adding shapes to the shape vector. it will create shape objects based on the file
 void Graph::Load(ifstream& inputfile, GUI* pUI)
 {
+	for (int i=0;shapesList.size()>i;i++){
+		delete shapesList[i];
+		shapesList[i]=nullptr;
+	}
 	shapesList.clear();
+
+	
 	string shapeText,drawToolsState,shapeCount;
 	getline(inputfile,drawToolsState);
 	
