@@ -44,4 +44,5 @@ public:
 	shape* getSelectedShape(); //Changes the pen color  
 	void SetImagesToShapes();
 	void resizeGR(double num);
+	void rotateGR();
 };

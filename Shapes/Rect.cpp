@@ -93,3 +93,20 @@ void Rect::resizeSH(double num){
 		min(Corner1.y,Corner2.y) = min(Corner1.y,Corner2.y) + (length - length * num) / 2;
 	}
 }
+void Rect::rotateSH() {
+	Point Center;
+	double width = abs(Corner1.x - Corner2.x);
+	double length = abs(Corner1.y - Corner2.y);
+	Center.x = min(Corner1.x, Corner2.x) + width / 2;
+	Center.y = min(Corner1.y, Corner2.y) + length / 2;
+	double t1x = Corner1.x;
+	double t1y = Corner1.y;
+	double t2x = Corner2.x;
+	double t2y = Corner2.y;
+	
+
+	Corner1.x = -(t1y) + (Center.x) + Center.y;
+	Corner1.y = t1x - (Center.x) + Center.y;
+	Corner2.x = -(t2y) + (Center.x) + Center.y;
+	Corner2.y = t2x - (Center.x) + Center.y;
+}

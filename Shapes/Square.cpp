@@ -103,6 +103,7 @@ void Square::resizeSH(double n){
 	Corner2.x = (n * Corner2.x) - (n * Center.x) + Center.x;;
 	Corner2.y = (n * Corner2.y) - (n * Center.y) + Center.y;;
 	
-
+}
+void Square::rotateSH(){
 	
 }

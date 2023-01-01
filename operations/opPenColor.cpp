@@ -3,31 +3,43 @@
 #include "..\GUI\GUI.h"
 
 opPenColor::opPenColor(controller* pCount) :operation(pCount)
-{ UndoStack.push_front(this);cleanRedo();	}
+{ UndoStack.push_front(this);cleanRedo();}
 
 void opPenColor::Undo(){
-	if (selShape!=nullptr)
-	selShape->ChngDrawClr(previousColor);
+	if (selectedShapes.size()){
+		for (int i=0;i<selectedShapes.size();i++){
+			selectedShapes[i]->ChngDrawClr(previousColors[i]);
+		}
+	}
 }
 
 void opPenColor::Redo(){
-	if (selShape!=nullptr)
-	selShape->ChngDrawClr(newColor);
+	if (selectedShapes.size()){
+		for (int i=0;i<selectedShapes.size();i++)
+			selectedShapes[i]->ChngDrawClr(newColor);
+		}
 }
-
 void opPenColor::Execute()
 {
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr = pControl->getGraph();
 
-	selShape = pGr->getSelectedShape(); 
+	selectedShapes = pGr->getSelShape();
 
-	if (selShape != nullptr)
+	if (selectedShapes.size())
 	{
-		previousColor=selShape->getGfxInfo().DrawClr;
+		for (int i=0;i<selectedShapes.size();i++){
+			previousColors.push_back(selectedShapes[i]->getGfxInfo().DrawClr);
+		}	
+	
 		pUI->GetColorFromColorPalette(newColor);
-		selShape->ChngDrawClr(newColor);
+		for (int i = 0; i < selectedShapes.size(); i++)
+		{
+			selectedShapes[i]->ChngDrawClr(newColor);
+		}
 	}
+
+
 	else
 	{
 		delete UndoStack.front();

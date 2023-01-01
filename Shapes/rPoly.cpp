@@ -108,3 +108,11 @@ void rPoly::resizeSH(double numb) {
 		pVectY[i] = (numb * pVectY[i]) - (numb * P1.y) + P1.y;
 	}
 }
+	
+void rPoly::rotateSH() {
+	for (int i = 0; i < num + 1; i++) {
+		double tx = pVectX[i]; double ty = pVectY[i];
+		pVectX[i] = -ty + (P1.x) + P1.y;
+		pVectY[i] = tx - (P1.x) + P1.y;
+	}
+}

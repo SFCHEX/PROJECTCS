@@ -18,4 +18,5 @@ public:
 	virtual ShapePoints getPoints(); 
 	virtual void MoveShape(Point pMove) override;
 	virtual void resizeSH(double n);
+	virtual void rotateSH();
 };

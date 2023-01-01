@@ -1,6 +1,5 @@
 #pragma once
 #include "operation.h"
-#include "opPenColor.h"
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
 
@@ -8,11 +7,12 @@
 
 class opPenColor : public operation
 {
+vector<bool>noPrevColors;
 color newColor;
 
-color previousColor;
+vector<color> previousColors;
 
-shape* selShape=nullptr;
+vector<shape*> selectedShapes;
 public:
 	opPenColor(controller* pCont);
 	void Execute();

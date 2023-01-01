@@ -58,5 +58,6 @@ public:
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all shape info on the status bar
 
 	virtual void resizeSH(double num);
+	virtual void rotateSH();
 };
 
