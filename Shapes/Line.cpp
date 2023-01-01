@@ -97,13 +97,16 @@ void Line::resizeSH(double n) {
 	double width = abs(End1.x - End2.x);
 	double length = abs(End1.y - End2.y);
 	Center.x = min(End1.x, End2.x) + width / 2;
-	Center.y = min(End1.y, End2.y) + length / 2;
+	Center.y = min(End1.y, End2.y) + length / 2; double t1x = End1.x;
+	double t1y = End1.y;
+	double t2x = End2.x;
+	double t2y = End2.y;
 
 
-	End1.x = (n * End1.x) - (n * Center.x) + Center.x;
-	End1.y = (n * End1.y) - (n * Center.y) + Center.y;
-	End2.x = (n * End2.x) - (n * Center.x) + Center.x;
-	End2.y = (n * End2.y) - (n * Center.y) + Center.y;
+	End1.x = (n *t1x) - (n *Center.x) + Center.x;
+	End1.y = (n * t1y) - (n *Center.y) + Center.y;
+	End2.x = (n * t2x) - (n *Center.x) + Center.x;
+	End2.y = (n * t2y) - (n * Center.y) + Center.y;
 }
 void Line::rotateSH() {
 	Point Center;

@@ -90,20 +90,23 @@ void Tri::MoveShape(Point MoveBy) {
 	this->Corner3.x = this->Corner3.x + MoveBy.x;
 	this->Corner3.y = this->Corner3.y + MoveBy.y;
 }
-
 void Tri::resizeSH(double n) {
 	Point Centeriod;
 	Centeriod.x = (Corner1.x + Corner2.x + Corner3.x) / 3;
-	Centeriod.y = (Corner1.y + Corner2.y + Corner3.y) / 3;
+	Centeriod.y = (Corner1.y + Corner2.y + Corner3.y) / 3; double t1x = Corner1.x;
+	double t1y = Corner1.y;
+	double t2x = Corner2.x;
+	double t2y = Corner2.y;
+	double t3x = Corner3.x;
+	double t3y = Corner3.y;
 
-	Corner1.x = (n * Corner1.x) - (n * Centeriod.x) + Centeriod.x;
-	Corner1.y = (n * Corner1.y) - (n * Centeriod.y) + Centeriod.y;
-	Corner2.x = (n * Corner2.x) - (n * Centeriod.x) + Centeriod.x;;
-	Corner2.y = (n * Corner2.y) - (n * Centeriod.y) + Centeriod.y;;
-	Corner3.x = (n * Corner3.x) - (n * Centeriod.x) + Centeriod.x;
-	Corner3.y = (n * Corner3.y) - (n * Centeriod.y) + Centeriod.y;
+	Corner1.x = (n * t1x) - (n *Centeriod.x) + Centeriod.x;
+	Corner1.y = (n * t1y) - (n *Centeriod.y) + Centeriod.y;
+	Corner2.x = (n * t2x) - (n *Centeriod.x) + Centeriod.x;
+	Corner2.y = (n * t2y) - (n *Centeriod.y) + Centeriod.y;
+	Corner3.x = (n * t3x) - (n *Centeriod.x) + Centeriod.x;
+	Corner3.y = (n * t3y) - (n *Centeriod.y) + Centeriod.y;
 }
-	
 void Tri::rotateSH(){
 	Point Centeriod;
 	Centeriod.x = (Corner1.x + Corner2.x + Corner3.x) / 3;
