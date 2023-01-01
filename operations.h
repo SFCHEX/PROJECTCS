@@ -23,3 +23,5 @@
 #include"operations/opFillColor.h"
 #include"operations/opScramble.h"
 #include"operations/opSendToBack.h"
+#include "operations\opResize.h"
+#include "operations\opRotate.h"

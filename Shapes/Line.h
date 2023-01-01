@@ -18,6 +18,8 @@ public:
 	virtual void MoveShape(Point pMove) override;
 	virtual void scramble(GUI* pUI) override;
 
+	virtual void resizeSH(double n);
+	virtual void rotateSH();
 
 };
 

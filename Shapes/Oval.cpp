@@ -73,3 +73,32 @@ void Oval::MoveShape(Point MoveBy) {
 	this->Corner2.x = this->Corner2.x + MoveBy.x;
 	this->Corner2.y = this->Corner2.y + MoveBy.y;
 }
+void Oval::resizeSH(double num) {
+	if (num > 1) {
+		min(Corner1.x, Corner2.x) = min(Corner1.x, Corner2.x) - num * abs(Corner1.x - Corner2.x) / 2;
+		min(Corner1.y, Corner2.x) = min(Corner1.y, Corner2.y) - num * abs(Corner1.y - Corner2.y) / 2;
+		max(Corner1.x, Corner2.x) = max(Corner1.x, Corner2.x) + num * abs(Corner1.x - Corner2.x) / 2;
+		max(Corner1.y, Corner2.x) = max(Corner1.y, Corner2.y) + num * abs(Corner1.y - Corner2.y) / 2;
+	}
+	else {
+		min(Corner1.x, Corner2.x) = min(Corner1.x, Corner2.x) + num * abs(Corner1.x - Corner2.x) / 2;
+		min(Corner1.y, Corner2.x) = min(Corner1.y, Corner2.y) + num * abs(Corner1.y - Corner2.y) / 2;
+		max(Corner1.x, Corner2.x) = max(Corner1.x, Corner2.x) - num * abs(Corner1.x - Corner2.x) / 2;
+		max(Corner1.y, Corner2.x) = max(Corner1.y, Corner2.y) - num * abs(Corner1.y - Corner2.y) / 2;
+	}
+}	
+
+
+void Oval::rotateSH() {
+	Point Center;
+	Center.x = min(Corner1.x, Corner2.x) + abs(Corner1.x - Corner2.x)/2;
+	Center.y = min(Corner1.y, Corner2.y) + abs(Corner1.y - Corner2.y) / 2;
+	double t1x = Corner1.x; double t1y = Corner1.y;
+	double t2x = Corner2.x; double t2y = Corner2.y;
+	
+	Corner1.x = -t1y + Center.x + Center.y;
+	Corner1.y = t1x - Center.x + Center.y;
+	Corner2.x = -t2y + Center.x + Center.y;
+	Corner2.y = t2x - Center.x + Center.y;
+	
+}

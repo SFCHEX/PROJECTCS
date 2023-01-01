@@ -217,6 +217,14 @@ shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 	return nullptr;
 }
 
+void Graph::resizeGR(double num){
+	for(int i=0; i< shapesList.size(); i++){
+		if(shapesList[i]->IsSelected()){
+			shapesList[i]->resizeSH(num);
+			
+		}
+	}
+}
 
 
 void Graph::deselAll(int valId)
@@ -229,6 +237,7 @@ void Graph::deselAll(int valId)
 		}
 	}
 }
+
 
 //the save function will iterate through the shapeslist private vector and add it to the file
 void Graph::Save(ofstream& outfile, GUI* pUI) {
@@ -269,7 +278,13 @@ vector<string> Graph::Parameterize(string p){//returns string as parameters
 //the load function will open the file and iterate line by line through the file adding shapes to the shape vector. it will create shape objects based on the file
 void Graph::Load(ifstream& inputfile, GUI* pUI)
 {
+	for (int i=0;shapesList.size()>i;i++){
+		delete shapesList[i];
+		shapesList[i]=nullptr;
+	}
 	shapesList.clear();
+
+	
 	string shapeText,drawToolsState,shapeCount;
 	getline(inputfile,drawToolsState);
 	
@@ -403,3 +418,8 @@ vector<shape*> Graph::getSelShape() {
 	}
 }
 
+void Graph::rotateGR(){
+	for(int i=0; i<shapesList.size(); i++){
+		if(shapesList[i]->IsSelected()) shapesList[i]->rotateSH();
+	}
+}

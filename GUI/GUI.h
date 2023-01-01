@@ -54,6 +54,7 @@ class GUI
 		ICON_DELETE, 		//Delete icon in menu
 		ICON_LOAD,		//Load icon in menu
 		ICON_SAVE,		//Save icon in menu
+		ICON_ROTATE,
 		ICON_FILL_COLOR, //Fill color icon in menu
 		ICON_PEN_COLOR,  //Pen color icon in menu
 		ICON_PEN_WIDTH,  //Pen width icon in menu
@@ -61,6 +62,7 @@ class GUI
 		ICON_PASTE,  //PASTE width icon in menu
 		ICON_SWITCH, //switch to play mode
 		ICON_DRAG,
+		ICON_RESIZE,
 		ICON_UNDO,  //PASTE width icon in menu
 		ICON_REDO,  //PASTE width icon in menu
 		//TODO: Add more icons names here
@@ -79,7 +81,7 @@ class GUI
 
 	enum PlayMenuIcon //The icons of the Play menu (you should add more icons)
 	{
-		ICON_ROTATE,
+		
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};

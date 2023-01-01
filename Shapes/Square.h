@@ -17,6 +17,8 @@ public:
 	virtual void MoveShape(Point pMove) override;
 	virtual void StickImageSh(GUI* pUI, string imagefile);
 	//virtual void scramble() override;
+	virtual void rotateSH();
+	virtual void resizeSH(double n);
 };
 
 

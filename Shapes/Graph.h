@@ -44,4 +44,6 @@ public:
 	void SetImagesToShapes();
 	void ScrambleShapes(GUI* pUI);
 	void SendToBack();
+	void resizeGR(double num);
+	void rotateGR();
 };
