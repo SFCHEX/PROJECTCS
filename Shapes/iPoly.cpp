@@ -64,3 +64,31 @@ void iPoly::MoveShape(Point MoveBy) {
 		this->pVectY[i] = this->pVectY[i] + MoveBy.y;
 	}
 }
+
+void iPoly::rotateSH() {
+	Point Center;
+	double sumx = 0; double sumy = 0;
+	for (int i = 0; i < pVectX.size(); i++) {
+		sumx += pVectX[i]; sumy += pVectY[i];
+	}
+	Center.x = sumx / pVectX.size(); Center.y = sumy / pVectY.size();
+	for (int i = 0; i < pVectX.size(); i++) {
+		double tx = pVectX[i]; double ty = pVectY[i];
+		pVectX[i] = -ty  + (Center.x) + Center.y;
+		pVectY[i] = tx - (Center.x) + Center.y;
+	}
+}
+
+
+void iPoly::resizeSH(double n) {
+	Point Center;
+	double sumx = 0; double sumy = 0;
+	for (int i = 0; i < pVectX.size(); i++) {
+		sumx += pVectX[i]; sumy += pVectY[i];
+	}
+	Center.x = sumx / pVectX.size(); Center.y = sumy / pVectY .size();
+	for (int i = 0; i < pVectX.size(); i++) {
+		pVectX[i] = (n * pVectX[i]) - (n * Center.x) + Center.x;
+		pVectY[i] = (n * pVectY[i]) - (n * Center.y) + Center.y;
+	}
+}

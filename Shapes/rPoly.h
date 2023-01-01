@@ -22,5 +22,6 @@ public:
 	//virtual void Load(ifstream& inputfile);	//Load all shapes from a file
 	virtual ShapePoints getPoints();
 	virtual void MoveShape(Point pMove) override;	virtual void StickImageSh(GUI* pUI, string imagefile);
-
+	virtual void resizeSH(double numb);
+	virtual void rotateSH();
 };

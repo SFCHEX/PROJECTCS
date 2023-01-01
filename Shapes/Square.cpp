@@ -89,3 +89,21 @@ void Square::MoveShape(Point MoveBy) {
 	this->Corner2.x = this->Corner2.x + MoveBy.x;
 	this->Corner2.y = this->Corner2.y + MoveBy.y;
 }
+
+void Square::resizeSH(double n){
+	Point Center;
+	double width = abs(Corner1.x - Corner2.x);
+	double length = abs(Corner1.y - Corner2.y);
+	Center.x = min(Corner1.x,Corner2.x)+ width/2;
+	Center.y = min(Corner1.y,Corner2.y)+ length/2;
+	
+	
+	Corner1.x = (n * Corner1.x) - (n * Center.x) + Center.x;
+	Corner1.y = (n * Corner1.y) - (n * Center.y) + Center.y;
+	Corner2.x = (n * Corner2.x) - (n * Center.x) + Center.x;;
+	Corner2.y = (n * Corner2.y) - (n * Center.y) + Center.y;;
+	
+}
+void Square::rotateSH(){
+	
+}

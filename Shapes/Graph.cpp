@@ -212,6 +212,13 @@ shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 	return nullptr;
 }
 
+void Graph::resizeGR(double num){
+	for(int i=0; i< shapesList.size(); i++){
+		if(shapesList[i]->IsSelected()){
+			shapesList[i]->resizeSH(num);
+		}
+	}
+}
 
 
 void Graph::deselAll(int valId)
@@ -395,5 +402,11 @@ vector<shape*> Graph::getSelShape() {
 	}
 	else {
 		return selected;
+	}
+}
+
+void Graph::rotateGR(){
+	for(int i=0; i<shapesList.size(); i++){
+		if(shapesList[i]->IsSelected()) shapesList[i]->rotateSH();
 	}
 }

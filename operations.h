@@ -21,3 +21,5 @@
 #include "operations\opRedo.h"
 #include "operations\opStickImage.h"
 #include"operations/opFillColor.h"
+#include "operations\opResize.h"
+#include "operations\opRotate.h"

@@ -164,7 +164,11 @@
     <ClCompile Include="operations\opStickImage.cpp" />
     <ClCompile Include="operations\operation.cpp" />
     <ClCompile Include="operations\opDrag.cpp" />
+    <ClCompile Include="operations\opResize.cpp">
     <ClCompile Include="operations\opScramble.cpp" />
+    <ClCompile Include="operations\opRotate.cpp">
+      <Filter>Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller.h" />
@@ -289,7 +293,11 @@
     <ClInclude Include="operations\opFillColor.h" />
     <ClInclude Include="operations\opStickImage.h" />
     <ClInclude Include="operations\opDrag.h" />
+    <ClInclude Include="operations\opResize.h">
     <ClInclude Include="operations\opScramble.h" />
+    <ClInclude Include="operations\opRotate.h">
+      <Filter>Operations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Operations">
