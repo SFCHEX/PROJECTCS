@@ -184,7 +184,7 @@ void Graph::SendToBack()
 	{
 		if (shapesList[i]->IsSelected() && shapesList[i] != shapesList[0])
 		{	
-			shape* selectedShape = shapesList[i];
+			shape* selectedShape = shapesList[i]; //to store the value of the selected shape
 			shapesList.erase(shapesList.begin() + i);
 			shapesList.insert(shapesList.begin(), selectedShape);
 			break;

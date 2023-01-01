@@ -46,4 +46,5 @@ public:
 	void SendToBack();
 	void resizeGR(double num);
 	void rotateGR();
+	void SendToBack(); //sends a shape to the back of all shapes
 };
