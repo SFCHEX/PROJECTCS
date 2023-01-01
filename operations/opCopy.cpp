@@ -8,9 +8,7 @@
 //Add Rectangle operation class
 opCopy::opCopy(controller * pCont):operation(pCont)
 { }
-opCopy::~opCopy(){
-
-}
+opCopy::~opCopy(){}
 //Add copy to the controller
 void opCopy::Execute(){
 	GUI* pUI = pControl->GetUI();

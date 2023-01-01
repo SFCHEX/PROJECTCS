@@ -174,7 +174,7 @@ void controller::Run()
 		if (pOpr)
 		{
 			pOpr->Execute();//Execute
-			if (!pOpr->getHasUndo()){
+			if (!(pOpr->getHasUndo())){
 				delete pOpr;
 				pOpr=nullptr;
 			}
