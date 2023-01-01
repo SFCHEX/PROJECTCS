@@ -9,8 +9,11 @@ shape::shape(GfxInfo shapeGfxInfo)
 	//id is added into ShpGfx info for more convenient use
 }
  
+
 void shape::SetSelected(bool s)
 {	ShpGfxInfo.isSelected = s; }
+
+
 
 void shape::updateID(){
 	ShpGfxInfo.ID=count;
