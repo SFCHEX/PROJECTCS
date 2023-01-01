@@ -13,7 +13,6 @@
 
 class opResize : public operation{
   double num;
-  vector<double> previousScaleFactors;
   vector<shape*> selectedShapes;
 public:
   opResize(controller *pCont);

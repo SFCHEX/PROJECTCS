@@ -215,7 +215,6 @@ shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 void Graph::resizeGR(double num){
 	for(int i=0; i< shapesList.size(); i++){
 		if(shapesList[i]->IsSelected()){
-			shapesList[i]->setScaleFactor(num);
 			shapesList[i]->resizeSH(num);
 			
 		}
@@ -233,6 +232,7 @@ void Graph::deselAll(int valId)
 		}
 	}
 }
+
 
 //the save function will iterate through the shapeslist private vector and add it to the file
 void Graph::Save(ofstream& outfile, GUI* pUI) {

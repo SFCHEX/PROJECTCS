@@ -7,16 +7,15 @@
 #include "..\controller.h"
 
 #include "..\GUI\GUI.h"
-
+#include <iostream>
 opResize::opResize(controller * pCont):operation(pCont)
 { UndoStack.push_front(this);cleanRedo();}
 
 opResize::~opResize(){}
 
 void opResize::Undo(){
-	for(int i=0; selectedShapes.size()>i;i++)
-		selectedShapes[i]->resizeSH(previousScaleFactors[i]);
-	
+	for (int i = 0; selectedShapes.size() > i; i++) 
+		selectedShapes[i]->resizeSH((1/num));
 }
 void opResize::Redo(){
 	for(int i=0; selectedShapes.size()>i;i++)
@@ -61,7 +60,5 @@ void opResize::Execute(){
 	}
 	pUI->ClearStatusBar();
 	selectedShapes=pGr->getSelShape();
-	for(int i=0; selectedShapes.size()>i;i++)
-		previousScaleFactors.push_back(selectedShapes[i]->getGfxInfo().scaleFactor);
 	pGr->resizeGR(num);
 }

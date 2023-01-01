@@ -6,7 +6,6 @@ shape::shape(GfxInfo shapeGfxInfo)
 	imageOn=false;
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
 	updateID();
-	setScaleFactor(1);
 	//id is added into ShpGfx info for more convenient use
 }
  
@@ -14,8 +13,6 @@ shape::shape(GfxInfo shapeGfxInfo)
 void shape::SetSelected(bool s)
 {	ShpGfxInfo.isSelected = s; }
 
-void shape::setScaleFactor(double n)
-{	ShpGfxInfo.scaleFactor= n; }
 
 
 void shape::updateID(){
