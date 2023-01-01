@@ -48,6 +48,7 @@ public:
 	virtual bool hasImage();
 	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
 	virtual void setHasImage();
+	virtual void scramble(GUI* pUI);
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape

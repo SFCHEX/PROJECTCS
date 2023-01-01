@@ -166,6 +166,7 @@
     <ClCompile Include="operations\opDrag.cpp" />
     <ClCompile Include="operations\opResize.cpp">
     <ClCompile Include="operations\opScramble.cpp" />
+    <ClCompile Include="operations\opSendToBack.cpp" />
     <ClCompile Include="operations\opRotate.cpp">
       <Filter>Operations</Filter>
     </ClCompile>
@@ -295,6 +296,7 @@
     <ClInclude Include="operations\opDrag.h" />
     <ClInclude Include="operations\opResize.h">
     <ClInclude Include="operations\opScramble.h" />
+    <ClInclude Include="operations\opSendToBack.h" />
     <ClInclude Include="operations\opRotate.h">
       <Filter>Operations</Filter>
     </ClInclude>

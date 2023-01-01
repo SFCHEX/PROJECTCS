@@ -32,7 +32,7 @@ void opPenWidth::Execute()
 
 	selectedShapes = pGr->getSelShape();
 
-	if (selectedShapes.size())
+	if (selectedShapes[0] != nullptr)
 	{
 		for (int i=0;i<selectedShapes.size();i++){
 			previousWidths.push_back(selectedShapes[i]->getGfxInfo().BorderWdth);
@@ -56,7 +56,7 @@ void opPenWidth::Execute()
 		delete UndoStack.front();
 		UndoStack.front()=nullptr;
 		UndoStack.pop_front();
-		string msg = "Select a selShape first. If you want to change the general pen width, enter yes: ";
+		string msg = "Select a shape first. If you want to change the general pen width, enter yes: ";
 		pUI->PrintMessage(msg);
 		string response = pUI->GetString();
 		if (response == "yes")

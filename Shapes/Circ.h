@@ -19,6 +19,8 @@ public:
 	virtual ShapePoints getPoints(); //first element is center, second is radius
 	virtual void MoveShape(Point pMove) override;	
 	virtual void StickImageSh(GUI* pUI, string imagefile);
+	//virtual void scramble() override;
+
 	virtual void resizeSH(double num);
 };
 

@@ -1,6 +1,9 @@
 #include "Graph.h"
 #include "../GUI/GUI.h"
 #include <iostream>
+#include <cstdlib>
+#include <vector>
+
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -136,26 +139,6 @@ string ImagesToStick[] ={"images\\ImagesToStick\\green_1.jpg",
 };
 
 
-shape* Graph::getSelectedShape()
-{
-	shape* newShape = nullptr;
-		for (int i = 0; i < shapesList.size(); i++)
-		{
-			if (shapesList[i]->IsSelected())
-			{
-				newShape = shapesList[i];
-				break;
-			}
-			
-		}
-		if (newShape != nullptr)
-		{
-			return newShape;
-		}
-		delete newShape;
-		newShape = nullptr;
-		return nullptr;
-	}
 	
 void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves RGB values to to a file
 {
@@ -175,16 +158,38 @@ void Graph::StickImageGR(GUI* pUI) const {
 void Graph::SetImagesToShapes() {
 	for (int i = 0; i < shapesList.size(); i++) {
 		shapesList[i]->setHasImage();
+
 	}
 }
 
 void Graph::Draw(GUI* pUI) const
-{
-	
+{	
 	pUI->ClearDrawArea();
 	for (int i = 0; i < shapesList.size(); i++)
 		shapesList[i]->Draw(pUI);
 	StickImageGR(pUI);
+}
+void Graph::ScrambleShapes(GUI* pUI) {
+	srand(time(0));
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		shapesList[i]->scramble(pUI);
+	}
+}
+
+
+void Graph::SendToBack()
+{
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		if (shapesList[i]->IsSelected() && shapesList[i] != shapesList[0])
+		{	
+			shape* selectedShape = shapesList[i];
+			shapesList.erase(shapesList.begin() + i);
+			shapesList.insert(shapesList.begin(), selectedShape);
+			break;
+		}
+	}
 }
 
 shape* Graph::Getshape(int x, int y, bool SingleSelect) const

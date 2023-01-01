@@ -42,15 +42,16 @@ void opAddLine::Execute() {
 	pUI->ClearStatusBar();
 
 
+
+
 	GfxInfo LineGfxInfo;
 
 	//get drawing, filling colors and pen width from the interface
 	LineGfxInfo.DrawClr = pUI->getCrntDrawColor();
-	LineGfxInfo.FillClr = pUI->getCrntFillColor();
 	LineGfxInfo.BorderWdth = pUI->getCrntPenWidth();
 
 
-	LineGfxInfo.isFilled = pUI->getFillStatus();	//default is not filled
+	LineGfxInfo.isFilled = false; 	//default is not filled
 	LineGfxInfo.isSelected = false;	//defualt is not selected
 
 
@@ -62,5 +63,4 @@ void opAddLine::Execute() {
 
 	//Add the Line to the list of shapes
 	pGr->Addshape(L);
-
 }
