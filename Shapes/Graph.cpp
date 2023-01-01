@@ -423,3 +423,12 @@ void Graph::rotateGR(){
 		if(shapesList[i]->IsSelected()) shapesList[i]->rotateSH();
 	}
 }
+
+void Graph::CutShape(int nSel) {
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			clipboard.push_back(shapesList[i]);
+		}
+	}
+	DeleteShape(nSel);
+}

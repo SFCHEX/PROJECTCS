@@ -1,6 +1,5 @@
 #pragma once
 #include "operation.h"
-#include "opResize.h"
 
 #include "..\Shapes\Graph.h"
 
@@ -11,11 +10,10 @@
 #include "..\GUI\GUI.h"
 
 
-class opResize : public operation{
-  double num;
+class opCut : public operation{
 public:
-  opResize(controller *pCont);
-  virtual ~opResize();
+  opCut(controller *pCont);
+  virtual ~opCut();
   virtual void Execute();
 
 };

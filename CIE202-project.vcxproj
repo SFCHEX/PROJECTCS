@@ -185,6 +185,7 @@
     <ClCompile Include="operations\opAddrPoly.cpp" />
     <ClCompile Include="operations\opAddiPoly.cpp" />
     <ClCompile Include="operations\opCopy.cpp" />
+    <ClCompile Include="operations\opCut.cpp" />
     <ClCompile Include="operations\opDeleteShape.cpp" />
     <ClCompile Include="operations\opDrag.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
@@ -246,6 +247,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations\opCut.h" />
     <ClInclude Include="operations\opSendToBack.h" />
     <ClInclude Include="operations\opRotate.h" />
     <ClInclude Include="operations\opScramble.h" />
