@@ -94,25 +94,10 @@ void Rect::MoveShape(Point MoveBy) {
 //}
 void Rect::resizeSH(double num){
 	Point Center;
-	double width = abs(Corner1.x - Corner2.x);
-	double length = abs(Corner1.y - Corner2.y);
-	Center.x = min(Corner1.x,Corner2.x)+ (width/2);
-	Center.y = min(Corner1.y,Corner2.y)+ (length/2);
-
-	
-	
-	if(num>=1){
-		max(Corner1.x, Corner2.x) = max(Corner1.x, Corner2.x) + (width / num) * (num - 1);
-		max(Corner1.y, Corner2.y) = max(Corner1.y, Corner2.y) + (length / num) * (num - 1);
-		min(Corner1.x, Corner2.x) = min(Corner1.x, Corner2.x) - (width / num) * (num - 1);
-		min(Corner1.y, Corner2.y) = min(Corner1.y, Corner2.y) - (length / num) * (num - 1);
-	}
-	else if(num<1){
-		max(Corner1.x,Corner2.x) = max(Corner1.x,Corner2.x) - (width - width * num) / 2;
-		max(Corner1.y,Corner2.y) = max(Corner1.y,Corner2.y) - (length - length * num) / 2;
-		min(Corner1.x, Corner2.x) = min(Corner1.x, Corner2.x) + (width - width * num) / 2;
-		min(Corner1.y,Corner2.y) = min(Corner1.y,Corner2.y) + (length - length * num) / 2;
-	}
+	Center.x = min(Corner1.x, Corner2.x) + abs(Corner1.x - Corner2.x)/2;
+	Center.y = min(Corner1.y, Corner2.y) + abs(Corner1.y - Corner2.y) / 2;
+    double t1x = Corner1.x; double t1y = Corner1.y; double t2x = Corner2.x; double t2y = Corner2.y;
+    Corner1.x = num*t1x - num*Center.x +Center.x; Corner1.y = num*t1y -num*Center.y + Center.y; Corner2.x = num*t2x - num*Center.x +Center.x; Corner2.y = num*t2y -num*Center.y + Center.y; 
 }
 void Rect::rotateSH() {
 	Point Center;
