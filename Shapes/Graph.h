@@ -18,6 +18,7 @@ private:
 	shape* selectedShape;	//pointer to the currently selected shape
 	vector <shape*> clipboard;
 	void SaveColorRGB(ofstream& outfile,color RGB);	//Saves Rgb values to to a file
+	bool wasCut;
 	vector<string> Parameterize(string p);	//makes a line parameters
 
 public:										

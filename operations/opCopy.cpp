@@ -13,7 +13,6 @@ opCopy::~opCopy(){}
 void opCopy::Execute(){
 	GUI* pUI = pControl->GetUI();
 	Graph* pGr= pControl->getGraph();
-
     pGr->clearClipboard();
 	pUI->PrintMessage("Selected shapes have been copied");
     pGr->CopyShape();

@@ -15,5 +15,4 @@ public:
   opCut(controller *pCont);
   virtual ~opCut();
   virtual void Execute();
-
 };

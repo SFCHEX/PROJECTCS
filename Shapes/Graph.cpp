@@ -29,6 +29,7 @@ void Graph::CopyShape()
 	}
 
     deselAll(-1);
+	wasCut=0;
 }
 //void Graph::CutShape()
 //{
@@ -42,10 +43,17 @@ void Graph::CopyShape()
 //    deselAll(-1);
 //}
 // 
-   
+ 
 void Graph::clearClipboard()	
 {
+	if (wasCut){
+	for (int i=0;i<clipboard.size();i++){
+		delete clipboard[i];
+		clipboard[i]=nullptr;
+	}
+	}
 	clipboard.clear();
+	
 }
 void Graph::PasteShape(Point p1)
 {
@@ -54,6 +62,7 @@ void Graph::PasteShape(Point p1)
 	for (int i = 0; i < clipboard.size(); i++) {
 		shape* newShape=clipboard[i]->clone();
 		newShape->MoveShape(Point {(-referencePoint.x+p1.x),(-referencePoint.y+p1.y)} );
+		newShape->SetSelected(0);
 		shapesList.push_back(newShape);
 
 	}
@@ -291,7 +300,7 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 	vector<string> drawToolsParameters=Parameterize(drawToolsState);
 	pUI->setCrntPenWidth(stoi(drawToolsParameters[0]));
 	pUI->setCrntDrawColor(color (stoi(drawToolsParameters[3]),stoi(drawToolsParameters[2]),stoi(drawToolsParameters[1])));
-//	pUI->setCrntFillColor(color (stoi(drawToolsParameters[6]),stoi(drawToolsParameters[5]),stoi(drawToolsParameters[4])));
+	pUI->setCrntFillColor(color (stoi(drawToolsParameters[6]),stoi(drawToolsParameters[5]),stoi(drawToolsParameters[4])));
 
 	getline(inputfile,shapeCount);
 	while (getline(inputfile, shapeText)) {
@@ -428,7 +437,11 @@ void Graph::CutShape(int nSel) {
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->IsSelected()) {
 			clipboard.push_back(shapesList[i]);
+			shapesList.erase(shapesList.begin() + i);
+			i--;
 		}
 	}
-	DeleteShape(nSel);
+	deselAll(-1);
+	wasCut=1;
+
 }
