@@ -137,6 +137,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_SCRAMBLE: return SCRAMBLE;
 			case ICON_SEND_TO_BACK: return SEND_TO_BACK;
 			case ICON_RESIZE: return RESIZE;
+			case ICON_CUT: return CUT;
 			case ICON_TEMP: return DO_NOTHING;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -250,6 +251,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_PEN_COLOR] = "images\\MenuIcons\\Menu_Pen_Color.jpg";
 	MenuIconImages[ICON_PEN_WIDTH] = "images\\MenuIcons\\Menu_Pen_Width.jpg";
 	MenuIconImages[ICON_COPY] = "images\\MenuIcons\\Menu_Copy.jpg";
+	MenuIconImages[ICON_CUT] = "images\\MenuIcons\\Menu_Cut.jpg";
 	MenuIconImages[ICON_STICK_IMAGE] = "images\\MenuIcons\\Menu_Stick.jpg";
 	MenuIconImages[ICON_PASTE] = "images\\MenuIcons\\Menu_Paste.jpg";
 	MenuIconImages[ICON_UNDO] = "images\\MenuIcons\\Menu_Undo.jpg";
