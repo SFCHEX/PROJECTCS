@@ -25,3 +25,4 @@
 #include"operations/opSendToBack.h"
 #include "operations\opResize.h"
 #include "operations\opRotate.h"
+#include "operations\opCut.h"

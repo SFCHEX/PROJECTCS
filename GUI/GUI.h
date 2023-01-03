@@ -59,6 +59,7 @@ class GUI
 		ICON_PEN_COLOR,  //Pen color icon in menu
 		ICON_PEN_WIDTH,  //Pen width icon in menu
 		ICON_COPY,  //COPY icon in menu
+		ICON_CUT,
 		ICON_PASTE,  //PASTE width icon in menu
 		ICON_SWITCH, //switch to play mode
 		ICON_DRAG,

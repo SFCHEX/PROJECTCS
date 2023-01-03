@@ -18,6 +18,7 @@ private:
 	shape* selectedShape;	//pointer to the currently selected shape
 	vector <shape*> clipboard;
 	void SaveColorRGB(ofstream& outfile,color RGB);	//Saves Rgb values to to a file
+	bool wasCut;
 	vector<string> Parameterize(string p);	//makes a line parameters
 
 public:										
@@ -26,7 +27,7 @@ public:
 	void Addshape(shape* pFig); //Adds a new shape to the shapesList
 	int clipboardSize();
 	void Draw(GUI* pUI) const;			//Draw the graph (draw all shapes)
-	void CutShape();
+	void CutShape(int);
 	shape* Getshape(int x, int y, bool) const; //Search for a shape given a point inside the shape
 	void deselAll(int valId);
 	void unDelete();
@@ -46,5 +47,5 @@ public:
 	void SendToBack();
 	void resizeGR(double num);
 	void rotateGR();
-	void SendToBack(); //sends a shape to the back of all shapes
+	
 };
