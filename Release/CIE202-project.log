@@ -9,5 +9,62 @@ F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\
 F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(173,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(174,20): warning C4018: '<': signed/unsigned mismatch
 F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(183,20): warning C4018: '<': signed/unsigned mismatch
-F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(391,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(221,16): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(281,32): warning C4018: '>': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(406,20): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Shapes\Graph.cpp(422,16): warning C4018: '<': signed/unsigned mismatch
+  controller.cpp
+  main.cpp
+  OpAddOval.cpp
+  opAddCirc.cpp
+  opAddLine.cpp
+  opAddRect.cpp
+  opAddSquare.cpp
+  opAddTri.cpp
+  opAddiPoly.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opAddiPoly.cpp(47,21): warning C4018: '<': signed/unsigned mismatch
+  opAddrPoly.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opAddrPoly.cpp(42,21): warning C4018: '<': signed/unsigned mismatch
+  opCopy.cpp
+  opDeleteShape.cpp
+  opDrag.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opDrag.cpp(18,21): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opDrag.cpp(26,21): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opDrag.cpp(44,19): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opDrag.cpp(65,26): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opDrag.cpp(86,18): warning C4018: '<': signed/unsigned mismatch
+  opExit.cpp
+  opFillColor.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opFillColor.cpp(9,16): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opFillColor.cpp(20,16): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opFillColor.cpp(36,17): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opFillColor.cpp(47,21): warning C4018: '<': signed/unsigned mismatch
+  opLoad.cpp
+  opPaste.cpp
+  opPenColor.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenColor.cpp(10,17): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenColor.cpp(18,17): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenColor.cpp(31,17): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenColor.cpp(36,21): warning C4018: '<': signed/unsigned mismatch
+  opPenWidth.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenWidth.cpp(13,17): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenWidth.cpp(21,17): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenWidth.cpp(37,17): warning C4018: '<': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opPenWidth.cpp(47,21): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  opRedo.cpp
+  opResize.cpp
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opResize.cpp(17,40): warning C4018: '>': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opResize.cpp(21,36): warning C4018: '>': signed/unsigned mismatch
+F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\operations\opResize.cpp(37,21): warning C4018: '<': signed/unsigned mismatch
+  opRotate.cpp
+  opSave.cpp
+  opScramble.cpp
+  opSelect.cpp
+  opSendToBack.cpp
+  opStickImage.cpp
+  opSwitchToPlay.cpp
+  opUndo.cpp
+  Generating Code...
   CIE202-project.vcxproj -> F:\Omar\CIE\First year\Fall 2022\Fundamentals of Computer Programming - CIE 202\CIE 202 Project\PROJECTCS\Release\CIE202-project.exe
