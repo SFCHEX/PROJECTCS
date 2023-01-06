@@ -178,13 +178,13 @@ void Graph::Draw(GUI* pUI) const
 		shapesList[i]->Draw(pUI);
 	StickImageGR(pUI);
 }
-void Graph::ScrambleShapes(GUI* pUI) {
-	srand(time(0));
-	for (int i = 0; i < shapesList.size(); i++)
-	{
-		shapesList[i]->scramble(pUI);
-	}
-}
+//void Graph::ScrambleShapes(GUI* pUI) {
+//	srand(time(0));
+//	for (int i = 0; i < shapesList.size(); i++)
+//	{
+//		shapesList[i]->scramble(pUI);
+//	}
+//}
 
 
 void Graph::SendToBack()
@@ -445,3 +445,17 @@ void Graph::CutShape(int nSel) {
 	wasCut=1;
 
 }
+
+void Graph::DuplicateShapes()
+{
+	int size = shapesList.size();
+	for (int i = 0; i < size; i++)
+	{	
+		shape* newShape = shapesList[i]->clone();
+		shapesList.push_back(newShape);
+		newShape->MoveShape({ 20, 20});
+	}
+	shapesList.resize(size*2);
+
+}
+

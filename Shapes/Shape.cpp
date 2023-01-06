@@ -2,7 +2,7 @@
 
 int shape::count =0;
 shape::shape(GfxInfo shapeGfxInfo)
-{ 
+{
 	imageOn=false;
 	ShpGfxInfo = shapeGfxInfo;	//Default status is non-filled.
 	updateID();
@@ -84,12 +84,20 @@ void shape::setHasImage() {
 	imageOn = true;
 }
 
-void shape::scramble(GUI* pUI)
-{
-}
+
 // 
 //Point shape::getBorders() {}
 
 void shape::resizeSH(double num){}
 
 void shape::rotateSH(){}
+
+//shape* shape::getDuplicatedShape()
+//{
+//		return duplicatedShape;
+//}
+
+//void shape::setDuplicatedShape(shape* newShape)
+//{
+//	duplicatedShape = newShape;
+//}

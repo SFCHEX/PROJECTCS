@@ -202,6 +202,7 @@
     <ClCompile Include="operations\operation.cpp" />
     <ClCompile Include="operations\opScramble.cpp" />
     <ClCompile Include="operations\opSendToBack.cpp" />
+    <ClCompile Include="operations\opDuplicate.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="main.cpp" />
@@ -247,6 +248,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations\opDuplicate.h" />
     <ClInclude Include="operations\opCut.h" />
     <ClInclude Include="operations\opSendToBack.h" />
     <ClInclude Include="operations\opRotate.h" />

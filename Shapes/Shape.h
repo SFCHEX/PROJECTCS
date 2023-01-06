@@ -16,13 +16,12 @@ protected:
 	
 	GfxInfo ShpGfxInfo;	//shape graphis info
 	static int count; //to create unique ID's for each object which will be stored in gfxinfo
-
+	//shape* duplicatedShape = nullptr; 	 // a ptr is updated when a duplicated shape is created
     void SaveColorRGB(ofstream &outfile,color RGB);
 	/// Add more parameters if needed.
 
 private:
 	bool imageOn;
-
 public:
     shape(GfxInfo shapeGfxInfo);
 	virtual ~shape() {}
@@ -48,7 +47,6 @@ public:
 	virtual bool hasImage();
 	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
 	virtual void setHasImage();
-	virtual void scramble(GUI* pUI);
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape
@@ -60,5 +58,8 @@ public:
 
 	virtual void resizeSH(double num);
 	virtual void rotateSH();
+	//shape* getDuplicatedShape();
+	//void setDuplicatedShape(shape* newShape);
+
 };
 

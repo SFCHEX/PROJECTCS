@@ -79,6 +79,7 @@
     <ClCompile Include="Shapes\Tri.cpp" />
     <ClCompile Include="Shapes\Square.cpp" />
     <ClCompile Include="operations\opCut.cpp" />
+    <ClCompile Include="operations\opDuplicate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Shapes\Tri.h" />
     <ClInclude Include="Shapes\Square.h" />
     <ClInclude Include="operations\opCut.h" />
+    <ClInclude Include="operations\opDuplicate.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />
