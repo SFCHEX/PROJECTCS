@@ -69,6 +69,7 @@ class GUI
 		//TODO: Add more icons names here
 		ICON_SCRAMBLE,
 		ICON_SEND_TO_BACK,
+		ICON_DUPLICATE,
 		ICON_EXIT,		//Exit icon
 
 

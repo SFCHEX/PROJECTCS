@@ -44,6 +44,7 @@ public:
 	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
 	void SetImagesToShapes();
 	void ScrambleShapes(GUI* pUI);
+	void SendToBack();
 	void resizeGR(double num);
 	void rotateGR();
 	
