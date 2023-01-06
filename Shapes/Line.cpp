@@ -128,14 +128,15 @@ void Line::rotateSH() {
 void Line::HideShape(Point DxDy) {
 	ShpGfxInfo.isHidden = true;
 	Point Shp_dxdy;
-	Point max_xy, min_xy;
+	Point max_xy, min_xy, v_Center;
 	double div_scale;
 
 	max_xy = End1;
 	min_xy = End2;
+	v_Center = (max_xy + min_xy) / 2;
 
 	Shp_dxdy = max_xy - min_xy;
 	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
 	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
-	this->resizeSH(div_scale);
+	this->resizeSH(1/div_scale);
 }

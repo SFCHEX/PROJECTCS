@@ -119,8 +119,9 @@ void Circ::HideShape(Point DxDy) {
 	min_xy.x = Center.x - rad;
 	min_xy.y = Center.y - rad;
 
+
 	Shp_dxdy = max_xy - min_xy;
 	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
 	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
-	this->resizeSH(div_scale);
+	this->resizeSH(1/div_scale);
 }

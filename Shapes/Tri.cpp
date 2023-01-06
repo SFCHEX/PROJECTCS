@@ -130,7 +130,7 @@ void Tri::rotateSH(){
 void Tri::HideShape(Point DxDy) {
 	ShpGfxInfo.isHidden = true;
 	Point Shp_dxdy;
-	Point max_xy, min_xy;
+	Point max_xy, min_xy, V_Center;
 	double div_scale;
 
 	max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
@@ -138,9 +138,11 @@ void Tri::HideShape(Point DxDy) {
 
 	min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
 	min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
+	v_Center = (max_xy + min_xy) / 2;
+
 
 	Shp_dxdy = max_xy - min_xy;
 	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
 	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
-	this->resizeSH(div_scale);
+	this->resizeSH(1/div_scale);
 }

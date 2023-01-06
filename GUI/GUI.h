@@ -29,6 +29,26 @@ struct Point	//To be used for shapes points
 		this->y =  this->y - rhs.y;
 		return *this;
 	}
+	Point operator/(Point rhs) {
+		this->x = this->x / rhs.x;
+		this->y = this->y / rhs.y;
+		return *this;
+	}
+	Point operator*(Point rhs) {
+		this->x = this->x * rhs.x;
+		this->y = this->y * rhs.y;
+		return *this;
+	}
+	Point operator/(double rhs) {
+		this->x = this->x / rhs;
+		this->y = this->y / rhs;
+		return *this;
+	}
+	Point operator*(double rhs) {
+		this->x = this->x * rhs;
+		this->y = this->y * rhs;
+		return *this;
+	}
 };
 
 struct GfxInfo	//Graphical info common for all shapes (you may add more members)

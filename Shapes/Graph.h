@@ -47,5 +47,5 @@ public:
 	void SendToBack();
 	void resizeGR(double num);
 	void rotateGR();
-	
+	void HideGraph();
 };
