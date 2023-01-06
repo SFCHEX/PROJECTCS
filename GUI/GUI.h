@@ -14,6 +14,21 @@ using namespace std;
 struct Point	//To be used for shapes points
 {
 	int x, y;
+	Point operator=(Point rhs) {
+		this->x = rhs.x;
+		this->y = rhs.y;
+		return *this;
+	}
+	Point operator+(Point rhs) {
+		this->x = rhs.x + this->x;
+		this->y = rhs.y + this->y;
+		return *this;
+	}
+	Point operator-(Point rhs) {
+		this->x =  this->x - rhs.x;
+		this->y =  this->y - rhs.y;
+		return *this;
+	}
 };
 
 struct GfxInfo	//Graphical info common for all shapes (you may add more members)
@@ -25,6 +40,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
+	bool isHidden = false;
 };
 
 

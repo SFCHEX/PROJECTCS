@@ -6,7 +6,7 @@ Circ::Circ(Point P1, Point P2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 	ShpGfxInfo.ShapeType="Circle";
 	Center = P1;
 	PointR = P2;
-
+	ShpGfxInfo.isHidden = false;
 
 }
 shape* Circ::clone(){
@@ -106,4 +106,21 @@ void Circ::resizeSH(double num) {
 		PointR.y = abs(PointR.y - Center.y) * (num)+Center.y;
 	}
 
+}
+
+void Circ::HideShape(Point DxDy) {
+	ShpGfxInfo.isHidden = true;
+	Point Shp_dxdy;
+	Point max_xy, min_xy;
+	double div_scale;
+
+	max_xy.x = Center.x + rad;
+	max_xy.y = Center.y + rad;
+	min_xy.x = Center.x - rad;
+	min_xy.y = Center.y - rad;
+
+	Shp_dxdy = max_xy - min_xy;
+	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
+	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+	this->resizeSH(div_scale);
 }

@@ -1,5 +1,5 @@
 #include "Tri.h"
-
+#include <algorithm>
 Tri::Tri(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
 
@@ -125,4 +125,22 @@ void Tri::rotateSH(){
 	Corner2.y = t2x - Centeriod.x + Centeriod.y;
 	Corner3.x = -t3y + Centeriod.x + Centeriod.y;
 	Corner3.y = t3x - Centeriod.x + Centeriod.y;
+}
+
+void Tri::HideShape(Point DxDy) {
+	ShpGfxInfo.isHidden = true;
+	Point Shp_dxdy;
+	Point max_xy, min_xy;
+	double div_scale;
+
+	max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
+	max_xy.y = max(Corner1.y, max(Corner2.y, Corner3.y));
+
+	min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
+	min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
+
+	Shp_dxdy = max_xy - min_xy;
+	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
+	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+	this->resizeSH(div_scale);
 }

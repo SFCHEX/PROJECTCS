@@ -116,3 +116,18 @@ void Rect::rotateSH() {
 	Corner2.x = -(t2y) + (Center.x) + Center.y;
 	Corner2.y = t2x - (Center.x) + Center.y;
 }
+
+void Rect::HideShape(Point DxDy) {
+	ShpGfxInfo.isHidden = true;
+	Point Shp_dxdy;
+	Point max_xy, min_xy;
+	double div_scale;
+
+	max_xy = Corner1;
+	min_xy = Corner2;
+
+	Shp_dxdy = max_xy - min_xy;
+	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
+	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+	this->resizeSH(div_scale);
+}

@@ -92,3 +92,21 @@ void iPoly::resizeSH(double n) {
 		pVectY[i] = (n * pVectY[i]) - (n * Center.y) + Center.y;
 	}
 }
+
+void iPoly::HideShape(Point DxDy) {
+	ShpGfxInfo.isHidden = true;
+	Point Shp_dxdy;
+	Point max_xy, min_xy;
+	double div_scale;
+
+	max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+	max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+	min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+	min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+
+	Shp_dxdy = max_xy - min_xy;
+	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
+	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+	this->resizeSH(div_scale);
+}

@@ -206,7 +206,8 @@ shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 	//If a shape is found return a pointer to it.
 	///Add your code here to search for a shape given a point x,y
 	bool EmptyArea = true;
-	for (auto& selPointer : shapesList) {
+	for (int i = shapesList.size() - 1; i != -1;  i--) {
+		shape* selPointer = shapesList[i];
 		if (selPointer->isInside(x, y)) {
 			return selPointer;
 			EmptyArea = false;
@@ -444,4 +445,17 @@ void Graph::CutShape(int nSel) {
 	deselAll(-1);
 	wasCut=1;
 
+}
+
+void Graph::HideGraph() {
+	const int GraphX = 1380; //width
+	const int GraphY = 750; //height
+	int CardAmnt = shapesList.size() * 2;
+	Point CardDim;
+	CardDim.x = GraphX / (CardAmnt + 1) ;
+	CardDim.y = GraphY / (CardAmnt + 1) ;
+
+	for (auto& shapePtr : shapesList) {
+		shapePtr->HideShape(CardDim);
+	}
 }

@@ -22,5 +22,6 @@ public:
 	virtual void StickImageSh(GUI* pUI, string imagefile);
 	virtual void resizeSH(double n);
 	virtual void rotateSH();
+	virtual void HideShape(Point) override;
 };
 

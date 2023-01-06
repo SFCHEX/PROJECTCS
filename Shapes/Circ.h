@@ -20,7 +20,7 @@ public:
 	virtual void MoveShape(Point pMove) override;	
 	virtual void StickImageSh(GUI* pUI, string imagefile);
 	//virtual void scramble() override;
-
+	virtual void HideShape(Point DxDy) override;
 	virtual void resizeSH(double num);
 };
 

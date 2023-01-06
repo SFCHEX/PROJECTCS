@@ -22,5 +22,6 @@ public:
 	//virtual void scramble() override;
 	virtual void resizeSH(double num);
 	virtual void rotateSH();
+	virtual void HideShape(Point) override;
 };
 
