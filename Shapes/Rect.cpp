@@ -20,7 +20,7 @@ void Rect::Load(ifstream &Infile){
 	ShpGfxInfo.ShapeType="Rectangle";
 	Corner1= P1;
 	Corner2= P2;
-	shape:Load(Infile);
+	shape::Load(Infile);
 }
 
 

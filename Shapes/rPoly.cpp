@@ -1,8 +1,6 @@
 #pragma once
 #include "rPoly.h"
 
-using namespace std;
-
 
 double rPoly::Convert(double degree)
 {
@@ -42,6 +40,8 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 }
 
 void rPoly::Load(ifstream &Infile){
+	double px;
+	double py;
 	Infile>>ShpGfxInfo.ID;
 	Infile>>num;
 	Infile>>P1.x;
@@ -49,14 +49,26 @@ void rPoly::Load(ifstream &Infile){
 	Infile>>P2.x;
 	Infile>>P2.y;
 	ShpGfxInfo.ShapeType="rPoly";
-	shape:Load(Infile);
+	int rad = (sqrt(pow((P1.x - P2.x), 2) + pow((P1.y - P2.y), 2)));
+	double ang = 360 / num;
+	for (int i = 0; i < num; i++) {
+		px = P1.x + (rad * cos(Convert(i * ang)));
+		pVectX.push_back(px);
+	}
+	pVectX.push_back(pVectX.front());
+
+	for (int i = 0; i < num; i++) {
+		py = P1.y + (rad * sin(Convert(i * ang)));
+		pVectY.push_back(py);
+	}
+	pVectY.push_back(pVectY.front());
+	shape::Load(Infile);
 }
 
 
 
-
-rPoly::~rPoly() {}
 rPoly::rPoly() {}
+rPoly::~rPoly() {}
 
 
 void rPoly::Save(ofstream& outfile)

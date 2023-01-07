@@ -3,7 +3,7 @@
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
 #include <vector>
-
+using namespace std;
 struct ShapePoints {
 	vector<Point> s_Points;
 	int P_num;

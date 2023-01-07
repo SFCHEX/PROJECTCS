@@ -18,19 +18,19 @@ void iPoly::Load(ifstream &Infile){
 	vector<int> pVectiX, pVectiY;
 
 	Infile>>ShpGfxInfo.ID;
-	int limit;
-	Infile>>limit;
-	for (int i=0;i<limit;i++){
+	int num;
+	Infile>>num;
+	for (int i=0;i<num;i++){
 		int x,y;
 		Infile>>x;
 		pVectiX.push_back(x);
 		Infile>>y;
-		pVectiX.push_back(y);
+		pVectiY.push_back(y);
 	}
 	ShpGfxInfo.ShapeType = "Irregular Polygon";
 	pVectX = pVectiX;
 	pVectY = pVectiY;
-	shape:Load(Infile);
+	shape::Load(Infile);
 }
 
 

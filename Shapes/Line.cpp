@@ -1,5 +1,4 @@
 #include "Line.h"
-
 Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
 
@@ -11,7 +10,6 @@ Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 }
 
 void Line::Load(ifstream &Infile){
-
 	Infile>>ShpGfxInfo.ID;
 	Point P1,P2;
 	Infile>>P1.x;
@@ -21,7 +19,7 @@ void Line::Load(ifstream &Infile){
 	ShpGfxInfo.ShapeType="Line";
 	End1= P1;
 	End2= P2;
-	shape:Load(Infile);
+	shape::Load(Infile);
 }
 
 

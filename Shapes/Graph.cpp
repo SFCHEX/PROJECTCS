@@ -281,7 +281,7 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
     while (!inputfile.eof()) {
 		string shapetype;
 		inputfile>>shapetype;
-		if (shapetype=="line"){
+		if (shapetype=="Line"){
 			shape* newShape=new Line();
 			newShape->Load(inputfile);
 			Addshape(newShape);
@@ -317,7 +317,7 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 			Addshape(newShape);
 		}
 	
-		else if (shapetype=="Tri"){
+		else if (shapetype=="Triangle"){
 			shape* newShape=new Tri();
 			newShape->Load(inputfile);
 			Addshape(newShape);

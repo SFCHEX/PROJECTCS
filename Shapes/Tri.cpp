@@ -1,5 +1,4 @@
 #include "Tri.h"
-
 Tri::Tri(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
 
@@ -13,14 +12,13 @@ Tri::Tri(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo
 void Tri::Load(ifstream &Infile){
 	Infile>>ShpGfxInfo.ID;
 	Point P1,P2,P3;
-	Infile>>P1.x;
-	Infile>>P1.y;
-	Infile>>P2.x;
-	Infile>>P2.y;
+	Infile>>P1.x;Infile>>P1.y;
+	Infile>>P2.x;Infile>>P2.y;
+	Infile>>P3.x;Infile>>P3.y;
 	ShpGfxInfo.ShapeType="Triangle";
 	Corner1= P1;
 	Corner2= P2;
-	Corner2= P3;
+	Corner3= P3;
 	shape::Load(Infile);
 }
 

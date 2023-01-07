@@ -1,5 +1,6 @@
 #include "Circ.h"
-
+#include <iostream>
+using namespace std;
 Circ::Circ(Point P1, Point P2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
 
@@ -23,7 +24,7 @@ void Circ::Load(ifstream &Infile){
 	ShpGfxInfo.ShapeType="Circle";
 	Center = P1;
 	PointR = P2;
-	shape:Load(Infile);
+	shape::Load(Infile);
 }
 
 
