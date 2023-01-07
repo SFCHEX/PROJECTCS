@@ -41,15 +41,30 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 	pVectY.push_back(pVectY.front());
 }
 
+void rPoly::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Infile>>num;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="rPoly";
+	shape:Load(Infile);
+}
+
+
+
+
 rPoly::~rPoly() {}
+rPoly::rPoly() {}
 
 
 void rPoly::Save(ofstream& outfile)
 {
 
 
-	outfile<<"rPoly"<<","<<ShpGfxInfo.ID<<",";
-	outfile << num<<","<<P1.x << "," <<P1.y<< ","<< P2.x << "," << P2.y << ",";
+	outfile<<"rPoly"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile << num<<" "<<P1.x << " " <<P1.y<< " "<< P2.x << " " << P2.y << " ";
 	shape::Save(outfile);
 }
 

@@ -10,6 +10,25 @@ Oval::Oval(Point P1, Point P2, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 
 }
 
+void Oval::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Point P1,P2;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="Oval";
+	Corner1= P1;
+	Corner2= P2;
+	shape:Load(Infile);
+}
+
+
+
+
+Oval::Oval(){
+
+}
 void Oval::StickImageSh(GUI* pUI, string imagefile) {
 	if (hasImage()){
 		double x = min(Corner1.x, Corner2.x); //the x coordinate of the image
@@ -38,8 +57,8 @@ void Oval::Draw(GUI* pUI) const
 }
 void Oval::Save(ofstream &outfile){
 
-	outfile<<"Oval"<<","<<ShpGfxInfo.ID<<",";
-	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<",";
+	outfile<<"Oval"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile<<Corner1.x<<" "<<Corner1.y<<" "<<Corner2.x<<" "<<Corner2.y<<" ";
 	shape::Save(outfile);
 }	//Save the shape parameters to the file
 

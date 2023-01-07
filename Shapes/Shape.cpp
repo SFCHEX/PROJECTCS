@@ -8,8 +8,34 @@ shape::shape(GfxInfo shapeGfxInfo)
 	updateID();
 	//id is added into ShpGfx info for more convenient use
 }
- 
 
+shape::shape()
+{ 
+
+}
+ 
+void shape::Load(ifstream &Infile){
+
+	int red,green,blue;
+	Infile>>red;
+	Infile>>green;
+	Infile>>blue;
+
+    ShpGfxInfo.DrawClr=color(red,green,blue);
+
+	string value;
+	Infile>>value;
+
+    ShpGfxInfo.isSelected=false;
+    if (value=="NO_FILL"){
+        ShpGfxInfo.isFilled=false;
+    }
+    else{
+        ShpGfxInfo.isFilled=true;
+        ShpGfxInfo.FillClr=color(stoi(value),green,blue);
+    }
+
+}
 void shape::SetSelected(bool s)
 {	ShpGfxInfo.isSelected = s; }
 

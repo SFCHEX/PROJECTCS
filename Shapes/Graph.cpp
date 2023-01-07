@@ -31,18 +31,6 @@ void Graph::CopyShape()
     deselAll(-1);
 	wasCut=0;
 }
-//void Graph::CutShape()
-//{
-//	for (int i = 0; i < shapesList.size(); i++) {
-//		if (shapesList[i]->IsSelected()) {
-//			clipboard.push_back(shapesList[i]);
-//			shapesList.erase(shapesList.begin() + i);
-//	
-//		}
-//	}
-//    deselAll(-1);
-//}
-// 
  
 void Graph::clearClipboard()	
 {
@@ -255,8 +243,8 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 	color CFC=pUI->getCrntFillColor();
 	color CDC=pUI->getCrntDrawColor();
 
-	outfile<<(int)CFC.ucRed<<","<<(int)CFC.ucGreen<<","<<(int)CFC.ucBlue<<",";
-	outfile<<(int)CDC.ucRed<<","<<(int)CDC.ucGreen<<","<<(int)CDC.ucBlue<<",";
+	outfile<<(int)CFC.ucRed<<" "<<(int)CFC.ucGreen<<" "<<(int)CFC.ucBlue<<" ";
+	outfile<<(int)CDC.ucRed<<" "<<(int)CDC.ucGreen<<" "<<(int)CDC.ucBlue<<" ";
 	outfile<<pUI->getCrntPenWidth()<<endl;
 
 	outfile<<shapesList.size()<<endl;
@@ -267,23 +255,6 @@ void Graph::Save(ofstream& outfile, GUI* pUI) {
 	outfile.close();
 }
 
-vector<string> Graph::Parameterize(string p){//returns string as parameters
-    vector<string> parameters; //creates a vector to contain the paramaeters for init the shape
-    string parameter=""; // each string is a parameter
-   	for (int i =p.size()-1; i>-1;i--){
-  
-   	if (p[i]!=','){
-       	parameter=p[i]+parameter;//parameters added in reverse
-		        	
-       	}
-       else{
-       	parameters.push_back(parameter);
-           parameter="";
-           }
-   }
-   parameters.push_back(parameter);
-   return parameters;
-}
 //the load function will open the file and iterate line by line through the file adding shapes to the shape vector. it will create shape objects based on the file
 void Graph::Load(ifstream& inputfile, GUI* pUI)
 {
@@ -292,156 +263,67 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
 		shapesList[i]=nullptr;
 	}
 	shapesList.clear();
+	int red,green,blue,width,no_of_shapes;	
+	inputfile>>red;inputfile>>green;inputfile>>blue;
 
+	pUI->setCrntFillColor(color(red,green,blue));
+
+	inputfile>>red;inputfile>>green;inputfile>>blue;
+
+	pUI->setCrntDrawColor(color(red,green,blue));
 	
-	string shapeText,drawToolsState,shapeCount;
-	getline(inputfile,drawToolsState);
+	inputfile>>width;
+
+	pUI->setCrntPenWidth(width);
+
+	inputfile>>no_of_shapes;
+
+    while (!inputfile.eof()) {
+		string shapetype;
+		inputfile>>shapetype;
+		if (shapetype=="line"){
+			shape* newShape=new Line();
+			newShape->Load(inputfile);
+			Addshape(newShape);
+		}
+		else if (shapetype=="Circle"){
+			shape* newShape=new Circ();
+			newShape->Load(inputfile);
+			Addshape(newShape);
+		}
+		else if (shapetype=="iPoly"){
+			shape* newShape=new iPoly();
+			newShape->Load(inputfile);
+			Addshape(newShape);
+		}
+		else if (shapetype=="Oval"){
+			shape* newShape=new Oval();
+			newShape->Load(inputfile);
+			Addshape(newShape);
+		}
+		else if (shapetype=="Rect"){
+			shape* newShape=new Rect();
+			newShape->Load(inputfile);
+			Addshape(newShape);
+		}
+		else if (shapetype=="rPoly"){
+			shape* newShape=new rPoly();
+			newShape->Load(inputfile);
+			Addshape(newShape);
+		}
+		else if (shapetype=="Square"){
+			shape* newShape=new Square();
+			newShape->Load(inputfile);
+			Addshape(newShape);
+		}
 	
-	vector<string> drawToolsParameters=Parameterize(drawToolsState);
-	pUI->setCrntPenWidth(stoi(drawToolsParameters[0]));
-	pUI->setCrntDrawColor(color (stoi(drawToolsParameters[3]),stoi(drawToolsParameters[2]),stoi(drawToolsParameters[1])));
-	pUI->setCrntFillColor(color (stoi(drawToolsParameters[6]),stoi(drawToolsParameters[5]),stoi(drawToolsParameters[4])));
+		else if (shapetype=="Tri"){
+			shape* newShape=new Tri();
+			newShape->Load(inputfile);
+			Addshape(newShape);
+		}
 
-	getline(inputfile,shapeCount);
-	while (getline(inputfile, shapeText)) {
-	vector<string> parameters=Parameterize(shapeText);
-//parameter list is added in reverse because we initialize the gfx info first, and number of points is inconsistent per each possible vector so indexing from the start to the end would be more difficult
-
-   	int size=parameters.size();
-
-    GfxInfo shpGfxInfo;
-    shpGfxInfo.BorderWdth=stoi(parameters[0]);
-    shpGfxInfo.isSelected=false;
-    if (parameters[1]=="NO_FILL"){
-        shpGfxInfo.isFilled=false;
-        shpGfxInfo.DrawClr=color(stoi(parameters[4]),stoi(parameters[3]),stoi(parameters[2]));
     }
-    else{
-        shpGfxInfo.isFilled=true;
-        shpGfxInfo.FillClr=color(stoi(parameters[3]),stoi(parameters[2]),stoi(parameters[1]));
-        shpGfxInfo.DrawClr=color(stoi(parameters[6]),stoi(parameters[5]),stoi(parameters[4]));
-    }
-	//reversing the list again to normal so we can grab the points now that we have gfxinfo which is common for all shapes. it is easier to work this way for the points
-	reverse(parameters.begin(),parameters.end());
-	//stoi converts string to int
-	
-
-	if (parameters[0]=="Square" ||parameters[0]=="Oval"||parameters[0]=="Line"||parameters[0]=="Rectangle"||parameters[0]=="Circle"){
-		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
-		Point P1{stoi(parameters[2]),stoi(parameters[3])};
-		Point P2{stoi(parameters[4]),stoi(parameters[5])};
-			if (parameters[0]=="Line")
-			{
-				Line *S=new Line(P1, P2, shpGfxInfo);
-				Addshape(S);
-			}
-			else if (parameters[0]=="Rectangle")
-			{
-				Rect *S=new Rect(P1, P2, shpGfxInfo);
-				Addshape(S);
-			}
-			else if (parameters[0]=="Circle")
-			{
-				Circ *S=new Circ(P1, P2, shpGfxInfo);
-				Addshape(S);
-			}
-			else if (parameters[0]=="Oval")
-			{
-				Oval *S=new Oval(P1, P2, shpGfxInfo);
-				Addshape(S);
-			}
-			else if (parameters[0]=="Square")
-			{
-				Square *S=new Square(P1, P2, shpGfxInfo);
-				Addshape(S);
-			
-			}
-	}
-
-	else if (parameters[0]=="Triangle")
-	{
-		//initiliaze points to be used to the building of the shape object and the adding to the shapeslist
-		Point P1{stoi(parameters[2]),stoi(parameters[3])};
-		Point P2{stoi(parameters[4]),stoi(parameters[5])};
-		Point P3{stoi(parameters[6]),stoi(parameters[7])};
-
-				Tri *S=new Tri(P1, P2,P3, shpGfxInfo);
-	
-				Addshape(S);
-	}
-	else if (parameters[0]=="Irregular Polygon")
-	{
-		
-		vector<int> pVectX, pVectY;
-		int limit;
-		if (parameters[parameters.size()-2]=="NO_FILL"){
-			//5 is the number of NON coordinate related parameters in the case there is no fill color
-			limit=parameters.size()-5;
-		}
-		else{
-			//8 is the number of NON coordinate related parameters in the case there is a fill color
-			limit=parameters.size()-7;
-		}
-		for (int i=2;i<limit;i++){
-			//add coordinates to vector lists based on if it is odd or even
-			if(i%2==0)
-				pVectX.push_back(stoi(parameters[i]));
-			else
-				pVectY.push_back(stoi(parameters[i]));
-		}
-
-		iPoly *S=new iPoly(pVectX,pVectY, shpGfxInfo);
-		Addshape(S);
-	}
-	else if (parameters[0]=="Regular Polygon")
-	{
-		Point P1{stoi(parameters[3]),stoi(parameters[4])};
-		Point P2{stoi(parameters[5]),stoi(parameters[6])};
-		
-		rPoly *S=new rPoly(stoi(parameters[2]),P1,P2, shpGfxInfo);
-		Addshape(S);
-	}
-
-
-
-
-	}
-	inputfile.close(); 
-}
-
-vector<shape*> Graph::getSelShape() {
-	vector<shape*> selected;
-	bool select_exists = 0;
-	for (int i = 0; i < shapesList.size(); i++) {
-		if (shapesList[i]->IsSelected()) {
-			selected.push_back(shapesList[i]);
-			select_exists = 1;
-		}
-	}
-	if (!select_exists){
-		selected.push_back(nullptr);
-		return selected;
-	}
-	else {
-		return selected;
-	}
-}
-
-void Graph::rotateGR(){
-	for(int i=0; i<shapesList.size(); i++){
-		if(shapesList[i]->IsSelected()) shapesList[i]->rotateSH();
-	}
-}
-
-void Graph::CutShape(int nSel) {
-	for (int i = 0; i < shapesList.size(); i++) {
-		if (shapesList[i]->IsSelected()) {
-			clipboard.push_back(shapesList[i]);
-			shapesList.erase(shapesList.begin() + i);
-			i--;
-		}
-	}
-	deselAll(-1);
-	wasCut=1;
+    inputfile.close();	
 
 }
