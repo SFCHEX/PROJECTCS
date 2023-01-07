@@ -3,7 +3,7 @@
 #include "..\defs.h"
 #include "..\GUI\GUI.h"
 #include <vector>
-
+using namespace std;
 struct ShapePoints {
 	vector<Point> s_Points;
 	int P_num;
@@ -25,6 +25,7 @@ private:
 
 public:
     shape(GfxInfo shapeGfxInfo);
+    shape();
 	virtual ~shape() {}
     void SetSelected(bool s);	//select/unselect the shape
 	void noFillColor();
@@ -54,7 +55,7 @@ public:
 	//virtual void Move() = 0;		//Move the shape
 
 	virtual void Save(ofstream &outfile);	//Save the shape parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the shape parameters to the file
+	virtual void Load(ifstream &Infile) ;	//Load the shape parameters to the file
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all shape info on the status bar
 

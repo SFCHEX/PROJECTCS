@@ -10,7 +10,22 @@ Rect::Rect(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo)
 
 }
 
+void Rect::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Point P1,P2;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="Rectangle";
+	Corner1= P1;
+	Corner2= P2;
+	shape::Load(Infile);
+}
+
+
 Rect::~Rect(){}
+Rect::Rect(){}
 //
 //Point Rect::getBorders() {
 //	return Corner1;
@@ -30,8 +45,8 @@ void Rect::Draw(GUI* pUI) const
 
 void Rect::Save(ofstream &outfile){
 
-	outfile<<"Rect"<<","<<ShpGfxInfo.ID<<",";
-	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<",";
+	outfile<<"Rect"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile<<Corner1.x<<" "<<Corner1.y<<" "<<Corner2.x<<" "<<Corner2.y<<" ";
 	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
