@@ -327,3 +327,15 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
     inputfile.close();	
 
 }
+void Graph::CutShape(int nSel) {
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			clipboard.push_back(shapesList[i]);
+			shapesList.erase(shapesList.begin() + i);
+			i--;
+		}
+	}
+	deselAll(-1);
+	wasCut=1;
+
+}
