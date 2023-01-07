@@ -156,6 +156,7 @@ void Graph::SaveColorRGB(ofstream& outfile,color RGB)	//Saves RGB values to to a
 
 void Graph::StickImageGR(GUI* pUI) const {
 	for (int i = 0; i < shapesList.size(); i++) {
+		if(i>=28) i = i - (28 * i/28);	
 		string imagefile = ImagesToStick[i];
 		if (shapesList[i]->hasImage()) {
 			shapesList[i]->StickImageSh(pUI, imagefile);
@@ -166,7 +167,7 @@ void Graph::StickImageGR(GUI* pUI) const {
 
 void Graph::SetImagesToShapes() {
 	for (int i = 0; i < shapesList.size(); i++) {
-		shapesList[i]->setHasImage();
+		if(shapesList[i]->IsSelected()) shapesList[i]->setHasImage();
 
 	}
 }

@@ -124,3 +124,12 @@ void Line::rotateSH() {
 	End2.x = -t2y + (Center.x) + Center.y;
 	End2.y = t2x -(Center.x) + Center.y;
 }
+
+void Line::StickImageSh(GUI* pUI, string imagefile) {
+	double x = min(End1.x, End2.x);
+	double y = min(End1.y, End2.y);
+	double wid = abs(End1.x - End2.x);
+	double len = abs(End1.y - End2.y);
+	pUI->StickImageGUI(imagefile, x, y, wid, len);
+	setHasImage();
+}

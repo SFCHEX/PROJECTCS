@@ -54,13 +54,14 @@ bool Tri::isInside(int x, int y) const
 	return c;
 }
 void Tri::StickImageSh(GUI* pUI, string imagefile) {
-	double centroidx = (Corner1.x + Corner2.x + Corner3.x) / 3;
-	double centroidy = (Corner1.y + Corner2.y + Corner3.y) / 3;
-	double x = centroidx - 40;
-	double y = centroidy - 40;
-	double len = 100;
-	double wid = 100;
-	pUI->StickImageGUI(imagefile, x, y, wid, len);
+	
+	double minx = min(min(Corner1.x, Corner2.x), Corner3.x);
+	double miny = min(min(Corner1.y, Corner2.y), Corner3.y);
+	double maxx = max(max(Corner1.x, Corner2.x), Corner3.x);
+	double maxy = max(max(Corner1.y, Corner2.y), Corner3.y);
+	double len = maxy - miny;
+	double wid = maxx - minx;
+	pUI->StickImageGUI(imagefile, minx, miny, wid, len);
 	setHasImage();
 }
 ShapePoints Tri::getPoints() {
