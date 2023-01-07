@@ -91,9 +91,17 @@ void Tri::MoveShape(Point MoveBy) {
 	this->Corner3.y = this->Corner3.y + MoveBy.y;
 }
 void Tri::resizeSH(double n) {
-	Point Centeriod;
-	Centeriod.x = (Corner1.x + Corner2.x + Corner3.x) / 3;
-	Centeriod.y = (Corner1.y + Corner2.y + Corner3.y) / 3; double t1x = Corner1.x;
+	////
+	Point max_xy, min_xy, Centeriod;
+
+	max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
+	max_xy.y = max(Corner1.y, max(Corner2.y, Corner3.y));
+
+	min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
+	min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
+	Centeriod = (max_xy + min_xy) / 2;
+	
+	double t1x = Corner1.x;
 	double t1y = Corner1.y;
 	double t2x = Corner2.x;
 	double t2y = Corner2.y;

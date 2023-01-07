@@ -83,10 +83,16 @@ void iPoly::rotateSH() {
 void iPoly::resizeSH(double n) {
 	Point Center;
 	double sumx = 0; double sumy = 0;
-	for (int i = 0; i < pVectX.size(); i++) {
-		sumx += pVectX[i]; sumy += pVectY[i];
-	}
-	Center.x = sumx / pVectX.size(); Center.y = sumy / pVectY .size();
+	Point max_xy, min_xy;
+
+	max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+	max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+	min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+	min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+	Center = (max_xy + min_xy) / 2;
+
+
 	for (int i = 0; i < pVectX.size(); i++) {
 		pVectX[i] = (n * pVectX[i]) - (n * Center.x) + Center.x;
 		pVectY[i] = (n * pVectY[i]) - (n * Center.y) + Center.y;

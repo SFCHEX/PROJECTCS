@@ -140,7 +140,7 @@ Point rPoly::HideShape(Point DxDy) {
 		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
 		div_scale = min(ratX, ratY);
 		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
-		this->resizeSH(div_scale);
+		this->resizeSH(div_scale - 0.05);
 		return (v_Center - (DxDy / 2));
 	}
 }
