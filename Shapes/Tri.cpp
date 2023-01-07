@@ -127,22 +127,28 @@ void Tri::rotateSH(){
 	Corner3.y = t3x - Centeriod.x + Centeriod.y;
 }
 
-void Tri::HideShape(Point DxDy) {
-	ShpGfxInfo.isHidden = true;
-	Point Shp_dxdy;
-	Point max_xy, min_xy, V_Center;
-	double div_scale;
+Point Tri::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
 
-	max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
-	max_xy.y = max(Corner1.y, max(Corner2.y, Corner3.y));
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale,ratX, ratY;
 
-	min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
-	min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
-	v_Center = (max_xy + min_xy) / 2;
+		max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
+		max_xy.y = max(Corner1.y, max(Corner2.y, Corner3.y));
 
+		min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
+		min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
+		v_Center = (max_xy + min_xy) / 2;
 
-	Shp_dxdy = max_xy - min_xy;
-	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
-	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
-	this->resizeSH(1/div_scale);
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale - 0.1;
+		this->resizeSH(div_scale);
+		return (v_Center - (DxDy / 2));
+
+	}
 }

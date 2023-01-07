@@ -17,7 +17,7 @@ public:
 	//virtual void Load(ifstream &infile) = 0;	//Load the shape parameters to the file
 	virtual void MoveShape(Point pMove) override;
 	virtual void scramble(GUI* pUI) override;
-	virtual void HideShape(Point dxdy) override;
+	virtual Point HideShape(Point dxdy) override;
 	virtual void resizeSH(double n);
 	virtual void rotateSH();
 

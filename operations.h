@@ -26,3 +26,4 @@
 #include "operations\opResize.h"
 #include "operations\opRotate.h"
 #include "operations\opCut.h"
+#include "operations/opHideShapes.h"

@@ -14,40 +14,41 @@ using namespace std;
 struct Point	//To be used for shapes points
 {
 	int x, y;
-	Point operator=(Point rhs) {
+	Point operator=(const Point rhs) {
+		Point Lhs = *this;
 		this->x = rhs.x;
 		this->y = rhs.y;
-		return *this;
+		return Lhs;
 	}
-	Point operator+(Point rhs) {
-		this->x = rhs.x + this->x;
-		this->y = rhs.y + this->y;
-		return *this;
+	Point operator+(const Point rhs) {
+		Point Lhs = *this;
+		Lhs.x = Lhs.x +rhs.x;
+		Lhs.y = Lhs.y +rhs.y;
+		return Lhs;
 	}
-	Point operator-(Point rhs) {
-		this->x =  this->x - rhs.x;
-		this->y =  this->y - rhs.y;
-		return *this;
+	Point operator-(const Point rhs) {
+		Point Lhs = *this;
+		Lhs.x = Lhs.x - rhs.x;
+		Lhs.y = Lhs.y - rhs.y;
+		return Lhs;
 	}
-	Point operator/(Point rhs) {
-		this->x = this->x / rhs.x;
-		this->y = this->y / rhs.y;
-		return *this;
+	Point operator/(const int rhs) {
+		Point Lhs = *this;
+		Lhs.x = Lhs.x / rhs;
+		Lhs.y = Lhs.y / rhs;
+		return Lhs;
 	}
-	Point operator*(Point rhs) {
-		this->x = this->x * rhs.x;
-		this->y = this->y * rhs.y;
-		return *this;
-	}
-	Point operator/(double rhs) {
-		this->x = this->x / rhs;
-		this->y = this->y / rhs;
-		return *this;
-	}
-	Point operator*(double rhs) {
-		this->x = this->x * rhs;
-		this->y = this->y * rhs;
-		return *this;
+	Point operator*(const int rhs) {
+		Point Lhs = *this;
+		Lhs.x = Lhs.x * rhs;
+		Lhs.y = Lhs.y * rhs;
+		return Lhs;
+	}	
+	Point abs(const Point rhs) {
+		Point Lhs;
+		Lhs.x = std::abs(rhs.x);
+		Lhs.y = std::abs(rhs.y);
+		return Lhs;
 	}
 };
 

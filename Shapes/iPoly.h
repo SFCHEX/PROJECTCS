@@ -19,5 +19,5 @@ public:
 	virtual void MoveShape(Point pMove) override;
 	virtual void resizeSH(double n);
 	virtual void rotateSH();
-	virtual void HideShape(Point);
+	virtual Point HideShape(Point);
 };

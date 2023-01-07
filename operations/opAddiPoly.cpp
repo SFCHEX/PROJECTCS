@@ -45,7 +45,7 @@ void opAddiPoly::Execute()
 		toggle = false;
 		userinput = pUI->GetString();
 		for (int i = 0; i < userinput.size(); i++) {
-			if (!isdigit(userinput[i])) {
+			if (!isdigit(userinput[i]) || userinput[i] == '0') {
 				toggle = true;
 				pUI->PrintMessage("Your entered a character, try again: ");
 			}

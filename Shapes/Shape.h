@@ -40,7 +40,7 @@ public:
 	virtual bool isInside(int x, int y) const = 0; //checks if any given point is inside a certain shape
 	virtual ShapePoints getPoints() = 0; //Gets the x and y verticies for any shape
 	virtual void MoveShape(Point pMove) = 0;
-	virtual void HideShape(Point DxDy) = 0;
+	virtual Point HideShape(Point DxDy) = 0;
 	///The following functions should be supported by the shape class
 	///It should be overridden by each inherited shape
 

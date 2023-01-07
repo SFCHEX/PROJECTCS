@@ -119,22 +119,28 @@ void rPoly::rotateSH() {
 	}
 }
 
-void rPoly::HideShape(Point DxDy) {
-	ShpGfxInfo.isHidden = true;
-	Point Shp_dxdy;
-	Point max_xy, min_xy, v_Center;
-	double div_scale;
+Point rPoly::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
 
-	max_xy.x = *max_element(pVectX.begin(), pVectX.end());
-	max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale, ratX, ratY;
 
-	min_xy.x = *min_element(pVectX.begin(), pVectX.end());
-	min_xy.y = *min_element(pVectY.begin(), pVectY.end());
-	v_Center = (max_xy + min_xy) / 2;
+		max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+		max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+		min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+		min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+		v_Center = (max_xy + min_xy) / 2;
 
 
-	Shp_dxdy = max_xy - min_xy;
-	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
-	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
-	this->resizeSH(1/div_scale);
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+		this->resizeSH(div_scale);
+		return (v_Center - (DxDy / 2));
+	}
 }

@@ -176,7 +176,11 @@ void Graph::Draw(GUI* pUI) const
 	pUI->ClearDrawArea();
 	for (int i = 0; i < shapesList.size(); i++)
 		shapesList[i]->Draw(pUI);
+	for (int i = 0; i < cardList.size(); i++)
+		cardList[i]->Draw(pUI);
+
 	StickImageGR(pUI);
+
 }
 void Graph::ScrambleShapes(GUI* pUI) {
 	srand(time(0));
@@ -447,15 +451,22 @@ void Graph::CutShape(int nSel) {
 
 }
 
-void Graph::HideGraph() {
+void Graph::HideGraph(GUI* pUI) {
 	const int GraphX = 1380; //width
 	const int GraphY = 750; //height
-	int CardAmnt = shapesList.size() * 2;
+	int CardAmnt = shapesList.size() ;
 	Point CardDim;
-	CardDim.x = GraphX / (CardAmnt + 1) ;
-	CardDim.y = GraphY / (CardAmnt + 1) ;
-
-	for (auto& shapePtr : shapesList) {
-		shapePtr->HideShape(CardDim);
+	GfxInfo shpGfxInfo;
+	shpGfxInfo.BorderWdth = 10;
+	shpGfxInfo.DrawClr = RED;
+	shpGfxInfo.isFilled = false;
+	CardDim.x = GraphX / (CardAmnt ) ;
+	CardDim.y = GraphY / (CardAmnt ) ;
+	int cursize = shapesList.size();
+	for (int i = 0; i < cursize; i++) {
+		Point P1 = shapesList[i]->HideShape(CardDim);
+		Point P2 = (P1 + CardDim);
+		Rect* newShape = new Rect(P1, P2, shpGfxInfo);
+		shapesList.push_back(newShape);
 	}
 }

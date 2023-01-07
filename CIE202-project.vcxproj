@@ -189,6 +189,7 @@
     <ClCompile Include="operations\opDeleteShape.cpp" />
     <ClCompile Include="operations\opDrag.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
+    <ClCompile Include="operations\opHideShapes.cpp" />
     <ClCompile Include="operations\opPaste.cpp" />
     <ClCompile Include="operations\opPenColor.cpp" />
     <ClCompile Include="operations\opPenWidth.cpp" />
@@ -267,6 +268,7 @@
     <ClInclude Include="operations\opSwitchToPlay.h" />
     <ClInclude Include="operations\opStickImage.h" />
     <ClInclude Include="operations\opUndo.h" />
+    <ClInclude Include="operations\opHideShapes.h" />
     <ClInclude Include="Shapes\rPoly.h" />
     <ClInclude Include="Shapes\iPoly.h" />
     <ClInclude Include="operations\OpAddOval.h" />

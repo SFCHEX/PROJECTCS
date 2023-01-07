@@ -140,18 +140,25 @@ void Square::rotateSH(){
 	
 }
 
-void Square::HideShape(Point DxDy) {
-	ShpGfxInfo.isHidden = true;
-	Point Shp_dxdy;
-	Point max_xy, min_xy, v_Center;
-	double div_scale;
+Point Square::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
 
-	max_xy = Corner1;
-	min_xy = Corner2;
-	v_Center = (max_xy + min_xy) / 2;
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale, ratX, ratY;
 
-	Shp_dxdy = max_xy - min_xy;
-	div_scale = max((abs((Shp_dxdy.y) / (DxDy.y))), abs(((Shp_dxdy.x) / (DxDy.x))));
-	(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
-	this->resizeSH(1/div_scale);
+		max_xy = Corner1;
+		min_xy = Corner2;
+		v_Center = (max_xy + min_xy) / 2;
+
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+		this->resizeSH(div_scale);
+		return (v_Center - (DxDy / 2));
+
+	}
 }
