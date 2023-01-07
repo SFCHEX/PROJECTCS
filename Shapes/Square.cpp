@@ -38,16 +38,12 @@ Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
 }
 
 void Square::Load(ifstream &Infile){
-	cout<<"Im in the virtual load for square";
 	Infile>>ShpGfxInfo.ID;
-	cout<<"id";
 	Point P1,P2;
-	cout<<"point";
 	Infile>>P1.x;
 	Infile>>P1.y;
 	Infile>>P2.x;
 	Infile>>P2.y;
-	cout<<"shapetype";
 	ShpGfxInfo.ShapeType="Square";
 	Corner1= P1;
 	Corner2= P2;
