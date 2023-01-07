@@ -327,6 +327,23 @@ void Graph::Load(ifstream& inputfile, GUI* pUI)
     inputfile.close();	
 
 }
+vector<shape*> Graph::getSelShape() {
+	vector<shape*> selected;
+	bool select_exists = 0;
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			selected.push_back(shapesList[i]);
+			select_exists = 1;
+		}
+	}
+	if (!select_exists){
+		selected.push_back(nullptr);
+		return selected;
+	}
+	else {
+		return selected;
+	}
+}
 void Graph::CutShape(int nSel) {
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->IsSelected()) {
