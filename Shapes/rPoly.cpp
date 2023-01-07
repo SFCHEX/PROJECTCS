@@ -1,5 +1,7 @@
 #pragma once
 #include "rPoly.h"
+#include <algorithm>
+using namespace std;
 
 
 double rPoly::Convert(double degree)
@@ -37,6 +39,8 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 		pVectY.push_back(py);
 	}
 	pVectY.push_back(pVectY.front());
+
+
 }
 
 void rPoly::Load(ifstream &Infile){
@@ -142,4 +146,52 @@ void rPoly::rotateSH() {
 		pVectX[i] = -ty + (P1.x) + P1.y;
 		pVectY[i] = tx - (P1.x) + P1.y;
 	}
+}
+
+Point rPoly::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
+
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale, ratX, ratY;
+
+		max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+		max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+		min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+		min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+		v_Center = (max_xy + min_xy) / 2;
+
+
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+		this->resizeSH(div_scale - 0.05);
+		return (v_Center - (DxDy / 2));
+	}
+}
+void rPoly::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+	max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+	min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+	min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+	v_Center = (max_xy + min_xy) / 2;
+
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
 }

@@ -164,7 +164,11 @@ void Graph::Draw(GUI* pUI) const
 	pUI->ClearDrawArea();
 	for (int i = 0; i < shapesList.size(); i++)
 		shapesList[i]->Draw(pUI);
+	for (int i = 0; i < cardList.size(); i++)
+		cardList[i]->Draw(pUI);
+
 	StickImageGR(pUI);
+
 }
 void Graph::ScrambleShapes(GUI* pUI) {
 	srand(time(0));
@@ -175,16 +179,25 @@ void Graph::ScrambleShapes(GUI* pUI) {
 }
 
 
-void Graph::SendToBack()
+void Graph::SendToBack(GUI* pUI)
 {
 	for (int i = 0; i < shapesList.size(); i++)
 	{
 		if (shapesList[i]->IsSelected() && shapesList[i] != shapesList[0])
 		{	
+			
 			shape* selectedShape = shapesList[i];
+			vector<shape*>::iterator location = shapesList.begin() + i;
 			shapesList.erase(shapesList.begin() + i);
 			shapesList.insert(shapesList.begin(), selectedShape);
-			break;
+			if (!selectedShape->isaCard()) { break; }
+			else {
+				Draw(pUI);
+				Sleep(1000);
+				shapesList.insert(shapesList.end(), selectedShape);
+				shapesList.erase(shapesList.begin());
+				break;
+			}
 		}
 	}
 }
@@ -194,7 +207,8 @@ shape* Graph::Getshape(int x, int y, bool SingleSelect) const
 	//If a shape is found return a pointer to it.
 	///Add your code here to search for a shape given a point x,y
 	bool EmptyArea = true;
-	for (auto& selPointer : shapesList) {
+	for (int i = shapesList.size() - 1; i != -1;  i--) {
+		shape* selPointer = shapesList[i];
 		if (selPointer->isInside(x, y)) {
 			return selPointer;
 			EmptyArea = false;
@@ -360,4 +374,56 @@ void Graph::CutShape(int nSel) {
 	deselAll(-1);
 	wasCut=1;
 
+}
+
+void Graph::HideGraph(GUI* pUI) {
+	const int GraphX = 1380; //width
+	const int GraphY = 750; //height
+	int CardAmnt = shapesList.size() ;
+	Point CardDim;
+	GfxInfo shpGfxInfo;
+	shpGfxInfo.BorderWdth = 10;
+	shpGfxInfo.DrawClr = RED;
+	shpGfxInfo.isFilled = true;
+	shpGfxInfo.isHidden = true;
+	CardDim.x = GraphX / (CardAmnt ) ;
+	CardDim.y = GraphY / (CardAmnt ) ;
+	int cursize = shapesList.size();
+	for (int i = 0; i < cursize; i++) {
+		if (!shapesList[i]->isShpHidden()) {
+			Point P1 = shapesList[i]->HideShape(CardDim);
+			Point P2 = (P1 + CardDim);
+			Rect* newShape = new Rect(P1, P2, shpGfxInfo);
+			newShape->sethideID(shapesList[i]->getID());
+			shapesList.push_back(newShape);
+		}
+	}
+}
+
+void Graph::Zoom(double Zf) {
+	for (int i = 0; i < shapesList.size(); i++)
+		shapesList[i]->Zoom(Zf);
+
+}
+void Graph::DeleteCards() {
+	int countcards = 1;
+	deselAll(-1);
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->isaCard()) {
+			shapesList[i]->SetSelected(true);
+			countcards++;
+		}
+		this->DeleteShape(countcards);
+	}
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->isaCard()) {
+			shapesList[i]->SetSelected(true);
+			countcards++;
+		}
+		this->DeleteShape(countcards);
+	}
+	for (int i = 0; i < shapesList.size(); i++) {
+		shapesList[i]->unHideAll();
+
+	}
 }

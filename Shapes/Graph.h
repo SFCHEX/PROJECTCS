@@ -14,6 +14,7 @@ class Graph
 {
 private:
 	vector <shape*> shapesList; //a container to hold all shapes	
+	vector <shape*> cardList;
 	deque<shape*> deletedShapesList; //a container to hold all shapes	
 	shape* selectedShape;	//pointer to the currently selected shape
 	vector <shape*> clipboard;
@@ -43,8 +44,10 @@ public:
 	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
 	void SetImagesToShapes();
 	void ScrambleShapes(GUI* pUI);
-	void SendToBack();
+	void SendToBack(GUI* pUI);
 	void resizeGR(double num);
 	void rotateGR();
-	
+	void HideGraph(GUI*);
+	void Zoom(double);
+	void DeleteCards();
 };

@@ -45,6 +45,7 @@ void shape::SetSelected(bool s)
 void shape::updateID(){
 	ShpGfxInfo.ID=count;
 	count++;
+	ShpGfxInfo.HidId = count;
 }
 
 bool shape::IsSelected() const

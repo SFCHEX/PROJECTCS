@@ -140,3 +140,44 @@ void Line::rotateSH() {
 	End2.x = -t2y + (Center.x) + Center.y;
 	End2.y = t2x -(Center.x) + Center.y;
 }
+
+Point Line::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
+
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale, ratX, ratY;
+
+		max_xy = End1;
+		min_xy = End2;
+		v_Center = (max_xy + min_xy) / 2;
+
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale - 0.1;
+		this->resizeSH(div_scale);
+		return (v_Center - (DxDy / 2));
+	}
+}
+void Line::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	max_xy = End1;
+	min_xy = End2;
+	v_Center = (max_xy + min_xy) / 2;
+
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
+}

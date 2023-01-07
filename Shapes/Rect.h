@@ -23,5 +23,10 @@ public:
 	//virtual void scramble() override;
 	virtual void resizeSH(double num);
 	virtual void rotateSH();
+	virtual Point HideShape(Point) override;
+	virtual void sethideID(int) override;
+
+	virtual void Zoom(double) override;
+
 };
 
