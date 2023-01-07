@@ -138,3 +138,9 @@ Point Rect::HideShape(Point DxDy) {
 		return (v_Center - (DxDy / 2));
 	}
 }
+
+void Rect::sethideID(int in_Hideid) {
+	GfxInfo Tgfx = this->getGfxInfo();
+	this->ShpGfxInfo.HidId = in_Hideid;
+	this->isCard = true;
+}

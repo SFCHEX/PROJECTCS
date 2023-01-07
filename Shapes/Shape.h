@@ -16,7 +16,7 @@ protected:
 	
 	GfxInfo ShpGfxInfo;	//shape graphis info
 	static int count; //to create unique ID's for each object which will be stored in gfxinfo
-
+	bool isCard = false;
     void SaveColorRGB(ofstream &outfile,color RGB);
 	/// Add more parameters if needed.
 
@@ -45,11 +45,14 @@ public:
 	///It should be overridden by each inherited shape
 
 	///Decide the parameters that you should pass to each function	
-
+	virtual void sethideID(int) {};
 	virtual bool hasImage();
 	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
 	virtual void setHasImage();
 	virtual void scramble(GUI* pUI);
+	virtual bool isShpHidden() { return this->ShpGfxInfo.isHidden; };
+	virtual bool isaCard() { return this->isCard; };
+
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape

@@ -191,16 +191,25 @@ void Graph::ScrambleShapes(GUI* pUI) {
 }
 
 
-void Graph::SendToBack()
+void Graph::SendToBack(GUI* pUI)
 {
 	for (int i = 0; i < shapesList.size(); i++)
 	{
 		if (shapesList[i]->IsSelected() && shapesList[i] != shapesList[0])
 		{	
+			
 			shape* selectedShape = shapesList[i];
+			vector<shape*>::iterator location = shapesList.begin() + i;
 			shapesList.erase(shapesList.begin() + i);
 			shapesList.insert(shapesList.begin(), selectedShape);
-			break;
+			if (!selectedShape->isaCard()) { break; }
+			else {
+				Draw(pUI);
+				Sleep(1000);
+				shapesList.insert(shapesList.begin() + i, selectedShape);
+				shapesList.erase(shapesList.begin());
+				break;
+			}
 		}
 	}
 }
@@ -459,14 +468,18 @@ void Graph::HideGraph(GUI* pUI) {
 	GfxInfo shpGfxInfo;
 	shpGfxInfo.BorderWdth = 10;
 	shpGfxInfo.DrawClr = RED;
-	shpGfxInfo.isFilled = false;
+	shpGfxInfo.isFilled = true;
+	shpGfxInfo.isHidden = true;
 	CardDim.x = GraphX / (CardAmnt ) ;
 	CardDim.y = GraphY / (CardAmnt ) ;
 	int cursize = shapesList.size();
 	for (int i = 0; i < cursize; i++) {
-		Point P1 = shapesList[i]->HideShape(CardDim);
-		Point P2 = (P1 + CardDim);
-		Rect* newShape = new Rect(P1, P2, shpGfxInfo);
-		shapesList.push_back(newShape);
+		if (!shapesList[i]->isShpHidden()) {
+			Point P1 = shapesList[i]->HideShape(CardDim);
+			Point P2 = (P1 + CardDim);
+			Rect* newShape = new Rect(P1, P2, shpGfxInfo);
+			newShape->sethideID(shapesList[i]->getID());
+			shapesList.push_back(newShape);
+		}
 	}
 }
