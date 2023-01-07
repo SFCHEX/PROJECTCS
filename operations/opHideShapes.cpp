@@ -15,6 +15,7 @@ void opHideShapes::Execute()
 	GUI* pUI = pControl->GetUI();
 	pUI->PrintMessage("Graph Hidden");
 	pGr->HideGraph(pUI);
+	
 
 }
 

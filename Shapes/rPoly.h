@@ -27,4 +27,6 @@ public:
 	virtual void resizeSH(double numb);
 	virtual void rotateSH();
 	virtual Point HideShape(Point) override;
+	virtual void Zoom(double) override;
+
 };

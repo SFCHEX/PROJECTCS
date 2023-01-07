@@ -49,4 +49,6 @@ public:
 	void resizeGR(double num);
 	void rotateGR();
 	void HideGraph(GUI*);
+	void Zoom(double);
+	void DeleteCards();
 };

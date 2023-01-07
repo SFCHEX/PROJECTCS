@@ -203,6 +203,7 @@
     <ClCompile Include="operations\operation.cpp" />
     <ClCompile Include="operations\opScramble.cpp" />
     <ClCompile Include="operations\opSendToBack.cpp" />
+    <ClCompile Include="operations\opZoom.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="main.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="operations\opStickImage.h" />
     <ClInclude Include="operations\opUndo.h" />
     <ClInclude Include="operations\opHideShapes.h" />
+    <ClInclude Include="operations\opZoom.h" />
     <ClInclude Include="Shapes\rPoly.h" />
     <ClInclude Include="Shapes\iPoly.h" />
     <ClInclude Include="operations\OpAddOval.h" />

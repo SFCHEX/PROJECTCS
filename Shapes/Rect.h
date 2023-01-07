@@ -24,5 +24,8 @@ public:
 	virtual void rotateSH();
 	virtual Point HideShape(Point) override;
 	virtual void sethideID(int) override;
+
+	virtual void Zoom(double) override;
+
 };
 

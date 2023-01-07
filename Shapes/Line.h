@@ -20,6 +20,7 @@ public:
 	virtual Point HideShape(Point dxdy) override;
 	virtual void resizeSH(double n);
 	virtual void rotateSH();
+	virtual void Zoom(double) override;
 
 };
 

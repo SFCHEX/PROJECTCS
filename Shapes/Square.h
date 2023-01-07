@@ -20,6 +20,8 @@ public:
 	virtual void rotateSH();
 	virtual void resizeSH(double n);
 	virtual Point HideShape(Point) override;
+	virtual void Zoom(double) override;
+
 };
 
 

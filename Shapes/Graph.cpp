@@ -206,7 +206,7 @@ void Graph::SendToBack(GUI* pUI)
 			else {
 				Draw(pUI);
 				Sleep(1000);
-				shapesList.insert(shapesList.begin() + i, selectedShape);
+				shapesList.insert(shapesList.end(), selectedShape);
 				shapesList.erase(shapesList.begin());
 				break;
 			}
@@ -481,5 +481,33 @@ void Graph::HideGraph(GUI* pUI) {
 			newShape->sethideID(shapesList[i]->getID());
 			shapesList.push_back(newShape);
 		}
+	}
+}
+
+void Graph::Zoom(double Zf) {
+	for (int i = 0; i < shapesList.size(); i++)
+		shapesList[i]->Zoom(Zf);
+
+}
+void Graph::DeleteCards() {
+	int countcards = 1;
+	deselAll(-1);
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->isaCard()) {
+			shapesList[i]->SetSelected(true);
+			countcards++;
+		}
+		this->DeleteShape(countcards);
+	}
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->isaCard()) {
+			shapesList[i]->SetSelected(true);
+			countcards++;
+		}
+		this->DeleteShape(countcards);
+	}
+	for (int i = 0; i < shapesList.size(); i++) {
+		shapesList[i]->unHideAll();
+
 	}
 }

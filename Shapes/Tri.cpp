@@ -160,3 +160,26 @@ Point Tri::HideShape(Point DxDy) {
 
 	}
 }
+void Tri::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
+	max_xy.y = max(Corner1.y, max(Corner2.y, Corner3.y));
+
+	min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
+	min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
+	v_Center = (max_xy + min_xy) / 2;
+	v_Center = (max_xy + min_xy) / 2;
+
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
+}

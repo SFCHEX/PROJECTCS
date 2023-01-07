@@ -130,3 +130,19 @@ Point Circ::HideShape(Point DxDy) {
 		return (v_Center - (DxDy / 2));
 	}
 }
+void Circ::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	v_Center = Center;
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}	
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
+}

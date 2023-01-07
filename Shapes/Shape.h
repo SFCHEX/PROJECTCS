@@ -52,7 +52,8 @@ public:
 	virtual void scramble(GUI* pUI);
 	virtual bool isShpHidden() { return this->ShpGfxInfo.isHidden; };
 	virtual bool isaCard() { return this->isCard; };
-
+	virtual void Zoom(double) = 0;
+	virtual void unHideAll() { ShpGfxInfo.isHidden = false; }
 	//virtual void Rotate() = 0;	//Rotate the shape
 	//virtual void Resize() = 0;	//Resize the shape
 	//virtual void Move() = 0;		//Move the shape

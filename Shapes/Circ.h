@@ -22,6 +22,8 @@ public:
 	//virtual void scramble() override;
 	virtual Point HideShape(Point DxDy) override;
 	virtual void resizeSH(double num);
+	virtual void Zoom(double) override;
+
 };
 
 

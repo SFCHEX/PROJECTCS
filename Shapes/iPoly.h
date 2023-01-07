@@ -1,4 +1,5 @@
 #pragma once
+
 #include "shape.h"
 #include "math.h"
 #include <vector>
@@ -20,4 +21,6 @@ public:
 	virtual void resizeSH(double n);
 	virtual void rotateSH();
 	virtual Point HideShape(Point);
+	virtual void Zoom(double) override;
+
 };

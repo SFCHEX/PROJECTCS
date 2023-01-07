@@ -38,10 +38,12 @@ void opSelect::Execute() {
 			if (SelectedShape->isaCard() && SingleSelect) {
 				pGr->SendToBack(pUI);
 			}
-			string msg = "Shape: " + SelectedGfxInfo.ShapeType;
-			msg += " | Border Width: ";
-			msg += to_string(SelectedGfxInfo.BorderWdth);
-			pUI->PrintMessage(msg);
+			if (pUI->CurrentMode() == 0) { //check if draw or play mode, no need to print data if its play mode
+				string msg = "Shape: " + SelectedGfxInfo.ShapeType;
+				msg += " | Border Width: ";
+				msg += to_string(SelectedGfxInfo.BorderWdth);
+				pUI->PrintMessage(msg);
+			}
 		}
 		else {
 			pUI->ClearStatusBar();
