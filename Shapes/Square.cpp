@@ -1,6 +1,7 @@
 #include "Square.h"
 #include <math.h>
-
+#include <iostream>
+using namespace std;
 //#include <cstdlib>
 //#include <ctime>
 Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
@@ -36,6 +37,20 @@ Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
 
 }
 
+void Square::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Point P1,P2;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="Square";
+	Corner1= P1;
+	Corner2= P2;
+	shape::Load(Infile);
+}
+
+
 shape* Square::clone(){
 	shape* newShape=new Square(*this);
 
@@ -43,6 +58,7 @@ shape* Square::clone(){
 }	
 
 Square::~Square(){}
+Square::Square(){}
 
 void Square::Draw(GUI* pUI) const {
 	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
@@ -50,8 +66,8 @@ void Square::Draw(GUI* pUI) const {
 
 void Square::Save(ofstream &outfile){
 
-	outfile<<"Square"<<","<<ShpGfxInfo.ID<<",";
-	outfile << Corner1.x << "," << Corner1.y << "," << Corner2.x << "," << Corner2.y << ",";
+	outfile<<"Square"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " ";
 	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
