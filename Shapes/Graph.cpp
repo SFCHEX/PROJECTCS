@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-
+#include <algorithm>
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -171,12 +171,47 @@ void Graph::Draw(GUI* pUI) const
 	StickImageGR(pUI);
 
 }
-void Graph::ScrambleShapes(GUI* pUI) {
-	srand(time(0));
-	for (int i = 0; i < shapesList.size(); i++)
-	{
-		shapesList[i]->scramble(pUI);
+
+
+void Graph::ScrambleShapes() {
+
+	int shapeListSize;
+	if (shapesList.size() % 2 == 0) {
+		shapeListSize = shapesList.size();
 	}
+	else {
+		shapeListSize = shapesList.size() + 1;
+	}
+	int noPartitionsRows, noPartitionsCols;
+	for (int i = shapeListSize; i >= 2; i--) {
+		if (shapeListSize % i == 0) {
+			noPartitionsCols = i;
+			noPartitionsRows = shapeListSize / i;
+		}
+	}
+
+	int partitionWidth = 1380 / noPartitionsRows;
+	int partitionHeight = 620 / noPartitionsCols;
+
+	// Define the vector to hold the center points of the partitions
+	vector<Point> centers;
+
+	// Iterate through the partitions
+	for (int i = 0; i < noPartitionsRows; i++) {
+		for (int j = 0; j < noPartitionsCols; j++) {
+			// Calculate the center point of the partition
+			int x = (i * partitionWidth) + (partitionWidth / 2);
+			int y = (j * partitionHeight) + (partitionHeight / 2);
+			Point center = { x, y + 100 };
+			// Create a pair of the center point and add it to the vector
+			centers.push_back(center);
+		}
+	}
+	std::random_shuffle(centers.begin(), centers.end());
+	for (int i = 0; i < shapesList.size(); i++) {
+		shapesList[i]->scramble(centers[i]);
+	}
+
 }
 
 
@@ -395,7 +430,7 @@ void Graph::HideGraph(GUI* pUI) {
 			Point P1 = shapesList[i]->HideShape(CardDim);
 			Point P2 = (P1 + CardDim);
 			Rect* newShape = new Rect(P1, P2, shpGfxInfo);
-			newShape->sethideID(shapesList[i]->getID());
+			newShape->sethideID(shapesList[i]->getGameID());
 			shapesList.push_back(newShape);
 		}
 	}
@@ -417,18 +452,49 @@ void Graph::DeleteCards() {
 		this->DeleteShape(countcards);
 	}
 	for (int i = 0; i < shapesList.size(); i++) {
-		if (shapesList[i]->isaCard()) {
-			shapesList[i]->SetSelected(true);
-			countcards++;
-		}
-		this->DeleteShape(countcards);
-	}
-	for (int i = 0; i < shapesList.size(); i++) {
 		shapesList[i]->unHideAll();
 
 	}
 }
 
+void Graph::duplicateShapes(GUI* pUI)
+{
+	int n = shapesList.size();
+	
+		for (int i = 0; i < n; i++)
+		{
+
+		shape* newShape = shapesList[i]->clone();
+		shapesList.push_back(newShape);
+		newShape->MoveShape(Point{ 50, 50 });
+
+		}
+		
+		if (pUI->CurrentMode() == 1)
+		{
+			for (int i = n; i < shapesList.size(); i++)
+			{
+				shapesList[i]->setGameID(shapesList[i-n]->getGameID());
+			}
+		}
+
+}
+
+bool Graph::MyMatchedShapes()
+{
+
+		vector<shape*> selectedShapes = getSelShape();
+		
+			if (selectedShapes[0]->getCardID() == selectedShapes[1]->getCardID())
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			
+			}
+}
 void Graph::multiSelect(int num) {
 	GfxInfo newGfxinfo;
 	for (int i = 0; i < shapesList.size(); i++) {

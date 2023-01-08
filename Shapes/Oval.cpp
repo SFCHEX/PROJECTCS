@@ -132,6 +132,7 @@ Point Oval::HideShape(Point DxDy) {
 		div_scale = min(ratX, ratY);
 		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
 		this->resizeSH(div_scale);
+		this->ShpGfxInfo.HidId = this->ShpGfxInfo.GameID;
 		return (v_Center - (DxDy / 2));
 	}
 }
@@ -153,4 +154,14 @@ void Oval::Zoom(double Zf) {
 	}
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
+}
+
+void Oval::scramble(Point p) {
+	Point center = { ((Corner1.x + Corner2.x) / 2.0), ((Corner1.y + Corner2.y) / 2.0) };
+
+	Point diff;
+
+	diff = p - center;
+	Corner1 = Corner1 + diff;
+	Corner2 = Corner2 + diff;
 }

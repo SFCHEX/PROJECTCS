@@ -45,8 +45,8 @@ void shape::SetSelected(bool s)
 
 void shape::updateID(){
 	ShpGfxInfo.ID=count;
+	ShpGfxInfo.GameID=count;
 	count++;
-	ShpGfxInfo.HidId = count;
 }
 
 bool shape::IsSelected() const
@@ -114,9 +114,7 @@ void shape::setHasImage() {
 	imageOn = true;
 }
 
-void shape::scramble(GUI* pUI)
-{
-}
+
 // 
 //Point shape::getBorders() {}
 
@@ -124,6 +122,20 @@ void shape::resizeSH(double num){}
 
 void shape::rotateSH(){}
 
+void shape::setGameID(int ID)
+{
+	this->ShpGfxInfo.GameID = ID;
+}
+
+int shape::getGameID()
+{
+	return this->ShpGfxInfo.GameID;
+}
+
+int shape::getCardID()
+{
+	return this->ShpGfxInfo.HidId;
+}
 void shape::updateGroupId(int newGroupID){
 	this->ShpGfxInfo.groupID = newGroupID;
 }

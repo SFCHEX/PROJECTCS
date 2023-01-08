@@ -41,12 +41,15 @@ enum operationType //The operations supported (you can add more if needed)
 	STICK_IMAGE,
 	SCRAMBLE,
 	SEND_TO_BACK,
+	DUPLICATE_SHAPES,
+	MATCH,
 	ZOOM,
 	MULTI_SELECT,
 	GROUP,
 	UNGROUP,
 	DO_NOTHING,
 	HIDE_SHAPE,
+	START_GAME
 	///TODO: Add more operation types (if needed)
 };
 

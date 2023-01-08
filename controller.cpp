@@ -123,6 +123,11 @@ operation* controller::createOperation(operationType OpType)
 		case SEND_TO_BACK:
 			pOp = new opSendToBack(this);
 			break;
+		case DUPLICATE_SHAPES:
+			pOp = new opDuplicate(this);
+			break;
+		case MATCH:
+			pOp = new opMatch(this);
 		case UNGROUP:
 			pOp = new opUngroup(this);
 			break;
@@ -131,6 +136,9 @@ operation* controller::createOperation(operationType OpType)
 			break;
 		case HIDE_SHAPE:
 			pOp = new opHideShapes(this);
+			break;
+		case START_GAME:
+			pOp = new opStartGame(this);
 			break;
 		case STATUS:	//a click on the status bar ==> no operation
 			break;

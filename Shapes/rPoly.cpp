@@ -196,6 +196,7 @@ Point rPoly::HideShape(Point DxDy) {
 		div_scale = min(ratX, ratY);
 		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
 		this->resizeSH(div_scale - 0.05);
+		this->ShpGfxInfo.HidId = this->ShpGfxInfo.GameID;
 		return (v_Center - (DxDy / 2));
 	}
 }
@@ -220,4 +221,22 @@ void rPoly::Zoom(double Zf) {
 	}
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
+}
+
+void rPoly::scramble(Point p) {
+	int cenx = 0;
+	int ceny = 0;
+	for (int i = 0; i < num + 1; i++) {
+		cenx += pVectX[i];
+		ceny += pVectY[i];
+	}
+	cenx = cenx / (num + 1);
+	ceny = ceny / (num + 1);
+
+	Point center = { cenx,ceny };
+	Point diff = p - center;
+	for (int i = 0; i < num + 1; i++) {
+		pVectX[i] += diff.x;
+		pVectY[i] += diff.y;
+	}
 }

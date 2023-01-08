@@ -63,6 +63,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isSelected;	//true if the shape is selected.
 	bool isHidden = false;
 	int HidId;
+	int GameID;
 	int groupID =0; //id of the group (not zero if grouped)
 };
 
@@ -108,6 +109,7 @@ class GUI
 		//TODO: Add more icons names here
 		ICON_SCRAMBLE,
 		ICON_SEND_TO_BACK,
+		ICON_DUPLICATE,
 		ICON_MULTI_SELECT,
 		ICON_ZOOM,
 		ICON_GROUP,
@@ -127,6 +129,10 @@ class GUI
 	{
 		ICON_DRAWMODE,
 		ICON_HIDE,
+		ICON_MATCH,
+		ICON_PDUPLICATE,
+		ICON_PSCRAMBLE,
+		ICON_START_GAME,
 
 
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum

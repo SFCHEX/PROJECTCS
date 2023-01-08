@@ -167,6 +167,7 @@ Point iPoly::HideShape(Point DxDy) {
 		div_scale = min(ratX, ratY);
 		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale-0.1;
 		this->resizeSH(div_scale);
+		this->ShpGfxInfo.HidId = this->ShpGfxInfo.GameID;
 		return (v_Center - (DxDy / 2));
 	}
 }
@@ -191,4 +192,23 @@ void iPoly::Zoom(double Zf) {
 	}
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
+}
+
+void iPoly::scramble(Point p) {
+	int cenx = 0;
+	int ceny = 0;
+	for (int i = 0; i < pVectX.size(); i++) {
+		cenx += pVectX[i];
+		ceny += pVectY[i];
+	}
+	cenx = cenx / (pVectX.size());
+	ceny = ceny / (pVectX.size());
+
+	Point center = { cenx,ceny };
+	Point diff = p - center;
+	for (int i = 0; i < pVectX.size() + 1; i++) {
+		pVectX[i] += diff.x;
+		pVectY[i] += diff.y;
+	}
+
 }

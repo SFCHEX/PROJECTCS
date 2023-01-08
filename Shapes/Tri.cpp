@@ -174,6 +174,7 @@ Point Tri::HideShape(Point DxDy) {
 		div_scale = min(ratX, ratY);
 		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale - 0.1;
 		this->resizeSH(div_scale);
+		this->ShpGfxInfo.HidId = this->ShpGfxInfo.GameID;
 		return (v_Center - (DxDy / 2));
 
 	}
@@ -200,4 +201,14 @@ void Tri::Zoom(double Zf) {
 	}
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
+}
+void Tri::scramble(Point p) {
+	Point center = { ((Corner1.x + Corner2.x + Corner3.x) / 3.0), ((Corner1.y + Corner2.y + Corner3.y) / 3.0) };
+
+	Point diff;
+
+	diff = p - center;
+	Corner1 = Corner1 + diff;
+	Corner2 = Corner2 + diff;
+	Corner3 = Corner3 + diff;
 }

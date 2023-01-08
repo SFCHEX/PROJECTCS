@@ -49,7 +49,7 @@ public:
 	virtual bool hasImage();
 	virtual void StickImageSh(GUI* pUI, string imagefile); //sticks an image to every shape
 	virtual void setHasImage();
-	virtual void scramble(GUI* pUI);
+	virtual void scramble(Point p) = 0;
 	virtual bool isShpHidden() { return this->ShpGfxInfo.isHidden; };
 	virtual bool isaCard() { return this->isCard; };
 	virtual void Zoom(double) = 0;
@@ -65,6 +65,10 @@ public:
 
 	virtual void resizeSH(double num);
 	virtual void rotateSH();
+	void setGameID(int ID);
+	int getGameID();
+	int getCardID();
+
 
 	void updateGroupId(int);
 	int getGroupId() const;

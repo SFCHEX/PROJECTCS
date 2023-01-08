@@ -24,5 +24,6 @@ public:
 	virtual void StickImageSh(GUI* pUI, string imagefile);
 	virtual Point HideShape(Point);
 	virtual void Zoom(double) override;
+	void virtual scramble(Point)override;
 
 };

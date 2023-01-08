@@ -13,6 +13,7 @@ GUI::GUI()
 	wx = 5;
 	wy = 5;
 
+	StatusBarHeight = 180;
 	StatusBarHeight =50;
 	ToolBarHeight = 100;
 	MenuIconWidth = 80;
@@ -138,6 +139,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
 			case ICON_SCRAMBLE: return SCRAMBLE;
 			case ICON_SEND_TO_BACK: return SEND_TO_BACK;
+			case ICON_DUPLICATE: return DUPLICATE_SHAPES;
 			case ICON_RESIZE: return RESIZE;
 			case ICON_UNGROUP: return UNGROUP;
 			case ICON_CUT: return CUT;
@@ -174,8 +176,12 @@ operationType GUI::GetUseroperation() const
 			switch (ClickedIconOrder)
 			{
 			case ICON_DRAWMODE: return TO_PLAY;
-			case ICON_HIDE: return HIDE_SHAPE;
+			case ICON_HIDE: return DO_NOTHING;
+			case ICON_MATCH: return MATCH;
+			case ICON_PDUPLICATE: return DO_NOTHING;
+			case ICON_PSCRAMBLE: return DO_NOTHING;
 
+			case ICON_START_GAME: return START_GAME;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -266,6 +272,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
 	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
 	MenuIconImages[ICON_SEND_TO_BACK] = "images\\MenuIcons\\Menu_Send_to_back.jpg";
+	MenuIconImages[ICON_DUPLICATE] = "images\\MenuIcons\\Menu_Duplicate.jpg";
 	MenuIconImages[ICON_DRAG] = "images\\MenuIcons\\Menu_Drag.jpg";
 	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\Menu_Resize.jpg";
 	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\Menu_Rotate.jpg";
@@ -301,6 +308,11 @@ void GUI::CreatePlayToolBar()
 	string PlayMenuIconImages[PLAY_ICON_COUNT]; 
 	PlayMenuIconImages[ICON_DRAWMODE] = "images\\PlayMenuIcons\\PlayMenu_Rotate.jpg";
 	PlayMenuIconImages[ICON_HIDE] = "images\\PlayMenuIcons\\PlayMenu_Hide.jpg";
+	PlayMenuIconImages[ICON_MATCH] = "images\\MenuIcons\\Menu_MultiSelect.jpg";
+	PlayMenuIconImages[ICON_PDUPLICATE] = "images\\PlayMenuIcons\\Menu_Duplicate.jpg";
+	PlayMenuIconImages[ICON_PSCRAMBLE] = "images\\MenuIcons\\Menu_Scramble.jpg";
+	PlayMenuIconImages[ICON_START_GAME] = "images\\PlayMenuIcons\\PlayMenu_Start.jpg";
+
 
 	for (int i = 0; i < PLAY_ICON_COUNT; i++)
 		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
@@ -398,16 +410,6 @@ void GUI::GetColorFromColorPalette(color& c)
 
 }
 
-//color GUI::GetNewColor()
-//{
-//	//GetColorFromColorPalette();
-//	int x, y;
-//	pColorPaletteWindow->WaitMouseClick(x, y);
-//	color NewColor = pColorPaletteWindow->GetColor(x, y);
-//	return NewColor;
-//	/*delete pColorPaletteWindow;
-//	pColorPaletteWindow = nullptr;*/
-//}
 
 //======================================================================================//
 //								SWITCH FUNCTION								//

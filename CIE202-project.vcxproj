@@ -198,6 +198,7 @@
     <ClCompile Include="operations\opRedo.cpp" />
     <ClCompile Include="operations\opResize.cpp" />
     <ClCompile Include="operations\opRotate.cpp" />
+    <ClCompile Include="operations\opStartGame.cpp" />
     <ClCompile Include="operations\opSwitchToPlay.cpp" />
     <ClCompile Include="operations\opStickImage.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
@@ -207,6 +208,8 @@
     <ClCompile Include="operations\opSendToBack.cpp" />
     <ClCompile Include="operations\opUngroup.cpp" />
     <ClCompile Include="operations\opZoom.cpp" />
+    <ClCompile Include="operations\opDuplicate.cpp" />
+    <ClCompile Include="operations\opMatch.cpp" />
     <ClCompile Include="Shapes\rPoly.cpp" />
     <ClCompile Include="Shapes\iPoly.cpp" />
     <ClCompile Include="main.cpp" />
@@ -252,6 +255,8 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="operations\opMatch.h" />
+    <ClInclude Include="operations\opDuplicate.h" />
     <ClInclude Include="operations\opCut.h" />
     <ClInclude Include="operations\opMultiSelect.h" />
     <ClInclude Include="operations\opGroup.h" />
@@ -271,6 +276,7 @@
     <ClInclude Include="operations\opExit.h" />
     <ClInclude Include="operations\opRedo.h" />
     <ClInclude Include="operations\opResize.h" />
+    <ClInclude Include="operations\opStartGame.h" />
     <ClInclude Include="operations\opSwitchToPlay.h" />
     <ClInclude Include="operations\opStickImage.h" />
     <ClInclude Include="operations\opUndo.h" />

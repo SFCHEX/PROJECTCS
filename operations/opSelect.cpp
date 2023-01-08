@@ -8,12 +8,23 @@
 
 opSelect::opSelect(controller* pCont) :operation(pCont)
 {
-	if(GetKeyState(VK_CONTROL) & 0x8000) //checks if ctrl is held down
+	GUI* pUI = pControl->GetUI();
+	Graph* pGr = pControl->getGraph();
+	if((GetKeyState(VK_CONTROL) & 0x8000) && pUI->CurrentMode() == 0) //checks if ctrl is held down
 	{
 		SingleSelect = false;
 	}
 	else {
-		SingleSelect = true;
+		if (pUI->CurrentMode() == 0) {
+			SingleSelect = true;
+		}
+		else {
+			SingleSelect = false;
+			if (pGr->nSelected() >= 2) {
+				pGr->deselAll(-1);
+				SingleSelect = true;
+			}
+		}
 	}
 }
 

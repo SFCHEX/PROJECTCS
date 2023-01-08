@@ -96,18 +96,7 @@ void Line::MoveShape(Point MoveBy) {
 	this->End2.y = this->End2.y + MoveBy.y;
 }
 
-void Line::scramble(GUI* pUI)
-{	 
-	int diff_x = abs(End1.x - End2.x);
-	int diff_y = abs(End1.y - End2.y);	
-	End1.x = rand() % 1300 + 1;
-	End1.y = 50 + rand() % 500;
-	End2.x = End1.x + diff_x;
-	End2.y = End1.y + diff_y;
 
-	string msg = "(" + to_string(End1.x) + ", " + to_string(End1.y) + " ) ( " + to_string(End2.x) + ", " + to_string(End2.y) + ")";
-	pUI->PrintMessage(msg);
-}
 void Line::resizeSH(double n) {
 	Point Center;
 	double width = abs(End1.x - End2.x);
@@ -167,6 +156,7 @@ Point Line::HideShape(Point DxDy) {
 		div_scale = min(ratX, ratY);
 		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale - 0.1;
 		this->resizeSH(div_scale);
+		this->ShpGfxInfo.HidId = this->ShpGfxInfo.GameID;
 		return (v_Center - (DxDy / 2));
 	}
 }
@@ -188,4 +178,15 @@ void Line::Zoom(double Zf) {
 	}
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
+}
+
+void Line::scramble(Point p) {
+	Point center = { ((End1.x + End2.x) / 2.0), ((End1.y + End2.y) / 2.0) };
+
+	Point diff;
+
+	diff = p - center;
+	End1 = End1 + diff;
+	End2 = End2 + diff;
+
 }
