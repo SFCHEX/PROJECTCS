@@ -173,6 +173,9 @@ operationType GUI::GetUseroperation() const
 			{
 			case ICON_DRAWMODE: return TO_PLAY;
 			case ICON_HIDE: return HIDE_SHAPE;
+			case ICON_MATCH: return MATCH;
+			case ICON_PDUPLICATE: return DUPLICATE_SHAPES;
+			case ICON_PSCRAMBLE: return SCRAMBLE;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -297,6 +300,10 @@ void GUI::CreatePlayToolBar()
 	string PlayMenuIconImages[PLAY_ICON_COUNT]; 
 	PlayMenuIconImages[ICON_DRAWMODE] = "images\\PlayMenuIcons\\PlayMenu_Rotate.jpg";
 	PlayMenuIconImages[ICON_HIDE] = "images\\PlayMenuIcons\\PlayMenu_Hide.jpg";
+	PlayMenuIconImages[ICON_MATCH] = "images\\PlayMenuIcons\\Menu_Duplicate.jpg";
+	PlayMenuIconImages[ICON_PDUPLICATE] = "images\\PlayMenuIcons\\Menu_Duplicate.jpg";
+	PlayMenuIconImages[ICON_PSCRAMBLE] = "images\\MenuIcons\\Menu_Scramble.jpg";
+
 
 	for (int i = 0; i < PLAY_ICON_COUNT; i++)
 		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);

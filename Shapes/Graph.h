@@ -51,4 +51,6 @@ public:
 	void HideGraph(GUI*);
 	void Zoom(double);
 	void DeleteCards();
+	bool MyMatchedShapes();
+
 };

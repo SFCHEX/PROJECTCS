@@ -118,3 +118,18 @@ void shape::setHasImage() {
 void shape::resizeSH(double num){}
 
 void shape::rotateSH(){}
+
+void shape::setGameID(int ID)
+{
+	this->ShpGfxInfo.GameID = ID;
+}
+
+int shape::getGameID()
+{
+	return this->ShpGfxInfo.GameID;
+}
+
+int shape::getCardID()
+{
+	return this->ShpGfxInfo.HidId;
+}

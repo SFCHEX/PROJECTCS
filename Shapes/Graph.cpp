@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-
+#include <algorithm>
 Graph::Graph()
 {
 	selectedShape = nullptr;
@@ -467,11 +467,39 @@ void Graph::DeleteCards() {
 void Graph::duplicateShapes(GUI* pUI)
 {
 	int n = shapesList.size();
-	for (int i = 0; i < n; i++)
-	{
+	
+		for (int i = 0; i < n; i++)
+		{
+
 		shape* newShape = shapesList[i]->clone();
 		shapesList.push_back(newShape);
 		newShape->MoveShape(Point{ 20, 20 });
 
-	}
+		}
+		
+		if (pUI->CurrentMode() == 1)
+		{
+			for (int i = n; i < shapesList.size(); i++)
+			{
+				shapesList[i]->setGameID(shapesList[i-n]->getGameID());
+			}
+		}
+
+}
+
+bool Graph::MyMatchedShapes()
+{
+
+		vector<shape*> selectedShapes = getSelShape();
+		
+			if (selectedShapes[0]->getCardID() == selectedShapes[1]->getCardID())
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			
+			}
+	
 }

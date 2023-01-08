@@ -122,6 +122,9 @@ operation* controller::createOperation(operationType OpType)
 		case DUPLICATE_SHAPES:
 			pOp = new opDuplicate(this);
 			break;
+		case MATCH:
+			pOp = new opMatch(this);
+			break;
 		case ZOOM:
 			pOp = new opZoom(this);
 			break;

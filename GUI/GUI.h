@@ -126,6 +126,9 @@ class GUI
 		ICON_DRAWMODE,
 		ICON_HIDE,
 		ICON_MATCH,
+		ICON_PDUPLICATE,
+		ICON_PSCRAMBLE,
+
 
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 

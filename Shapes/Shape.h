@@ -65,5 +65,9 @@ public:
 
 	virtual void resizeSH(double num);
 	virtual void rotateSH();
+	void setGameID(int ID);
+	int getGameID();
+	int getCardID();
+
 };
 
