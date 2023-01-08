@@ -81,6 +81,8 @@
     <ClCompile Include="operations\opCut.cpp" />
     <ClCompile Include="operations\opHideShapes.cpp" />
     <ClCompile Include="operations\opZoom.cpp" />
+    <ClCompile Include="operations\opGroup.cpp" />
+    <ClCompile Include="operations\opUngroup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -150,6 +152,8 @@
     <ClInclude Include="operations\opCut.h" />
     <ClInclude Include="operations\opHideShapes.h" />
     <ClInclude Include="operations\opZoom.h" />
+    <ClInclude Include="operations\opGroup.h" />
+    <ClInclude Include="operations\opUngroup.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />
