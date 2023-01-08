@@ -311,6 +311,7 @@ void GUI::CreatePlayToolBar()
 	PlayMenuIconImages[ICON_MATCH] = "images\\PlayMenuIcons\\Menu_Duplicate.jpg";
 	PlayMenuIconImages[ICON_PDUPLICATE] = "images\\PlayMenuIcons\\Menu_Duplicate.jpg";
 	PlayMenuIconImages[ICON_PSCRAMBLE] = "images\\MenuIcons\\Menu_Scramble.jpg";
+	PlayMenuIconImages[ICON_START_GAME] = "images\\PlayMenuIcons\\PlayMenu_Start.jpg";
 
 
 	for (int i = 0; i < PLAY_ICON_COUNT; i++)
