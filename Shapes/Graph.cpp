@@ -434,9 +434,9 @@ void Graph::groupShapes(){
 		if(shapesList[i]->IsSelected()){
 			int newGroupId = shapeGroupCount + 1;
 			shapesList[i]->updateGroupId(newGroupId);
-			shapeGroupCount++;
 		}
 	}
+	shapeGroupCount++;
 }
 
 
