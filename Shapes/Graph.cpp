@@ -458,5 +458,32 @@ void Graph::multiSelect(int num) {
 			}
 		}
 	}
-	
+}
+void Graph::groupShapes(){
+	for(int i=0; i<shapesList.size(); i++){
+		if(shapesList[i]->IsSelected()){
+			int newGroupId = shapeGroupCount + 1;
+			shapesList[i]->updateGroupId(newGroupId);
+		}
+	}
+	shapeGroupCount++;
+}
+
+
+void Graph::selectGroup(shape* shapePointer) {
+	if (shapePointer->getGroupId() != 0) {
+		for (int i = 0; i < shapesList.size(); i++) {
+			if (shapesList[i]->getGroupId() == shapePointer->getGroupId()) {
+				shapesList[i]->SetSelected(true);
+			}
+		}
+	}
+}
+
+void Graph::ungroupShapes() {
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			shapesList[i]->updateGroupId(0);
+		}
+	}
 }

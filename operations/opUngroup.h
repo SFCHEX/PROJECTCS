@@ -10,9 +10,9 @@
 #include "..\GUI\GUI.h"
 
 
-class opCut : public operation{
+class opUngroup : public operation {
 public:
-	opCut(controller *pCont);
-	virtual ~opCut();
+	opUngroup(controller* pCont);
+	virtual ~opUngroup();
 	virtual void Execute();
 };

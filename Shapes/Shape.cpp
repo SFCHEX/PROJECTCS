@@ -34,6 +34,7 @@ void shape::Load(ifstream &Infile){
         ShpGfxInfo.FillClr=color(stoi(value),green,blue);
     }
 	Infile>>ShpGfxInfo.BorderWdth;
+	Infile>>ShpGfxInfo.groupID;
 	ShpGfxInfo.isSelected=false;
 
 }
@@ -75,7 +76,8 @@ void shape::Save(ofstream &outfile)
 		{
 			outfile<<"NO_FILL"<<" ";
 		}		
-		outfile<<it_info.BorderWdth<<endl;
+		outfile<<it_info.BorderWdth<<" ";
+		outfile<<it_info.groupID<<endl;
 }
 int shape::getID() const
 {
@@ -121,3 +123,10 @@ void shape::scramble(GUI* pUI)
 void shape::resizeSH(double num){}
 
 void shape::rotateSH(){}
+
+void shape::updateGroupId(int newGroupID){
+	this->ShpGfxInfo.groupID = newGroupID;
+}
+int shape::getGroupId() const {
+	return this->ShpGfxInfo.groupID;
+}

@@ -43,6 +43,8 @@ enum operationType //The operations supported (you can add more if needed)
 	SEND_TO_BACK,
 	ZOOM,
 	MULTI_SELECT,
+	GROUP,
+	UNGROUP,
 	DO_NOTHING,
 	HIDE_SHAPE,
 	///TODO: Add more operation types (if needed)
