@@ -30,5 +30,6 @@
 #include "operations\opRotate.h"
 #include "operations\opCut.h"
 #include "operations\opHideShapes.h"
+#include "operations\opDuplicate.h"
 #include "operations\opZoom.h"
 #include "operations\opMatch.h"

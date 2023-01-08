@@ -135,6 +135,7 @@ int shape::getGameID()
 int shape::getCardID()
 {
 	return this->ShpGfxInfo.HidId;
+}
 void shape::updateGroupId(int newGroupID){
 	this->ShpGfxInfo.groupID = newGroupID;
 }
