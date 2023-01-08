@@ -473,7 +473,7 @@ void Graph::duplicateShapes(GUI* pUI)
 
 		shape* newShape = shapesList[i]->clone();
 		shapesList.push_back(newShape);
-		newShape->MoveShape(Point{ 20, 20 });
+		newShape->MoveShape(Point{ 50, 50 });
 
 		}
 		

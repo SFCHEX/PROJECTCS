@@ -44,6 +44,7 @@ void shape::SetSelected(bool s)
 
 void shape::updateID(){
 	ShpGfxInfo.ID=count;
+	ShpGfxInfo.GameID=count;
 	count++;
 }
 
