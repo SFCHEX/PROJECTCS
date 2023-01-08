@@ -174,7 +174,7 @@ operationType GUI::GetUseroperation() const
 			{
 			case ICON_DRAWMODE: return TO_PLAY;
 			case ICON_HIDE: return HIDE_SHAPE;
-
+			case ICON_START_GAME: return START_GAME;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
