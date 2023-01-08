@@ -181,6 +181,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_PDUPLICATE: return DUPLICATE_SHAPES;
 			case ICON_PSCRAMBLE: return SCRAMBLE;
 
+			case ICON_START_GAME: return START_GAME;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}

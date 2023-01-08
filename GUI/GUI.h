@@ -132,6 +132,7 @@ class GUI
 		ICON_MATCH,
 		ICON_PDUPLICATE,
 		ICON_PSCRAMBLE,
+		ICON_START_GAME,
 
 
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum

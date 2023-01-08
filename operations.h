@@ -33,3 +33,6 @@
 #include "operations\opDuplicate.h"
 #include "operations\opZoom.h"
 #include "operations\opMatch.h"
+#include "operations/opHideShapes.h"
+#include "operations/opZoom.h"
+#include "operations\opStartGame.h"

@@ -137,6 +137,9 @@ operation* controller::createOperation(operationType OpType)
 		case HIDE_SHAPE:
 			pOp = new opHideShapes(this);
 			break;
+		case START_GAME:
+			pOp = new opStartGame(this);
+			break;
 		case STATUS:	//a click on the status bar ==> no operation
 			break;
 

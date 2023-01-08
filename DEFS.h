@@ -49,6 +49,7 @@ enum operationType //The operations supported (you can add more if needed)
 	UNGROUP,
 	DO_NOTHING,
 	HIDE_SHAPE,
+	START_GAME
 	///TODO: Add more operation types (if needed)
 };
 
