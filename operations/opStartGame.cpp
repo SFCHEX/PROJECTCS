@@ -17,7 +17,7 @@ opStartGame::~opStartGame() {
 void opStartGame::Execute() {
 	Graph* pGr = pControl->getGraph();
 	GUI* pUI = pControl->GetUI();
-	pGr->duplicateShapes(pUI);
+	pGr->DuplicateShapes(pUI);
 	pGr->ScrambleShapes();
 	pGr->HideGraph(pUI);
 }
