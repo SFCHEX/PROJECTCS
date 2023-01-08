@@ -14,9 +14,7 @@ opDuplicate::opDuplicate(controller* pCount) :operation(pCount)
 void opDuplicate::Execute()
 {
 	Graph* pGr = pControl->getGraph();
-	//pGr->
-	
-
+	pGr->duplicateShapes();
 }
 
 

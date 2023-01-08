@@ -394,16 +394,6 @@ void GUI::GetColorFromColorPalette(color& c)
 
 }
 
-//color GUI::GetNewColor()
-//{
-//	//GetColorFromColorPalette();
-//	int x, y;
-//	pColorPaletteWindow->WaitMouseClick(x, y);
-//	color NewColor = pColorPaletteWindow->GetColor(x, y);
-//	return NewColor;
-//	/*delete pColorPaletteWindow;
-//	pColorPaletteWindow = nullptr;*/
-//}
 
 //======================================================================================//
 //								SWITCH FUNCTION								//

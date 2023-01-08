@@ -436,6 +436,7 @@ void Graph::duplicateShapes()
 	{
 		shape* newShape = shapesList[i]->clone();
 		shapesList.push_back(newShape);
+		newShape->MoveShape(Point{ 20, 20 });
 
 	}
 }
