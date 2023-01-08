@@ -500,13 +500,6 @@ void Graph::DeleteCards() {
 		this->DeleteShape(countcards);
 	}
 	for (int i = 0; i < shapesList.size(); i++) {
-		if (shapesList[i]->isaCard()) {
-			shapesList[i]->SetSelected(true);
-			countcards++;
-		}
-		this->DeleteShape(countcards);
-	}
-	for (int i = 0; i < shapesList.size(); i++) {
 		shapesList[i]->unHideAll();
 
 	}
