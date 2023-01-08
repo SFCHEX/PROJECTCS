@@ -128,10 +128,8 @@ class GUI
 	enum PlayMenuIcon //The icons of the Play menu (you should add more icons)
 	{
 		ICON_DRAWMODE,
-		ICON_HIDE,
 		ICON_MATCH,
-		ICON_PDUPLICATE,
-		ICON_PSCRAMBLE,
+
 		ICON_START_GAME,
 
 
