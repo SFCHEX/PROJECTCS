@@ -70,36 +70,39 @@ void Square::StickImageSh(GUI* pUI, string imagefile) {
 	}
 }
 
-//void Square::scramble()
-//{
-//
-//		srand(time(0));
-//
-//		int x = rand() % 1301;
-//		int y = rand() % 500;
-//
-//		if (Corner1.x + x < 1300 && Corner2.x + x < 1300 && Corner1.y + y > 100 && Corner2.y + y > 100)
-//		{
-//			if (Corner1.y + y < 650 && Corner2.y + y < 650)
-//			{
-//				Corner1.x += x;
-//				Corner1.y += y;
-//				Corner2.x += x;
-//				Corner2.y += y;
-//			}
-//	
-//		}
-//		else
-//		{
-//			Corner1.x -= x;
-//			Corner1.y -= y;
-//			Corner2.x -= x;
-//			Corner2.y -= y;
-//		}
-//		x = 0;
-//		y = 0;
-//
-//}
+void Square::scramble(Point p)
+{
+	Point max_xy, min_xy, v_Center, diff;
+	max_xy = Corner1;
+	min_xy = Corner2;
+	v_Center = (max_xy + min_xy) / 2;
+	diff.x = abs(p.x - v_Center.x);
+	diff.y = abs(p.y - v_Center.y);
+	if (p.x > v_Center.x && p.y > v_Center.y)
+	{
+		this->MoveShape(diff);
+	}
+	else if (p.x < v_Center.x && p.y < v_Center.y)
+	{
+		diff.x = -diff.x;
+		diff.y = -diff.y;
+		this->MoveShape(diff);
+
+	}
+	else if (p.x < v_Center.x && p.y > v_Center.y)
+	{
+		diff.x = -diff.x;
+		this->MoveShape(diff);
+
+	}
+	else if (p.x > v_Center.x && p.y < v_Center.y)
+	{
+		diff.y = -diff.y;
+		this->MoveShape(diff);
+
+	}
+
+}
 ShapePoints Square::getPoints() {
 	ShapePoints SquareP;
 	SquareP.P_num = 2;
@@ -138,4 +141,9 @@ void Square::resizeSH(double n){
 }
 void Square::rotateSH(){
 	
+}
+
+string Square::match()
+{
+	return this->ShpGfxInfo.ShapeType;
 }

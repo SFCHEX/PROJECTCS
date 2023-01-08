@@ -115,3 +115,8 @@ void Rect::rotateSH() {
 	Corner2.x = -(t2y) + (Center.x) + Center.y;
 	Corner2.y = t2x - (Center.x) + Center.y;
 }
+
+string Rect::match()
+{
+	return this->ShpGfxInfo.ShapeType;
+}

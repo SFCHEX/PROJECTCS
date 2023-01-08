@@ -22,6 +22,7 @@ public:
 	//virtual void scramble() override;
 
 	virtual void resizeSH(double num);
+	virtual string match();
 };
 
 

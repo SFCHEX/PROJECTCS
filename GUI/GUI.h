@@ -14,6 +14,41 @@ using namespace std;
 struct Point	//To be used for shapes points
 {
 	int x, y;
+	Point operator=(Point rhs) {
+		this->x = rhs.x;
+		this->y = rhs.y;
+		return *this;
+	}
+	Point operator+(Point rhs) {
+		this->x = rhs.x + this->x;
+		this->y = rhs.y + this->y;
+		return *this;
+	}
+	Point operator-(Point rhs) {
+		this->x = this->x - rhs.x;
+		this->y = this->y - rhs.y;
+		return *this;
+	}
+	Point operator/(Point rhs) {
+		this->x = this->x / rhs.x;
+		this->y = this->y / rhs.y;
+		return *this;
+	}
+	Point operator*(Point rhs) {
+		this->x = this->x * rhs.x;
+		this->y = this->y * rhs.y;
+		return *this;
+	}
+	Point operator/(double rhs) {
+		this->x = this->x / rhs;
+		this->y = this->y / rhs;
+		return *this;
+	}
+	Point operator*(double rhs) {
+		this->x = this->x * rhs;
+		this->y = this->y * rhs;
+		return *this;
+	}
 };
 
 struct GfxInfo	//Graphical info common for all shapes (you may add more members)

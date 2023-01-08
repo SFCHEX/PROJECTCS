@@ -96,3 +96,8 @@ void Oval::rotateSH() {
 	Corner2.y = t2x - Center.x + Center.y;
 	
 }
+
+string Oval::match()
+{
+	return this->ShpGfxInfo.ShapeType;
+}

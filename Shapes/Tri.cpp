@@ -126,3 +126,8 @@ void Tri::rotateSH(){
 	Corner3.x = -t3y + Centeriod.x + Centeriod.y;
 	Corner3.y = t3x - Centeriod.x + Centeriod.y;
 }
+
+string Tri::match()
+{
+	return this->ShpGfxInfo.ShapeType;
+}

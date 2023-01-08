@@ -164,7 +164,10 @@ void Graph::StickImageGR(GUI* pUI) const {
 	}
 }
 
-void Graph::SetImagesToShapes() {
+void Graph::SetImagesToShapes() 
+{
+	double Length = 1380;
+	double Width = 620;
 	for (int i = 0; i < shapesList.size(); i++) {
 		shapesList[i]->setHasImage();
 
@@ -178,15 +181,51 @@ void Graph::Draw(GUI* pUI) const
 		shapesList[i]->Draw(pUI);
 	StickImageGR(pUI);
 }
-//void Graph::ScrambleShapes(GUI* pUI) {
-//	srand(time(0));
-//	for (int i = 0; i < shapesList.size(); i++)
-//	{
-//		shapesList[i]->scramble(pUI);
-//	}
-//}
+void Graph::ScrambleShapes() {
+	Point p;
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+
+		if (shapesList.size() > 0 && i % 2 == 0)
+		{
+
+			p.x = (1380 / shapesList.size()) + i * (1380 / shapesList.size());
+			p.y = 100 + 620 / 4;
+			CenterPoints.push_back(p);
+		}
+
+		else
+		{
+			p.x = (1380 / shapesList.size()) + i * (1380 / shapesList.size());
+			p.y = 565;
+			CenterPoints.push_back(p);
+		}
+	}
 
 
+
+	for (int i = 0; i < shapesList.size(); i++)
+	{
+		for (int i = 0; i < CenterPointsTaken.size(); i++)
+		{
+			for (int j = 0; j < CenterPoints.size(); j++)
+			{
+				if (CenterPointsTaken[i].x == CenterPoints[j].x && CenterPointsTaken[i].y == CenterPoints[j].y)
+				{
+					CenterPointsTaken.push_back(CenterPoints[i]);
+					CenterPoints.erase(CenterPoints.begin() + j);
+				}
+			}
+		}
+
+		shapesList[i]->scramble(CenterPoints[i]);
+		//	CenterPointsTaken.push_back(CenterPoints[i]);
+
+
+	}
+
+
+}
 void Graph::SendToBack()
 {
 	for (int i = 0; i < shapesList.size(); i++)
@@ -455,7 +494,6 @@ void Graph::DuplicateShapes()
 		shapesList.push_back(newShape);
 		newShape->MoveShape({ 20, 20});
 	}
-	shapesList.resize(size*2);
 
 }
 

@@ -26,4 +26,5 @@ public:
 
 	virtual void resizeSH(double numb);
 	virtual void rotateSH();
+	virtual string match();
 };

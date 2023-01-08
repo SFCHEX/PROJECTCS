@@ -116,3 +116,8 @@ void rPoly::rotateSH() {
 		pVectY[i] = tx - (P1.x) + P1.y;
 	}
 }
+
+string rPoly::match()
+{
+	return this->ShpGfxInfo.ShapeType;
+}

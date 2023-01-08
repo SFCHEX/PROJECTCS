@@ -21,5 +21,6 @@ public:
 	virtual void StickImageSh(GUI* pUI, string imagefile);
 	virtual void resizeSH(double num);
 	virtual void rotateSH();
+	virtual string match();
 };
 

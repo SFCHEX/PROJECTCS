@@ -20,6 +20,7 @@ public:
 
 	virtual void resizeSH(double n);
 	virtual void rotateSH();
+	virtual string match();
 
 };
 

@@ -58,6 +58,8 @@ public:
 
 	virtual void resizeSH(double num);
 	virtual void rotateSH();
+	virtual void scramble(Point p);
+	virtual string match() = 0;
 	//shape* getDuplicatedShape();
 	//void setDuplicatedShape(shape* newShape);
 

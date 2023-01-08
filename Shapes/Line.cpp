@@ -124,3 +124,8 @@ void Line::rotateSH() {
 	End2.x = -t2y + (Center.x) + Center.y;
 	End2.y = t2x -(Center.x) + Center.y;
 }
+
+string Line::match()
+{
+	return this->ShpGfxInfo.ShapeType;
+}

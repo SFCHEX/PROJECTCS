@@ -107,3 +107,8 @@ void Circ::resizeSH(double num) {
 	}
 
 }
+
+string Circ::match()
+{
+	return this->ShpGfxInfo.ShapeType;
+}

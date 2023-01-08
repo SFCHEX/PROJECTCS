@@ -92,3 +92,8 @@ void iPoly::resizeSH(double n) {
 		pVectY[i] = (n * pVectY[i]) - (n * Center.y) + Center.y;
 	}
 }
+
+string iPoly::match()
+{
+	return this->ShpGfxInfo.ShapeType;
+}
