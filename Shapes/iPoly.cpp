@@ -10,6 +10,30 @@ iPoly::iPoly(vector<int> pVectiX, vector<int> pVectiY, GfxInfo shapeGfxInfo) : s
 }
 
 
+iPoly::iPoly(){
+
+}
+
+void iPoly::Load(ifstream &Infile){
+	vector<int> pVectiX, pVectiY;
+
+	Infile>>ShpGfxInfo.ID;
+	int num;
+	Infile>>num;
+	for (int i=0;i<num;i++){
+		int x,y;
+		Infile>>x;
+		pVectiX.push_back(x);
+		Infile>>y;
+		pVectiY.push_back(y);
+	}
+	ShpGfxInfo.ShapeType = "Irregular Polygon";
+	pVectX = pVectiX;
+	pVectY = pVectiY;
+	shape::Load(Infile);
+}
+
+
 shape* iPoly::clone(){
 	shape* newShape=new iPoly(*this);
 
@@ -19,11 +43,10 @@ iPoly::~iPoly() {}
 
 void iPoly::Save(ofstream& outfile)
 {
-
-
-	outfile<<"iPoly"<<","<<ShpGfxInfo.ID<<",";
+	outfile<<"iPoly"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile<<pVectX.size()<<" ";
 	for (int i=0; i<pVectX.size();i++)
-	outfile<<pVectX[i]<<","<<pVectY[i]<<",";
+	outfile<<pVectX[i]<<" "<<pVectY[i]<<" ";
 	shape::Save(outfile);
 }
 
@@ -106,12 +129,66 @@ void iPoly::rotateSH() {
 void iPoly::resizeSH(double n) {
 	Point Center;
 	double sumx = 0; double sumy = 0;
-	for (int i = 0; i < pVectX.size(); i++) {
-		sumx += pVectX[i]; sumy += pVectY[i];
-	}
-	Center.x = sumx / pVectX.size(); Center.y = sumy / pVectY .size();
+	Point max_xy, min_xy;
+
+	max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+	max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+	min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+	min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+	Center = (max_xy + min_xy) / 2;
+
+
 	for (int i = 0; i < pVectX.size(); i++) {
 		pVectX[i] = (n * pVectX[i]) - (n * Center.x) + Center.x;
 		pVectY[i] = (n * pVectY[i]) - (n * Center.y) + Center.y;
 	}
+}
+
+Point iPoly::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
+
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale, ratX, ratY;
+
+		max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+		max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+		min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+		min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+		v_Center = (max_xy + min_xy) / 2;
+
+
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale-0.1;
+		this->resizeSH(div_scale);
+		return (v_Center - (DxDy / 2));
+	}
+}
+void iPoly::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+	max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+	min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+	min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+	v_Center = (max_xy + min_xy) / 2;
+
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include "rPoly.h"
-
+#include <algorithm>
 using namespace std;
 
 
@@ -39,8 +39,39 @@ rPoly::rPoly(int nSides, Point pCenter, Point pRadius, GfxInfo shapeGfxInfo) : s
 		pVectY.push_back(py);
 	}
 	pVectY.push_back(pVectY.front());
+
+
 }
 
+void rPoly::Load(ifstream &Infile){
+	double px;
+	double py;
+	Infile>>ShpGfxInfo.ID;
+	Infile>>num;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="rPoly";
+	int rad = (sqrt(pow((P1.x - P2.x), 2) + pow((P1.y - P2.y), 2)));
+	double ang = 360 / num;
+	for (int i = 0; i < num; i++) {
+		px = P1.x + (rad * cos(Convert(i * ang)));
+		pVectX.push_back(px);
+	}
+	pVectX.push_back(pVectX.front());
+
+	for (int i = 0; i < num; i++) {
+		py = P1.y + (rad * sin(Convert(i * ang)));
+		pVectY.push_back(py);
+	}
+	pVectY.push_back(pVectY.front());
+	shape::Load(Infile);
+}
+
+
+
+rPoly::rPoly() {}
 rPoly::~rPoly() {}
 
 
@@ -48,8 +79,8 @@ void rPoly::Save(ofstream& outfile)
 {
 
 
-	outfile<<"rPoly"<<","<<ShpGfxInfo.ID<<",";
-	outfile << num<<","<<P1.x << "," <<P1.y<< ","<< P2.x << "," << P2.y << ",";
+	outfile<<"rPoly"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile << num<<" "<<P1.x << " " <<P1.y<< " "<< P2.x << " " << P2.y << " ";
 	shape::Save(outfile);
 }
 
@@ -141,4 +172,52 @@ void rPoly::rotateSH() {
 		pVectX[i] = -ty + (Center.x) + Center.y;
 		pVectY[i] = tx - (Center.x) + Center.y;
 	}
+}
+
+Point rPoly::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
+
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale, ratX, ratY;
+
+		max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+		max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+		min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+		min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+		v_Center = (max_xy + min_xy) / 2;
+
+
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+		this->resizeSH(div_scale - 0.05);
+		return (v_Center - (DxDy / 2));
+	}
+}
+void rPoly::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	max_xy.x = *max_element(pVectX.begin(), pVectX.end());
+	max_xy.y = *max_element(pVectY.begin(), pVectY.end());
+
+	min_xy.x = *min_element(pVectX.begin(), pVectX.end());
+	min_xy.y = *min_element(pVectY.begin(), pVectY.end());
+	v_Center = (max_xy + min_xy) / 2;
+
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
 }

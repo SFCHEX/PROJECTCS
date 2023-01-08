@@ -1,5 +1,4 @@
 #include "shape.h"
-
 int shape::count =0;
 shape::shape(GfxInfo shapeGfxInfo)
 { 
@@ -8,8 +7,36 @@ shape::shape(GfxInfo shapeGfxInfo)
 	updateID();
 	//id is added into ShpGfx info for more convenient use
 }
- 
 
+shape::shape()
+{ 
+	imageOn=false;
+}
+ 
+void shape::Load(ifstream &Infile){
+	int red,green,blue;
+	Infile>>red;
+	Infile>>green;
+	Infile>>blue;
+
+    ShpGfxInfo.DrawClr=color(red,green,blue);
+
+	string value;
+	Infile>>value;
+    ShpGfxInfo.isSelected=false;
+    if (value=="NO_FILL"){
+        ShpGfxInfo.isFilled=false;
+    }
+    else{
+        ShpGfxInfo.isFilled=true;
+		Infile>>green;
+		Infile>>blue;
+        ShpGfxInfo.FillClr=color(stoi(value),green,blue);
+    }
+	Infile>>ShpGfxInfo.BorderWdth;
+	ShpGfxInfo.isSelected=false;
+
+}
 void shape::SetSelected(bool s)
 {	ShpGfxInfo.isSelected = s; }
 
@@ -18,6 +45,7 @@ void shape::SetSelected(bool s)
 void shape::updateID(){
 	ShpGfxInfo.ID=count;
 	count++;
+	ShpGfxInfo.HidId = count;
 }
 
 bool shape::IsSelected() const
@@ -30,7 +58,7 @@ GfxInfo shape::getGfxInfo() const
 
 void shape::SaveColorRGB(ofstream &outfile,color RGB){
 
-	outfile<<(int)RGB.ucRed<<","<<(int)RGB.ucGreen<<","<<(int)RGB.ucBlue<<",";
+	outfile<<(int)RGB.ucRed<<" "<<(int)RGB.ucGreen<<" "<<(int)RGB.ucBlue<<" ";
 }
 
 void shape::Save(ofstream &outfile)
@@ -45,7 +73,7 @@ void shape::Save(ofstream &outfile)
 		}
 		else
 		{
-			outfile<<"NO_FILL"<<",";
+			outfile<<"NO_FILL"<<" ";
 		}		
 		outfile<<it_info.BorderWdth<<endl;
 }

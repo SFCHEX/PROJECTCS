@@ -1,6 +1,7 @@
 #include "Square.h"
 #include <math.h>
-
+#include <iostream>
+using namespace std;
 //#include <cstdlib>
 //#include <ctime>
 Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
@@ -36,6 +37,20 @@ Square::Square(Point P1, Point P2, GfxInfo shapeGfxInfo):shape(shapeGfxInfo){
 
 }
 
+void Square::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Point P1,P2;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="Square";
+	Corner1= P1;
+	Corner2= P2;
+	shape::Load(Infile);
+}
+
+
 shape* Square::clone(){
 	shape* newShape=new Square(*this);
 
@@ -43,6 +58,7 @@ shape* Square::clone(){
 }	
 
 Square::~Square(){}
+Square::Square(){}
 
 void Square::Draw(GUI* pUI) const {
 	pUI->DrawRect(Corner1, Corner2, ShpGfxInfo);
@@ -50,8 +66,8 @@ void Square::Draw(GUI* pUI) const {
 
 void Square::Save(ofstream &outfile){
 
-	outfile<<"Square"<<","<<ShpGfxInfo.ID<<",";
-	outfile << Corner1.x << "," << Corner1.y << "," << Corner2.x << "," << Corner2.y << ",";
+	outfile<<"Square"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile << Corner1.x << " " << Corner1.y << " " << Corner2.x << " " << Corner2.y << " ";
 	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
@@ -138,4 +154,45 @@ void Square::resizeSH(double n){
 }
 void Square::rotateSH(){
 	
+}
+
+Point Square::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
+
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale, ratX, ratY;
+
+		max_xy = Corner1;
+		min_xy = Corner2;
+		v_Center = (max_xy + min_xy) / 2;
+
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
+		this->resizeSH(div_scale);
+		return (v_Center - (DxDy / 2));
+
+	}
+}
+void Square::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	max_xy = Corner1;
+	min_xy = Corner2;
+	v_Center = (max_xy + min_xy) / 2;
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}	
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
 }
