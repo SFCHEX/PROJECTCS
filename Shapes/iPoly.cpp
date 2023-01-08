@@ -10,6 +10,30 @@ iPoly::iPoly(vector<int> pVectiX, vector<int> pVectiY, GfxInfo shapeGfxInfo) : s
 }
 
 
+iPoly::iPoly(){
+
+}
+
+void iPoly::Load(ifstream &Infile){
+	vector<int> pVectiX, pVectiY;
+
+	Infile>>ShpGfxInfo.ID;
+	int num;
+	Infile>>num;
+	for (int i=0;i<num;i++){
+		int x,y;
+		Infile>>x;
+		pVectiX.push_back(x);
+		Infile>>y;
+		pVectiY.push_back(y);
+	}
+	ShpGfxInfo.ShapeType = "Irregular Polygon";
+	pVectX = pVectiX;
+	pVectY = pVectiY;
+	shape::Load(Infile);
+}
+
+
 shape* iPoly::clone(){
 	shape* newShape=new iPoly(*this);
 
@@ -19,11 +43,10 @@ iPoly::~iPoly() {}
 
 void iPoly::Save(ofstream& outfile)
 {
-
-
-	outfile<<"iPoly"<<","<<ShpGfxInfo.ID<<",";
+	outfile<<"iPoly"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile<<pVectX.size()<<" ";
 	for (int i=0; i<pVectX.size();i++)
-	outfile<<pVectX[i]<<","<<pVectY[i]<<",";
+	outfile<<pVectX[i]<<" "<<pVectY[i]<<" ";
 	shape::Save(outfile);
 }
 

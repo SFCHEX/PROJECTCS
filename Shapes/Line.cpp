@@ -1,5 +1,4 @@
 #include "Line.h"
-
 Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
 
@@ -10,7 +9,24 @@ Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 
 }
 
+void Line::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Point P1,P2;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="Line";
+	End1= P1;
+	End2= P2;
+	shape::Load(Infile);
+}
 
+
+
+
+Line::Line(){
+}
 
 shape* Line::clone(){
 	shape* newShape=new Line(*this);
@@ -27,8 +43,8 @@ void Line::Draw(GUI* pUI) const
 }
 void Line::Save(ofstream &outfile){
 
-	outfile<<"Line"<<","<<ShpGfxInfo.ID<<",";
-	outfile<<End1.x<<","<<End1.y<<","<<End2.x<<","<<End2.y<<",";
+	outfile<<"Line"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile<<End1.x<<" "<<End1.y<<" "<<End2.x<<" "<<End2.y<<" ";
 	shape::Save(outfile);
 }	//Save the shape parameters to the file
 

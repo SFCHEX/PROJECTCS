@@ -1,5 +1,6 @@
 #include "Circ.h"
-
+#include <iostream>
+using namespace std;
 Circ::Circ(Point P1, Point P2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
 
@@ -9,6 +10,26 @@ Circ::Circ(Point P1, Point P2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 	ShpGfxInfo.isHidden = false;
 
 }
+Circ::Circ(){
+
+}
+
+void Circ::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Point P1,P2;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="Circle";
+	Center = P1;
+	PointR = P2;
+	shape::Load(Infile);
+}
+
+
+
+
 shape* Circ::clone(){
 	shape* newShape=new Circ(*this);
 
@@ -24,8 +45,8 @@ void Circ::Draw(GUI* pUI) const
 
 void Circ::Save(ofstream &outfile){
 
-	outfile<<"Circle"<<","<<ShpGfxInfo.ID<<",";
-	outfile<<Center.x<<","<<Center.y<<","<<PointR.x<<","<<PointR.y<<",";
+	outfile<<"Circle"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile<<Center.x<<" "<<Center.y<<" "<<PointR.x<<" "<<PointR.y<<" ";
 	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
