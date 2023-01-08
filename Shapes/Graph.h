@@ -45,6 +45,7 @@ public:
 	void SetImagesToShapes();
 	void ScrambleShapes(GUI* pUI);
 	void SendToBack(GUI* pUI);
+	void duplicateShapes();
 	void resizeGR(double num);
 	void rotateGR();
 	void HideGraph(GUI*);

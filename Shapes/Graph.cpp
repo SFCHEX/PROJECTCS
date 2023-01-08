@@ -428,3 +428,14 @@ void Graph::DeleteCards() {
 
 	}
 }
+
+void Graph::duplicateShapes()
+{
+	int n = shapesList.size();
+	for (int i = 0; i < n; i++)
+	{
+		shape* newShape = shapesList[i]->clone();
+		shapesList.push_back(newShape);
+
+	}
+}
