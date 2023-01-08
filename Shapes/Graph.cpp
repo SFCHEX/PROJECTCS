@@ -430,7 +430,7 @@ void Graph::HideGraph(GUI* pUI) {
 			Point P1 = shapesList[i]->HideShape(CardDim);
 			Point P2 = (P1 + CardDim);
 			Rect* newShape = new Rect(P1, P2, shpGfxInfo);
-			newShape->sethideID(shapesList[i]->getID());
+			newShape->sethideID(shapesList[i]->getGameID());
 			shapesList.push_back(newShape);
 		}
 	}
