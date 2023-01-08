@@ -42,7 +42,7 @@ enum operationType //The operations supported (you can add more if needed)
 	SCRAMBLE,
 	SEND_TO_BACK,
 	DUPLICATE_SHAPES,
-	MATCH,
+	MATCH_2SHAPES,
 	ZOOM,
 	MULTI_SELECT,
 	GROUP,

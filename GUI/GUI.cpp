@@ -177,7 +177,7 @@ operationType GUI::GetUseroperation() const
 			{
 			case ICON_DRAWMODE: return TO_PLAY;
 			case ICON_HIDE: return DO_NOTHING;
-			case ICON_MATCH: return MATCH;
+			case ICON_MATCH: return MATCH_2SHAPES;
 			case ICON_PDUPLICATE: return DO_NOTHING;
 			case ICON_PSCRAMBLE: return DO_NOTHING;
 
@@ -315,7 +315,7 @@ void GUI::CreatePlayToolBar()
 
 
 	for (int i = 0; i < PLAY_ICON_COUNT; i++)
-		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
+		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight);
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);

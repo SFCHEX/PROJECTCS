@@ -126,8 +126,9 @@ operation* controller::createOperation(operationType OpType)
 		case DUPLICATE_SHAPES:
 			pOp = new opDuplicate(this);
 			break;
-		case MATCH:
+		case MATCH_2SHAPES:
 			pOp = new opMatch(this);
+			break;
 		case UNGROUP:
 			pOp = new opUngroup(this);
 			break;
