@@ -20,7 +20,7 @@ private:
 	vector <shape*> clipboard;
 	void SaveColorRGB(ofstream& outfile,color RGB);	//Saves Rgb values to to a file
 	bool wasCut;
-
+	int shapeGroupCount =0;
 public:										
 	Graph();
 	~Graph();
@@ -50,4 +50,7 @@ public:
 	void HideGraph(GUI*);
 	void Zoom(double);
 	void DeleteCards();
+	void groupShapes();
+	int getGroupCount(shape*);
+	void selectGroup(shape*);
 };

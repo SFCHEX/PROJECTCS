@@ -189,6 +189,7 @@
     <ClCompile Include="operations\opDeleteShape.cpp" />
     <ClCompile Include="operations\opDrag.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
+    <ClCompile Include="operations\opGroup.cpp" />
     <ClCompile Include="operations\opHideShapes.cpp" />
     <ClCompile Include="operations\opPaste.cpp" />
     <ClCompile Include="operations\opPenColor.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="controller.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="operations\opCut.h" />
+    <ClInclude Include="operations\opGroup.h" />
     <ClInclude Include="operations\opSendToBack.h" />
     <ClInclude Include="operations\opRotate.h" />
     <ClInclude Include="operations\opScramble.h" />

@@ -121,3 +121,10 @@ void shape::scramble(GUI* pUI)
 void shape::resizeSH(double num){}
 
 void shape::rotateSH(){}
+
+void shape::updateGroupId(int newGroupID){
+	this->ShpGfxInfo.groupID = newGroupID;
+}
+int shape::getGroupId() const {
+	return this->ShpGfxInfo.groupID;
+}

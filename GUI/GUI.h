@@ -63,6 +63,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isSelected;	//true if the shape is selected.
 	bool isHidden = false;
 	int HidId;
+	int groupID; //id of the group (not zero if grouped)
 };
 
 
@@ -108,6 +109,7 @@ class GUI
 		ICON_SCRAMBLE,
 		ICON_SEND_TO_BACK,
 		ICON_ZOOM,
+		ICON_GROUP,
 		ICON_EXIT,		//Exit icon
 
 

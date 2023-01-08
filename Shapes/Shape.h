@@ -18,7 +18,7 @@ protected:
 	bool isCard = false;
     void SaveColorRGB(ofstream &outfile,color RGB);
 	/// Add more parameters if needed.
-
+	int groupID = 0;
 private:
 	bool imageOn;
 
@@ -65,5 +65,8 @@ public:
 
 	virtual void resizeSH(double num);
 	virtual void rotateSH();
+
+	void updateGroupId(int);
+	int getGroupId() const;
 };
 

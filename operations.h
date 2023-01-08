@@ -20,6 +20,7 @@
 #include "operations\opUndo.h"
 #include "operations\opRedo.h"
 #include "operations\opStickImage.h"
+#include "operations\opGroup.h"
 #include"operations/opFillColor.h"
 #include"operations/opScramble.h"
 #include"operations/opSendToBack.h"
