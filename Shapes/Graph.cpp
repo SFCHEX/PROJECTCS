@@ -442,7 +442,7 @@ void Graph::Zoom(double Zf) {
 
 }
 void Graph::DeleteCards() {
-	int countcards = 0;
+	int countcards = 2;
 	deselAll(-1);
 	for (int i = 0; i < shapesList.size(); i++) {
 		if (shapesList[i]->isaCard()) {
