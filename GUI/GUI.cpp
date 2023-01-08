@@ -138,6 +138,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_SCRAMBLE: return SCRAMBLE;
 			case ICON_SEND_TO_BACK: return SEND_TO_BACK;
 			case ICON_RESIZE: return RESIZE;
+			case ICON_UNGROUP: return UNGROUP;
 			case ICON_CUT: return CUT;
 			case ICON_GROUP : return GROUP;
 			case ICON_TEMP: return DO_NOTHING;
@@ -269,7 +270,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\Menu_Rotate.jpg";
 	MenuIconImages[ICON_ZOOM] = "images\\MenuIcons\\Menu_Zoom.jpg";
 	MenuIconImages[ICON_GROUP] = "images\\MenuIcons\\Menu_Group.jpg";
-
+	MenuIconImages[ICON_UNGROUP] = "images\\MenuIcons\\Menu_Ungroup.jpg";
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time

@@ -110,6 +110,7 @@ class GUI
 		ICON_SEND_TO_BACK,
 		ICON_ZOOM,
 		ICON_GROUP,
+		ICON_UNGROUP,
 		ICON_EXIT,		//Exit icon
 
 

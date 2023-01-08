@@ -121,6 +121,9 @@ operation* controller::createOperation(operationType OpType)
 		case SEND_TO_BACK:
 			pOp = new opSendToBack(this);
 			break;
+		case UNGROUP:
+			pOp = new opUngroup(this);
+			break;
 		case ZOOM:
 			pOp = new opZoom(this);
 			break;

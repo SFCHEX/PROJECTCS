@@ -51,6 +51,6 @@ public:
 	void Zoom(double);
 	void DeleteCards();
 	void groupShapes();
-	int getGroupCount(shape*);
 	void selectGroup(shape*);
+	void ungroupShapes();
 };
