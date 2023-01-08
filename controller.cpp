@@ -119,6 +119,9 @@ operation* controller::createOperation(operationType OpType)
 		case SEND_TO_BACK:
 			pOp = new opSendToBack(this);
 			break;
+		case DUPLICATE_SHAPES:
+			pOp = new opDuplicate(this);
+			break;
 		case ZOOM:
 			pOp = new opZoom(this);
 			break;

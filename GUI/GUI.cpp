@@ -13,7 +13,7 @@ GUI::GUI()
 	wx = 5;
 	wy = 5;
 
-	StatusBarHeight = 50;
+	StatusBarHeight = 180;
 	ToolBarHeight = 100;
 	MenuIconWidth = 80;
 
@@ -137,6 +137,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
 			case ICON_SCRAMBLE: return SCRAMBLE;
 			case ICON_SEND_TO_BACK: return SEND_TO_BACK;
+			case ICON_DUPLICATE: return DUPLICATE_SHAPES;
 			case ICON_RESIZE: return RESIZE;
 			case ICON_CUT: return CUT;
 			case ICON_TEMP: return DO_NOTHING;
@@ -263,6 +264,7 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_TEMP] = "images\\MenuIcons\\Menu_Temp.jpg";
 	MenuIconImages[ICON_SWITCH] = "images\\MenuIcons\\Menu_Switch.jpg";
 	MenuIconImages[ICON_SEND_TO_BACK] = "images\\MenuIcons\\Menu_Send_to_back.jpg";
+	MenuIconImages[ICON_DUPLICATE] = "images\\MenuIcons\\Menu_Duplicate.jpg";
 	MenuIconImages[ICON_DRAG] = "images\\MenuIcons\\Menu_Drag.jpg";
 	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\Menu_Resize.jpg";
 	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\Menu_Rotate.jpg";

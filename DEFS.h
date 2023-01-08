@@ -41,6 +41,7 @@ enum operationType //The operations supported (you can add more if needed)
 	STICK_IMAGE,
 	SCRAMBLE,
 	SEND_TO_BACK,
+	DUPLICATE_SHAPES,
 	ZOOM,
 	DO_NOTHING,
 	HIDE_SHAPE,
