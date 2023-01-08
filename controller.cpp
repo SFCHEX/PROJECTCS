@@ -108,7 +108,9 @@ operation* controller::createOperation(operationType OpType)
 		case ROTATE:
 			pOp = new opRotate(this);
 			break;
-	
+		case MULTI_SELECT:
+			pOp = new opMultiSelect(this);
+			break;
 		case EXIT:
 			///create Exitoperation here
 			pOp = new opExit(this); 

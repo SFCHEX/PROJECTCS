@@ -428,3 +428,35 @@ void Graph::DeleteCards() {
 
 	}
 }
+
+void Graph::multiSelect(int num) {
+	GfxInfo newGfxinfo;
+	for (int i = 0; i < shapesList.size(); i++) {
+		if (shapesList[i]->IsSelected()) {
+			newGfxinfo = shapesList[i]->getGfxInfo();
+		}
+	}
+	 
+	if (num == 1) {
+		for (int i = 0; i < shapesList.size(); i++) {
+			if (shapesList[i]->getGfxInfo().ShapeType == newGfxinfo.ShapeType) {
+				shapesList[i]->SetSelected(true);
+			}
+		}
+	}
+	else if (num == 2) {
+		for (int i = 0; i < shapesList.size(); i++) {
+			if (shapesList[i]->getGfxInfo().FillClr == newGfxinfo.FillClr) {
+				shapesList[i]->SetSelected(true);
+			}
+		}
+	}
+	else if (num == 3) {
+		for (int i = 0; i < shapesList.size(); i++) {
+			if (shapesList[i]->getGfxInfo().DrawClr == newGfxinfo.DrawClr) {
+				shapesList[i]->SetSelected(true);
+			}
+		}
+	}
+	
+}
