@@ -50,6 +50,8 @@ public:
 	void HideGraph(GUI*);
 	void Zoom(double);
 	void DeleteCards();
+	void multiSelect(int);
+
 	void groupShapes();
 	void selectGroup(shape*);
 	void ungroupShapes();

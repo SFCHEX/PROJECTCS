@@ -1,6 +1,6 @@
 #pragma once
 #include "operation.h"
-#include "opResize.h"
+
 
 #include "..\Shapes\Graph.h"
 

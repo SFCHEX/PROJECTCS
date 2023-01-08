@@ -42,6 +42,7 @@ enum operationType //The operations supported (you can add more if needed)
 	SCRAMBLE,
 	SEND_TO_BACK,
 	ZOOM,
+	MULTI_SELECT,
 	GROUP,
 	UNGROUP,
 	DO_NOTHING,

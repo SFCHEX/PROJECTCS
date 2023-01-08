@@ -108,6 +108,7 @@ class GUI
 		//TODO: Add more icons names here
 		ICON_SCRAMBLE,
 		ICON_SEND_TO_BACK,
+		ICON_MULTI_SELECT,
 		ICON_ZOOM,
 		ICON_GROUP,
 		ICON_UNGROUP,
