@@ -2,23 +2,16 @@
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
 opDuplicate::opDuplicate(controller* pCount) :operation(pCount)
-{
-}
-
-
-
-
-
+{}
 
 
 void opDuplicate::Execute()
 {
 	Graph* pGr = pControl->getGraph();
-	pGr->duplicateShapes();
+	GUI* pUI = pControl->GetUI();
+	pGr->duplicateShapes(pUI);
 }
 
 
 opDuplicate::~opDuplicate()
-{
-
-}
+{}

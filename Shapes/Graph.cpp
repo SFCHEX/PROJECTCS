@@ -464,7 +464,7 @@ void Graph::DeleteCards() {
 	}
 }
 
-void Graph::duplicateShapes()
+void Graph::duplicateShapes(GUI* pUI)
 {
 	int n = shapesList.size();
 	for (int i = 0; i < n; i++)

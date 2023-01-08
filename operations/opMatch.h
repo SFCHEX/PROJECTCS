@@ -3,10 +3,10 @@
 #include "..\controller.h"
 #include "..\GUI\GUI.h"
 
-class opDuplicate : public operation
+class opMatch : public operation
 {
 public:
-	opDuplicate(controller* pCont);
+	opMatch(controller* pCont);
 	void Execute();
-	~opDuplicate();
+	~opMatch();
 };
