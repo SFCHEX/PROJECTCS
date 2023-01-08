@@ -14,6 +14,7 @@ GUI::GUI()
 	wy = 5;
 
 	StatusBarHeight = 180;
+	StatusBarHeight =50;
 	ToolBarHeight = 100;
 	MenuIconWidth = 80;
 
@@ -132,6 +133,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_EXIT: return EXIT;
 			case ICON_DRAG: return DRAG_MODE;
 			case ICON_ROTATE: return ROTATE;
+			case ICON_MULTI_SELECT: return MULTI_SELECT;
 			case ICON_UNDO: return UNDO;
 			case ICON_REDO: return REDO;
 			case ICON_STICK_IMAGE: return STICK_IMAGE;
@@ -274,6 +276,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\Menu_Resize.jpg";
 	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\Menu_Rotate.jpg";
 	MenuIconImages[ICON_ZOOM] = "images\\MenuIcons\\Menu_Zoom.jpg";
+	MenuIconImages[ICON_MULTI_SELECT] = "images\\MenuIcons\\Menu_MultiSelect.jpg";
+
 	MenuIconImages[ICON_GROUP] = "images\\MenuIcons\\Menu_Group.jpg";
 	MenuIconImages[ICON_UNGROUP] = "images\\MenuIcons\\Menu_Ungroup.jpg";
 	//TODO: Prepare images for each menu icon and add it to the list

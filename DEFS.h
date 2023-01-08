@@ -44,6 +44,7 @@ enum operationType //The operations supported (you can add more if needed)
 	DUPLICATE_SHAPES,
 	MATCH,
 	ZOOM,
+	MULTI_SELECT,
 	GROUP,
 	UNGROUP,
 	DO_NOTHING,

@@ -52,6 +52,7 @@ public:
 	void Zoom(double);
 	void DeleteCards();
 	bool MyMatchedShapes();
+	void multiSelect(int);
 
 	void groupShapes();
 	void selectGroup(shape*);

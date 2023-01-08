@@ -191,6 +191,7 @@
     <ClCompile Include="operations\opExit.cpp" />
     <ClCompile Include="operations\opGroup.cpp" />
     <ClCompile Include="operations\opHideShapes.cpp" />
+    <ClCompile Include="operations\opMultiSelect.cpp" />
     <ClCompile Include="operations\opPaste.cpp" />
     <ClCompile Include="operations\opPenColor.cpp" />
     <ClCompile Include="operations\opPenWidth.cpp" />
@@ -256,6 +257,7 @@
     <ClInclude Include="operations\opMatch.h" />
     <ClInclude Include="operations\opDuplicate.h" />
     <ClInclude Include="operations\opCut.h" />
+    <ClInclude Include="operations\opMultiSelect.h" />
     <ClInclude Include="operations\opGroup.h" />
     <ClInclude Include="operations\opSendToBack.h" />
     <ClInclude Include="operations\opRotate.h" />
