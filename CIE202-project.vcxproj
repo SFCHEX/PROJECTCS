@@ -198,6 +198,7 @@
     <ClCompile Include="operations\opRedo.cpp" />
     <ClCompile Include="operations\opResize.cpp" />
     <ClCompile Include="operations\opRotate.cpp" />
+    <ClCompile Include="operations\opStartGame.cpp" />
     <ClCompile Include="operations\opSwitchToPlay.cpp" />
     <ClCompile Include="operations\opStickImage.cpp" />
     <ClCompile Include="operations\opUndo.cpp" />
@@ -275,6 +276,7 @@
     <ClInclude Include="operations\opExit.h" />
     <ClInclude Include="operations\opRedo.h" />
     <ClInclude Include="operations\opResize.h" />
+    <ClInclude Include="operations\opStartGame.h" />
     <ClInclude Include="operations\opSwitchToPlay.h" />
     <ClInclude Include="operations\opStickImage.h" />
     <ClInclude Include="operations\opUndo.h" />

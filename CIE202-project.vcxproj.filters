@@ -86,6 +86,7 @@
     <ClCompile Include="operations\opMultiSelect.cpp" />
     <ClCompile Include="operations\opGroup.cpp" />
     <ClCompile Include="operations\opUngroup.cpp" />
+    <ClCompile Include="operations\opStartGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="operations\opMultiSelect.h" />
     <ClInclude Include="operations\opGroup.h" />
     <ClInclude Include="operations\opUngroup.h" />
+    <ClInclude Include="operations\opStartGame.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />
