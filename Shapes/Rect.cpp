@@ -87,26 +87,7 @@ void Rect::MoveShape(Point MoveBy) {
 	this->Corner2.y = this->Corner2.y + MoveBy.y;
 }
 
-//void Rect::scramble()
-//{
-//	srand(time(0));
-//	int x = rand() % 1300 + 1;
-//	int y = rand() % 500 + 1;
-//
-//	if (Corner1.x + x < 1380 && Corner1.x + x > 100 )
-//	{
-//		if (Corner1.y + y < 600 && Corner1.y + y > 100)
-//		{
-//			Corner1.x += x;
-//			Corner1.y += y;
-//			Corner2.x += x;
-//			Corner2.y += y;
-//		}
-//
-//	}
-//	x = 0;
-//	y = 0;
-//}
+
 void Rect::resizeSH(double num) {
 	Point Center;
 	Center.x = min(Corner1.x, Corner2.x) + abs(Corner1.x - Corner2.x) / 2;
@@ -150,6 +131,7 @@ Point Rect::HideShape(Point DxDy) {
 		div_scale = min(ratX, ratY);
 		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
 		this->resizeSH(div_scale);
+		this->ShpGfxInfo.HidId = this->ShpGfxInfo.GameID;
 		return (v_Center - (DxDy / 2));
 	}
 }

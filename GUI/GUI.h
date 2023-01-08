@@ -63,6 +63,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isSelected;	//true if the shape is selected.
 	bool isHidden = false;
 	int HidId;
+	int GameID;
 };
 
 

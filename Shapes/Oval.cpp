@@ -132,6 +132,7 @@ Point Oval::HideShape(Point DxDy) {
 		div_scale = min(ratX, ratY);
 		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale;
 		this->resizeSH(div_scale);
+		this->ShpGfxInfo.HidId = this->ShpGfxInfo.GameID;
 		return (v_Center - (DxDy / 2));
 	}
 }
