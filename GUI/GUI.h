@@ -14,40 +14,41 @@ using namespace std;
 struct Point	//To be used for shapes points
 {
 	int x, y;
-	Point operator=(Point rhs) {
+	Point operator=(const Point rhs) {
+		Point Lhs = *this;
 		this->x = rhs.x;
 		this->y = rhs.y;
-		return *this;
+		return Lhs;
 	}
-	Point operator+(Point rhs) {
-		this->x = rhs.x + this->x;
-		this->y = rhs.y + this->y;
-		return *this;
+	Point operator+(const Point rhs) {
+		Point Lhs = *this;
+		Lhs.x = Lhs.x +rhs.x;
+		Lhs.y = Lhs.y +rhs.y;
+		return Lhs;
 	}
-	Point operator-(Point rhs) {
-		this->x = this->x - rhs.x;
-		this->y = this->y - rhs.y;
-		return *this;
+	Point operator-(const Point rhs) {
+		Point Lhs = *this;
+		Lhs.x = Lhs.x - rhs.x;
+		Lhs.y = Lhs.y - rhs.y;
+		return Lhs;
 	}
-	Point operator/(Point rhs) {
-		this->x = this->x / rhs.x;
-		this->y = this->y / rhs.y;
-		return *this;
+	Point operator/(const double rhs) {
+		Point Lhs = *this;
+		Lhs.x = Lhs.x / rhs;
+		Lhs.y = Lhs.y / rhs;
+		return Lhs;
 	}
-	Point operator*(Point rhs) {
-		this->x = this->x * rhs.x;
-		this->y = this->y * rhs.y;
-		return *this;
-	}
-	Point operator/(double rhs) {
-		this->x = this->x / rhs;
-		this->y = this->y / rhs;
-		return *this;
-	}
-	Point operator*(double rhs) {
-		this->x = this->x * rhs;
-		this->y = this->y * rhs;
-		return *this;
+	Point operator*(const double rhs) {
+		Point Lhs = *this;
+		Lhs.x = Lhs.x * rhs;
+		Lhs.y = Lhs.y * rhs;
+		return Lhs;
+	}	
+	Point abs(const Point rhs) {
+		Point Lhs;
+		Lhs.x = std::abs(rhs.x);
+		Lhs.y = std::abs(rhs.y);
+		return Lhs;
 	}
 };
 
@@ -60,6 +61,8 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isFilled;	//shape Filled or not
 	int BorderWdth;	//Width of shape borders
 	bool isSelected;	//true if the shape is selected.
+	bool isHidden = false;
+	int HidId;
 };
 
 
@@ -104,7 +107,7 @@ class GUI
 		//TODO: Add more icons names here
 		ICON_SCRAMBLE,
 		ICON_SEND_TO_BACK,
-		ICON_DUPLICATE,
+		ICON_ZOOM,
 		ICON_EXIT,		//Exit icon
 
 
@@ -118,7 +121,10 @@ class GUI
 
 	enum PlayMenuIcon //The icons of the Play menu (you should add more icons)
 	{
-		
+		ICON_DRAWMODE,
+		ICON_HIDE,
+
+
 		PLAY_ICON_COUNT		//no. of menu icons ==> This should be the last line in this enum
 
 	};
@@ -162,10 +168,10 @@ public:
 	void CreateDrawToolBar();	//creates Draw mode toolbar & menu
 	void CreatePlayToolBar();	//creates Play mode toolbar & menu
 	void CreateStatusBar() const;	//create the status bar
-
+	void switchToDraw();
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
-
+	GUI_MODE CurrentMode() { return InterfaceMode; };
 	// -- shapes Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo) const;  //Draw a rectangle
 	void DrawLine(Point, Point, GfxInfo) const;

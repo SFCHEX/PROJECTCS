@@ -119,8 +119,11 @@ operation* controller::createOperation(operationType OpType)
 		case SEND_TO_BACK:
 			pOp = new opSendToBack(this);
 			break;
-		case DUPLICATE_SHAPES:
-			pOp = new opDuplicate(this);
+		case ZOOM:
+			pOp = new opZoom(this);
+			break;
+		case HIDE_SHAPE:
+			pOp = new opHideShapes(this);
 			break;
 		case STATUS:	//a click on the status bar ==> no operation
 			break;

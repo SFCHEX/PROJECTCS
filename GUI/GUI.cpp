@@ -1,4 +1,5 @@
 #include "GUI.h"
+
 #include <Windows.h>
 #include <time.h>
 #include <iostream>
@@ -140,6 +141,7 @@ operationType GUI::GetUseroperation() const
 			case ICON_RESIZE: return RESIZE;
 			case ICON_CUT: return CUT;
 			case ICON_TEMP: return DO_NOTHING;
+			case ICON_ZOOM: return ZOOM;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
@@ -169,8 +171,8 @@ operationType GUI::GetUseroperation() const
 
 			switch (ClickedIconOrder)
 			{
-			case ICON_ROTATE: return ROTATE;
-			case ICON_TEMP: return DO_NOTHING;
+			case ICON_DRAWMODE: return TO_PLAY;
+			case ICON_HIDE: return HIDE_SHAPE;
 
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
@@ -266,6 +268,8 @@ void GUI::CreateDrawToolBar()
 	MenuIconImages[ICON_DRAG] = "images\\MenuIcons\\Menu_Drag.jpg";
 	MenuIconImages[ICON_RESIZE] = "images\\MenuIcons\\Menu_Resize.jpg";
 	MenuIconImages[ICON_ROTATE] = "images\\MenuIcons\\Menu_Rotate.jpg";
+	MenuIconImages[ICON_ZOOM] = "images\\MenuIcons\\Menu_Zoom.jpg";
+
 	//TODO: Prepare images for each menu icon and add it to the list
 
 	//Draw menu icon one image at a time
@@ -290,12 +294,13 @@ void GUI::CreateDrawToolBar()
 void GUI::CreatePlayToolBar()
 {
 	InterfaceMode = MODE_PLAY;
-	string PlayMenuIconImages[1];//string PlayMenuIconImages[PLAY_ICON_COUNT];//
-	PlayMenuIconImages[0]="images\\PlayMenuIcons\\PlayMenu_Rotate.jpg";//PlayMenuIconImages[ROTATE]="images\\PlayMenuIcons\\PlayMenu_Rotate.jpg"
+	string PlayMenuIconImages[PLAY_ICON_COUNT]; 
+	PlayMenuIconImages[ICON_DRAWMODE] = "images\\PlayMenuIcons\\PlayMenu_Rotate.jpg";
+	PlayMenuIconImages[ICON_HIDE] = "images\\PlayMenuIcons\\PlayMenu_Hide.jpg";
 
-	/*for (int i = 0; i < PLAY_ICON_COUNT; i++)
+	for (int i = 0; i < PLAY_ICON_COUNT; i++)
 		pWind->DrawImage(PlayMenuIconImages[i], i * MenuIconWidth, 0, MenuIconWidth, ToolBarHeight / 2);
-	*///Draw a line under the toolbar
+	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
 	pWind->DrawLine(0, ToolBarHeight, width, ToolBarHeight);
 
@@ -404,11 +409,20 @@ void GUI::switchToPlay()
 	pWind->DrawRectangle(0, 0, width, height);
 	////clear the window
 	CreatePlayToolBar();
-	
-
-	
 
 }
+void GUI::switchToDraw() {
+
+
+	ClearStatusBar();
+	////clear status bar
+	pWind->SetPen(BkGrndColor, 1);
+	pWind->SetBrush(BkGrndColor);
+	pWind->DrawRectangle(0, 0, width, height);
+	////clear the window
+	CreateDrawToolBar();
+}
+
 
 //======================================================================================//
 //								shapes Drawing Functions								//

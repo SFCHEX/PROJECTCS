@@ -3,7 +3,7 @@
 #include <Windows.h>
 class opSelect : public operation {
 private:
-	bool MultiSelect;
+	bool SingleSelect;
 
 public:
 	opSelect(controller* pCont);

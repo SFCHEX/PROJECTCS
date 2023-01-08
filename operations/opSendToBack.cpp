@@ -12,7 +12,8 @@ opSendToBack::opSendToBack(controller* pCont) :operation(pCont)
 void opSendToBack::Execute()
 {
 	Graph* pGr = pControl->getGraph();
-	pGr->SendToBack();
+	GUI* pUI = pControl->GetUI();
+	pGr->SendToBack(pUI);
 }
 
 opSendToBack::~opSendToBack()

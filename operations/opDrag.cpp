@@ -54,7 +54,7 @@ void opDrag::Execute()
 							tx = ix; ty = iy;
 							strt = 1;
 						}
-						if (iy < 100 && strt == 0) { //toolbar hight
+						if (iy < 80 && strt == 0) { //toolbar hight
 							brk = 1;
 							pUI->ClearStatusBar();
 						}

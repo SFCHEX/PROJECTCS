@@ -1,5 +1,4 @@
 #include "Line.h"
-
 Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 {
 
@@ -10,7 +9,24 @@ Line::Line(Point p1, Point p2, GfxInfo shapeGfxInfo) : shape(shapeGfxInfo)
 
 }
 
+void Line::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Point P1,P2;
+	Infile>>P1.x;
+	Infile>>P1.y;
+	Infile>>P2.x;
+	Infile>>P2.y;
+	ShpGfxInfo.ShapeType="Line";
+	End1= P1;
+	End2= P2;
+	shape::Load(Infile);
+}
 
+
+
+
+Line::Line(){
+}
 
 shape* Line::clone(){
 	shape* newShape=new Line(*this);
@@ -27,8 +43,8 @@ void Line::Draw(GUI* pUI) const
 }
 void Line::Save(ofstream &outfile){
 
-	outfile<<"Line"<<","<<ShpGfxInfo.ID<<",";
-	outfile<<End1.x<<","<<End1.y<<","<<End2.x<<","<<End2.y<<",";
+	outfile<<"Line"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile<<End1.x<<" "<<End1.y<<" "<<End2.x<<" "<<End2.y<<" ";
 	shape::Save(outfile);
 }	//Save the shape parameters to the file
 
@@ -80,18 +96,18 @@ void Line::MoveShape(Point MoveBy) {
 	this->End2.y = this->End2.y + MoveBy.y;
 }
 
-//void Line::scramble(GUI* pUI)
-//{	 
-//	int diff_x = abs(End1.x - End2.x);
-//	int diff_y = abs(End1.y - End2.y);	
-//	End1.x = rand() % 1300 + 1;
-//	End1.y = 50 + rand() % 500;
-//	End2.x = End1.x + diff_x;
-//	End2.y = End1.y + diff_y;
-//
-//	string msg = "(" + to_string(End1.x) + ", " + to_string(End1.y) + " ) ( " + to_string(End2.x) + ", " + to_string(End2.y) + ")";
-//	pUI->PrintMessage(msg);
-//}
+void Line::scramble(GUI* pUI)
+{	 
+	int diff_x = abs(End1.x - End2.x);
+	int diff_y = abs(End1.y - End2.y);	
+	End1.x = rand() % 1300 + 1;
+	End1.y = 50 + rand() % 500;
+	End2.x = End1.x + diff_x;
+	End2.y = End1.y + diff_y;
+
+	string msg = "(" + to_string(End1.x) + ", " + to_string(End1.y) + " ) ( " + to_string(End2.x) + ", " + to_string(End2.y) + ")";
+	pUI->PrintMessage(msg);
+}
 void Line::resizeSH(double n) {
 	Point Center;
 	double width = abs(End1.x - End2.x);
@@ -125,7 +141,43 @@ void Line::rotateSH() {
 	End2.y = t2x -(Center.x) + Center.y;
 }
 
-string Line::match()
-{
-	return this->ShpGfxInfo.ShapeType;
+Point Line::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
+
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale, ratX, ratY;
+
+		max_xy = End1;
+		min_xy = End2;
+		v_Center = (max_xy + min_xy) / 2;
+
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale - 0.1;
+		this->resizeSH(div_scale);
+		return (v_Center - (DxDy / 2));
+	}
+}
+void Line::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	max_xy = End1;
+	min_xy = End2;
+	v_Center = (max_xy + min_xy) / 2;
+
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
 }

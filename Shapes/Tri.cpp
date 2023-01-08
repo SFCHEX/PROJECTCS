@@ -1,5 +1,5 @@
 #include "Tri.h"
-
+#include <algorithm>
 Tri::Tri(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo)
 {
 
@@ -10,8 +10,25 @@ Tri::Tri(Point P1, Point P2, Point P3, GfxInfo shapeGfxInfo) :shape(shapeGfxInfo
 
 }
 
+void Tri::Load(ifstream &Infile){
+	Infile>>ShpGfxInfo.ID;
+	Point P1,P2,P3;
+	Infile>>P1.x;Infile>>P1.y;
+	Infile>>P2.x;Infile>>P2.y;
+	Infile>>P3.x;Infile>>P3.y;
+	ShpGfxInfo.ShapeType="Triangle";
+	Corner1= P1;
+	Corner2= P2;
+	Corner3= P3;
+	shape::Load(Infile);
+}
+
+
 Tri::~Tri()
 {}
+Tri::Tri()
+{}
+
 
 void Tri::Draw(GUI* pUI) const
 {
@@ -27,8 +44,8 @@ double Tri::Area(int x1, int y1, int x2, int y2, int x3, int y3) const {
 
 void Tri::Save(ofstream &outfile){
 
-	outfile<<"Triangle"<<","<<ShpGfxInfo.ID<<",";
-	outfile<<Corner1.x<<","<<Corner1.y<<","<<Corner2.x<<","<<Corner2.y<<","<<Corner3.x<<","<<Corner3.y<<",";
+	outfile<<"Triangle"<<" "<<ShpGfxInfo.ID<<" ";
+	outfile<<Corner1.x<<" "<<Corner1.y<<" "<<Corner2.x<<" "<<Corner2.y<<" "<<Corner3.x<<" "<<Corner3.y<<" ";
 	shape::Save(outfile);
 
 }	//Save the shape parameters to the file
@@ -91,9 +108,17 @@ void Tri::MoveShape(Point MoveBy) {
 	this->Corner3.y = this->Corner3.y + MoveBy.y;
 }
 void Tri::resizeSH(double n) {
-	Point Centeriod;
-	Centeriod.x = (Corner1.x + Corner2.x + Corner3.x) / 3;
-	Centeriod.y = (Corner1.y + Corner2.y + Corner3.y) / 3; double t1x = Corner1.x;
+	////
+	Point max_xy, min_xy, Centeriod;
+
+	max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
+	max_xy.y = max(Corner1.y, max(Corner2.y, Corner3.y));
+
+	min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
+	min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
+	Centeriod = (max_xy + min_xy) / 2;
+	
+	double t1x = Corner1.x;
 	double t1y = Corner1.y;
 	double t2x = Corner2.x;
 	double t2y = Corner2.y;
@@ -127,7 +152,51 @@ void Tri::rotateSH(){
 	Corner3.y = t3x - Centeriod.x + Centeriod.y;
 }
 
-string Tri::match()
-{
-	return this->ShpGfxInfo.ShapeType;
+Point Tri::HideShape(Point DxDy) {
+	if (!ShpGfxInfo.isHidden) {
+
+		ShpGfxInfo.isHidden = true;
+		Point Shp_dxdy;
+		Point max_xy, min_xy, v_Center;
+		double div_scale,ratX, ratY;
+
+		max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
+		max_xy.y = max(Corner1.y, max(Corner2.y, Corner3.y));
+
+		min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
+		min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
+		v_Center = (max_xy + min_xy) / 2;
+
+		Shp_dxdy = Shp_dxdy.abs(max_xy - min_xy);
+		ratX = (double)DxDy.x / (double)Shp_dxdy.x;
+		ratY = (double)DxDy.y / (double)Shp_dxdy.y;
+		div_scale = min(ratX, ratY);
+		(div_scale >= 1) ? div_scale = 1 : div_scale = div_scale - 0.1;
+		this->resizeSH(div_scale);
+		return (v_Center - (DxDy / 2));
+
+	}
+}
+void Tri::Zoom(double Zf) {
+	Point max_xy, min_xy, v_Center, CanvasCenter, Diff;
+	CanvasCenter.x = 690; 	CanvasCenter.y = 375;
+	max_xy.x = max(Corner1.x, max(Corner2.x, Corner3.x));
+	max_xy.y = max(Corner1.y, max(Corner2.y, Corner3.y));
+
+	min_xy.x = min(Corner1.x, min(Corner2.x, Corner3.x));
+	min_xy.y = min(Corner1.y, min(Corner2.y, Corner3.y));
+	v_Center = (max_xy + min_xy) / 2;
+	v_Center = (max_xy + min_xy) / 2;
+
+	if (Zf > 1) {
+		Diff = (v_Center - CanvasCenter) * (Zf - 1);
+		Diff = Diff / 1;
+	}
+	else {
+		Diff = (v_Center - CanvasCenter);
+		Diff = Diff * (-Zf / 1.0);
+
+	}
+	this->MoveShape(Diff);
+	this->resizeSH(Zf);
 }

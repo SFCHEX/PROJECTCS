@@ -40,7 +40,7 @@ void opAddrPoly::Execute()
 		toggle = false;
 		userinput = pUI->GetString();
 		for (int i = 0; i < userinput.size(); i++) {
-			if (!isdigit(userinput[i])) {
+			if (!isdigit(userinput[i]) || (userinput[0] == '0' && userinput.size() == 1)) {
 				toggle = true;
 				pUI->PrintMessage("Your entered a character, try again: ");
 			}

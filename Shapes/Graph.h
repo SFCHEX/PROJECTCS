@@ -14,14 +14,12 @@ class Graph
 {
 private:
 	vector <shape*> shapesList; //a container to hold all shapes	
+	vector <shape*> cardList;
 	deque<shape*> deletedShapesList; //a container to hold all shapes	
-	vector<Point> CenterPoints; //A vector that holds the centers for all scrambled shapes	
-	vector<Point> CenterPointsTaken; //A vector that holds the taken centers for all scrambled shapes	
 	shape* selectedShape;	//pointer to the currently selected shape
 	vector <shape*> clipboard;
 	void SaveColorRGB(ofstream& outfile,color RGB);	//Saves Rgb values to to a file
 	bool wasCut;
-	vector<string> Parameterize(string p);	//makes a line parameters
 
 public:										
 	Graph();
@@ -45,11 +43,11 @@ public:
 	void PasteShape(Point p1);
 	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
 	void SetImagesToShapes();
-	void ScrambleShapes();
-	void SendToBack();
+	void ScrambleShapes(GUI* pUI);
+	void SendToBack(GUI* pUI);
 	void resizeGR(double num);
 	void rotateGR();
-	void DuplicateShapes();
-	
+	void HideGraph(GUI*);
+	void Zoom(double);
+	void DeleteCards();
 };
- 
