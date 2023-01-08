@@ -18,7 +18,7 @@ protected:
 	bool isCard = false;
     void SaveColorRGB(ofstream &outfile,color RGB);
 	/// Add more parameters if needed.
-
+	int groupID = 0;
 private:
 	bool imageOn;
 
@@ -69,5 +69,8 @@ public:
 	int getGameID();
 	int getCardID();
 
+
+	void updateGroupId(int);
+	int getGroupId() const;
 };
 

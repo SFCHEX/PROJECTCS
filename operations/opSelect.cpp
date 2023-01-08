@@ -29,12 +29,14 @@ void opSelect::Execute() {
 	if (P1->y > 100){//checks if user selected a shape or pressed the selection mode button
 		//if y bigger 100 then user is out of the bounds of taskbar so user selected a shape 
 		shape* SelectedShape = pGr->Getshape(P1->x, P1->y, SingleSelect);
-		if (SelectedShape != nullptr) {
+		if (SelectedShape != nullptr) {	
 			if (SingleSelect) {
 				pGr->deselAll(SelectedShape->getID());
 			}
+			pGr->selectGroup(SelectedShape);
 			GfxInfo SelectedGfxInfo = SelectedShape->getGfxInfo();
 			SelectedShape->SetSelected(1);
+			pGr->selectGroup(SelectedShape);
 			if (SelectedShape->isaCard() && SingleSelect) {
 				pGr->SendToBack(pUI);
 			}

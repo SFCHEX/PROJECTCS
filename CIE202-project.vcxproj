@@ -189,6 +189,7 @@
     <ClCompile Include="operations\opDeleteShape.cpp" />
     <ClCompile Include="operations\opDrag.cpp" />
     <ClCompile Include="operations\opExit.cpp" />
+    <ClCompile Include="operations\opGroup.cpp" />
     <ClCompile Include="operations\opHideShapes.cpp" />
     <ClCompile Include="operations\opPaste.cpp" />
     <ClCompile Include="operations\opPenColor.cpp" />
@@ -203,6 +204,7 @@
     <ClCompile Include="operations\operation.cpp" />
     <ClCompile Include="operations\opScramble.cpp" />
     <ClCompile Include="operations\opSendToBack.cpp" />
+    <ClCompile Include="operations\opUngroup.cpp" />
     <ClCompile Include="operations\opZoom.cpp" />
     <ClCompile Include="operations\opDuplicate.cpp" />
     <ClCompile Include="operations\opMatch.cpp" />
@@ -254,6 +256,7 @@
     <ClInclude Include="operations\opMatch.h" />
     <ClInclude Include="operations\opDuplicate.h" />
     <ClInclude Include="operations\opCut.h" />
+    <ClInclude Include="operations\opGroup.h" />
     <ClInclude Include="operations\opSendToBack.h" />
     <ClInclude Include="operations\opRotate.h" />
     <ClInclude Include="operations\opScramble.h" />
@@ -274,6 +277,7 @@
     <ClInclude Include="operations\opStickImage.h" />
     <ClInclude Include="operations\opUndo.h" />
     <ClInclude Include="operations\opHideShapes.h" />
+    <ClInclude Include="operations\opUngroup.h" />
     <ClInclude Include="operations\opZoom.h" />
     <ClInclude Include="Shapes\rPoly.h" />
     <ClInclude Include="Shapes\iPoly.h" />

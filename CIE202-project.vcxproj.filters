@@ -83,6 +83,8 @@
     <ClCompile Include="operations\opZoom.cpp" />
     <ClCompile Include="operations\opDuplicate.cpp" />
     <ClCompile Include="operations\opMatch.cpp" />
+    <ClCompile Include="operations\opGroup.cpp" />
+    <ClCompile Include="operations\opUngroup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
@@ -154,6 +156,8 @@
     <ClInclude Include="operations\opZoom.h" />
     <ClInclude Include="operations\opDuplicate.h" />
     <ClInclude Include="operations\opMatch.h" />
+    <ClInclude Include="operations\opGroup.h" />
+    <ClInclude Include="operations\opUngroup.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CIE202-project.rc" />

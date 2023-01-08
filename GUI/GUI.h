@@ -64,6 +64,7 @@ struct GfxInfo	//Graphical info common for all shapes (you may add more members)
 	bool isHidden = false;
 	int HidId;
 	int GameID;
+	int groupID =0; //id of the group (not zero if grouped)
 };
 
 
@@ -110,6 +111,8 @@ class GUI
 		ICON_SEND_TO_BACK,
 		ICON_DUPLICATE,
 		ICON_ZOOM,
+		ICON_GROUP,
+		ICON_UNGROUP,
 		ICON_EXIT,		//Exit icon
 
 
