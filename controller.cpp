@@ -35,7 +35,9 @@ operation* controller::createOperation(operationType OpType)
 		case DRAW_LINE:
 			pOp = new opAddLine(this);
 			break;
-
+		case GROUP:
+			pOp = new opGroup(this);
+			break;
 		case DRAW_TRI:
 			pOp = new opAddTri(this);
 			break;
