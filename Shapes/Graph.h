@@ -43,7 +43,7 @@ public:
 	void PasteShape(Point p1);
 	void StickImageGR(GUI* pUI) const; //StickImage to the selected shape
 	void SetImagesToShapes();
-	void ScrambleShapes(GUI* pUI);
+	void ScrambleShapes();
 	void SendToBack(GUI* pUI);
 	void duplicateShapes();
 	void resizeGR(double num);

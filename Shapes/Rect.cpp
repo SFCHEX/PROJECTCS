@@ -163,3 +163,12 @@ void Rect::Zoom(double Zf) {
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
 }
+
+void Rect::scramble(Point p) {
+	int width = Corner1.x - Corner2.x;
+	int height = Corner1.y - Corner2.y;
+	Corner1.x = p.x - (width / 2);
+	Corner1.y = p.y - (height / 2);
+	Corner2.x = p.x + (width / 2);
+	Corner2.y = p.y + (height / 2);
+}

@@ -111,9 +111,7 @@ void shape::setHasImage() {
 	imageOn = true;
 }
 
-void shape::scramble(GUI* pUI)
-{
-}
+
 // 
 //Point shape::getBorders() {}
 

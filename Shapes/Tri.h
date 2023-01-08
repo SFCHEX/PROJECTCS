@@ -25,5 +25,6 @@ public:
 	virtual void rotateSH();
 	virtual Point HideShape(Point) override;
 	virtual void Zoom(double) override;
+	void virtual scramble(Point)override;
 };
 

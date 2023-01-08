@@ -146,3 +146,12 @@ void Circ::Zoom(double Zf) {
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
 }
+
+void Circ::scramble(Point p) {
+	int diffx = abs(Center.x - PointR.x);
+	int diffy = abs(Center.y - PointR.y);
+
+	Center = p;
+	PointR.x = Center.x + diffx;
+	PointR.y = Center.y + diffy;
+}

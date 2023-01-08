@@ -202,3 +202,13 @@ void Tri::Zoom(double Zf) {
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
 }
+void Tri::scramble(Point p) {
+	Point center = { ((Corner1.x + Corner2.x + Corner3.x) / 3.0), ((Corner1.y + Corner2.y + Corner3.y) / 3.0) };
+
+	Point diff;
+
+	diff = p - center;
+	Corner1 = Corner1 + diff;
+	Corner2 = Corner2 + diff;
+	Corner3 = Corner3 + diff;
+}

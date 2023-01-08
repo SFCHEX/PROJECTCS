@@ -24,10 +24,9 @@ public:
 	virtual ShapePoints getPoints();
 	virtual void MoveShape(Point pMove) override;	
 	virtual void StickImageSh(GUI* pUI, string imagefile);
-
 	virtual void resizeSH(double numb);
 	virtual void rotateSH();
 	virtual Point HideShape(Point) override;
 	virtual void Zoom(double) override;
-
+	void virtual scramble(Point)override;
 };

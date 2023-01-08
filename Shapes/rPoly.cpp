@@ -222,3 +222,21 @@ void rPoly::Zoom(double Zf) {
 	this->MoveShape(Diff);
 	this->resizeSH(Zf);
 }
+
+void rPoly::scramble(Point p) {
+	int cenx = 0;
+	int ceny = 0;
+	for (int i = 0; i < num + 1; i++) {
+		cenx += pVectX[i];
+		ceny += pVectY[i];
+	}
+	cenx = cenx / (num + 1);
+	ceny = ceny / (num + 1);
+
+	Point center = { cenx,ceny };
+	Point diff = p - center;
+	for (int i = 0; i < num + 1; i++) {
+		pVectX[i] += diff.x;
+		pVectY[i] += diff.y;
+	}
+}
