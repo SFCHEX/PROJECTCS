@@ -17,7 +17,7 @@ opStartGame::~opStartGame() {
 void opStartGame::Execute() {
 	Graph* pGr = pControl->getGraph();
 	GUI* pUI = pControl->GetUI();
-	pUI->PrintMessage("Graph Hidden");
+	pGr->duplicateShapes(pUI);
+	pGr->ScrambleShapes();
 	pGr->HideGraph(pUI);
-	
 }
