@@ -16,6 +16,8 @@ opStartGame::~opStartGame() {
 
 void opStartGame::Execute() {
 	Graph* pGr = pControl->getGraph();
+	GUI* pUI = pControl->GetUI();
+	pUI->PrintMessage("Graph Hidden");
+	pGr->HideGraph(pUI);
 	
-
 }
