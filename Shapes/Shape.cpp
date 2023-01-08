@@ -76,7 +76,7 @@ void shape::Save(ofstream &outfile)
 		{
 			outfile<<"NO_FILL"<<" ";
 		}		
-		outfile<<it_info.BorderWdth<<" "<<endl;
+		outfile<<it_info.BorderWdth<<" ";
 		outfile<<it_info.groupID<<endl;
 }
 int shape::getID() const
