@@ -48,15 +48,19 @@ void opSelect::Execute() {
 			GfxInfo SelectedGfxInfo = SelectedShape->getGfxInfo();
 			SelectedShape->SetSelected(1);
 			pGr->selectGroup(SelectedShape);
-			if (SelectedShape->isaCard() && SingleSelect) {
-				pGr->SendToBack(pUI);
-			}
+
 			if (pUI->CurrentMode() == 0) { //check if draw or play mode, no need to print data if its play mode
 				string msg = "Shape: " + SelectedGfxInfo.ShapeType;
 				msg += " | Border Width: ";
 				msg += to_string(SelectedGfxInfo.BorderWdth);
 				pUI->PrintMessage(msg);
 			}
+			else {
+				if (SelectedShape->isaCard()) {
+					pGr->SendToBack(pUI);
+				}
+			}
+
 		}
 		else {
 			pUI->ClearStatusBar();
