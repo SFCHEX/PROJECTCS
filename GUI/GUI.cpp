@@ -176,7 +176,7 @@ operationType GUI::GetUseroperation() const
 			switch (ClickedIconOrder)
 			{
 			case ICON_DRAWMODE: return TO_PLAY;
-			case ICON_MATCH: return MATCH;
+			case ICON_MATCH: return MATCH_2SHAPES;
 
 			case ICON_START_GAME: return START_GAME;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
@@ -305,7 +305,7 @@ void GUI::CreatePlayToolBar()
 	string PlayMenuIconImages[PLAY_ICON_COUNT]; 
 	PlayMenuIconImages[ICON_DRAWMODE] = "images\\PlayMenuIcons\\PlayMenu_Rotate.jpg";
 	PlayMenuIconImages[ICON_MATCH] = "images\\PlayMenuIcons\\Menu_Duplicate.jpg";
-
+	PlayMenuIconImages[ICON_START_GAME] = "images\\PlayMenuIcons\\PlayMenu_Start.jpg";
 
 
 	for (int i = 0; i < PLAY_ICON_COUNT; i++)
